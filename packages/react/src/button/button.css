@@ -1,0 +1,92 @@
+.ub-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--ub-radius-control);
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--ub-duration-fast) var(--ub-ease-out),
+    border-color var(--ub-duration-fast) var(--ub-ease-out),
+    color var(--ub-duration-fast) var(--ub-ease-out),
+    transform var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-button:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.ub-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* sizes */
+.ub-button[data-size="sm"] {
+  height: 2rem;
+  padding-inline: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.ub-button[data-size="md"] {
+  height: 2.25rem;
+  padding-inline: 0.875rem;
+  font-size: 0.875rem;
+}
+
+.ub-button[data-size="lg"] {
+  height: 2.5rem;
+  padding-inline: 1.125rem;
+  font-size: 0.9375rem;
+}
+
+/* variants */
+.ub-button[data-variant="primary"] {
+  background: var(--ub-accent);
+  color: var(--ub-accent-contrast);
+}
+
+.ub-button[data-variant="primary"]:hover:not(:disabled) {
+  background: var(--ub-accent-hover);
+}
+
+.ub-button[data-variant="secondary"] {
+  background: var(--ub-bg);
+  color: var(--ub-text-primary);
+  border-color: var(--ub-border);
+}
+
+.ub-button[data-variant="secondary"]:hover:not(:disabled) {
+  background: var(--ub-bg-subtle);
+  border-color: var(--ub-border-strong);
+}
+
+.ub-button[data-variant="ghost"] {
+  background: transparent;
+  color: var(--ub-text-primary);
+}
+
+.ub-button[data-variant="ghost"]:hover:not(:disabled) {
+  background: var(--ub-bg-muted);
+}
+
+.ub-button[data-variant="danger"] {
+  background: var(--ub-danger);
+  color: var(--ub-danger-contrast);
+}
+
+.ub-button[data-variant="danger"]:hover:not(:disabled) {
+  filter: brightness(1.08);
+}

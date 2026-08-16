@@ -1,0 +1,66 @@
+/*
+ * Semantic tokens. This is the layer components consume and the layer
+ * themes override. Light is the default on :root; dark is activated by
+ * adding class="dark" (or data-theme="dark") to <html> or any subtree.
+ *
+ * Naming: --ub-{role}[-{modifier}], e.g. --ub-text-primary, --ub-bg-subtle.
+ */
+:root {
+  color-scheme: light;
+
+  /* backgrounds */
+  --ub-bg: var(--ub-white);
+  --ub-bg-subtle: var(--ub-gray-50);
+  --ub-bg-muted: var(--ub-gray-100);
+  --ub-surface: var(--ub-white);
+  --ub-overlay: oklch(0 0 0 / 0.4);
+
+  /* text */
+  --ub-text-primary: var(--ub-gray-950);
+  --ub-text-secondary: var(--ub-gray-600);
+  --ub-text-tertiary: var(--ub-gray-400);
+  --ub-text-disabled: var(--ub-gray-300);
+
+  /* borders */
+  --ub-border: var(--ub-gray-200);
+  --ub-border-strong: var(--ub-gray-300);
+
+  /* interactive — the neutral default uses near-black as the accent */
+  --ub-accent: var(--ub-gray-900);
+  --ub-accent-hover: var(--ub-gray-800);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-gray-400);
+
+  /* feedback */
+  --ub-danger: var(--ub-red-600);
+  --ub-danger-contrast: var(--ub-white);
+  --ub-success: var(--ub-green-600);
+  --ub-warning: var(--ub-amber-500);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ub-bg: var(--ub-gray-950);
+  --ub-bg-subtle: var(--ub-gray-900);
+  --ub-bg-muted: var(--ub-gray-800);
+  --ub-surface: var(--ub-gray-900);
+  --ub-overlay: oklch(0 0 0 / 0.6);
+
+  --ub-text-primary: var(--ub-gray-50);
+  --ub-text-secondary: var(--ub-gray-400);
+  --ub-text-tertiary: var(--ub-gray-500);
+  --ub-text-disabled: var(--ub-gray-700);
+
+  --ub-border: var(--ub-gray-800);
+  --ub-border-strong: var(--ub-gray-700);
+
+  --ub-accent: var(--ub-gray-50);
+  --ub-accent-hover: var(--ub-gray-200);
+  --ub-accent-contrast: var(--ub-gray-950);
+  --ub-ring: var(--ub-gray-500);
+
+  --ub-danger: var(--ub-red-500);
+  --ub-success: var(--ub-green-500);
+}

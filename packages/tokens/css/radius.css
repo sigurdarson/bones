@@ -1,0 +1,26 @@
+/*
+ * Radius tokens. Two modes:
+ *   default ("rounded") — controls use an 8px radius
+ *   pill               — controls become fully rounded
+ *
+ * Switch modes by setting data-radius="pill" on <html> or any subtree.
+ * Components use --ub-radius-control for interactive elements (buttons,
+ * inputs, switches) and the sized steps for containers.
+ */
+:root {
+  --ub-radius-xs: 0.25rem;
+  --ub-radius-sm: 0.375rem;
+  --ub-radius-md: 0.5rem;
+  --ub-radius-lg: 0.75rem;
+  --ub-radius-xl: 1rem;
+  --ub-radius-full: 9999px;
+
+  --ub-radius-control: var(--ub-radius-md);
+}
+
+[data-radius="pill"] {
+  --ub-radius-control: var(--ub-radius-full);
+  --ub-radius-sm: 0.625rem;
+  --ub-radius-md: 0.875rem;
+  --ub-radius-lg: 1.25rem;
+}

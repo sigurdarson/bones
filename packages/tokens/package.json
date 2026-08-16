@@ -1,0 +1,33 @@
+{
+  "name": "@usebones/tokens",
+  "version": "0.0.1",
+  "description": "Design tokens for bones — themable CSS custom properties for color, radius, and motion.",
+  "license": "MIT",
+  "homepage": "https://usebones.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigurdarson/bones.git",
+    "directory": "packages/tokens"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "css"
+  ],
+  "exports": {
+    ".": "./css/index.css",
+    "./index.css": "./css/index.css",
+    "./palette.css": "./css/palette.css",
+    "./semantic.css": "./css/semantic.css",
+    "./radius.css": "./css/radius.css",
+    "./motion.css": "./css/motion.css",
+    "./tailwind.css": "./css/tailwind.css"
+  },
+  "keywords": [
+    "design-tokens",
+    "css",
+    "theme",
+    "dark-mode"
+  ]
+}

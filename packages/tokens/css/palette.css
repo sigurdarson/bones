@@ -1,0 +1,31 @@
+/*
+ * Base palette. Raw color scales, never used directly by components —
+ * components read semantic tokens (semantic.css) which reference these.
+ *
+ * Naming: --ub-{scale}-{step}, steps run 50 (lightest) to 950 (darkest).
+ * The default palette is a pure neutral gray. Additional scales (e.g.
+ * --ub-blue-500) follow the same shape and can be layered in by themes.
+ */
+:root {
+  --ub-white: oklch(1 0 0);
+  --ub-black: oklch(0 0 0);
+
+  --ub-gray-50: oklch(0.985 0 0);
+  --ub-gray-100: oklch(0.967 0 0);
+  --ub-gray-200: oklch(0.922 0 0);
+  --ub-gray-300: oklch(0.87 0 0);
+  --ub-gray-400: oklch(0.708 0 0);
+  --ub-gray-500: oklch(0.556 0 0);
+  --ub-gray-600: oklch(0.439 0 0);
+  --ub-gray-700: oklch(0.371 0 0);
+  --ub-gray-800: oklch(0.269 0 0);
+  --ub-gray-900: oklch(0.205 0 0);
+  --ub-gray-950: oklch(0.145 0 0);
+
+  /* Functional colors, kept muted to fit the neutral default. */
+  --ub-red-500: oklch(0.577 0.215 27);
+  --ub-red-600: oklch(0.505 0.19 27);
+  --ub-green-500: oklch(0.627 0.155 150);
+  --ub-green-600: oklch(0.548 0.14 150);
+  --ub-amber-500: oklch(0.762 0.16 70);
+}

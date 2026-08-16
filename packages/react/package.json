@@ -1,0 +1,58 @@
+{
+  "name": "@usebones/react",
+  "version": "0.0.1",
+  "description": "bones — minimal, themable React primitives built on Base UI.",
+  "license": "MIT",
+  "homepage": "https://usebones.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigurdarson/bones.git",
+    "directory": "packages/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./styles.css": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0"
+  },
+  "peerDependencies": {
+    "@usebones/tokens": "workspace:^",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tsdown/css": "^0.22.14",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@usebones/tokens": "workspace:*",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tsdown": "^0.22.14",
+    "typescript": "^7.0.2"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "base-ui",
+    "design-system"
+  ]
+}

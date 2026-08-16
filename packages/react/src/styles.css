@@ -1,0 +1,3 @@
+/* All bones component styles. Import once, after @usebones/tokens. */
+@import "./button/button.css";
+@import "./switch/switch.css";

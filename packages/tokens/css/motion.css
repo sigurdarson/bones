@@ -1,0 +1,30 @@
+/*
+ * Motion tokens. Animations should feel fluid and snappy, never showy.
+ * Components must reference these instead of hardcoding durations or
+ * easings, so reduced-motion support works everywhere for free.
+ *
+ * --ub-ease-spring is a CSS linear() approximation of a light spring —
+ * use it for thumbs, toggles, and small position changes.
+ */
+:root {
+  --ub-duration-fast: 120ms;
+  --ub-duration-base: 180ms;
+  --ub-duration-slow: 280ms;
+
+  --ub-ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ub-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ub-ease-spring: linear(
+    0, 0.0087 1.1%, 0.0357 2.35%, 0.1489 5.1%, 0.3532 8.75%, 0.7378 14.7%,
+    0.8834 17.3%, 0.9899 19.95%, 1.0672 22.65%, 1.1196 25.55%, 1.1467 28.45%,
+    1.1503 30.55%, 1.1384 33.05%, 1.0728 40.15%, 1.0175 47.05%, 0.9909 53.8%,
+    0.9863 60.35%, 1.0016 76.85%, 1
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ub-duration-fast: 0ms;
+    --ub-duration-base: 0ms;
+    --ub-duration-slow: 0ms;
+  }
+}
