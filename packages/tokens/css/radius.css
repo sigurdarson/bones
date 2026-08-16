@@ -1,7 +1,7 @@
 /*
  * Radius tokens. Two modes:
- *   default ("rounded") — controls use an 8px radius
- *   pill               — controls become fully rounded
+ *   default ("rounded"): controls use an 8px radius
+ *   pill: controls become fully rounded
  *
  * Switch modes by setting data-radius="pill" on <html> or any subtree.
  * Components use --ub-radius-control for interactive elements (buttons,

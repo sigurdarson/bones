@@ -1,26 +1,26 @@
 ---
 name: release
-description: Prepare and publish a release of the @usebones packages (tokens, react, icons). Use when the user asks to release, publish, bump versions, or ship to npm — or asks what's unreleased. Handles lockstep 0.0.x version bumps, changelog, verification, and hands the user the exact publish commands.
+description: Prepare and publish a release of the @usebones packages (tokens, react, icons). Use when the user asks to release, publish, bump versions, or ship to npm, or asks what's unreleased. Handles lockstep 0.0.x version bumps, changelog, verification, and hands the user the exact publish commands.
 ---
 
 # Release @usebones packages
 
 ## Versioning model (the 0.0.x approach)
 
-- All three publishable packages — `@usebones/tokens`, `@usebones/react`,
-  `@usebones/icons` — share one version, bumped **in lockstep** even if only
+- All three publishable packages (`@usebones/tokens`, `@usebones/react`,
+  `@usebones/icons`) share one version, bumped **in lockstep** even if only
   one changed. One version to reason about; cross-package peer ranges never
   drift.
 - While pre-1.0, releases use two bump sizes (no prerelease suffixes):
-  - **patch** (0.0.1 → 0.0.2, 0.1.3 → 0.1.4) — the default: fixes, tweaks,
+  - **patch** (0.0.1 → 0.0.2, 0.1.3 → 0.1.4): the default. Fixes, tweaks,
     new components/tokens/icons, anything additive.
-  - **minor** (0.0.5 → 0.1.0, 0.1.4 → 0.2.0) — recommend when the release
+  - **minor** (0.0.5 → 0.1.0, 0.1.4 → 0.2.0): recommend when the release
     contains breaking changes to already-published API (renamed/removed
     props, exports, token names, class names, markup structure) or marks a
     real milestone (e.g. a coherent set of components landing together).
 - The agent **recommends** the bump (step 2) but only applies a patch on its
   own. A minor needs the user's go-ahead, and `1.0.0` is always the user's
-  call — never recommend it, only surface "this looks 1.0-worthy" as an
+  call. Never recommend it; only surface "this looks 1.0-worthy" as an
   aside if warranted.
 - The version in the package.json files is the **last published** version.
   Between releases it stays put; day-to-day changes are recorded in
@@ -39,14 +39,14 @@ description: Prepare and publish a release of the @usebones packages (tokens, re
    breaking / feature / fix (changelog entries flag breaking changes with a
    leading `breaking:`; also diff exported types, token names, and class
    names against the last release tag if unsure). State the recommendation
-   with a one-line rationale, e.g. "Switch `onChange` was renamed —
+   with a one-line rationale, e.g. "Switch `onChange` was renamed, so
    recommend 0.1.0". Patch: apply immediately. Minor: wait for the user to
    confirm before applying. Then set `version` in all three:
    `packages/tokens/package.json`, `packages/react/package.json`,
    `packages/icons/package.json`. Internal `workspace:` ranges need no
-   edit — pnpm rewrites them to the real version at publish time.
+   edit; pnpm rewrites them to the real version at publish time.
 3. **Update CHANGELOG.md.** Rename `## Unreleased` to
-   `## <version> — YYYY-MM-DD` and add a fresh empty `## Unreleased` above
+   `## <version> (YYYY-MM-DD)` and add a fresh empty `## Unreleased` above
    it.
 4. **Verify from clean state:**
    ```sh
@@ -57,23 +57,33 @@ description: Prepare and publish a release of the @usebones packages (tokens, re
    pnpm -r publish --dry-run --no-git-checks
    ```
    Confirm each tarball contains only intended files (`dist/` or `css/`,
-   README, LICENSE — no `src/`, no config) and that `workspace:` ranges were
+   README, LICENSE; no `src/`, no config) and that `workspace:` ranges were
    replaced in the manifest output.
-5. **Commit + tag** (only if the user has asked to commit, per repo rules):
-   `chore(release): <version>` then `git tag v<version>`.
-6. **Publish — hand over, don't run.** Publishing needs npm auth (org
-   `usebones`) and usually an OTP, and it's irreversible — a published
+5. **Commit and open a release PR** (commits still need the user's OK, per
+   repo rules). Commit as `chore(release): <version>` on a `chore/release-
+   <version>` branch and open a PR with that exact title; like every PR it
+   squash merges, and the title becomes the commit on `main`. Don't tag
+   yet.
+6. **Tag on main.** After the PR merges, tag the squashed commit and push
+   the tag:
+   ```sh
+   git fetch origin && git tag v<version> origin/main
+   git push origin v<version>
+   ```
+   Never tag the working branch: squash merging means that commit is not
+   part of `main` history.
+7. **Publish: hand over, don't run.** Publishing needs npm auth (org
+   `usebones`) and usually an OTP, and it's irreversible; a published
    version can never be reused, only deprecated. Give the user this block
    and let them run it:
    ```sh
    npm whoami                 # expect your npm user, member of usebones org
    pnpm -r publish --access public --no-git-checks
-   git push && git push --tags
    ```
    (`--access public` is belt-and-braces; `publishConfig.access` is already
-   set in each package. `--no-git-checks` because the working branch isn't
-   `main`.)
-7. **Confirm.** After the user reports success (or on request), verify:
+   set in each package. `--no-git-checks` skips pnpm's clean-on-main check,
+   which doesn't fit the squash-merge workspace flow.)
+8. **Confirm.** After the user reports success (or on request), verify:
    ```sh
    npm view @usebones/react version
    ```
@@ -81,6 +91,6 @@ description: Prepare and publish a release of the @usebones packages (tokens, re
 ## If something goes wrong
 
 - Publish failed for *some* packages (lockstep now split): fix the cause,
-  re-run publish — pnpm skips versions that already exist.
+  re-run publish; pnpm skips versions that already exist.
 - Bad release shipped: never unpublish. Fix forward with the next patch and
   `npm deprecate <pkg>@<bad-version> "use <next-version>"`.

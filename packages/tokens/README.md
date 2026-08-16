@@ -1,6 +1,6 @@
 # @usebones/tokens
 
-Design tokens for bones. Plain CSS custom properties — no build step, no runtime.
+Design tokens for bones. Plain CSS custom properties. No build step, no runtime.
 
 ## Install
 
@@ -12,7 +12,7 @@ pnpm add @usebones/tokens
 @import "@usebones/tokens/index.css";
 ```
 
-(Or `import "@usebones/tokens/index.css"` from JS — use the explicit `.css`
+(Or `import "@usebones/tokens/index.css"` from JS. Use the explicit `.css`
 path; TypeScript 7 rejects extensionless side-effect imports of CSS.)
 
 ## Layers
@@ -27,9 +27,9 @@ path; TypeScript 7 rejects extensionless side-effect imports of CSS.)
 
 ## Theming
 
-- **Dark mode** — add `class="dark"` (or `data-theme="dark"`) to `<html>` or any subtree.
-- **Pill radius** — add `data-radius="pill"` to `<html>` or any subtree.
-- **Custom themes** — override semantic tokens in your own stylesheet; never fork component CSS.
+- **Dark mode**: add `class="dark"` (or `data-theme="dark"`) to `<html>` or any subtree.
+- **Pill radius**: add `data-radius="pill"` to `<html>` or any subtree.
+- **Custom themes**: override semantic tokens in your own stylesheet; never fork component CSS.
 
 ```css
 :root {

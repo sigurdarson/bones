@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 /**
- * bones components never import an icon library directly — they ask for a
+ * bones components never import an icon library directly; they ask for a
  * semantic name through this adapter. The default set is Lucide; apps swap
  * sets (e.g. Hugeicons) by mounting <IconProvider icons={...}> once.
  */
@@ -42,7 +42,7 @@ export const defaultIcons: IconSet = {
 const IconContext = React.createContext<IconSet>(defaultIcons);
 
 export interface IconProviderProps {
-  /** Partial overrides — anything omitted falls back to the Lucide default. */
+  /** Partial overrides; anything omitted falls back to the Lucide default. */
   icons: Partial<IconSet>;
   children: React.ReactNode;
 }

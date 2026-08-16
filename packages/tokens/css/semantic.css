@@ -25,7 +25,7 @@
   --ub-border: var(--ub-gray-200);
   --ub-border-strong: var(--ub-gray-300);
 
-  /* interactive — the neutral default uses near-black as the accent */
+  /* interactive: the neutral default uses near-black as the accent */
   --ub-accent: var(--ub-gray-900);
   --ub-accent-hover: var(--ub-gray-800);
   --ub-accent-contrast: var(--ub-white);

@@ -1,6 +1,6 @@
 ---
 name: new-component
-description: Add a new primitive component to @usebones/react following bones conventions — Base UI wrapping, token-driven CSS, data-attribute variants, and docs registration. Use whenever creating or scaffolding a component in packages/react.
+description: Add a new primitive component to @usebones/react following bones conventions: Base UI wrapping, token-driven CSS, data-attribute variants, and docs registration. Use whenever creating or scaffolding a component in packages/react.
 ---
 
 # Add a new bones component
@@ -9,7 +9,7 @@ description: Add a new primitive component to @usebones/react following bones co
 
 1. Check whether Base UI ships this part: look in
    `node_modules/@base-ui/react/` or the Base UI docs. If it
-   exists, wrap it — never reimplement behavior Base UI provides.
+   exists, wrap it. Never reimplement behavior Base UI provides.
 2. Read one existing component as the pattern reference:
    `packages/react/src/switch/` (Base UI wrapper) or
    `packages/react/src/button/` (native element).
@@ -62,5 +62,5 @@ page) and check both themes (`.dark`) and both radius modes
 (`data-radius="pill"`).
 
 Finally, add a line to `CHANGELOG.md` under `## Unreleased`
-(`react: add <component>`). Do not touch package versions — that happens at
+(`react: add <component>`). Do not touch package versions; that happens at
 release time via the `release` skill.
