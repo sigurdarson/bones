@@ -4,7 +4,7 @@ import "@usebones/react/styles.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "bones — minimal components, built for AI",
+  title: "bones · minimal components, built for AI",
   description:
     "A minimal, themable component library built on Base UI. Designed to be read, composed, and extended by humans and agents alike.",
 };

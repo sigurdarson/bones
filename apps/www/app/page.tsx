@@ -17,7 +17,7 @@ export default function Home() {
         bones
       </h1>
       <p style={{ color: "var(--ub-text-secondary)", lineHeight: 1.6, margin: 0 }}>
-        A minimal, themable component library built on Base UI — designed to be
+        A minimal, themable component library built on Base UI, designed to be
         read, composed, and extended by humans and agents alike.
       </p>
       <Demo />

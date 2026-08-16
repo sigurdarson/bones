@@ -3,7 +3,7 @@
  * Components must reference these instead of hardcoding durations or
  * easings, so reduced-motion support works everywhere for free.
  *
- * --ub-ease-spring is a CSS linear() approximation of a light spring —
+ * --ub-ease-spring is a CSS linear() approximation of a light spring;
  * use it for thumbs, toggles, and small position changes.
  */
 :root {

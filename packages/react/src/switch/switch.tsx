@@ -9,7 +9,7 @@ export interface SwitchProps extends BaseSwitch.Root.Props {}
 /**
  * A toggle switch, wrapping the Base UI Switch. State is exposed through
  * Base UI's data attributes (data-checked / data-unchecked), which the
- * stylesheet targets — the wrapper only adds classes.
+ * stylesheet targets; the wrapper only adds classes.
  */
 export function Switch({ className, ...props }: SwitchProps) {
   return (

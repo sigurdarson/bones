@@ -1,6 +1,6 @@
 # bones
 
-A minimal, themable component library built on [Base UI](https://base-ui.com) —
+A minimal, themable component library built on [Base UI](https://base-ui.com),
 designed to be read, composed, and extended by humans and coding agents alike.
 
 **[usebones.com](https://usebones.com)**
@@ -9,11 +9,45 @@ designed to be read, composed, and extended by humans and coding agents alike.
 
 | Package                                | Description                                                       |
 | -------------------------------------- | ----------------------------------------------------------------- |
-| [`@usebones/tokens`](packages/tokens)  | Design tokens as CSS custom properties (`--ub-*`) — palette, semantic roles, radius modes, motion. |
+| [`@usebones/tokens`](packages/tokens)  | Design tokens as CSS custom properties (`--ub-*`): palette, semantic roles, radius modes, motion. |
 | [`@usebones/react`](packages/react)    | Styled React primitives wrapping Base UI parts.                   |
-| [`@usebones/icons`](packages/icons)    | Semantic icon adapter — Lucide by default, swappable per app.     |
+| [`@usebones/icons`](packages/icons)    | Semantic icon adapter. Lucide by default, swappable per app.     |
 | [`apps/www`](apps/www)                 | Landing page and documentation.                                   |
-| [`interface/`](interface)              | Product-ready AI components (chat, thinking states, prompt input) — commercial tier, in progress. |
+| [`interface/`](interface)              | Product-ready AI components (chat, thinking states, prompt input). Commercial tier, in progress. |
+
+## Install
+
+```sh
+pnpm add @usebones/react @usebones/tokens @usebones/icons
+```
+
+Import the tokens once (before any component styles), then use the
+components:
+
+```tsx
+import "@usebones/tokens/index.css";
+import "@usebones/react/styles.css";
+
+import { Button, Switch } from "@usebones/react";
+
+export function Example() {
+  return (
+    <>
+      <Button variant="secondary">Hello</Button>
+      <Switch defaultChecked />
+    </>
+  );
+}
+```
+
+Dark mode and radius are switches on `<html>` (or any subtree):
+
+```html
+<html class="dark" data-radius="pill">
+```
+
+Using Tailwind? Import `@usebones/tokens/tailwind.css` instead of
+`index.css` to also get utilities like `bg-ub-accent` and `ease-ub-spring`.
 
 ## Principles
 
@@ -22,7 +56,7 @@ designed to be read, composed, and extended by humans and coding agents alike.
 - **Fluid, not flashy.** Spring-based micro-motion on interaction; every
   duration and easing is a token; reduced motion respected everywhere.
 - **Configurable at the root.** `class="dark"`, `data-radius="pill"`, swap the
-  icon set with one provider — no forked styles.
+  icon set with one provider. No forked styles.
 - **Built for agents.** Predictable file layout, exported prop types, semantic
   tokens, and machine-readable conventions (`CLAUDE.md`, skills) so AI tools
   can use and extend the library correctly on the first try.
@@ -54,4 +88,4 @@ prints the publish commands to run.
 ## License
 
 Everything under `packages/` and `apps/` is [MIT](LICENSE). The `interface/`
-directory is reserved for commercially licensed components — see its README.
+directory is reserved for commercially licensed components. See its README.

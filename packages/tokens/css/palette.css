@@ -1,5 +1,5 @@
 /*
- * Base palette. Raw color scales, never used directly by components —
+ * Base palette. Raw color scales, never used directly by components;
  * components read semantic tokens (semantic.css) which reference these.
  *
  * Naming: --ub-{scale}-{step}, steps run 50 (lightest) to 950 (darkest).
