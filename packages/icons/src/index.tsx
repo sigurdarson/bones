@@ -2,12 +2,20 @@
 
 import * as React from "react";
 import {
+  ArrowLeft,
+  ArrowRight,
+  Bell,
   Check,
   ChevronDown,
   ChevronRight,
   Copy,
+  CreditCard,
+  Info,
   Loader2,
+  Moon,
   Search,
+  Sun,
+  User,
   X,
 } from "lucide-react";
 
@@ -17,26 +25,42 @@ import {
  * sets (e.g. Hugeicons) by mounting <IconProvider icons={...}> once.
  */
 export type IconName =
+  | "arrow-left"
+  | "arrow-right"
+  | "bell"
   | "check"
   | "chevron-down"
   | "chevron-right"
   | "close"
   | "copy"
+  | "credit-card"
+  | "info"
   | "loader"
-  | "search";
+  | "moon"
+  | "search"
+  | "sun"
+  | "user";
 
 export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 export type IconSet = Record<IconName, IconComponent>;
 
 export const defaultIcons: IconSet = {
+  "arrow-left": ArrowLeft,
+  "arrow-right": ArrowRight,
+  bell: Bell,
   check: Check,
   "chevron-down": ChevronDown,
   "chevron-right": ChevronRight,
   close: X,
   copy: Copy,
+  "credit-card": CreditCard,
+  info: Info,
   loader: Loader2,
+  moon: Moon,
   search: Search,
+  sun: Sun,
+  user: User,
 };
 
 const IconContext = React.createContext<IconSet>(defaultIcons);
@@ -58,11 +82,20 @@ export function useIcon(name: IconName): IconComponent {
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconName;
-  /** Square size in pixels. @default 16 */
+  /**
+   * Explicit square size in pixels. When omitted, the icon sizes from the
+   * --ub-icon-size token: 16px by default, 14px inside compact contexts.
+   */
   size?: number;
 }
 
-export function Icon({ name, size = 16, ...props }: IconProps) {
+export function Icon({ name, size, style, ...props }: IconProps) {
   const Component = useIcon(name);
-  return <Component width={size} height={size} aria-hidden {...props} />;
+  /* Token-driven size goes through a style so compact scopes can remap the
+     variable; an explicit size prop pins exact pixels instead. */
+  const sizing =
+    size == null
+      ? { width: "var(--ub-icon-size, 1rem)", height: "var(--ub-icon-size, 1rem)" }
+      : { width: size, height: size };
+  return <Component style={{ ...sizing, ...style }} aria-hidden {...props} />;
 }

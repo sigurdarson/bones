@@ -1,0 +1,97 @@
+/* Size resolves per root through private vars, so nesting a default-size
+   Tabs inside a compact one (or the reverse) behaves correctly. */
+.ub-tabs {
+  display: flex;
+  flex-direction: column;
+  --_ub-tabs-gap: 0.5rem;
+  --_ub-tab-height: var(--ub-control-height);
+  --_ub-tab-pad: 0.875rem;
+  --_ub-tab-font: var(--ub-font-size);
+  --ub-icon-size: var(--ub-icon-size-default);
+}
+
+.ub-tabs[data-size="compact"] {
+  --_ub-tabs-gap: 0.25rem;
+  --_ub-tab-height: var(--ub-control-height-compact);
+  --_ub-tab-pad: 0.625rem;
+  --_ub-tab-font: var(--ub-font-size-compact);
+  --ub-icon-size: var(--ub-icon-size-compact);
+}
+
+.ub-tabs-list {
+  position: relative;
+  display: flex;
+  gap: var(--_ub-tabs-gap);
+}
+
+.ub-tabs-tab {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--_ub-tab-height);
+  padding-inline: var(--_ub-tab-pad);
+  border: none;
+  background: transparent;
+  border-radius: var(--ub-radius-control);
+  font-family: inherit;
+  font-size: var(--_ub-tab-font);
+  font-weight: 500;
+  color: var(--ub-text-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-tabs-tab:hover {
+  color: var(--ub-text-primary);
+}
+
+.ub-tabs-tab:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: -2px;
+}
+
+.ub-tabs-tab[data-active] {
+  color: var(--ub-text-primary);
+}
+
+.ub-tabs-tab[data-disabled] {
+  cursor: not-allowed;
+  color: var(--ub-text-disabled);
+}
+
+/* icon-only tabs are square */
+.ub-tabs-tab[data-icon-only] {
+  width: var(--_ub-tab-height);
+  padding-inline: 0;
+}
+
+/* Base UI positions the active tab through custom properties; the
+   indicator is a background pill that slides between tabs with a light
+   spring, sitting behind the tab labels. */
+.ub-tabs-indicator {
+  position: absolute;
+  top: var(--active-tab-top);
+  left: 0;
+  width: var(--active-tab-width);
+  height: var(--active-tab-height);
+  translate: var(--active-tab-left) 0;
+  background: var(--ub-bg-muted);
+  border-radius: var(--ub-radius-control);
+  z-index: 0;
+  transition:
+    translate var(--ub-duration-slow) var(--ub-ease-spring),
+    width var(--ub-duration-slow) var(--ub-ease-spring);
+}
+
+.ub-tabs-panel {
+  padding-top: 0.75rem;
+}
+
+.ub-tabs-panel:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}

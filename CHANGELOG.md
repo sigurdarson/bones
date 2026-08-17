@@ -7,6 +7,34 @@ All @usebones packages release together with a single version (see
 
 - tokens, react, icons: reword package descriptions and comments to match
   the house writing style.
+- react: fix: preserve the "use client" directive in the published bundle
+  (components broke when rendered from React Server Components).
+- icons: fix: same "use client" preservation for the icon adapter.
+- icons: add sun, moon, info, arrow-left, arrow-right, user, bell, and
+  credit-card icons.
+- tokens: add opt-in scrollbars.css (thin, tokenized, theme-aware, hidden
+  until the scrolling element is hovered; apps add a fade by declaring the
+  transition on their own scrollables).
+- tokens: add sizes.css with the two-size system: default (16px text, 36px
+  controls, 16px icons) and compact (14px text, 28px controls, 14px icons).
+- icons: breaking: Icon sizes from the --ub-icon-size token (16px default,
+  14px in compact contexts) instead of a fixed 16px; the size prop still
+  pins exact pixels.
+- react: breaking: Button sizes are now "default" and "compact"; the
+  sm/md/lg scale is gone. Base styles carry the default size, so
+  class-based usage without data-size gets it automatically.
+- react: add Tabs (Root, List, Tab, Panel) wrapping the Base UI Tabs, with
+  a spring-animated active indicator rendered automatically by List, two
+  sizes, and icon support (leading/trailing children, iconOnly).
+- react: warn in development when an icon-only tab has no accessible name.
+- react: Button supports icons: leading/trailing children and an iconOnly
+  square variant, with the same accessible-name dev warning as tabs.
+- tokens: add full color scales (red, orange, green, teal, blue, violet,
+  fuchsia, rose) sharing the gray lightness ladder, and an --ub-info role.
+- tokens: darken gray-900 slightly and strengthen light-mode bg-muted
+  (gray-100 to gray-200) so hovers and highlights read more clearly.
+- tokens: breaking: the partial red/green steps and --ub-amber-500 are
+  replaced by the full scales; --ub-warning now reads orange.
 
 ## 0.0.1 (2026-08-16)
 

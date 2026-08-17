@@ -11,7 +11,7 @@
   /* backgrounds */
   --ub-bg: var(--ub-white);
   --ub-bg-subtle: var(--ub-gray-50);
-  --ub-bg-muted: var(--ub-gray-100);
+  --ub-bg-muted: var(--ub-gray-200);
   --ub-surface: var(--ub-white);
   --ub-overlay: oklch(0 0 0 / 0.4);
 
@@ -35,7 +35,8 @@
   --ub-danger: var(--ub-red-600);
   --ub-danger-contrast: var(--ub-white);
   --ub-success: var(--ub-green-600);
-  --ub-warning: var(--ub-amber-500);
+  --ub-warning: var(--ub-orange-500);
+  --ub-info: var(--ub-blue-600);
 }
 
 .dark,
@@ -63,4 +64,6 @@
 
   --ub-danger: var(--ub-red-500);
   --ub-success: var(--ub-green-500);
+  --ub-warning: var(--ub-orange-400);
+  --ub-info: var(--ub-blue-400);
 }

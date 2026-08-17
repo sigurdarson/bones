@@ -8,12 +8,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^4.2.3",
+    "@hugeicons/react": "^1.1.9",
     "@usebones/icons": "workspace:*",
     "@usebones/react": "workspace:*",
     "@usebones/tokens": "workspace:*",
     "next": "^16.3.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "shiki": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

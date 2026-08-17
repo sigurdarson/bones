@@ -51,15 +51,27 @@ packages/react/src/styles.css          # @import "./<name>/<name>.css";
 - Entry/exit or movement animations: prefer `--ub-ease-spring` for physical
   elements, `--ub-ease-out` for fades; never hardcode ms values.
 
+## Accessibility checklist (all required)
+
+- Fully keyboard operable; test tab, arrow keys, space/enter as relevant.
+- `:focus-visible` ring on every focusable part.
+- `aria-*` props reach the underlying element (spread `...props` last).
+- Any state a screen reader needs is expressed through Base UI's ARIA or
+  explicit attributes, not color alone.
+- Variants that can lack a visible label (icon-only) get a development-mode
+  `console.warn` when no `aria-label`/`aria-labelledby` is provided (see
+  TabsTab for the pattern).
+- No hardcoded durations; motion tokens only, so reduced motion works.
+
 ## Verify
 
 ```sh
 pnpm --filter @usebones/react build && pnpm --filter @usebones/react typecheck
 ```
 
-Then add the component to the demo in `apps/www/app/demo.tsx` (or a docs
-page) and check both themes (`.dark`) and both radius modes
-(`data-radius="pill"`).
+Then create its docs page following the `component-page` skill (the Tabs
+page is the reference) and check both themes (`.dark`) and both radius
+modes (`data-radius="pill"`).
 
 Finally, add a line to `CHANGELOG.md` under `## Unreleased`
 (`react: add <component>`). Do not touch package versions; that happens at

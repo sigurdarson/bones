@@ -1,11 +1,15 @@
 .ub-button {
+  --ub-icon-size: var(--ub-icon-size-default);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  height: var(--ub-control-height);
+  padding-inline: 0.875rem;
   border: 1px solid transparent;
   border-radius: var(--ub-radius-control);
   font-family: inherit;
+  font-size: var(--ub-font-size);
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
@@ -33,23 +37,24 @@
   opacity: 0.5;
 }
 
-/* sizes */
-.ub-button[data-size="sm"] {
-  height: 2rem;
-  padding-inline: 0.75rem;
-  font-size: 0.8125rem;
+/* sizes: base styles are the default size; compact is the only override */
+.ub-button[data-size="compact"] {
+  height: var(--ub-control-height-compact);
+  padding-inline: 0.625rem;
+  font-size: var(--ub-font-size-compact);
+  --ub-icon-size: var(--ub-icon-size-compact);
 }
 
-.ub-button[data-size="md"] {
-  height: 2.25rem;
-  padding-inline: 0.875rem;
-  font-size: 0.875rem;
+/* icon-only buttons are square. Declared after the size rules: the
+   padding-inline reset ties with the compact rule on specificity, so
+   source order decides. */
+.ub-button[data-icon-only] {
+  width: var(--ub-control-height);
+  padding-inline: 0;
 }
 
-.ub-button[data-size="lg"] {
-  height: 2.5rem;
-  padding-inline: 1.125rem;
-  font-size: 0.9375rem;
+.ub-button[data-size="compact"][data-icon-only] {
+  width: var(--ub-control-height-compact);
 }
 
 /* variants */
