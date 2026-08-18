@@ -44,35 +44,3 @@ export function ColorScales() {
     </div>
   );
 }
-
-const semanticTokens = [
-  { name: "--ub-bg", note: "page background" },
-  { name: "--ub-bg-subtle", note: "wells, code blocks" },
-  { name: "--ub-bg-muted", note: "hovers, inline code" },
-  { name: "--ub-surface", note: "cards, panels" },
-  { name: "--ub-text-primary", note: "headings, body" },
-  { name: "--ub-text-secondary", note: "supporting text" },
-  { name: "--ub-text-tertiary", note: "hints, captions" },
-  { name: "--ub-border", note: "hairlines" },
-  { name: "--ub-border-strong", note: "inputs, scrollbars" },
-  { name: "--ub-accent", note: "primary actions" },
-  { name: "--ub-ring", note: "focus rings" },
-  { name: "--ub-danger", note: "destructive actions" },
-  { name: "--ub-success", note: "positive feedback" },
-  { name: "--ub-warning", note: "caution" },
-  { name: "--ub-info", note: "informational" },
-];
-
-export function SemanticSwatches() {
-  return (
-    <div className="semantic-swatches">
-      {semanticTokens.map((token) => (
-        <div key={token.name} className="semantic-swatch">
-          <div className="color-chip" style={{ background: `var(${token.name})` }} />
-          <code>{token.name}</code>
-          <span>{token.note}</span>
-        </div>
-      ))}
-    </div>
-  );
-}

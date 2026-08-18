@@ -21,6 +21,27 @@ a decision lands; keep open questions at the top.
    (versioning, changelogs, peer ranges) for little gain. Current call: one
    `@usebones/react` package, tree-shakeable via ESM.
 
+## 2026-08-18: Theming architecture
+
+- **No theme provider, no config file.** Attributes and tokens are the
+  configuration API: data-theme="dark" (canonical; .dark supported) and
+  data-radius="pill" on any subtree; values change by overriding semantic
+  tokens in CSS. Zero runtime, server-component native, framework
+  agnostic.
+- **JS context only where CSS cannot express the need.** IconProvider
+  exists because icon sets are JS modules; nothing else earns a provider.
+- **System theme, persistence, and no-flash are recipes, not APIs**: a
+  documented pre-paint script (see the Theming page), not a required
+  provider.
+- **Density is a token override**: remapping the size tokens in a scope
+  makes everything inside compact by default; the size prop stays the
+  per-component escape hatch.
+- **Elevation scale**: --ub-shadow-sm/md/lg, both themes.
+- **Prebuilt accent themes** ship as one-import files built from the color
+  scales (themes/blue.css and friends).
+- If build-time theme generation ever arrives, it outputs a tokens CSS
+  file; the runtime stays pure CSS.
+
 ## 2026-08-16: npm scope claimed
 
 - The `usebones` org exists on npm and 0.0.1 of all three packages is

@@ -68,14 +68,12 @@
 }
 
 .ub-button[data-variant="secondary"] {
-  background: var(--ub-bg);
+  background: var(--ub-bg-muted);
   color: var(--ub-text-primary);
-  border-color: var(--ub-border);
 }
 
 .ub-button[data-variant="secondary"]:hover:not(:disabled) {
-  background: var(--ub-bg-subtle);
-  border-color: var(--ub-border-strong);
+  background: var(--ub-bg-muted-hover);
 }
 
 .ub-button[data-variant="ghost"] {

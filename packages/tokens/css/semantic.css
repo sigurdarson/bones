@@ -12,6 +12,7 @@
   --ub-bg: var(--ub-white);
   --ub-bg-subtle: var(--ub-gray-50);
   --ub-bg-muted: var(--ub-gray-200);
+  --ub-bg-muted-hover: var(--ub-gray-300);
   --ub-surface: var(--ub-white);
   --ub-overlay: oklch(0 0 0 / 0.4);
 
@@ -37,15 +38,26 @@
   --ub-success: var(--ub-green-600);
   --ub-warning: var(--ub-orange-500);
   --ub-info: var(--ub-blue-600);
+
+  /* elevation */
+  --ub-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.08);
+  --ub-shadow-md: 0 8px 24px oklch(0 0 0 / 0.12);
+  --ub-shadow-lg: 0 16px 48px oklch(0 0 0 / 0.16);
+
+  /* translucent surface for overlays; pair with a backdrop blur.
+     Resolves per theme because --ub-surface substitutes at use time. */
+  --ub-surface-glass: color-mix(in oklab, var(--ub-surface) 90%, transparent);
 }
 
-.dark,
-[data-theme="dark"] {
+/* data-theme="dark" is the canonical dark switch; .dark also works. */
+[data-theme="dark"],
+.dark {
   color-scheme: dark;
 
   --ub-bg: var(--ub-gray-950);
   --ub-bg-subtle: var(--ub-gray-900);
   --ub-bg-muted: var(--ub-gray-800);
+  --ub-bg-muted-hover: var(--ub-gray-700);
   --ub-surface: var(--ub-gray-900);
   --ub-overlay: oklch(0 0 0 / 0.6);
 
@@ -66,4 +78,8 @@
   --ub-success: var(--ub-green-500);
   --ub-warning: var(--ub-orange-400);
   --ub-info: var(--ub-blue-400);
+
+  --ub-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.4);
+  --ub-shadow-md: 0 8px 24px oklch(0 0 0 / 0.55);
+  --ub-shadow-lg: 0 16px 48px oklch(0 0 0 / 0.65);
 }

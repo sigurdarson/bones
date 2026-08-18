@@ -1,4 +1,8 @@
 /* All bones component styles. Import once, after @usebones/tokens. */
 @import "./button/button.css";
+@import "./checkbox/checkbox.css";
+@import "./field/field.css";
+@import "./input/input.css";
+@import "./select/select.css";
 @import "./switch/switch.css";
 @import "./tabs/tabs.css";

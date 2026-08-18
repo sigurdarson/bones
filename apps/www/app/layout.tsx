@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 /* Applies stored theme before paint so there is no flash of the wrong mode. */
-const themeInit = `(function(){try{var t=localStorage.getItem("ub-theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark");if(localStorage.getItem("ub-radius")==="pill")document.documentElement.setAttribute("data-radius","pill")}catch(e){}})();`;
+const themeInit = `(function(){try{var t=localStorage.getItem("ub-theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");if(localStorage.getItem("ub-radius")==="pill")document.documentElement.setAttribute("data-radius","pill");var a=localStorage.getItem("ub-accent");if(a)document.documentElement.setAttribute("data-accent",a)}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

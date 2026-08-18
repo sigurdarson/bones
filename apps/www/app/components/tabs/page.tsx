@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { Showcase } from "@/components/showcase";
 import { TabsPlayground } from "@/components/tabs-playground";
+import { AgentInstructions } from "@/components/agent-instructions";
 
 export const metadata: Metadata = { title: "Tabs" };
 
@@ -171,6 +172,13 @@ export default function Page() {
             description: "Shown while the matching Tab is active.",
           },
         ]}
+      />
+      <AgentInstructions
+        instructions={`TabsRoot, TabsList, TabsTab, TabsPanel, from @usebones/react.
+- TabsRoot: defaultValue or value + onValueChange; size "default" | "compact".
+- TabsList renders the sliding indicator automatically. Each TabsTab value matches a TabsPanel value.
+- Icons are children via @usebones/icons; iconOnly makes a square tab and requires aria-label. disabled blocks a tab.
+- Restyle in CSS via [data-active], [data-disabled]; the indicator is .ub-tabs-indicator. Tokens only.`}
       />
     </>
   );

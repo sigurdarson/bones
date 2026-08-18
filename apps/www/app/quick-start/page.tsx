@@ -45,7 +45,7 @@ export function Example() {
         Both are attributes on <code>&lt;html&gt;</code> (or any subtree), no
         JavaScript required:
       </p>
-      <CodeBlock lang="html" code={`<html class="dark" data-radius="pill">`} />
+      <CodeBlock lang="html" code={`<html data-theme="dark" data-radius="pill">`} />
       <h2>Using Tailwind?</h2>
       <p>
         Import <code>@usebones/tokens/tailwind.css</code> instead of{" "}

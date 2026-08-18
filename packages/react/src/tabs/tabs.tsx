@@ -2,16 +2,7 @@
 
 import * as React from "react";
 import { Tabs as BaseTabs } from "@base-ui/react/tabs";
-import { cx } from "../lib/cx";
-
-type StateClassName<State> = string | ((state: State) => string | undefined) | undefined;
-
-/* Base UI accepts className as a string or a function of component state;
-   preserve both while prepending our class. */
-function withBase<State>(base: string, className: StateClassName<State>) {
-  return (state: State) =>
-    cx(base, typeof className === "function" ? className(state) : className);
-}
+import { withBase } from "../lib/with-base";
 
 export interface TabsRootProps extends BaseTabs.Root.Props {
   /** Two sizes only: default is 36px tall tabs with 16px text, compact is 28px with 14px text. @default "default" */

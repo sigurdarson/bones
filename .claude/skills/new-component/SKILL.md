@@ -7,6 +7,9 @@ description: Add a new primitive component to @usebones/react following bones co
 
 ## Before writing code
 
+0. Check `docs/COMPONENTS.md` for the roadmap status, and update it (todo
+   to in progress to done) in the same PR that ships the component.
+
 1. Check whether Base UI ships this part: look in
    `node_modules/@base-ui/react/` or the Base UI docs. If it
    exists, wrap it. Never reimplement behavior Base UI provides.

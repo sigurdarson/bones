@@ -5,6 +5,32 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Field (FieldRoot, FieldLabel, FieldDescription, FieldError)
+  wrapping the Base UI Field; bones form controls pick up its validation
+  state automatically.
+- react: add Input wrapping the Base UI Input: two sizes, a borderless
+  variant, leading/trailing icons, a hint line linked via aria-describedby,
+  an invalid prop, and field state via data attributes.
+- react: add Checkbox wrapping the Base UI Checkbox: check and
+  indeterminate dash indicators, fixed radius so pill mode never makes it
+  look like a radio.
+- react: add Select (SelectRoot, SelectTrigger, SelectContent, SelectItem)
+  wrapping the Base UI Select: trigger renders the value and chevron
+  automatically (with a borderless variant, leading icon, hint line, and
+  invalid state matching Input), content bundles portal/positioner/popup
+  with an animated open transition, items render their selected check, and
+  size on the root flows to trigger and items together (36px default rows,
+  28px compact).
+- tokens: add the elevation scale (--ub-shadow-sm/md/lg) for overlays.
+- tokens: add prebuilt accent themes (themes/blue.css and friends for all
+  eight color scales), one import to recolor primary actions.
+- tokens: data-theme="dark" is the canonical dark selector; .dark keeps
+  working.
+- tokens: add --ub-surface-glass, a translucent surface for overlays that
+  pairs with a backdrop blur; the select popup uses it.
+- tokens: add --ub-bg-muted-hover (one step above bg-muted in both themes).
+- react: secondary Button drops its border for a muted background that
+  deepens one step on hover.
 - tokens, react, icons: reword package descriptions and comments to match
   the house writing style.
 - react: fix: preserve the "use client" directive in the published bundle

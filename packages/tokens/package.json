@@ -24,7 +24,8 @@
     "./sizes.css": "./css/sizes.css",
     "./motion.css": "./css/motion.css",
     "./scrollbars.css": "./css/scrollbars.css",
-    "./tailwind.css": "./css/tailwind.css"
+    "./tailwind.css": "./css/tailwind.css",
+    "./themes/*": "./css/themes/*"
   },
   "keywords": [
     "design-tokens",

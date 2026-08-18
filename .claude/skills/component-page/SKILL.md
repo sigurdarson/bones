@@ -34,10 +34,15 @@ apps/www/lib/nav.ts                         # register under Components
    attributes consumers can target (`[data-checked]`, `[data-active]`).
    Include when the component exposes them; skip when another section
    already demonstrates the class/data-attribute contract.
-6. **Props**: always last (reference material ends the page). `PropsTable`
-   with the essentials, not an exhaustive dump; Base UI passthrough gets a
-   sentence. Defaults documented. End with quirks worth knowing
-   (e.g. Button's `type="button"` default).
+6. **Props**: `PropsTable` with the essentials, not an exhaustive dump;
+   Base UI passthrough gets a sentence. Defaults documented. End with
+   quirks worth knowing (e.g. Button's `type="button"` default).
+7. **Agent instructions**: always the last section, via the
+   `AgentInstructions` component. A terse paste-ready block for coding
+   agents: parts and their props with defaults, the conventions that are
+   not guessable (icons as children, aria-label with iconOnly, Field
+   integration), and the data attributes for restyling with a "tokens
+   only" reminder. Same facts as the page, compressed; no marketing.
 
 Every section heading is followed by a one-sentence description that
 carries real information (a convention, a behavior a static preview can't
@@ -48,9 +53,9 @@ show). No filler like "here are the variants".
 - Client component using `Showcase` (preview + live Code tab) and
   `Controls` (right rail; the Library panel is appended automatically).
 - Controls map one-to-one to props: `ControlRow` + `Switch` for booleans,
-  a placeholder native `<select>` for enums until the Select component
-  ships, `ControlField` for wide controls. Disable controls that a current
-  state makes meaningless (leading icon while icon-only is on).
+  a borderless compact bones Select for enums, `ControlField` for wide
+  controls. Disable controls that a current state makes meaningless
+  (leading icon while icon-only is on).
 - `buildCode(state)` returns the exact copy-pasteable markup for the
   current state, **including imports**, with conditional imports only when
   used (see the Icon import in the tabs playground).

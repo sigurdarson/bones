@@ -5,6 +5,7 @@ import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { Showcase } from "@/components/showcase";
+import { AgentInstructions } from "@/components/agent-instructions";
 
 export const metadata: Metadata = { title: "Button" };
 
@@ -94,6 +95,15 @@ export default function Page() {
         <code>type</code> defaults to <code>"button"</code> so buttons inside
         forms don't submit by accident.
       </p>
+      <AgentInstructions
+        instructions={`Button, from @usebones/react.
+- variant: "primary" | "secondary" | "ghost" | "danger" (default "primary"). Danger is for destructive actions only.
+- size: "default" (36px) | "compact" (28px). iconOnly makes it square and requires aria-label.
+- Icons are children via @usebones/icons: <Icon name="..." /> before the label for leading, after for trailing, alone with iconOnly.
+- type defaults to "button"; every native button prop passes through.
+- Links styled as buttons: <a className="ub-button" data-variant="primary">.
+- Restyle in CSS via [data-variant], [data-size], :hover, :disabled, using --ub-* tokens only.`}
+      />
     </>
   );
 }

@@ -45,6 +45,115 @@ html,
   transition: scrollbar-color var(--ub-duration-base) var(--ub-ease-out);
 }
 
+/* ---------- accent switching (configurator) ---------- */
+
+/* Mirrors the prebuilt accent themes as data-accent scopes so the Library
+   panel can switch live. Static apps just import a theme file instead. */
+
+[data-accent="blue"] {
+  --ub-accent: var(--ub-blue-600);
+  --ub-accent-hover: var(--ub-blue-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-blue-400);
+}
+
+[data-theme="dark"][data-accent="blue"] {
+  --ub-accent: var(--ub-blue-500);
+  --ub-accent-hover: var(--ub-blue-400);
+  --ub-ring: var(--ub-blue-500);
+}
+
+[data-accent="violet"] {
+  --ub-accent: var(--ub-violet-600);
+  --ub-accent-hover: var(--ub-violet-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-violet-400);
+}
+
+[data-theme="dark"][data-accent="violet"] {
+  --ub-accent: var(--ub-violet-500);
+  --ub-accent-hover: var(--ub-violet-400);
+  --ub-ring: var(--ub-violet-500);
+}
+
+[data-accent="teal"] {
+  --ub-accent: var(--ub-teal-600);
+  --ub-accent-hover: var(--ub-teal-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-teal-400);
+}
+
+[data-theme="dark"][data-accent="teal"] {
+  --ub-accent: var(--ub-teal-500);
+  --ub-accent-hover: var(--ub-teal-400);
+  --ub-ring: var(--ub-teal-500);
+}
+
+[data-accent="fuchsia"] {
+  --ub-accent: var(--ub-fuchsia-600);
+  --ub-accent-hover: var(--ub-fuchsia-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-fuchsia-400);
+}
+
+[data-theme="dark"][data-accent="fuchsia"] {
+  --ub-accent: var(--ub-fuchsia-500);
+  --ub-accent-hover: var(--ub-fuchsia-400);
+  --ub-ring: var(--ub-fuchsia-500);
+}
+
+[data-accent="rose"] {
+  --ub-accent: var(--ub-rose-600);
+  --ub-accent-hover: var(--ub-rose-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-rose-400);
+}
+
+[data-theme="dark"][data-accent="rose"] {
+  --ub-accent: var(--ub-rose-500);
+  --ub-accent-hover: var(--ub-rose-400);
+  --ub-ring: var(--ub-rose-500);
+}
+
+[data-accent="red"] {
+  --ub-accent: var(--ub-red-600);
+  --ub-accent-hover: var(--ub-red-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-red-400);
+}
+
+[data-theme="dark"][data-accent="red"] {
+  --ub-accent: var(--ub-red-500);
+  --ub-accent-hover: var(--ub-red-400);
+  --ub-ring: var(--ub-red-500);
+}
+
+[data-accent="orange"] {
+  --ub-accent: var(--ub-orange-600);
+  --ub-accent-hover: var(--ub-orange-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-orange-400);
+}
+
+[data-theme="dark"][data-accent="orange"] {
+  --ub-accent: var(--ub-orange-500);
+  --ub-accent-hover: var(--ub-orange-400);
+  --ub-ring: var(--ub-orange-500);
+}
+
+[data-accent="green"] {
+  --ub-accent: var(--ub-green-600);
+  --ub-accent-hover: var(--ub-green-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-green-400);
+}
+
+[data-theme="dark"][data-accent="green"] {
+  --ub-accent: var(--ub-green-500);
+  --ub-accent-hover: var(--ub-green-400);
+  --ub-ring: var(--ub-green-500);
+}
+
 /* ---------- header ---------- */
 
 .site-header {
@@ -254,6 +363,12 @@ html,
 
 .control-field .ub-tabs-tab {
   flex: 1;
+}
+
+/* Selects in the rail share a uniform width. */
+.controls .ub-select-trigger {
+  width: 65%;
+  min-width: 0;
 }
 
 /* ---------- page header ---------- */
@@ -515,7 +630,7 @@ html,
   color: var(--shiki-light);
 }
 
-.dark .shiki span {
+[data-theme="dark"] .shiki span {
   color: var(--shiki-dark);
 }
 
@@ -612,27 +727,6 @@ html,
   border: 1px solid var(--ub-border);
 }
 
-.semantic-swatches {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-  margin: 1rem 0;
-}
-
-.semantic-swatch {
-  display: grid;
-  grid-template-columns: 1.75rem minmax(11rem, auto) 1fr;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--ub-text-tertiary);
-}
-
-.semantic-swatch .color-chip {
-  width: 1.75rem;
-  height: 1.75rem;
-  flex-shrink: 0;
-}
 
 /* ---------- scrollbars page ---------- */
 

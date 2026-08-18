@@ -1,0 +1,18 @@
+/*
+ * Accent theme: violet. Import after index.css to recolor everything that
+ * means "primary action". Both modes included.
+ */
+:root {
+  --ub-accent: var(--ub-violet-600);
+  --ub-accent-hover: var(--ub-violet-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-violet-400);
+}
+
+[data-theme="dark"],
+.dark {
+  --ub-accent: var(--ub-violet-500);
+  --ub-accent-hover: var(--ub-violet-400);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-violet-500);
+}

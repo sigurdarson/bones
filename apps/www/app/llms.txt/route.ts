@@ -19,7 +19,8 @@ const content = `# bones
 
 ## Theming
 
-- Dark mode: class="dark" (or data-theme="dark") on <html> or any subtree.
+- Dark mode: data-theme="dark" (canonical; .dark also works) on <html> or
+  any subtree.
 - Pill radius: data-radius="pill" on <html> or any subtree.
 - Components read semantic tokens only: --ub-bg, --ub-surface,
   --ub-text-primary, --ub-text-secondary, --ub-border, --ub-accent,
@@ -30,14 +31,36 @@ const content = `# bones
   components never do.
 - Motion: --ub-duration-fast/base/slow and --ub-ease-out/in-out/spring.
   Durations collapse to zero under prefers-reduced-motion.
+- Prebuilt accent themes: import "@usebones/tokens/themes/<scale>.css"
+  (blue, violet, teal, fuchsia, rose, red, orange, green).
+- No theme provider and no config file: attributes and tokens are the
+  configuration API. JS context exists only where CSS cannot express the
+  need (the icon set).
 
 ## Components
 
-- Button: variants primary | secondary | ghost | danger, sizes sm | md | lg.
-  Native button props pass through; type defaults to "button". Anchors can
-  reuse the styling: class="ub-button" data-variant="..." data-size="...".
+- Button: variants primary | secondary | ghost | danger, sizes default |
+  compact, iconOnly. Icons are children. Native button props pass through;
+  type defaults to "button". Anchors can reuse the styling:
+  class="ub-button" data-variant="...".
+- Checkbox: checked/defaultChecked/onCheckedChange/indeterminate/disabled.
+  Style states via [data-checked], [data-indeterminate], [data-disabled].
+- Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
+  FieldDescription + FieldError (match). Wrap any bones form control;
+  validation state flows to it automatically.
+- Input: two sizes; variants default | borderless; leadingIcon and
+  trailingIcon (ReactNode), hint (linked via aria-describedby), invalid.
+  Native input props pass through (bones size prop replaces the native
+  size attribute). States via [data-focused], [data-filled],
+  [data-invalid].
+- Select: SelectRoot (size, sizes trigger and items together) +
+  SelectTrigger (placeholder, variant default | borderless, invalid,
+  leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],
+  [data-popup-open].
 - Switch: wraps the Base UI Switch; checked/defaultChecked/onCheckedChange/
   disabled. Style states via [data-checked] and [data-disabled].
+- Tabs: TabsRoot (size) + TabsList + TabsTab (iconOnly, disabled) +
+  TabsPanel. Icons are children. Active state via [data-active].
 
 ## Docs
 
