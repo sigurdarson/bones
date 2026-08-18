@@ -1,0 +1,23 @@
+/*
+ * Size tokens. The library has exactly two sizes, default and compact;
+ * there is no sm/md/lg scale.
+ *
+ *   default: 16px text, 36px controls, 16px icons
+ *   compact: 14px text, 28px controls, 14px icons
+ *
+ * Components read these instead of hardcoding heights or font sizes.
+ * Compact scopes (e.g. [data-size="compact"] blocks in component CSS)
+ * remap --ub-icon-size to the compact value so icons resize with their
+ * surroundings.
+ */
+:root {
+  --ub-font-size: 1rem;
+  --ub-font-size-compact: 0.875rem;
+
+  --ub-control-height: 2.25rem;
+  --ub-control-height-compact: 1.75rem;
+
+  --ub-icon-size-default: 1rem;
+  --ub-icon-size-compact: 0.875rem;
+  --ub-icon-size: var(--ub-icon-size-default);
+}

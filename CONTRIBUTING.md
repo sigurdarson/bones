@@ -45,8 +45,9 @@ agents but it applies to humans exactly the same, so read it first.
 - Every change under `packages/*` adds a line to `CHANGELOG.md` under
   `## Unreleased`. Flag breaking changes with `breaking:`.
 - Don't bump package versions; releases handle that.
-- Writing style: casual but professional, no em dashes, no hype, and no
-  naming other component libraries anywhere in the repo.
+- Writing style: casual but professional, sentence case (never all caps),
+  no em dashes, no hype, and no naming other component libraries anywhere
+  in the repo.
 
 ## Pull requests
 

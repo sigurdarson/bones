@@ -21,7 +21,9 @@
     "./palette.css": "./css/palette.css",
     "./semantic.css": "./css/semantic.css",
     "./radius.css": "./css/radius.css",
+    "./sizes.css": "./css/sizes.css",
     "./motion.css": "./css/motion.css",
+    "./scrollbars.css": "./css/scrollbars.css",
     "./tailwind.css": "./css/tailwind.css"
   },
   "keywords": [

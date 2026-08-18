@@ -1,0 +1,27 @@
+/*
+ * Opt-in tokenized scrollbars. Import this file and every scrollbar in the
+ * page becomes thin, theme-aware, and hidden until the scrolling element is
+ * hovered. The gutter stays reserved so nothing shifts when the thumb
+ * appears. Nothing imports this by default; it's a whole-page opinion, so
+ * apps opt in deliberately.
+ */
+/* The hidden state is the visible color at zero alpha (not the transparent
+   keyword, which is transparent black), so a fade moves opacity only
+   instead of passing through dark grays.
+
+   No transition is declared here on purpose: transitions on broad
+   selectors make anything that waits for transitions before unmounting
+   (tab panels, closing overlays) linger on screen. To fade the reveal,
+   declare the transition on the specific scrollable elements you own:
+
+     .my-scroll-area {
+       transition: scrollbar-color var(--ub-duration-base) var(--ub-ease-out);
+     } */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(from var(--ub-border-strong) l c h / 0) transparent;
+}
+
+*:hover {
+  scrollbar-color: var(--ub-border-strong) transparent;
+}

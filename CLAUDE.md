@@ -36,9 +36,16 @@ pnpm typecheck      # tsc --noEmit across packages
   colors, radii, durations, or easings.
 - Interactive elements use `border-radius: var(--ub-radius-control)` so the
   rounded/pill setting works.
+- CSS lengths are always rem (1rem = 16px), never px, except true hairlines
+  (`1px` borders).
 - Transitions reference `--ub-duration-*` and `--ub-ease-*`; reduced motion is
   then handled automatically. Use `--ub-ease-spring` for thumbs and small
   position changes.
+- Transitions are always targeted: declared on specific component selectors,
+  never on broad selectors (`*`, attribute-less element lists). Universal
+  transitions make components that wait for transitions before unmounting
+  (tab panels, closing overlays) linger on screen, and animate things that
+  were never meant to move.
 
 ### Components (`packages/react`)
 
@@ -47,6 +54,14 @@ pnpm typecheck      # tsc --noEmit across packages
 - Class names: `ub-<component>` (BEM-ish children like `ub-switch-thumb`).
 - Variants/sizes via data attributes (`data-variant`, `data-size`), styled in
   CSS, never class permutations or inline styles.
+- Exactly two sizes library-wide, no sm/md/lg scales: default (16px text,
+  36px controls, 16px icons) and compact (14px text, 28px controls, 14px
+  icons), via the `--ub-font-size*`, `--ub-control-height*`, and
+  `--ub-icon-size*` tokens. Base styles carry the default size;
+  `[data-size="compact"]` is the only override. Size styles resolve through
+  vars set on the component root (reset to defaults on every root, remapped
+  in the compact scope), never through descendant selectors, so nested
+  components size independently; `--ub-icon-size` follows the same pattern.
 - Wrap Base UI parts (`@base-ui/react/<part>`) when one exists;
   style through Base UI's state data attributes (`data-checked`,
   `data-open`, ...). Only hand-roll elements Base UI doesn't provide.
@@ -54,8 +69,14 @@ pnpm typecheck      # tsc --noEmit across packages
   interface exported and documented with JSDoc (agents and docs read these).
 - Icons come from `@usebones/icons` semantic names; never import an icon
   library directly in components.
-- Accessibility is table stakes: focus-visible rings via `--ub-ring`,
-  keyboard operability, sensible defaults (e.g. `type="button"`).
+- Accessibility is table stakes, verified before a component is done:
+  keyboard operable end to end; focus-visible rings via `--ub-ring` on every
+  focusable part; `aria-*` always passes through (spread `...props` last,
+  never swallow attributes); icon-only or otherwise label-less controls
+  require an accessible name, with a development-mode `console.warn` when
+  one is missing; all animation through `--ub-duration-*` so reduced motion
+  is respected with zero component code; sensible defaults
+  (e.g. `type="button"`, `aria-hidden` on decorative icons).
 
 ### Writing style
 
@@ -67,6 +88,9 @@ pnpm typecheck      # tsc --noEmit across packages
   entirely; `grep -rn $'\xe2\x80\x94' .` coming back empty is the check
   (that escape is the em dash, spelled without using it).
 - Lowercase "bones" everywhere, even at the start of a sentence.
+- Sentence case everywhere: headings, labels, buttons, nav items. Never all
+  caps, in copy or via CSS `text-transform: uppercase`. Acronyms (CSS, API,
+  WCAG) and conventional filenames (README, CHANGELOG) are the exception.
 - Never mention other component libraries, UI kits, or design systems by name
   anywhere in this repo: code, comments, docs, commits, PRs, marketing copy.
 

@@ -22,7 +22,9 @@ path; TypeScript 7 rejects extensionless side-effect imports of CSS.)
 | `palette.css`  | Raw scales (`--ub-gray-500`). Themes reference these.          |
 | `semantic.css` | Roles (`--ub-text-primary`, `--ub-bg`). Components read these. |
 | `radius.css`   | Radius steps + `--ub-radius-control` for interactive elements. |
+| `sizes.css`    | The two sizes: default (16px text, 36px controls, 16px icons) and compact (14px, 28px, 14px). |
 | `motion.css`   | Durations and easings, reduced-motion aware.                   |
+| `scrollbars.css` | Opt-in thin, tokenized scrollbars, hidden until hover (not imported by default). |
 | `tailwind.css` | Optional Tailwind v4 `@theme` bridge.                          |
 
 ## Theming

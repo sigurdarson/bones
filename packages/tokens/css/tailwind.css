@@ -20,6 +20,7 @@
   --color-ub-danger: var(--ub-danger);
   --color-ub-success: var(--ub-success);
   --color-ub-warning: var(--ub-warning);
+  --color-ub-info: var(--ub-info);
 
   --radius-ub-control: var(--ub-radius-control);
   --radius-ub-sm: var(--ub-radius-sm);

@@ -12,8 +12,11 @@ pnpm add @usebones/icons
 ```tsx
 import { Icon } from "@usebones/icons";
 
-<Icon name="chevron-down" size={16} />;
+<Icon name="chevron-down" />;
 ```
+
+Icons size themselves from the `--ub-icon-size` token: 16px by default,
+14px inside compact controls. Pass `size` only to pin exact pixels.
 
 ## Swapping the icon set
 
