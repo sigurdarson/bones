@@ -1,0 +1,18 @@
+/*
+ * Accent theme: rose. Import after index.css to recolor everything that
+ * means "primary action". Both modes included.
+ */
+:root {
+  --ub-accent: var(--ub-rose-600);
+  --ub-accent-hover: var(--ub-rose-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-rose-400);
+}
+
+[data-theme="dark"],
+.dark {
+  --ub-accent: var(--ub-rose-500);
+  --ub-accent-hover: var(--ub-rose-400);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-rose-500);
+}

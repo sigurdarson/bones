@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { Showcase } from "@/components/showcase";
 import { SwitchPlayground } from "@/components/switch-playground";
+import { AgentInstructions } from "@/components/agent-instructions";
 
 export const metadata: Metadata = { title: "Switch" };
 
@@ -79,6 +80,12 @@ export default function Page() {
             description: "Blocks interaction and dims the control.",
           },
         ]}
+      />
+      <AgentInstructions
+        instructions={`Switch, from @usebones/react.
+- Uncontrolled: defaultChecked. Controlled: checked + onCheckedChange. disabled.
+- Wrap in a <label> with its text so the text is clickable, or put it inside FieldRoot with a FieldLabel.
+- Restyle in CSS via [data-checked], [data-disabled]; the thumb is .ub-switch-thumb. Tokens only.`}
       />
     </>
   );

@@ -43,7 +43,7 @@ export function Example() {
 Dark mode and radius are switches on `<html>` (or any subtree):
 
 ```html
-<html class="dark" data-radius="pill">
+<html data-theme="dark" data-radius="pill">
 ```
 
 Using Tailwind? Import `@usebones/tokens/tailwind.css` instead of
@@ -55,7 +55,7 @@ Using Tailwind? Import `@usebones/tokens/tailwind.css` instead of
   Quiet until you theme it.
 - **Fluid, not flashy.** Spring-based micro-motion on interaction; every
   duration and easing is a token; reduced motion respected everywhere.
-- **Configurable at the root.** `class="dark"`, `data-radius="pill"`, swap the
+- **Configurable at the root.** `data-theme="dark"`, `data-radius="pill"`, swap the
   icon set with one provider. No forked styles.
 - **Built for agents.** Predictable file layout, exported prop types, semantic
   tokens, and machine-readable conventions (`CLAUDE.md`, skills) so AI tools

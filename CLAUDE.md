@@ -30,7 +30,10 @@ pnpm typecheck      # tsc --noEmit across packages
 
 ### Tokens
 
-- All design values are CSS custom properties prefixed `--ub-`.
+- All design values are CSS custom properties prefixed `--ub-`. There is
+  no theme provider and no config file: attributes (`data-theme="dark"`,
+  `data-radius="pill"`) and token overrides are the configuration API. JS
+  context is allowed only where CSS cannot express the need (icon sets).
 - Components read **semantic** tokens only (`--ub-text-primary`, `--ub-bg`,
   `--ub-accent`); never raw scale steps (`--ub-gray-500`) and never hardcoded
   colors, radii, durations, or easings.

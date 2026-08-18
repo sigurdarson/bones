@@ -26,10 +26,11 @@ path; TypeScript 7 rejects extensionless side-effect imports of CSS.)
 | `motion.css`   | Durations and easings, reduced-motion aware.                   |
 | `scrollbars.css` | Opt-in thin, tokenized scrollbars, hidden until hover (not imported by default). |
 | `tailwind.css` | Optional Tailwind v4 `@theme` bridge.                          |
+| `themes/*.css` | Prebuilt accent themes (blue, violet, teal, ...), one import each. |
 
 ## Theming
 
-- **Dark mode**: add `class="dark"` (or `data-theme="dark"`) to `<html>` or any subtree.
+- **Dark mode**: add `data-theme="dark"` (canonical; `.dark` also works) to `<html>` or any subtree.
 - **Pill radius**: add `data-radius="pill"` to `<html>` or any subtree.
 - **Custom themes**: override semantic tokens in your own stylesheet; never fork component CSS.
 

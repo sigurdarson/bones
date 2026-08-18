@@ -9,7 +9,9 @@
   --color-ub-bg: var(--ub-bg);
   --color-ub-bg-subtle: var(--ub-bg-subtle);
   --color-ub-bg-muted: var(--ub-bg-muted);
+  --color-ub-bg-muted-hover: var(--ub-bg-muted-hover);
   --color-ub-surface: var(--ub-surface);
+  --color-ub-surface-glass: var(--ub-surface-glass);
   --color-ub-text-primary: var(--ub-text-primary);
   --color-ub-text-secondary: var(--ub-text-secondary);
   --color-ub-text-tertiary: var(--ub-text-tertiary);
@@ -26,6 +28,10 @@
   --radius-ub-sm: var(--ub-radius-sm);
   --radius-ub-md: var(--ub-radius-md);
   --radius-ub-lg: var(--ub-radius-lg);
+
+  --shadow-ub-sm: var(--ub-shadow-sm);
+  --shadow-ub-md: var(--ub-shadow-md);
+  --shadow-ub-lg: var(--ub-shadow-lg);
 
   --ease-ub-out: var(--ub-ease-out);
   --ease-ub-spring: var(--ub-ease-spring);

@@ -1,0 +1,27 @@
+.ub-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.ub-field-label {
+  font-size: var(--ub-font-size-compact);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+}
+
+.ub-field[data-disabled] .ub-field-label {
+  color: var(--ub-text-disabled);
+}
+
+.ub-field-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}
+
+.ub-field-error {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-danger);
+}

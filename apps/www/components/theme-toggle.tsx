@@ -20,7 +20,7 @@ export function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true);
-    setDark(document.documentElement.classList.contains("dark"));
+    setDark(document.documentElement.getAttribute("data-theme") === "dark");
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     function onSystemChange(event: MediaQueryListEvent) {
@@ -29,7 +29,11 @@ export function ThemeToggle() {
         stored = localStorage.getItem("ub-theme");
       } catch {}
       if (stored) return;
-      document.documentElement.classList.toggle("dark", event.matches);
+      if (event.matches) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
       setDark(event.matches);
     }
     media.addEventListener("change", onSystemChange);
@@ -39,7 +43,11 @@ export function ThemeToggle() {
   function toggle() {
     const next = !dark;
     setDark(next);
-    document.documentElement.classList.toggle("dark", next);
+    if (next) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
     try {
       const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (next === systemDark) {

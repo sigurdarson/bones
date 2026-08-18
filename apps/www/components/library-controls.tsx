@@ -1,6 +1,12 @@
 "use client";
 
 import * as React from "react";
+import {
+  SelectContent,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+} from "@usebones/react";
 import { ControlRow } from "./controls";
 import { useIconLibrary, type IconLibrary } from "./icon-set-provider";
 
@@ -9,19 +15,46 @@ import { useIconLibrary, type IconLibrary } from "./icon-set-provider";
  * controls. Radius flips an attribute on <html> so the whole site
  * restyles; the icon library swaps the set through IconProvider. Choices
  * persist in localStorage.
- *
- * The dropdowns are placeholder native selects until the library ships a
- * Select component.
  */
+const accents = [
+  "neutral",
+  "blue",
+  "violet",
+  "teal",
+  "fuchsia",
+  "rose",
+  "red",
+  "orange",
+  "green",
+];
+
 export function LibraryControls() {
   const [mounted, setMounted] = React.useState(false);
   const [pill, setPill] = React.useState(false);
+  const [accent, setAccent] = React.useState("neutral");
   const { library, setLibrary } = useIconLibrary();
 
   React.useEffect(() => {
     setMounted(true);
     setPill(document.documentElement.getAttribute("data-radius") === "pill");
+    setAccent(document.documentElement.getAttribute("data-accent") ?? "neutral");
   }, []);
+
+  function onAccentChange(next: string) {
+    setAccent(next);
+    if (next === "neutral") {
+      document.documentElement.removeAttribute("data-accent");
+    } else {
+      document.documentElement.setAttribute("data-accent", next);
+    }
+    try {
+      if (next === "neutral") {
+        localStorage.removeItem("ub-accent");
+      } else {
+        localStorage.setItem("ub-accent", next);
+      }
+    } catch {}
+  }
 
   function onRadiusChange(next: string) {
     const isPill = next === "pill";
@@ -39,23 +72,46 @@ export function LibraryControls() {
   return (
     <>
       <ControlRow label="Radius">
-        <select
+        <SelectRoot
+          size="compact"
           value={pill ? "pill" : "default"}
-          onChange={(event) => onRadiusChange(event.target.value)}
-          disabled={!mounted}
+          onValueChange={(value) => value && onRadiusChange(value)}
         >
-          <option value="default">Default</option>
-          <option value="pill">Pill</option>
-        </select>
+          <SelectTrigger variant="borderless" disabled={!mounted} />
+          <SelectContent>
+            <SelectItem value="default">Default</SelectItem>
+            <SelectItem value="pill">Pill</SelectItem>
+          </SelectContent>
+        </SelectRoot>
+      </ControlRow>
+      <ControlRow label="Accent">
+        <SelectRoot
+          size="compact"
+          value={accent}
+          onValueChange={(value) => value && onAccentChange(value)}
+        >
+          <SelectTrigger variant="borderless" disabled={!mounted} />
+          <SelectContent>
+            {accents.map((name) => (
+              <SelectItem key={name} value={name}>
+                {name.charAt(0).toUpperCase() + name.slice(1)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </SelectRoot>
       </ControlRow>
       <ControlRow label="Icons">
-        <select
+        <SelectRoot
+          size="compact"
           value={library}
-          onChange={(event) => setLibrary(event.target.value as IconLibrary)}
+          onValueChange={(value) => value && setLibrary(value as IconLibrary)}
         >
-          <option value="lucide">Lucide</option>
-          <option value="hugeicons">Hugeicons</option>
-        </select>
+          <SelectTrigger variant="borderless" />
+          <SelectContent>
+            <SelectItem value="lucide">Lucide</SelectItem>
+            <SelectItem value="hugeicons">Hugeicons</SelectItem>
+          </SelectContent>
+        </SelectRoot>
       </ControlRow>
     </>
   );

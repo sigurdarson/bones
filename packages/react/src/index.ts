@@ -1,4 +1,26 @@
 export { Button, type ButtonProps } from "./button/button";
+export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
+export {
+  FieldRoot,
+  FieldLabel,
+  FieldDescription,
+  FieldError,
+  type FieldRootProps,
+  type FieldLabelProps,
+  type FieldDescriptionProps,
+  type FieldErrorProps,
+} from "./field/field";
+export { Input, type InputProps } from "./input/input";
+export {
+  SelectRoot,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  type SelectRootProps,
+  type SelectTriggerProps,
+  type SelectContentProps,
+  type SelectItemProps,
+} from "./select/select";
 export { Switch, type SwitchProps } from "./switch/switch";
 export {
   TabsRoot,

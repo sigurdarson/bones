@@ -1,0 +1,18 @@
+/*
+ * Accent theme: teal. Import after index.css to recolor everything that
+ * means "primary action". Both modes included.
+ */
+:root {
+  --ub-accent: var(--ub-teal-600);
+  --ub-accent-hover: var(--ub-teal-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-teal-400);
+}
+
+[data-theme="dark"],
+.dark {
+  --ub-accent: var(--ub-teal-500);
+  --ub-accent-hover: var(--ub-teal-400);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-teal-500);
+}

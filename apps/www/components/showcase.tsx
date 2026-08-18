@@ -15,7 +15,7 @@ function useHighlighted(code: string): string | null {
       .then(({ codeToHtml }) =>
         codeToHtml(code, {
           lang: "tsx",
-          themes: { light: "github-light", dark: "github-dark" },
+          themes: { light: "github-light", dark: "min-dark" },
           defaultColor: false,
         }),
       )

@@ -1,7 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Button, Switch } from "@usebones/react";
+import {
+  Button,
+  SelectContent,
+  SelectItem,
+  SelectRoot,
+  SelectTrigger,
+  Switch,
+} from "@usebones/react";
 import { Icon } from "@usebones/icons";
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
@@ -94,15 +101,19 @@ export function ButtonPlayground() {
       </Showcase>
       <Controls>
         <ControlRow label="Variant">
-          <select
+          <SelectRoot
+            size="compact"
             value={variant}
-            onChange={(event) => setVariant(event.target.value as Variant)}
+            onValueChange={(value) => value && setVariant(value as Variant)}
           >
-            <option value="primary">Primary</option>
-            <option value="secondary">Secondary</option>
-            <option value="ghost">Ghost</option>
-            <option value="danger">Danger</option>
-          </select>
+            <SelectTrigger variant="borderless" />
+            <SelectContent>
+              <SelectItem value="primary">Primary</SelectItem>
+              <SelectItem value="secondary">Secondary</SelectItem>
+              <SelectItem value="ghost">Ghost</SelectItem>
+              <SelectItem value="danger">Danger</SelectItem>
+            </SelectContent>
+          </SelectRoot>
         </ControlRow>
         <ControlRow label="Compact">
           <Switch checked={compact} onCheckedChange={setCompact} />

@@ -1,0 +1,18 @@
+/*
+ * Accent theme: red. Import after index.css to recolor everything that
+ * means "primary action". Both modes included.
+ */
+:root {
+  --ub-accent: var(--ub-red-600);
+  --ub-accent-hover: var(--ub-red-700);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-red-400);
+}
+
+[data-theme="dark"],
+.dark {
+  --ub-accent: var(--ub-red-500);
+  --ub-accent-hover: var(--ub-red-400);
+  --ub-accent-contrast: var(--ub-white);
+  --ub-ring: var(--ub-red-500);
+}
