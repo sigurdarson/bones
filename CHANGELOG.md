@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+## 0.1.0 (2026-08-19)
+
 - react: add Field (FieldRoot, FieldLabel, FieldDescription, FieldError)
   wrapping the Base UI Field; bones form controls pick up its validation
   state automatically.
