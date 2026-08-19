@@ -1,0 +1,65 @@
+/* The trigger usually wraps a real control via render, which brings its
+   own styling; the bare class only guarantees a focus ring. */
+.ub-dialog-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--ub-overlay);
+  transition: opacity var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-dialog-backdrop[data-starting-style],
+.ub-dialog-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+/* Centers the popup and scrolls when the dialog is taller than the
+   screen. */
+.ub-dialog-viewport {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.ub-dialog-popup {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 26rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-lg);
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-lg);
+  color: var(--ub-text-primary);
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    scale var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-dialog-popup[data-starting-style],
+.ub-dialog-popup[data-ending-style] {
+  opacity: 0;
+  scale: 0.96;
+}
+
+.ub-dialog-title {
+  margin: 0 0 0.25rem;
+  font-size: var(--ub-font-size);
+  font-weight: 600;
+  color: var(--ub-text-primary);
+}
+
+.ub-dialog-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}

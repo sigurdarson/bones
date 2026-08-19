@@ -2,6 +2,20 @@ export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
+  DialogRoot,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+  type DialogRootProps,
+  type DialogTriggerProps,
+  type DialogContentProps,
+  type DialogTitleProps,
+  type DialogDescriptionProps,
+  type DialogCloseProps,
+} from "./dialog/dialog";
+export {
   FieldsetRoot,
   FieldsetLegend,
   type FieldsetRootProps,
