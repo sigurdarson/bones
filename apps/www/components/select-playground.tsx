@@ -27,6 +27,10 @@ const plans = [
   { value: "team", label: "Team" },
 ];
 
+/* value to label map so the trigger renders labels before the dropdown has
+   ever opened (items mount in a portal, so labels register late). */
+const planItems = Object.fromEntries(plans.map((plan) => [plan.value, plan.label]));
+
 const hintText = "You can change plans anytime.";
 const invalidHintText = "Pick a plan to continue.";
 
@@ -57,7 +61,9 @@ function buildCode(state: PlaygroundState): string {
 
   return `${imports}
 
-<SelectRoot${state.compact ? ' size="compact"' : ""}>
+const items = { hobby: "Hobby", pro: "Pro", team: "Team" };
+
+<SelectRoot items={items}${state.compact ? ' size="compact"' : ""}>
   <SelectTrigger${triggerAttrs}
   />
   <SelectContent>
@@ -86,7 +92,7 @@ export function SelectPlayground() {
           </>
         }
       >
-        <SelectRoot size={compact ? "compact" : "default"}>
+        <SelectRoot items={planItems} size={compact ? "compact" : "default"}>
           <SelectTrigger
             placeholder="Choose a plan"
             variant={borderless ? "borderless" : "default"}
