@@ -10,7 +10,7 @@ skipped (with a reason).
 | Accordion         | done         |       |
 | Alert Dialog      | done         |       |
 | Autocomplete      | todo         |       |
-| Avatar            | todo         |       |
+| Avatar            | done         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |
 | Checkbox          | done         |       |
 | Checkbox Group    | done         |       |
@@ -35,7 +35,7 @@ skipped (with a reason).
 | Radio             | done         |       |
 | Scroll Area       | todo         |       |
 | Select            | done         |       |
-| Separator         | todo         |       |
+| Separator         | done         |       |
 | Slider            | done         |       |
 | Switch            | done         |       |
 | Tabs              | done         |       |

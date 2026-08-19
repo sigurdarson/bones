@@ -5,6 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Avatar wrapping the Base UI Avatar: one component with
+  managed image and fallback, two sizes, always round.
+- react: add Separator wrapping the Base UI Separator: a hairline with
+  real separator semantics, horizontal or vertical.
 - react: add Progress wrapping the Base UI Progress: one pre-composed
   bar with optional label and value row, and a token-driven
   indeterminate sweep.

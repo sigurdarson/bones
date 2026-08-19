@@ -1,0 +1,37 @@
+.ub-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  /* People are round regardless of the radius setting. */
+  border-radius: var(--ub-radius-full);
+  background: var(--ub-bg-muted);
+  color: var(--ub-text-secondary);
+  font-size: var(--ub-font-size-compact);
+  font-weight: 500;
+  user-select: none;
+}
+
+.ub-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ub-avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* sizes: base styles are the default size; compact is the only override */
+.ub-avatar[data-size="compact"] {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 0.6875rem;
+}
