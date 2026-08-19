@@ -1,19 +1,18 @@
 <!--
 Title = the commit on main (we squash merge). Use a conventional commit
 line scoped by package, e.g. "feat(react): add tooltip".
-This body becomes the commit body, so keep it useful for git log.
+Body = short one-line notes, readable in git log. No paragraphs.
 -->
 
 ## What
 
-<!-- What changed, written to be read in git log. -->
+<!-- One bullet per change. -->
 
 ## Verified
 
-<!-- How you checked it: commands run, states tested. -->
+<!-- One or two bullets: commands run, states checked. -->
 
-- [ ] `pnpm build` and `pnpm typecheck` pass
-- [ ] Works in light and dark mode (screenshot/recording if visual)
-- [ ] Works in both radius modes (default and pill), if it renders controls
-- [ ] `CHANGELOG.md` entry added under Unreleased (if `packages/*` changed)
+- [ ] `pnpm build`, `pnpm typecheck`, `pnpm test` pass
+- [ ] Light and dark, both radius modes (screenshot/recording if visual)
+- [ ] `CHANGELOG.md` entry under Unreleased (if `packages/*` changed)
 - [ ] Breaking changes flagged with `breaking:` (changelog and body)
