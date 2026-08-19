@@ -1,6 +1,8 @@
 /* All bones component styles. Import once, after @usebones/tokens. */
+@import "./accordion/accordion.css";
 @import "./alert-dialog/alert-dialog.css";
 @import "./button/button.css";
+@import "./collapsible/collapsible.css";
 @import "./checkbox/checkbox.css";
 @import "./checkbox-group/checkbox-group.css";
 @import "./context-menu/context-menu.css";

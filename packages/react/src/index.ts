@@ -1,4 +1,14 @@
 export {
+  AccordionRoot,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+  type AccordionRootProps,
+  type AccordionItemProps,
+  type AccordionTriggerProps,
+  type AccordionPanelProps,
+} from "./accordion/accordion";
+export {
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -14,6 +24,14 @@ export {
 } from "./alert-dialog/alert-dialog";
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
+export {
+  CollapsibleRoot,
+  CollapsibleTrigger,
+  CollapsiblePanel,
+  type CollapsibleRootProps,
+  type CollapsibleTriggerProps,
+  type CollapsiblePanelProps,
+} from "./collapsible/collapsible";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
   ContextMenuRoot,

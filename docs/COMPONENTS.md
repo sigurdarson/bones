@@ -7,14 +7,14 @@ skipped (with a reason).
 
 | Base UI component | bones status | Notes |
 | ----------------- | ------------ | ----- |
-| Accordion         | todo         |       |
+| Accordion         | done         |       |
 | Alert Dialog      | done         |       |
 | Autocomplete      | todo         |       |
 | Avatar            | todo         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |
 | Checkbox          | done         |       |
 | Checkbox Group    | done         |       |
-| Collapsible       | todo         |       |
+| Collapsible       | done         |       |
 | Combobox          | todo         |       |
 | Context Menu      | done         | Root, trigger, and content only; items come from Menu. |
 | Dialog            | done         |       |
