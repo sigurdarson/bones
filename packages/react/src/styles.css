@@ -7,5 +7,7 @@
 @import "./number-field/number-field.css";
 @import "./radio/radio.css";
 @import "./select/select.css";
+@import "./slider/slider.css";
 @import "./switch/switch.css";
 @import "./tabs/tabs.css";
+@import "./toggle/toggle.css";

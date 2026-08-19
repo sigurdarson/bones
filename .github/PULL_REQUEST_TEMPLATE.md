@@ -6,11 +6,7 @@ This body becomes the commit body, so keep it useful for git log.
 
 ## What
 
-<!-- One or two sentences on what changed. -->
-
-## Why
-
-<!-- The reason or issue this addresses. -->
+<!-- What changed, written to be read in git log. -->
 
 ## Verified
 

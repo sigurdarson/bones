@@ -66,10 +66,15 @@ const content = `# bones
   SelectTrigger (placeholder, variant default | borderless, invalid,
   leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],
   [data-popup-open].
+- Slider: one component; track/indicator/thumbs automatic; array value =
+  range with a thumb per entry; min/max/step/orientation pass through.
+  Always pass aria-label. Never animate thumb position.
 - Switch: wraps the Base UI Switch; checked/defaultChecked/onCheckedChange/
   disabled. Style states via [data-checked] and [data-disabled].
 - Tabs: TabsRoot (size) + TabsList + TabsTab (iconOnly, disabled) +
   TabsPanel. Icons are children. Active state via [data-active].
+- Toggle + ToggleGroup: pressed state via data-pressed; size, iconOnly;
+  groups single-select by default, multiple for independent toggles.
 
 ## Docs
 

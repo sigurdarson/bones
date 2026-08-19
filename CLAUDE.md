@@ -134,9 +134,10 @@ pnpm test           # component contract tests (Vitest), also run in CI
   PR), so it must be a valid conventional commit line:
   `feat(react): add tooltip`. The PR body becomes the commit body; write it
   to be read in `git log`, not just on GitHub.
-- PR body covers: what changed, why, and how it was verified. Visual
-  changes include a screenshot or short recording in both themes. Breaking
-  changes get a `breaking:` line in the body and in the changelog entry.
+- PR body covers: what changed and how it was verified (no separate "why"
+  section). Visual changes include a screenshot or short recording in both
+  themes. Breaking changes get a `breaking:` line in the body and in the
+  changelog entry.
 - A PR touching `packages/*` without a `CHANGELOG.md` entry is incomplete.
   Same for a new component missing from the demo or docs.
 - Merging: **squash only** (merge commits and rebase merging are disabled
