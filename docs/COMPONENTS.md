@@ -20,8 +20,8 @@ skipped (with a reason).
 | Dialog            | todo         |       |
 | Drawer            | todo         |       |
 | Field             | done         | Labels, descriptions, and errors for all form controls. |
-| Fieldset          | todo         |       |
-| Form              | todo         |       |
+| Fieldset          | done         |       |
+| Form              | done         |       |
 | Input             | done         |       |
 | Menu              | todo         |       |
 | Menubar           | todo         |       |
