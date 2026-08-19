@@ -92,6 +92,9 @@ const content = `# bones
   MenuGroup/MenuGroupLabel + MenuSeparator + MenuSubmenuRoot +
   MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
   [data-checked], [data-popup-open].
+- Meter: one component; value + min/max, label (names it; required, or
+  aria-label), showValue, format (Intl.NumberFormatOptions). A current
+  level (storage, seats), never a loading state.
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.
@@ -100,6 +103,10 @@ const content = `# bones
   sideOffset 8) + PopoverTitle/PopoverDescription (wire the accessible
   name/description) + PopoverClose. Non-modal by default; Escape and
   outside clicks dismiss.
+- Progress: one component; value (null = indeterminate) + min/max, label
+  (names it; required, or aria-label), showValue, format. States via
+  [data-indeterminate], [data-complete]. For tasks underway; levels use
+  Meter.
 - Radio + RadioGroup: group holds defaultValue or value + onValueChange,
   disabled; <Radio value="..." /> inside; dot indicator automatic. States
   via [data-checked], [data-disabled].

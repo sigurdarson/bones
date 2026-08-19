@@ -99,7 +99,9 @@ export {
   type MenuSubmenuRootProps,
   type MenuSubmenuTriggerProps,
 } from "./menu/menu";
+export { Meter, type MeterProps } from "./meter/meter";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
+export { Progress, type ProgressProps } from "./progress/progress";
 export {
   PopoverRoot,
   PopoverTrigger,

@@ -25,13 +25,13 @@ skipped (with a reason).
 | Input             | done         |       |
 | Menu              | done         |       |
 | Menubar           | todo         |       |
-| Meter             | todo         |       |
+| Meter             | done         |       |
 | Navigation Menu   | todo         |       |
 | Number Field      | done         |       |
 | OTP Field         | todo         |       |
 | Popover           | done         |       |
 | Preview Card      | todo         |       |
-| Progress          | todo         |       |
+| Progress          | done         |       |
 | Radio             | done         |       |
 | Scroll Area       | todo         |       |
 | Select            | done         |       |
