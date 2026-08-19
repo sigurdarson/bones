@@ -42,6 +42,7 @@ export const siteNav: NavSection[] = [
       { title: "Fieldset", href: "/components/fieldset" },
       { title: "Form", href: "/components/form" },
       { title: "Input", href: "/components/input" },
+      { title: "Menu", href: "/components/menu" },
       { title: "Number field", href: "/components/number-field" },
       { title: "Popover", href: "/components/popover" },
       { title: "Radio", href: "/components/radio" },

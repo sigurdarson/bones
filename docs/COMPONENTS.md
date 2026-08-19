@@ -23,7 +23,7 @@ skipped (with a reason).
 | Fieldset          | done         |       |
 | Form              | done         |       |
 | Input             | done         |       |
-| Menu              | todo         |       |
+| Menu              | done         |       |
 | Menubar           | todo         |       |
 | Meter             | todo         |       |
 | Navigation Menu   | todo         |       |

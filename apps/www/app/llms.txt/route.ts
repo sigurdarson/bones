@@ -62,6 +62,12 @@ const content = `# bones
   Native input props pass through (bones size prop replaces the native
   size attribute). States via [data-focused], [data-filled],
   [data-invalid].
+- Menu: MenuRoot (size) + MenuTrigger (attach via render={<Button/>}) +
+  MenuContent + MenuItem (closeOnClick default true) + MenuCheckboxItem /
+  MenuRadioGroup + MenuRadioItem (stay open, auto indicators) +
+  MenuGroup/MenuGroupLabel + MenuSeparator + MenuSubmenuRoot +
+  MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
+  [data-checked], [data-popup-open].
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.
