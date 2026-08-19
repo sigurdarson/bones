@@ -39,6 +39,11 @@ const content = `# bones
 
 ## Components
 
+- Accordion: AccordionRoot (value/defaultValue as string arrays, multiple,
+  disabled) + AccordionItem (value) + AccordionTrigger (label as children,
+  heading and chevron automatic) + AccordionPanel. One open at a time by
+  default. States via [data-panel-open] on triggers, [data-open] on items;
+  height animates via --accordion-panel-height.
 - AlertDialog: a confirmation that interrupts on purpose. Same six-part
   shape as Dialog (Root/Trigger/Content/Title/Description/Close) but
   always modal and outside clicks never dismiss; Escape cancels. One
@@ -53,6 +58,10 @@ const content = `# bones
 - CheckboxGroup: wraps Checkboxes (each joins via value); defaultValue or
   value + onValueChange (string arrays); allValues + <Checkbox parent />
   for select-all with indeterminate; disabled disables members.
+- Collapsible: CollapsibleRoot (defaultOpen or open + onOpenChange,
+  disabled) + CollapsibleTrigger (label as children, chevron automatic) +
+  CollapsiblePanel (hiddenUntilFound, keepMounted). Height animates via
+  --collapsible-panel-height; state via [data-panel-open] on the trigger.
 - ContextMenu: ContextMenuRoot (size) + ContextMenuTrigger (a div around
   the right-clickable surface) + ContextMenuContent; opens at the pointer,
   long press on touch. Fill the content with the regular Menu parts

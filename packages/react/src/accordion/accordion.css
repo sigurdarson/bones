@@ -1,0 +1,74 @@
+.ub-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.ub-accordion-item {
+  border-bottom: 1px solid var(--ub-border);
+}
+
+.ub-accordion-header {
+  margin: 0;
+}
+
+.ub-accordion-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.875rem 0;
+  border: none;
+  background: transparent;
+  text-align: start;
+  font-family: inherit;
+  font-size: var(--ub-font-size);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: var(--ub-radius-control);
+}
+
+.ub-accordion-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-accordion-trigger[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ub-accordion-chevron {
+  display: flex;
+  width: 0.75rem;
+  flex-shrink: 0;
+  color: var(--ub-text-secondary);
+  transition: rotate var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-accordion-trigger[data-panel-open] .ub-accordion-chevron {
+  rotate: 180deg;
+}
+
+/* Base UI measures the content and exposes it as a variable, so height
+   can transition without JavaScript. Padding lives on the inner content
+   div; padding on the animated element itself would make the measured
+   height jump. */
+.ub-accordion-panel {
+  height: var(--accordion-panel-height);
+  overflow: hidden;
+  font-size: var(--ub-font-size);
+  color: var(--ub-text-secondary);
+  transition: height var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-accordion-panel[data-starting-style],
+.ub-accordion-panel[data-ending-style] {
+  height: 0;
+}
+
+.ub-accordion-panel-content {
+  padding-bottom: 0.875rem;
+}

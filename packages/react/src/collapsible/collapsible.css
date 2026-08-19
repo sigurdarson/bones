@@ -1,0 +1,56 @@
+.ub-collapsible {
+  display: flex;
+  flex-direction: column;
+}
+
+.ub-collapsible-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--ub-font-size);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: var(--ub-radius-control);
+}
+
+.ub-collapsible-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-collapsible-trigger[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ub-collapsible-chevron {
+  display: flex;
+  width: 0.75rem;
+  flex-shrink: 0;
+  color: var(--ub-text-secondary);
+  transition: rotate var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-collapsible-trigger[data-panel-open] .ub-collapsible-chevron {
+  rotate: 180deg;
+}
+
+/* Base UI measures the content and exposes it as a variable, so height
+   can transition without JavaScript. */
+.ub-collapsible-panel {
+  height: var(--collapsible-panel-height);
+  overflow: hidden;
+  transition: height var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-collapsible-panel[data-starting-style],
+.ub-collapsible-panel[data-ending-style] {
+  height: 0;
+}

@@ -5,6 +5,11 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Collapsible wrapping the Base UI Collapsible: automatic
+  chevron and CSS-variable height animation.
+- react: add Accordion wrapping the Base UI Accordion: heading-wrapped
+  triggers, one section open by default with multiple opt-in, same
+  animated height recipe as Collapsible.
 - react: add ContextMenu wrapping the Base UI Context Menu: opens at the
   pointer on right click or long press, hosts the regular Menu parts,
   and shares the menu's popup styling.
