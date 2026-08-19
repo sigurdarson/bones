@@ -1,0 +1,76 @@
+/* The trigger usually wraps a real control via render, which brings its
+   own styling; the bare class only guarantees a focus ring. */
+.ub-alert-dialog-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-alert-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+  background: var(--ub-overlay);
+  -webkit-backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.25rem);
+  /* The blur transitions too; fading only opacity would leave it popping
+     in at full strength (backdrop-filter ignores element opacity). */
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    -webkit-backdrop-filter var(--ub-duration-base) var(--ub-ease-out),
+    backdrop-filter var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-alert-dialog-backdrop[data-starting-style],
+.ub-alert-dialog-backdrop[data-ending-style] {
+  opacity: 0;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+}
+
+/* Centers the popup and scrolls when the alert is taller than the
+   screen. */
+.ub-alert-dialog-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.ub-alert-dialog-popup {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 26rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-lg);
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-lg);
+  color: var(--ub-text-primary);
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    scale var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-alert-dialog-popup[data-starting-style],
+.ub-alert-dialog-popup[data-ending-style] {
+  opacity: 0;
+  scale: 0.96;
+}
+
+.ub-alert-dialog-title {
+  margin: 0 0 0.25rem;
+  font-size: var(--ub-font-size);
+  font-weight: 600;
+  color: var(--ub-text-primary);
+}
+
+.ub-alert-dialog-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}

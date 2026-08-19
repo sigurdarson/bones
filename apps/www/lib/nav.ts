@@ -35,6 +35,7 @@ export const siteNav: NavSection[] = [
   {
     title: "Components",
     items: [
+      { title: "Alert dialog", href: "/components/alert-dialog" },
       { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },

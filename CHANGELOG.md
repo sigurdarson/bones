@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add AlertDialog wrapping the Base UI Alert Dialog: a
+  confirmation that is always modal and never dismissed by outside
+  clicks, with one close part per choice.
 - tokens: add --ub-z-overlay, one layer for every floating part.
 - react: overlays (select, menu, popover, tooltip, dialog) now set
   z-index from --ub-z-overlay so they clear app chrome like sticky
