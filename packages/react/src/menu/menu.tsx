@@ -115,7 +115,7 @@ export function MenuCheckboxItem({
       {...props}
     >
       {children}
-      <BaseMenu.CheckboxItemIndicator className="ub-menu-item-indicator">
+      <BaseMenu.CheckboxItemIndicator className="ub-menu-item-indicator" keepMounted>
         <svg viewBox="0 0 12 12" fill="none" aria-hidden>
           <path
             d="M2.5 6.5 5 9l4.5-6"
@@ -156,7 +156,7 @@ export function MenuRadioItem({ className, children, ...props }: MenuRadioItemPr
       {...props}
     >
       {children}
-      <BaseMenu.RadioItemIndicator className="ub-menu-item-indicator">
+      <BaseMenu.RadioItemIndicator className="ub-menu-item-indicator" keepMounted>
         <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden>
           <circle cx="6" cy="6" r="2.5" />
         </svg>

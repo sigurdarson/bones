@@ -93,6 +93,12 @@ describe("Menu", () => {
     await user.click(item);
     expect(onCheckedChange).toHaveBeenCalledWith(false, expect.anything());
     expect(screen.getByRole("menu")).toBeInTheDocument();
+
+    /* The indicator stays mounted (hidden) while unchecked so toggling
+       never changes the menu's width. */
+    const indicator = item.querySelector(".ub-menu-item-indicator");
+    expect(indicator).toBeInTheDocument();
+    expect(indicator).toHaveAttribute("data-unchecked");
   });
 
   it("selects one radio item per group", async () => {

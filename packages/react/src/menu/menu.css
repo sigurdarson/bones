@@ -62,13 +62,19 @@
 }
 
 /* Indicators trail the label, matching the Select dropdown's check, so
-   every label sits flush left whether or not it can be checked. */
+   every label sits flush left whether or not it can be checked. They stay
+   mounted while unchecked (hidden, width kept) so toggling one never
+   changes the menu's width. */
 .ub-menu-item-indicator {
   display: flex;
   width: 0.75rem;
   flex-shrink: 0;
   margin-inline-start: auto;
   color: var(--ub-text-secondary);
+}
+
+.ub-menu-item-indicator[data-unchecked] {
+  visibility: hidden;
 }
 
 .ub-menu-submenu-chevron {
