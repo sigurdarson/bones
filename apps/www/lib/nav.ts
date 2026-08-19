@@ -37,8 +37,11 @@ export const siteNav: NavSection[] = [
     items: [
       { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
+      { title: "Checkbox group", href: "/components/checkbox-group" },
       { title: "Field", href: "/components/field" },
       { title: "Input", href: "/components/input" },
+      { title: "Number field", href: "/components/number-field" },
+      { title: "Radio", href: "/components/radio" },
       { title: "Select", href: "/components/select" },
       { title: "Switch", href: "/components/switch" },
       { title: "Tabs", href: "/components/tabs" },

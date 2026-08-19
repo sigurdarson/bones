@@ -5,6 +5,13 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Radio and RadioGroup wrapping the Base UI Radio parts: dot
+  indicator, arrow key selection, always round.
+- react: add CheckboxGroup wrapping the Base UI Checkbox Group; checkboxes
+  join by value, with allValues for a select-all parent.
+- react: add NumberField wrapping the Base UI Number Field: stepper
+  buttons, two sizes, borderless variant, hint and invalid matching Input.
+
 - react: fix: Input and SelectTrigger no longer override the invalid state
   a wrapping Field sets (found by the new component test suite).
 - react: add component contract tests (Vitest, not shipped in the bundle).
