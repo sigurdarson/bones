@@ -51,6 +51,12 @@ const content = `# bones
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
   FieldDescription + FieldError (match). Wrap any bones form control;
   validation state flows to it automatically.
+- Fieldset: FieldsetRoot (disabled) + FieldsetLegend; groups Fields under
+  one legend; disabled switches off every control inside, natively.
+- Form: wraps Fields; onFormSubmit(values) fires once all fields are
+  valid, values keyed by Field name; validationMode onSubmit (default) |
+  onBlur | onChange; errors maps server errors onto fields by name
+  (render a bare FieldError in that field).
 - Input: two sizes; variants default | borderless; leadingIcon and
   trailingIcon (ReactNode), hint (linked via aria-describedby), invalid.
   Native input props pass through (bones size prop replaces the native

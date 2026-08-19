@@ -2,6 +2,13 @@ export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
+  FieldsetRoot,
+  FieldsetLegend,
+  type FieldsetRootProps,
+  type FieldsetLegendProps,
+} from "./fieldset/fieldset";
+export { Form, type FormProps } from "./form/form";
+export {
   FieldRoot,
   FieldLabel,
   FieldDescription,

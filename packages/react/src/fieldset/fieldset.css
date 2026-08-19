@@ -1,0 +1,19 @@
+.ub-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.ub-fieldset-legend {
+  font-size: var(--ub-font-size);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+}
+
+.ub-fieldset[data-disabled] .ub-fieldset-legend {
+  color: var(--ub-text-disabled);
+}

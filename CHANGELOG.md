@@ -5,6 +5,11 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Fieldset wrapping the Base UI Fieldset: related fields
+  grouped under one legend, with native whole-group disabling.
+- react: add Form wrapping the Base UI Form: onFormSubmit with parsed
+  values, three validation modes, and server errors mapped onto fields
+  by name.
 - react: add Toggle and ToggleGroup wrapping the Base UI parts: ghost at
   rest, muted when pressed, two sizes, iconOnly with the accessible-name
   dev warning; groups single-select by default, multiple for
