@@ -54,6 +54,32 @@ packages/react/src/styles.css          # @import "./<name>/<name>.css";
 - Entry/exit or movement animations: prefer `--ub-ease-spring` for physical
   elements, `--ub-ease-out` for fades; never hardcode ms values.
 
+## Overlay recipe (floating parts)
+
+Every floating surface (select/menu popups, popovers, tooltips, dialog
+windows) shares one look and one set of rendering rules:
+
+- Surface: 1px `var(--ub-border)` border, `var(--ub-radius-lg)` radius,
+  `var(--ub-surface-glass)` background with `backdrop-filter: blur(0.5rem)`
+  (both prefixed and unprefixed), and a shadow token: `sm` for tooltips,
+  `md` for popups, `lg` for dialogs.
+- Layering: `z-index: var(--ub-z-overlay)` on the positioner (for dialogs:
+  on the backdrop and viewport). Overlays stack against each other by DOM
+  order; never invent per-component z-index values.
+- Enter/exit: transition `opacity` and `scale` with `--ub-duration-fast`
+  (`base` for dialogs) and `--ub-ease-out`; `[data-starting-style]` and
+  `[data-ending-style]` set opacity 0 and scale 0.98 (0.96 for dialogs).
+  Anchored popups also set `transform-origin: var(--transform-origin)`.
+- `will-change: transform` on every floating surface. They can sit at
+  fractional pixels, and without their own layer a child repaint (a button
+  hover, an item highlight) re-rasterizes the blurred surface at a
+  different subpixel rounding and visibly nudges it. Floating, transient
+  surfaces only; never persistent elements (thumbs, tab indicators), where
+  a permanent layer wastes memory.
+- Bundle Base UI's Portal + Positioner + Popup (dialogs: Portal + Backdrop
+  + Viewport + Popup) into one `<Name>Content` part; triggers attach to
+  real controls via `render` and get a bare focus-ring-only trigger class.
+
 ## Accessibility checklist (all required)
 
 - Fully keyboard operable; test tab, arrow keys, space/enter as relevant.

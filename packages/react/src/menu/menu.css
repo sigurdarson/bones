@@ -26,6 +26,10 @@
   backdrop-filter: blur(0.5rem);
   box-shadow: var(--ub-shadow-md);
   transform-origin: var(--transform-origin);
+  /* Pinned to its own layer so a child repaint (item highlight) never
+     re-rasterizes the blurred popup at a new subpixel rounding. See the
+     overlay recipe in the new-component skill. */
+  will-change: transform;
   transition:
     opacity var(--ub-duration-fast) var(--ub-ease-out),
     scale var(--ub-duration-fast) var(--ub-ease-out);

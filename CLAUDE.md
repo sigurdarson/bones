@@ -71,6 +71,11 @@ pnpm test           # component contract tests (Vitest), also run in CI
   `data-open`, ...). Only hand-roll elements Base UI doesn't provide.
 - Spread `...props` last, merge `className` with `cx`, keep the public props
   interface exported and documented with JSDoc (agents and docs read these).
+- Floating surfaces (popups, tooltips, dialog windows) follow the overlay
+  recipe in the new-component skill: glass surface, `--ub-z-overlay`
+  layering, `data-starting/ending-style` transitions, and
+  `will-change: transform` to pin each surface to its own layer (floating,
+  transient surfaces only; never persistent elements).
 - Icons come from `@usebones/icons` semantic names; never import an icon
   library directly in components.
 - Every component ships a contract test file (`src/<name>/<name>.test.tsx`)
