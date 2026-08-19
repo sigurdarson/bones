@@ -8,7 +8,7 @@ skipped (with a reason).
 | Base UI component | bones status | Notes |
 | ----------------- | ------------ | ----- |
 | Accordion         | todo         |       |
-| Alert Dialog      | todo         |       |
+| Alert Dialog      | done         |       |
 | Autocomplete      | todo         |       |
 | Avatar            | todo         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |

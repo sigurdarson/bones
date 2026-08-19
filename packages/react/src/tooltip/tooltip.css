@@ -22,6 +22,9 @@
   font-size: var(--ub-font-size-compact);
   color: var(--ub-text-primary);
   transform-origin: var(--transform-origin);
+  /* Pinned to its own layer like every floating surface; see the overlay
+     recipe in the new-component skill. */
+  will-change: transform;
   transition:
     opacity var(--ub-duration-fast) var(--ub-ease-out),
     scale var(--ub-duration-fast) var(--ub-ease-out);

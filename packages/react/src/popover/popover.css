@@ -22,6 +22,10 @@
   font-size: var(--ub-font-size-compact);
   color: var(--ub-text-primary);
   transform-origin: var(--transform-origin);
+  /* Pinned to its own layer so a child repaint (a hovered control) never
+     re-rasterizes the blurred popup at a new subpixel rounding. See the
+     overlay recipe in the new-component skill. */
+  will-change: transform;
   transition:
     opacity var(--ub-duration-fast) var(--ub-ease-out),
     scale var(--ub-duration-fast) var(--ub-ease-out);

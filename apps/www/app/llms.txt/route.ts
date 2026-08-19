@@ -39,6 +39,11 @@ const content = `# bones
 
 ## Components
 
+- AlertDialog: a confirmation that interrupts on purpose. Same six-part
+  shape as Dialog (Root/Trigger/Content/Title/Description/Close) but
+  always modal and outside clicks never dismiss; Escape cancels. One
+  AlertDialogClose per choice (Cancel ghost, action primary or danger
+  with onClick). Use only for hard-to-undo actions.
 - Button: variants primary | secondary | ghost | danger, sizes default |
   compact, iconOnly. Icons are children. Native button props pass through;
   type defaults to "button". Anchors can reuse the styling:

@@ -1,3 +1,17 @@
+export {
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogClose,
+  type AlertDialogRootProps,
+  type AlertDialogTriggerProps,
+  type AlertDialogContentProps,
+  type AlertDialogTitleProps,
+  type AlertDialogDescriptionProps,
+  type AlertDialogCloseProps,
+} from "./alert-dialog/alert-dialog";
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";

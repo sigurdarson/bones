@@ -21,6 +21,21 @@ a decision lands; keep open questions at the top.
    (versioning, changelogs, peer ranges) for little gain. Current call: one
    `@usebones/react` package, tree-shakeable via ESM.
 
+## 2026-08-19: Overlay rendering rules
+
+- **One overlay recipe** for every floating surface, codified in the
+  new-component skill: glass surface + blur, shadow by weight class,
+  `--ub-z-overlay` for layering (DOM order decides within the layer),
+  `data-starting/ending-style` fades on motion tokens.
+- **Every floating surface pins its own layer** with
+  `will-change: transform`. Found via the dialogs: grid-centering can land
+  a popup on a half pixel, and a child repaint (button hover) then
+  re-rasterizes the blurred surface at a different rounding, visibly
+  nudging it. Pinning makes the rounding decision permanent. Scope rule:
+  floating, transient surfaces only; persistent elements (slider thumbs,
+  tab indicators) never get `will-change`, a permanent layer wastes
+  memory.
+
 ## 2026-08-18: Theming architecture
 
 - **No theme provider, no config file.** Attributes and tokens are the
