@@ -5,6 +5,10 @@
   outline-offset: 2px;
 }
 
+.ub-popover-positioner {
+  z-index: var(--ub-z-overlay);
+}
+
 .ub-popover-popup {
   box-sizing: border-box;
   max-width: 20rem;

@@ -8,6 +8,7 @@
 .ub-dialog-backdrop {
   position: fixed;
   inset: 0;
+  z-index: var(--ub-z-overlay);
   background: var(--ub-overlay);
   transition: opacity var(--ub-duration-base) var(--ub-ease-out);
 }
@@ -22,6 +23,7 @@
 .ub-dialog-viewport {
   position: fixed;
   inset: 0;
+  z-index: var(--ub-z-overlay);
   display: grid;
   place-items: center;
   padding: 1rem;

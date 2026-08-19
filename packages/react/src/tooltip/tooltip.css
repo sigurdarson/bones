@@ -5,6 +5,10 @@
   outline-offset: 2px;
 }
 
+.ub-tooltip-positioner {
+  z-index: var(--ub-z-overlay);
+}
+
 .ub-tooltip-popup {
   box-sizing: border-box;
   max-width: 16rem;

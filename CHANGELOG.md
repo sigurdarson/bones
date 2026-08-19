@@ -5,6 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- tokens: add --ub-z-overlay, one layer for every floating part.
+- react: overlays (select, menu, popover, tooltip, dialog) now set
+  z-index from --ub-z-overlay so they clear app chrome like sticky
+  headers.
 - react: add Dialog wrapping the Base UI Dialog: modal window over a
   dimmed backdrop with focus trapping, scrollable viewport, and title,
   description, and close parts pre-wired for accessible naming.

@@ -5,6 +5,10 @@
   outline-offset: 2px;
 }
 
+.ub-menu-positioner {
+  z-index: var(--ub-z-overlay);
+}
+
 /* Item sizing resolves through vars on the popup (its root inside the
    portal), following the size set on MenuRoot. */
 .ub-menu-popup {
