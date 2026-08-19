@@ -5,6 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: fix: Input and SelectTrigger no longer override the invalid state
+  a wrapping Field sets (found by the new component test suite).
+- react: add component contract tests (Vitest, not shipped in the bundle).
+
 ## 0.1.0 (2026-08-19)
 
 - react: add Field (FieldRoot, FieldLabel, FieldDescription, FieldError)

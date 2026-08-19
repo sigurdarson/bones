@@ -40,12 +40,15 @@ export function Input({
 }: InputProps) {
   const hintId = React.useId();
 
+  /* Only claim the invalid attributes when this prop asserts them; passing
+     the keys with undefined would override the state a wrapping Field sets. */
+  const invalidProps = invalid ? { "data-invalid": "", "aria-invalid": true } : {};
+
   const input = (
     <BaseInput
       data-size={size}
       data-variant={variant}
-      data-invalid={invalid ? "" : undefined}
-      aria-invalid={invalid || undefined}
+      {...invalidProps}
       aria-describedby={hint ? cx(hintId, ariaDescribedBy) : ariaDescribedBy}
       className={withBase("ub-input", className)}
       {...props}
