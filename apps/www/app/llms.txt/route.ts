@@ -65,6 +65,11 @@ const content = `# bones
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.
+- Popover: PopoverRoot + PopoverTrigger (attach a real control via
+  render={<Button/>}) + PopoverContent (side "bottom" default, align,
+  sideOffset 8) + PopoverTitle/PopoverDescription (wire the accessible
+  name/description) + PopoverClose. Non-modal by default; Escape and
+  outside clicks dismiss.
 - Radio + RadioGroup: group holds defaultValue or value + onValueChange,
   disabled; <Radio value="..." /> inside; dot indicator automatic. States
   via [data-checked], [data-disabled].
@@ -85,6 +90,11 @@ const content = `# bones
 - ToggleGroup: wraps Toggles (each joins via value); string arrays via
   defaultValue or value + onValueChange; single-select by default,
   multiple for independent toggles; disabled disables members.
+- Tooltip: TooltipRoot + TooltipTrigger (attach via render={<Button/>};
+  delay 600ms lives here) + TooltipContent (side "top" default,
+  sideOffset 8). Shows on hover and focus. A description, never a name:
+  icon-only triggers keep their aria-label. TooltipProvider shares one
+  delay across a toolbar.
 
 ## Docs
 
