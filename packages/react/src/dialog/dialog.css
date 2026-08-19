@@ -10,12 +10,21 @@
   inset: 0;
   z-index: var(--ub-z-overlay);
   background: var(--ub-overlay);
-  transition: opacity var(--ub-duration-base) var(--ub-ease-out);
+  -webkit-backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.25rem);
+  /* The blur transitions too; fading only opacity would leave it popping
+     in at full strength (backdrop-filter ignores element opacity). */
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    -webkit-backdrop-filter var(--ub-duration-base) var(--ub-ease-out),
+    backdrop-filter var(--ub-duration-base) var(--ub-ease-out);
 }
 
 .ub-dialog-backdrop[data-starting-style],
 .ub-dialog-backdrop[data-ending-style] {
   opacity: 0;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
 }
 
 /* Centers the popup and scrolls when the dialog is taller than the
