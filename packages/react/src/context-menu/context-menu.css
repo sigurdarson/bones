@@ -1,0 +1,4 @@
+/* The context menu's popup and items reuse the menu's classes (ub-menu-*)
+   so the two restyle together; see menu.css. The trigger is a plain
+   wrapper around the right-clickable surface and needs no styling of its
+   own. */

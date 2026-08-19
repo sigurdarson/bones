@@ -4,11 +4,13 @@ import * as React from "react";
 import { Menu as BaseMenu } from "@base-ui/react/menu";
 import { withBase } from "../lib/with-base";
 
-type MenuSize = "default" | "compact";
+export type MenuSize = "default" | "compact";
 
 /* Size flows from the root through context because the popup portals to
-   the body, out of CSS cascade reach of the trigger. */
-const MenuSizeContext = React.createContext<MenuSize>("default");
+   the body, out of CSS cascade reach of the trigger. Exported for the
+   context menu, which shares the menu's items and popup; not part of the
+   public API. */
+export const MenuSizeContext = React.createContext<MenuSize>("default");
 
 export interface MenuRootProps extends BaseMenu.Root.Props {
   /** Two sizes only, applied to every item in the menu: default rows are 36px tall, compact are 28px. @default "default" */

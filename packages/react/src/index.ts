@@ -16,6 +16,14 @@ export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
+  ContextMenuRoot,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  type ContextMenuRootProps,
+  type ContextMenuTriggerProps,
+  type ContextMenuContentProps,
+} from "./context-menu/context-menu";
+export {
   DialogRoot,
   DialogTrigger,
   DialogContent,

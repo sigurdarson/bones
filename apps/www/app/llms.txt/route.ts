@@ -53,6 +53,10 @@ const content = `# bones
 - CheckboxGroup: wraps Checkboxes (each joins via value); defaultValue or
   value + onValueChange (string arrays); allValues + <Checkbox parent />
   for select-all with indeterminate; disabled disables members.
+- ContextMenu: ContextMenuRoot (size) + ContextMenuTrigger (a div around
+  the right-clickable surface) + ContextMenuContent; opens at the pointer,
+  long press on touch. Fill the content with the regular Menu parts
+  (MenuItem, MenuCheckboxItem, ...); the popup shares Menu's classes.
 - Dialog: DialogRoot (modal default true, disablePointerDismissal) +
   DialogTrigger (attach via render={<Button/>}) + DialogContent (bundles
   backdrop and centered scrollable viewport) + DialogTitle /
