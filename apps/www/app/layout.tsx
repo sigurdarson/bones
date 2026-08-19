@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@usebones/tokens/index.css";
 import "@usebones/tokens/scrollbars.css";
 import "@usebones/react/styles.css";
@@ -6,6 +6,12 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { Sidebar } from "@/components/sidebar";
 import { IconSetProvider } from "@/components/icon-set-provider";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://usebones.com"),

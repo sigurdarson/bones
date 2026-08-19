@@ -24,7 +24,10 @@ export {
   type SelectContentProps,
   type SelectItemProps,
 } from "./select/select";
+export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";
+export { Toggle, type ToggleProps } from "./toggle/toggle";
+export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
 export {
   TabsRoot,
   TabsList,

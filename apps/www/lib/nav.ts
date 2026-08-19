@@ -43,8 +43,11 @@ export const siteNav: NavSection[] = [
       { title: "Number field", href: "/components/number-field" },
       { title: "Radio", href: "/components/radio" },
       { title: "Select", href: "/components/select" },
+      { title: "Slider", href: "/components/slider" },
       { title: "Switch", href: "/components/switch" },
       { title: "Tabs", href: "/components/tabs" },
+      { title: "Toggle", href: "/components/toggle" },
+      { title: "Toggle group", href: "/components/toggle-group" },
     ],
   },
 ];

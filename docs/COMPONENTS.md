@@ -36,11 +36,11 @@ skipped (with a reason).
 | Scroll Area       | todo         |       |
 | Select            | done         |       |
 | Separator         | todo         |       |
-| Slider            | todo         |       |
+| Slider            | done         |       |
 | Switch            | done         |       |
 | Tabs              | done         |       |
 | Toast             | todo         |       |
-| Toggle            | todo         |       |
-| Toggle Group      | todo         |       |
+| Toggle            | done         |       |
+| Toggle Group      | done         |       |
 | Toolbar           | todo         |       |
 | Tooltip           | todo         |       |

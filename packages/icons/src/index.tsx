@@ -5,16 +5,19 @@ import {
   ArrowLeft,
   ArrowRight,
   Bell,
+  Bold,
   Check,
   ChevronDown,
   ChevronRight,
   Copy,
   CreditCard,
   Info,
+  Italic,
   Loader2,
   Moon,
   Search,
   Sun,
+  Underline,
   User,
   X,
 } from "lucide-react";
@@ -28,6 +31,7 @@ export type IconName =
   | "arrow-left"
   | "arrow-right"
   | "bell"
+  | "bold"
   | "check"
   | "chevron-down"
   | "chevron-right"
@@ -35,10 +39,12 @@ export type IconName =
   | "copy"
   | "credit-card"
   | "info"
+  | "italic"
   | "loader"
   | "moon"
   | "search"
   | "sun"
+  | "underline"
   | "user";
 
 export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -49,6 +55,7 @@ export const defaultIcons: IconSet = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
   bell: Bell,
+  bold: Bold,
   check: Check,
   "chevron-down": ChevronDown,
   "chevron-right": ChevronRight,
@@ -56,10 +63,12 @@ export const defaultIcons: IconSet = {
   copy: Copy,
   "credit-card": CreditCard,
   info: Info,
+  italic: Italic,
   loader: Loader2,
   moon: Moon,
   search: Search,
   sun: Sun,
+  underline: Underline,
   user: User,
 };
 

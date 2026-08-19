@@ -1,0 +1,64 @@
+.ub-toggle {
+  --ub-icon-size: var(--ub-icon-size-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--ub-control-height);
+  padding-inline: 0.875rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--ub-radius-control);
+  font-family: inherit;
+  font-size: var(--ub-font-size);
+  font-weight: 500;
+  color: var(--ub-text-secondary);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--ub-duration-fast) var(--ub-ease-out),
+    color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-toggle:hover:not([data-disabled]) {
+  color: var(--ub-text-primary);
+  background: var(--ub-bg-muted);
+}
+
+.ub-toggle:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-toggle[data-pressed] {
+  background: var(--ub-bg-muted);
+  color: var(--ub-text-primary);
+}
+
+.ub-toggle[data-pressed]:hover:not([data-disabled]) {
+  background: var(--ub-bg-muted-hover);
+}
+
+.ub-toggle[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* sizes: base styles are the default size; compact is the only override */
+.ub-toggle[data-size="compact"] {
+  height: var(--ub-control-height-compact);
+  padding-inline: 0.625rem;
+  font-size: var(--ub-font-size-compact);
+  --ub-icon-size: var(--ub-icon-size-compact);
+}
+
+/* icon-only toggles are square */
+.ub-toggle[data-icon-only] {
+  width: var(--ub-control-height);
+  padding-inline: 0;
+}
+
+.ub-toggle[data-size="compact"][data-icon-only] {
+  width: var(--ub-control-height-compact);
+}

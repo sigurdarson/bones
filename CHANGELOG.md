@@ -5,6 +5,15 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Toggle and ToggleGroup wrapping the Base UI parts: ghost at
+  rest, muted when pressed, two sizes, iconOnly with the accessible-name
+  dev warning; groups single-select by default, multiple for
+  independent toggles.
+- react: add Slider wrapping the Base UI Slider: track, filled indicator,
+  and thumbs render automatically, with a thumb per entry for range
+  values.
+- icons: add bold, italic, and underline icons.
+
 - react: add Radio and RadioGroup wrapping the Base UI Radio parts: dot
   indicator, arrow key selection, always round.
 - react: add CheckboxGroup wrapping the Base UI Checkbox Group; checkboxes
