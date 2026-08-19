@@ -5,6 +5,11 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Progress wrapping the Base UI Progress: one pre-composed
+  bar with optional label and value row, and a token-driven
+  indeterminate sweep.
+- react: add Meter wrapping the Base UI Meter: same pre-composed shape
+  for levels within a known range.
 - react: add Collapsible wrapping the Base UI Collapsible: automatic
   chevron and CSS-variable height animation.
 - react: add Accordion wrapping the Base UI Accordion: heading-wrapped
