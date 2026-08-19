@@ -74,6 +74,7 @@ export function LibraryControls() {
       <ControlRow label="Radius">
         <SelectRoot
           size="compact"
+          items={{ default: "Default", pill: "Pill" }}
           value={pill ? "pill" : "default"}
           onValueChange={(value) => value && onRadiusChange(value)}
         >
@@ -87,6 +88,9 @@ export function LibraryControls() {
       <ControlRow label="Accent">
         <SelectRoot
           size="compact"
+          items={Object.fromEntries(
+            accents.map((name) => [name, name.charAt(0).toUpperCase() + name.slice(1)]),
+          )}
           value={accent}
           onValueChange={(value) => value && onAccentChange(value)}
         >
@@ -103,6 +107,7 @@ export function LibraryControls() {
       <ControlRow label="Icons">
         <SelectRoot
           size="compact"
+          items={{ lucide: "Lucide", hugeicons: "Hugeicons" }}
           value={library}
           onValueChange={(value) => value && setLibrary(value as IconLibrary)}
         >

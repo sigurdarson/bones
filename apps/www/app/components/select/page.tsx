@@ -39,14 +39,14 @@ export default function Page() {
 <SelectTrigger variant="borderless" placeholder="Choose a plan" />`}
       >
         <div className="showcase-stack">
-          <SelectRoot>
+          <SelectRoot items={{ hobby: "Hobby", pro: "Pro" }}>
             <SelectTrigger placeholder="Choose a plan" />
             <SelectContent>
               <SelectItem value="hobby">Hobby</SelectItem>
               <SelectItem value="pro">Pro</SelectItem>
             </SelectContent>
           </SelectRoot>
-          <SelectRoot>
+          <SelectRoot items={{ hobby: "Hobby", pro: "Pro" }}>
             <SelectTrigger variant="borderless" placeholder="Choose a plan" />
             <SelectContent>
               <SelectItem value="hobby">Hobby</SelectItem>
@@ -70,13 +70,13 @@ export default function Page() {
 />`}
       >
         <div className="showcase-stack">
-          <SelectRoot>
+          <SelectRoot items={{ hobby: "Hobby" }}>
             <SelectTrigger placeholder="Choose a plan" disabled />
             <SelectContent>
               <SelectItem value="hobby">Hobby</SelectItem>
             </SelectContent>
           </SelectRoot>
-          <SelectRoot>
+          <SelectRoot items={{ hobby: "Hobby", pro: "Pro" }}>
             <SelectTrigger
               placeholder="Choose a plan"
               invalid
@@ -135,6 +135,12 @@ export default function Page() {
             description: "Bordered, or a muted fill with no border.",
           },
           {
+            name: "SelectRoot.items",
+            type: "Record<value, label>",
+            description:
+              "Value to label map; required for the trigger to show the selected label before the dropdown has opened.",
+          },
+          {
             name: "SelectRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
@@ -177,7 +183,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`SelectRoot, SelectTrigger, SelectContent, SelectItem, from @usebones/react.
-- SelectRoot: defaultValue or value + onValueChange (the callback value can be null); size sizes the trigger and dropdown items together.
+- SelectRoot: defaultValue or value + onValueChange (the callback value can be null); size sizes the trigger and dropdown items together. Always pass items (a value to label record) so the trigger shows the selected label instead of the raw value.
 - SelectTrigger: placeholder, variant "default" | "borderless", invalid, leadingIcon, hint. The chevron renders automatically; there is no trailing icon slot.
 - SelectContent handles the portal and positioning. SelectItem children are the label; the selected check renders automatically.
 - Restyle in CSS via [data-highlighted], [data-selected], [data-popup-open], using --ub-* tokens only.`}

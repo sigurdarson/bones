@@ -103,6 +103,7 @@ export function ButtonPlayground() {
         <ControlRow label="Variant">
           <SelectRoot
             size="compact"
+            items={{ primary: "Primary", secondary: "Secondary", ghost: "Ghost", danger: "Danger" }}
             value={variant}
             onValueChange={(value) => value && setVariant(value as Variant)}
           >
