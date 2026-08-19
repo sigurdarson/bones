@@ -17,7 +17,7 @@ skipped (with a reason).
 | Collapsible       | todo         |       |
 | Combobox          | todo         |       |
 | Context Menu      | todo         |       |
-| Dialog            | todo         |       |
+| Dialog            | done         |       |
 | Drawer            | todo         |       |
 | Field             | done         | Labels, descriptions, and errors for all form controls. |
 | Fieldset          | done         |       |

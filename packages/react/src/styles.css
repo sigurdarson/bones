@@ -2,6 +2,7 @@
 @import "./button/button.css";
 @import "./checkbox/checkbox.css";
 @import "./checkbox-group/checkbox-group.css";
+@import "./dialog/dialog.css";
 @import "./field/field.css";
 @import "./fieldset/fieldset.css";
 @import "./form/form.css";

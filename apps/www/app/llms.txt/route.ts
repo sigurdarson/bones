@@ -48,6 +48,12 @@ const content = `# bones
 - CheckboxGroup: wraps Checkboxes (each joins via value); defaultValue or
   value + onValueChange (string arrays); allValues + <Checkbox parent />
   for select-all with indeterminate; disabled disables members.
+- Dialog: DialogRoot (modal default true, disablePointerDismissal) +
+  DialogTrigger (attach via render={<Button/>}) + DialogContent (bundles
+  backdrop and centered scrollable viewport) + DialogTitle /
+  DialogDescription (wire the accessible name/description) + DialogClose
+  (render several for Cancel/Save). Escape closes; focus is trapped and
+  returned.
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
   FieldDescription + FieldError (match). Wrap any bones form control;
   validation state flows to it automatically.
