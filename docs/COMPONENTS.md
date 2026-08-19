@@ -40,7 +40,7 @@ skipped (with a reason).
 | Switch            | done         |       |
 | Tabs              | done         |       |
 | Toast             | todo         |       |
-| Toggle            | done         | Documented with Toggle Group on one page. |       |
-| Toggle Group      | done         | Documented on the Toggle page. |       |
+| Toggle            | done         |       |
+| Toggle Group      | done         |       |
 | Toolbar           | todo         |       |
 | Tooltip           | todo         |       |

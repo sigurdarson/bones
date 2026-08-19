@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Toggle } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
@@ -14,9 +15,10 @@ export default function Page() {
     <>
       <PageHeader title="Toggle" />
       <p className="lead">
-        A pressed/unpressed button and its group, wrapping the Base UI
-        Toggle parts. The natural fit for toolbars: formatting marks,
-        alignment, view switches.
+        A pressed/unpressed button, wrapping the Base UI Toggle. Good for
+        on/off actions that live outside a form: mute, favorite, show
+        details. Several of them become a{" "}
+        <Link href="/components/toggle-group">Toggle group</Link>.
       </p>
       <h2>Playground</h2>
       <p>
@@ -53,55 +55,51 @@ export default function Page() {
       />
       <h2>Props</h2>
       <p>
-        Both parts pass the full Base UI API through. The essentials:
+        Everything the Base UI Toggle accepts passes through. The
+        essentials:
       </p>
       <PropsTable
         rows={[
           {
-            name: "Toggle.defaultPressed",
+            name: "defaultPressed",
             type: "boolean",
             defaultValue: "false",
             description: "Initial state when uncontrolled.",
           },
           {
-            name: "Toggle.pressed",
+            name: "pressed",
             type: "boolean",
             description: "Controlled state. Pair with onPressedChange.",
           },
           {
-            name: "Toggle.value",
+            name: "value",
             type: "string",
             description: "Identity within a ToggleGroup.",
           },
           {
-            name: "Toggle.size",
+            name: "size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
             description: "Default is 36px tall with 16px text; compact is 28px with 14px text.",
           },
           {
-            name: "Toggle.iconOnly",
+            name: "iconOnly",
             type: "boolean",
             defaultValue: "false",
             description: "Square toggle holding only an icon; pair with aria-label.",
           },
           {
-            name: "ToggleGroup.value",
-            type: "string[]",
-            description: "Pressed values (also defaultValue/onValueChange).",
-          },
-          {
-            name: "ToggleGroup.multiple",
+            name: "disabled",
             type: "boolean",
             defaultValue: "false",
-            description: "Allow several pressed at once instead of single-select.",
+            description: "Blocks interaction and dims the toggle.",
           },
         ]}
       />
       <AgentInstructions
-        instructions={`Toggle and ToggleGroup, from @usebones/react.
-- Toggle: defaultPressed or pressed + onPressedChange; size "default" | "compact"; iconOnly requires aria-label; icons are children via @usebones/icons.
-- ToggleGroup: toggles join via value; group state is a string array (defaultValue or value + onValueChange). Single-select by default; multiple for independent toggles. disabled disables members.
+        instructions={`Toggle, from @usebones/react.
+- defaultPressed or pressed + onPressedChange; size "default" | "compact"; iconOnly requires aria-label; icons are children via @usebones/icons.
+- Inside a ToggleGroup, identify each toggle with value="..." (see the Toggle group page).
 - Restyle in CSS via [data-pressed], [data-disabled], [data-size]. Tokens only.`}
       />
     </>

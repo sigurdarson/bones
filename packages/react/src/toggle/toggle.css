@@ -62,8 +62,3 @@
 .ub-toggle[data-size="compact"][data-icon-only] {
   width: var(--ub-control-height-compact);
 }
-
-.ub-toggle-group {
-  display: inline-flex;
-  gap: 0.25rem;
-}

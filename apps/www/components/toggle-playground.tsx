@@ -1,81 +1,66 @@
 "use client";
 
 import * as React from "react";
-import { Switch, Toggle, ToggleGroup } from "@usebones/react";
+import { Switch, Toggle } from "@usebones/react";
 import { Icon } from "@usebones/icons";
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
-const marks = [
-  { value: "bold", label: "Bold", icon: "bold" as const },
-  { value: "italic", label: "Italic", icon: "italic" as const },
-  { value: "underline", label: "Underline", icon: "underline" as const },
-];
-
 interface PlaygroundState {
-  multiple: boolean;
+  iconOnly: boolean;
   compact: boolean;
   disabled: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ multiple, compact, disabled }: PlaygroundState): string {
-  const rows = marks
-    .map(
-      (mark) => `  <Toggle value="${mark.value}" iconOnly aria-label="${mark.label}"${
-        compact ? ' size="compact"' : ""
-      }>
-    <Icon name="${mark.icon}" />
-  </Toggle>`,
-    )
-    .join("\n");
-  return `import { Toggle, ToggleGroup } from "@usebones/react";
+function buildCode({ iconOnly, compact, disabled }: PlaygroundState): string {
+  const attrs = [
+    iconOnly ? ' iconOnly aria-label="Notifications"' : "",
+    compact ? ' size="compact"' : "",
+    disabled ? " disabled" : "",
+  ].join("");
+  const children = iconOnly
+    ? `  <Icon name="bell" />`
+    : `  <Icon name="bell" />\n  Notifications`;
+  return `import { Toggle } from "@usebones/react";
 import { Icon } from "@usebones/icons";
 
-<ToggleGroup defaultValue={["bold"]}${multiple ? " multiple" : ""}${disabled ? " disabled" : ""}>
-${rows}
-</ToggleGroup>`;
+<Toggle defaultPressed${attrs}>
+${children}
+</Toggle>`;
 }
 
 export function TogglePlayground() {
-  const [multiple, setMultiple] = React.useState(true);
+  const [iconOnly, setIconOnly] = React.useState(false);
   const [compact, setCompact] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
       <Showcase
-        code={buildCode({ multiple, compact, disabled })}
+        code={buildCode({ iconOnly, compact, disabled })}
         note={
           <>
-            Ghost at rest, muted when pressed. Groups single-select by
-            default; <code>multiple</code> makes each toggle independent,
-            like text formatting.
+            Ghost at rest, muted when pressed. A lone toggle fits on/off
+            actions like mute; for toolbars, reach for{" "}
+            <code>ToggleGroup</code>.
           </>
         }
       >
-        <ToggleGroup
-          key={String(multiple)}
-          defaultValue={["bold"]}
-          multiple={multiple}
+        <Toggle
+          defaultPressed
+          iconOnly={iconOnly}
+          aria-label={iconOnly ? "Notifications" : undefined}
+          size={compact ? "compact" : "default"}
           disabled={disabled}
         >
-          {marks.map((mark) => (
-            <Toggle
-              key={mark.value}
-              value={mark.value}
-              iconOnly
-              aria-label={mark.label}
-              size={compact ? "compact" : "default"}
-            >
-              <Icon name={mark.icon} />
-            </Toggle>
-          ))}
-        </ToggleGroup>
+          <Icon name="bell" />
+          {iconOnly ? null : "Notifications"}
+        </Toggle>
       </Showcase>
       <Controls>
-        <ControlRow label="Multiple">
-          <Switch checked={multiple} onCheckedChange={setMultiple} />
+        <ControlRow label="Icon only">
+          <Switch checked={iconOnly} onCheckedChange={setIconOnly} />
         </ControlRow>
         <ControlRow label="Compact">
           <Switch checked={compact} onCheckedChange={setCompact} />

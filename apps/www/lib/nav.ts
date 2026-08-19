@@ -47,6 +47,7 @@ export const siteNav: NavSection[] = [
       { title: "Switch", href: "/components/switch" },
       { title: "Tabs", href: "/components/tabs" },
       { title: "Toggle", href: "/components/toggle" },
+      { title: "Toggle group", href: "/components/toggle-group" },
     ],
   },
 ];

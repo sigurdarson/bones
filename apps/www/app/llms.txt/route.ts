@@ -73,8 +73,12 @@ const content = `# bones
   disabled. Style states via [data-checked] and [data-disabled].
 - Tabs: TabsRoot (size) + TabsList + TabsTab (iconOnly, disabled) +
   TabsPanel. Icons are children. Active state via [data-active].
-- Toggle + ToggleGroup: pressed state via data-pressed; size, iconOnly;
-  groups single-select by default, multiple for independent toggles.
+- Toggle: pressed state via data-pressed; defaultPressed or pressed +
+  onPressedChange; size, iconOnly (needs aria-label); value joins a
+  ToggleGroup.
+- ToggleGroup: wraps Toggles (each joins via value); string arrays via
+  defaultValue or value + onValueChange; single-select by default,
+  multiple for independent toggles; disabled disables members.
 
 ## Docs
 
