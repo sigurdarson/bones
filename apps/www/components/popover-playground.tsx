@@ -13,10 +13,6 @@ import {
   SelectItem,
   SelectRoot,
   SelectTrigger,
-  TabsList,
-  TabsPanel,
-  TabsRoot,
-  TabsTab,
 } from "@usebones/react";
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
@@ -66,10 +62,6 @@ function buildCode({ side, align }: PlaygroundState): string {
   SelectItem,
   SelectRoot,
   SelectTrigger,
-  TabsList,
-  TabsPanel,
-  TabsRoot,
-  TabsTab,
 } from "@usebones/react";
 
 const access = {
@@ -81,39 +73,20 @@ const access = {
 <PopoverRoot>
   <PopoverTrigger render={<Button variant="secondary" />}>Share</PopoverTrigger>
   <PopoverContent${attrs}>
-    <TabsRoot defaultValue="share" size="compact">
-      <TabsList>
-        <TabsTab value="share">Share</TabsTab>
-        <TabsTab value="publish">Publish</TabsTab>
-        <TabsTab value="export">Export</TabsTab>
-      </TabsList>
-      <TabsPanel value="share">
-        <PopoverTitle>Invite to collaborate</PopoverTitle>
-        <PopoverDescription>
-          Add people by email, or copy a link for your team.
-        </PopoverDescription>
-        <Input size="compact" placeholder="Add emails to invite people" />
-        <SelectRoot size="compact" items={access} defaultValue="collaborators">
-          <SelectTrigger variant="borderless" />
-          <SelectContent>
-            <SelectItem value="collaborators">Only collaborators</SelectItem>
-            <SelectItem value="link">Anyone with the link</SelectItem>
-            <SelectItem value="me">Only me</SelectItem>
-          </SelectContent>
-        </SelectRoot>
-        <Button size="compact">Copy link</Button>
-      </TabsPanel>
-      <TabsPanel value="publish">
-        <PopoverDescription>
-          Publish a read-only page that updates as you edit.
-        </PopoverDescription>
-      </TabsPanel>
-      <TabsPanel value="export">
-        <PopoverDescription>
-          Download this doc as Markdown or PDF.
-        </PopoverDescription>
-      </TabsPanel>
-    </TabsRoot>
+    <PopoverTitle>Invite to collaborate</PopoverTitle>
+    <PopoverDescription>
+      Add people by email, or copy a link for your team.
+    </PopoverDescription>
+    <Input placeholder="Add emails to invite people" />
+    <SelectRoot items={access} defaultValue="collaborators">
+      <SelectTrigger variant="borderless" />
+      <SelectContent>
+        <SelectItem value="collaborators">Only collaborators</SelectItem>
+        <SelectItem value="link">Anyone with the link</SelectItem>
+        <SelectItem value="me">Only me</SelectItem>
+      </SelectContent>
+    </SelectRoot>
+    <Button>Copy link</Button>
   </PopoverContent>
 </PopoverRoot>`;
 }
@@ -128,9 +101,9 @@ export function PopoverPlayground() {
         code={buildCode({ side, align })}
         note={
           <>
-            A whole share sheet composed from bones parts: tabs, input,
-            select, and button inside the popover. The title still names
-            the panel; Escape or an outside click dismisses it.
+            A share sheet composed from bones parts: input, select, and
+            button inside the popover. The title names the panel; Escape
+            or an outside click dismisses it.
           </>
         }
       >
@@ -138,70 +111,46 @@ export function PopoverPlayground() {
           <PopoverTrigger render={<Button variant="secondary" />}>
             Share
           </PopoverTrigger>
-          <PopoverContent side={side} align={align} style={{ width: "20rem" }}>
-            <TabsRoot defaultValue="share" size="compact">
-              <TabsList>
-                <TabsTab value="share">Share</TabsTab>
-                <TabsTab value="publish">Publish</TabsTab>
-                <TabsTab value="export">Export</TabsTab>
-              </TabsList>
-              <TabsPanel value="share">
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.75rem",
-                    paddingTop: "0.75rem",
-                  }}
-                >
-                  <div>
-                    <PopoverTitle>Invite to collaborate</PopoverTitle>
-                    <PopoverDescription>
-                      Add people by email, or copy a link for your team.
-                    </PopoverDescription>
-                  </div>
-                  <Input size="compact" placeholder="Add emails to invite people" />
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <SelectRoot
-                      size="compact"
-                      items={access}
-                      defaultValue="collaborators"
-                    >
-                      <SelectTrigger variant="borderless" />
-                      <SelectContent>
-                        <SelectItem value="collaborators">
-                          Only collaborators
-                        </SelectItem>
-                        <SelectItem value="link">Anyone with the link</SelectItem>
-                        <SelectItem value="me">Only me</SelectItem>
-                      </SelectContent>
-                    </SelectRoot>
-                    <Button size="compact">Copy link</Button>
-                  </div>
-                </div>
-              </TabsPanel>
-              <TabsPanel value="publish">
-                <div style={{ paddingTop: "0.75rem" }}>
-                  <PopoverDescription>
-                    Publish a read-only page that updates as you edit.
-                  </PopoverDescription>
-                </div>
-              </TabsPanel>
-              <TabsPanel value="export">
-                <div style={{ paddingTop: "0.75rem" }}>
-                  <PopoverDescription>
-                    Download this doc as Markdown or PDF.
-                  </PopoverDescription>
-                </div>
-              </TabsPanel>
-            </TabsRoot>
+          <PopoverContent
+            side={side}
+            align={align}
+            style={{ width: "24rem", maxWidth: "24rem" }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              <div>
+                <PopoverTitle>Invite to collaborate</PopoverTitle>
+                <PopoverDescription>
+                  Add people by email, or copy a link for your team.
+                </PopoverDescription>
+              </div>
+              <Input placeholder="Add emails to invite people" />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "0.5rem",
+                }}
+              >
+                <SelectRoot items={access} defaultValue="collaborators">
+                  <SelectTrigger variant="borderless" />
+                  <SelectContent>
+                    <SelectItem value="collaborators">
+                      Only collaborators
+                    </SelectItem>
+                    <SelectItem value="link">Anyone with the link</SelectItem>
+                    <SelectItem value="me">Only me</SelectItem>
+                  </SelectContent>
+                </SelectRoot>
+                <Button>Copy link</Button>
+              </div>
+            </div>
           </PopoverContent>
         </PopoverRoot>
       </Showcase>
