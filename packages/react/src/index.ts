@@ -19,6 +19,32 @@ export {
   type FieldErrorProps,
 } from "./field/field";
 export { Input, type InputProps } from "./input/input";
+export {
+  MenuRoot,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+  MenuSubmenuRoot,
+  MenuSubmenuTrigger,
+  type MenuRootProps,
+  type MenuTriggerProps,
+  type MenuContentProps,
+  type MenuItemProps,
+  type MenuCheckboxItemProps,
+  type MenuRadioGroupProps,
+  type MenuRadioItemProps,
+  type MenuGroupProps,
+  type MenuGroupLabelProps,
+  type MenuSeparatorProps,
+  type MenuSubmenuRootProps,
+  type MenuSubmenuTriggerProps,
+} from "./menu/menu";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
 export {
   PopoverRoot,

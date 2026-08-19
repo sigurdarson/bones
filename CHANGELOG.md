@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Menu wrapping the Base UI Menu: items, checkbox and radio
+  items with automatic indicators, groups, separators, and submenus,
+  with two sizes flowing from the root.
 - react: add Tooltip wrapping the Base UI Tooltip: glass surface, opens
   on hover and focus, attaches to real controls via render, optional
   shared-delay provider.
