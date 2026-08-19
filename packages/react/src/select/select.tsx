@@ -62,12 +62,15 @@ export function SelectTrigger({
   const hintId = React.useId();
   const size = React.useContext(SelectSizeContext);
 
+  /* Only claim the invalid attributes when this prop asserts them; passing
+     the keys with undefined would override the state a wrapping Field sets. */
+  const invalidProps = invalid ? { "data-invalid": "", "aria-invalid": true } : {};
+
   const trigger = (
     <BaseSelect.Trigger
       data-size={size}
       data-variant={variant}
-      data-invalid={invalid ? "" : undefined}
-      aria-invalid={invalid || undefined}
+      {...invalidProps}
       aria-describedby={hint ? cx(hintId, ariaDescribedBy) : ariaDescribedBy}
       className={withBase("ub-select-trigger", className)}
       {...props}

@@ -24,6 +24,7 @@ pnpm install        # install everything
 pnpm build          # turbo build (packages first, then apps)
 pnpm dev            # watch mode everywhere
 pnpm typecheck      # tsc --noEmit across packages
+pnpm test           # component contract tests (Vitest), also run in CI
 ```
 
 ## Conventions (non-negotiable)
@@ -72,6 +73,9 @@ pnpm typecheck      # tsc --noEmit across packages
   interface exported and documented with JSDoc (agents and docs read these).
 - Icons come from `@usebones/icons` semantic names; never import an icon
   library directly in components.
+- Every component ships a contract test file (`src/<name>/<name>.test.tsx`)
+  covering semantics, data-attribute states, aria passthrough, and the dev
+  warnings; CI runs the suite on every PR.
 - Accessibility is table stakes, verified before a component is done:
   keyboard operable end to end; focus-visible rings via `--ub-ring` on every
   focusable part; `aria-*` always passes through (spread `...props` last,

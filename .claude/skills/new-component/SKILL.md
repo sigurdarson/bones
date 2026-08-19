@@ -66,10 +66,25 @@ packages/react/src/styles.css          # @import "./<name>/<name>.css";
   TabsTab for the pattern).
 - No hardcoded durations; motion tokens only, so reduced motion works.
 
+## Contract tests (required)
+
+Every component ships `src/<name>/<name>.test.tsx` (Vitest + Testing
+Library, jsdom). Cover the contract, not the pixels:
+
+- Renders with correct semantics (role, type defaults).
+- States appear as data attributes (checked, active, invalid, ...) and
+  interactions change them (click, type).
+- `aria-*` passes through; accessible-name dev warnings fire and stay
+  silent when a name is given.
+- Variant/size data attributes and their defaults; className merging.
+- When wrapping Base UI parts that integrate with Field, verify Field
+  drives the control (see field.test.tsx); never pass state attribute keys
+  with undefined values, that overrides Field's wiring.
+
 ## Verify
 
 ```sh
-pnpm --filter @usebones/react build && pnpm --filter @usebones/react typecheck
+pnpm --filter @usebones/react build && pnpm --filter @usebones/react typecheck && pnpm --filter @usebones/react test
 ```
 
 Then create its docs page following the `component-page` skill (the Tabs
