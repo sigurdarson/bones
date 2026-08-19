@@ -61,19 +61,13 @@
   color: var(--ub-text-disabled);
 }
 
-/* Checkbox and radio items reserve a fixed slot on the left so labels
-   stay aligned whether or not the indicator is showing. */
-.ub-menu-checkbox-item,
-.ub-menu-radio-item {
-  position: relative;
-  padding-inline-start: calc(var(--_ub-item-pad) + 1.25rem);
-}
-
+/* Indicators trail the label, matching the Select dropdown's check, so
+   every label sits flush left whether or not it can be checked. */
 .ub-menu-item-indicator {
-  position: absolute;
-  inset-inline-start: var(--_ub-item-pad);
   display: flex;
   width: 0.75rem;
+  flex-shrink: 0;
+  margin-inline-start: auto;
   color: var(--ub-text-secondary);
 }
 

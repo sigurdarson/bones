@@ -114,6 +114,7 @@ export function MenuCheckboxItem({
       className={withBase("ub-menu-item ub-menu-checkbox-item", className)}
       {...props}
     >
+      {children}
       <BaseMenu.CheckboxItemIndicator className="ub-menu-item-indicator">
         <svg viewBox="0 0 12 12" fill="none" aria-hidden>
           <path
@@ -125,7 +126,6 @@ export function MenuCheckboxItem({
           />
         </svg>
       </BaseMenu.CheckboxItemIndicator>
-      {children}
     </BaseMenu.CheckboxItem>
   );
 }
@@ -155,12 +155,12 @@ export function MenuRadioItem({ className, children, ...props }: MenuRadioItemPr
       className={withBase("ub-menu-item ub-menu-radio-item", className)}
       {...props}
     >
+      {children}
       <BaseMenu.RadioItemIndicator className="ub-menu-item-indicator">
         <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden>
           <circle cx="6" cy="6" r="2.5" />
         </svg>
       </BaseMenu.RadioItemIndicator>
-      {children}
     </BaseMenu.RadioItem>
   );
 }
