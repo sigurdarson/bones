@@ -39,20 +39,21 @@ function buildCode({ compact }: PlaygroundState): string {
 } from "@usebones/react";
 
 <MenuRoot${compact ? ' size="compact"' : ""}>
-  <MenuTrigger render={<Button variant="secondary" />}>View</MenuTrigger>
+  <MenuTrigger render={<Button variant="secondary" />}>Display</MenuTrigger>
   <MenuContent>
-    <MenuItem>New folder</MenuItem>
-    <MenuSeparator />
-    <MenuCheckboxItem defaultChecked>Show hidden files</MenuCheckboxItem>
-    <MenuSeparator />
     <MenuGroup>
-      <MenuGroupLabel>Sort by</MenuGroupLabel>
-      <MenuRadioGroup defaultValue="name">
-        <MenuRadioItem value="name">Name</MenuRadioItem>
-        <MenuRadioItem value="date">Date modified</MenuRadioItem>
-        <MenuRadioItem value="size">Size</MenuRadioItem>
+      <MenuGroupLabel>Group by</MenuGroupLabel>
+      <MenuRadioGroup defaultValue="status">
+        <MenuRadioItem value="status">Status</MenuRadioItem>
+        <MenuRadioItem value="assignee">Assignee</MenuRadioItem>
+        <MenuRadioItem value="priority">Priority</MenuRadioItem>
       </MenuRadioGroup>
     </MenuGroup>
+    <MenuSeparator />
+    <MenuCheckboxItem defaultChecked>Show completed</MenuCheckboxItem>
+    <MenuCheckboxItem>Show empty groups</MenuCheckboxItem>
+    <MenuSeparator />
+    <MenuItem>Reset to default</MenuItem>
   </MenuContent>
 </MenuRoot>`;
 }
@@ -67,26 +68,29 @@ export function MenuPlayground() {
         note={
           <>
             Checkbox and radio items stay open on click so the change is
-            visible; plain items close the menu. Indicators render
-            automatically.
+            visible; plain items like Reset close the menu. Indicators
+            render automatically.
           </>
         }
       >
         <MenuRoot size={compact ? "compact" : "default"}>
-          <MenuTrigger render={<Button variant="secondary" />}>View</MenuTrigger>
+          <MenuTrigger render={<Button variant="secondary" />}>
+            Display
+          </MenuTrigger>
           <MenuContent>
-            <MenuItem>New folder</MenuItem>
-            <MenuSeparator />
-            <MenuCheckboxItem defaultChecked>Show hidden files</MenuCheckboxItem>
-            <MenuSeparator />
             <MenuGroup>
-              <MenuGroupLabel>Sort by</MenuGroupLabel>
-              <MenuRadioGroup defaultValue="name">
-                <MenuRadioItem value="name">Name</MenuRadioItem>
-                <MenuRadioItem value="date">Date modified</MenuRadioItem>
-                <MenuRadioItem value="size">Size</MenuRadioItem>
+              <MenuGroupLabel>Group by</MenuGroupLabel>
+              <MenuRadioGroup defaultValue="status">
+                <MenuRadioItem value="status">Status</MenuRadioItem>
+                <MenuRadioItem value="assignee">Assignee</MenuRadioItem>
+                <MenuRadioItem value="priority">Priority</MenuRadioItem>
               </MenuRadioGroup>
             </MenuGroup>
+            <MenuSeparator />
+            <MenuCheckboxItem defaultChecked>Show completed</MenuCheckboxItem>
+            <MenuCheckboxItem>Show empty groups</MenuCheckboxItem>
+            <MenuSeparator />
+            <MenuItem>Reset to default</MenuItem>
           </MenuContent>
         </MenuRoot>
       </Showcase>
