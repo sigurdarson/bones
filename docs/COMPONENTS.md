@@ -16,7 +16,7 @@ skipped (with a reason).
 | Checkbox Group    | done         |       |
 | Collapsible       | todo         |       |
 | Combobox          | todo         |       |
-| Context Menu      | todo         |       |
+| Context Menu      | done         | Root, trigger, and content only; items come from Menu. |
 | Dialog            | done         |       |
 | Drawer            | todo         |       |
 | Field             | done         | Labels, descriptions, and errors for all form controls. |

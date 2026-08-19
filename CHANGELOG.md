@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add ContextMenu wrapping the Base UI Context Menu: opens at the
+  pointer on right click or long press, hosts the regular Menu parts,
+  and shares the menu's popup styling.
 - react: fix floating surfaces nudging half a pixel when a child repaints
   on hover; every overlay popup (select, menu, popover, tooltip, both
   dialogs) now pins its own layer with will-change: transform.
