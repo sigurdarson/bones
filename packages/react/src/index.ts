@@ -1,5 +1,6 @@
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
+export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
   FieldRoot,
   FieldLabel,
@@ -11,6 +12,8 @@ export {
   type FieldErrorProps,
 } from "./field/field";
 export { Input, type InputProps } from "./input/input";
+export { NumberField, type NumberFieldProps } from "./number-field/number-field";
+export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from "./radio/radio";
 export {
   SelectRoot,
   SelectTrigger,

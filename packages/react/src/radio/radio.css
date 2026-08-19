@@ -1,0 +1,46 @@
+.ub-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ub-radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid var(--ub-border-strong);
+  border-radius: var(--ub-radius-full);
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--ub-duration-fast) var(--ub-ease-out),
+    border-color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-radio:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-radio[data-checked] {
+  background: var(--ub-accent);
+  border-color: var(--ub-accent);
+}
+
+.ub-radio[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ub-radio-indicator {
+  display: flex;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--ub-radius-full);
+  background: var(--ub-accent-contrast);
+}

@@ -13,7 +13,7 @@ skipped (with a reason).
 | Avatar            | todo         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |
 | Checkbox          | done         |       |
-| Checkbox Group    | todo         |       |
+| Checkbox Group    | done         |       |
 | Collapsible       | todo         |       |
 | Combobox          | todo         |       |
 | Context Menu      | todo         |       |
@@ -27,12 +27,12 @@ skipped (with a reason).
 | Menubar           | todo         |       |
 | Meter             | todo         |       |
 | Navigation Menu   | todo         |       |
-| Number Field      | todo         |       |
+| Number Field      | done         |       |
 | OTP Field         | todo         |       |
 | Popover           | todo         |       |
 | Preview Card      | todo         |       |
 | Progress          | todo         |       |
-| Radio             | todo         |       |
+| Radio             | done         |       |
 | Scroll Area       | todo         |       |
 | Select            | done         |       |
 | Separator         | todo         |       |

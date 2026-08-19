@@ -45,6 +45,9 @@ const content = `# bones
   class="ub-button" data-variant="...".
 - Checkbox: checked/defaultChecked/onCheckedChange/indeterminate/disabled.
   Style states via [data-checked], [data-indeterminate], [data-disabled].
+- CheckboxGroup: wraps Checkboxes (each joins via value); defaultValue or
+  value + onValueChange (string arrays); allValues + <Checkbox parent />
+  for select-all with indeterminate; disabled disables members.
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
   FieldDescription + FieldError (match). Wrap any bones form control;
   validation state flows to it automatically.
@@ -53,6 +56,12 @@ const content = `# bones
   Native input props pass through (bones size prop replaces the native
   size attribute). States via [data-focused], [data-filled],
   [data-invalid].
+- NumberField: one component with steppers; min/max/step/largeStep/value/
+  onValueChange/disabled pass through; variant default | borderless, size,
+  invalid, hint, placeholder.
+- Radio + RadioGroup: group holds defaultValue or value + onValueChange,
+  disabled; <Radio value="..." /> inside; dot indicator automatic. States
+  via [data-checked], [data-disabled].
 - Select: SelectRoot (size, sizes trigger and items together) +
   SelectTrigger (placeholder, variant default | borderless, invalid,
   leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],
