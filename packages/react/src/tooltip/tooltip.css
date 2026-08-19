@@ -1,0 +1,30 @@
+/* The trigger usually wraps a real control via render, which brings its
+   own styling; the bare class only guarantees a focus ring. */
+.ub-tooltip-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-tooltip-popup {
+  box-sizing: border-box;
+  max-width: 16rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-md);
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-sm);
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-primary);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--ub-duration-fast) var(--ub-ease-out),
+    scale var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-tooltip-popup[data-starting-style],
+.ub-tooltip-popup[data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}

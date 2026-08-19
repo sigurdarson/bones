@@ -20,6 +20,20 @@ export {
 } from "./field/field";
 export { Input, type InputProps } from "./input/input";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
+export {
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+  type PopoverRootProps,
+  type PopoverTriggerProps,
+  type PopoverContentProps,
+  type PopoverTitleProps,
+  type PopoverDescriptionProps,
+  type PopoverCloseProps,
+} from "./popover/popover";
 export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from "./radio/radio";
 export {
   SelectRoot,
@@ -35,6 +49,16 @@ export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
 export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
+export {
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+  type TooltipProviderProps,
+  type TooltipRootProps,
+  type TooltipTriggerProps,
+  type TooltipContentProps,
+} from "./tooltip/tooltip";
 export {
   TabsRoot,
   TabsList,

@@ -5,6 +5,12 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Tooltip wrapping the Base UI Tooltip: glass surface, opens
+  on hover and focus, attaches to real controls via render, optional
+  shared-delay provider.
+- react: add Popover wrapping the Base UI Popover: non-modal anchored
+  panel with title, description, and close parts pre-wired for
+  accessible naming.
 - react: add Fieldset wrapping the Base UI Fieldset: related fields
   grouped under one legend, with native whole-group disabling.
 - react: add Form wrapping the Base UI Form: onFormSubmit with parsed

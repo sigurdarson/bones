@@ -29,7 +29,7 @@ skipped (with a reason).
 | Navigation Menu   | todo         |       |
 | Number Field      | done         |       |
 | OTP Field         | todo         |       |
-| Popover           | todo         |       |
+| Popover           | done         |       |
 | Preview Card      | todo         |       |
 | Progress          | todo         |       |
 | Radio             | done         |       |
@@ -43,4 +43,4 @@ skipped (with a reason).
 | Toggle            | done         |       |
 | Toggle Group      | done         |       |
 | Toolbar           | todo         |       |
-| Tooltip           | todo         |       |
+| Tooltip           | done         |       |
