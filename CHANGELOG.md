@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: fix dialog and alert dialog popups nudging half a pixel when a
+  child (like a button) repaints on hover.
 - react: add AlertDialog wrapping the Base UI Alert Dialog: a
   confirmation that is always modal and never dismissed by outside
   clicks, with one close part per choice.

@@ -51,6 +51,10 @@
   backdrop-filter: blur(0.5rem);
   box-shadow: var(--ub-shadow-lg);
   color: var(--ub-text-primary);
+  /* Pinned to its own layer: grid-centering can land on a half pixel, and
+     without this a child repaint (a button hover) re-rasterizes the
+     blurred popup at a different rounding, visibly nudging it. */
+  will-change: transform;
   transition:
     opacity var(--ub-duration-base) var(--ub-ease-out),
     scale var(--ub-duration-base) var(--ub-ease-out);
