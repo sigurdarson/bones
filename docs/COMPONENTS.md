@@ -42,7 +42,7 @@ skipped (with a reason).
 | Toast             | done         | Pre-composed Toaster + useToast hook. |
 | Toggle            | done         |       |
 | Toggle Group      | done         |       |
-| Toolbar           | todo         |       |
+| Toolbar           | done         |       |
 | Tooltip           | done         |       |
 
 ## Beyond Base UI

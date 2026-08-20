@@ -142,6 +142,20 @@ export {
   type ToasterPosition,
 } from "./toast/toast";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
+export {
+  ToolbarRoot,
+  ToolbarButton,
+  ToolbarLink,
+  ToolbarGroup,
+  ToolbarSeparator,
+  ToolbarInput,
+  type ToolbarRootProps,
+  type ToolbarButtonProps,
+  type ToolbarLinkProps,
+  type ToolbarGroupProps,
+  type ToolbarSeparatorProps,
+  type ToolbarInputProps,
+} from "./toolbar/toolbar";
 export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
 export {
   TooltipProvider,

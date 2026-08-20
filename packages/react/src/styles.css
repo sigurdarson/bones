@@ -27,5 +27,6 @@
 @import "./tabs/tabs.css";
 @import "./toast/toast.css";
 @import "./toggle/toggle.css";
+@import "./toolbar/toolbar.css";
 @import "./toggle-group/toggle-group.css";
 @import "./tooltip/tooltip.css";

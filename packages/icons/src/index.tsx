@@ -2,6 +2,9 @@
 
 import * as React from "react";
 import {
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
   ArrowLeft,
   ArrowRight,
   Bell,
@@ -28,6 +31,9 @@ import {
  * sets (e.g. Hugeicons) by mounting <IconProvider icons={...}> once.
  */
 export type IconName =
+  | "align-center"
+  | "align-left"
+  | "align-right"
   | "arrow-left"
   | "arrow-right"
   | "bell"
@@ -52,6 +58,9 @@ export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 export type IconSet = Record<IconName, IconComponent>;
 
 export const defaultIcons: IconSet = {
+  "align-center": AlignCenter,
+  "align-left": AlignLeft,
+  "align-right": AlignRight,
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
   bell: Bell,

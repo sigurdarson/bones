@@ -5,6 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Toolbar wrapping the Base UI Toolbar: one tab stop with
+  arrow-key focus, real controls attached via render, and an
+  auto-perpendicular separator.
+- icons: add align-left, align-center, and align-right icons.
 - react: select trigger values and items now truncate with an ellipsis
   instead of overflowing when width-constrained.
 - react: add Toast wrapping the Base UI Toast: ToastProvider plus a

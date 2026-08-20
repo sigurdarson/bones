@@ -1,0 +1,50 @@
+.ub-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ub-toolbar[data-orientation="vertical"] {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ub-toolbar-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Buttons, links, and inputs usually wrap real controls via render, which
+   bring their own styling; the bare classes only guarantee a focus ring. */
+.ub-toolbar-button:focus-visible,
+.ub-toolbar-link:focus-visible,
+.ub-toolbar-input:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-toolbar-link {
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+  text-decoration: none;
+  padding-inline: 0.375rem;
+  border-radius: var(--ub-radius-control);
+  transition: color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-toolbar-link:hover {
+  color: var(--ub-text-primary);
+}
+
+/* The hairline itself comes from ub-separator (see separator.css); Base
+   UI sets the perpendicular orientation. Only the toolbar spacing lives
+   here. */
+.ub-toolbar-separator[data-orientation="vertical"] {
+  margin-block: 0.25rem;
+  margin-inline: 0.25rem;
+}
+
+.ub-toolbar-separator[data-orientation="horizontal"] {
+  margin-block: 0.25rem;
+}

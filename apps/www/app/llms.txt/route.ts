@@ -151,6 +151,10 @@ const content = `# bones
 - ToggleGroup: wraps Toggles (each joins via value); string arrays via
   defaultValue or value + onValueChange; single-select by default,
   multiple for independent toggles; disabled disables members.
+- Toolbar: ToolbarRoot (aria-label required, orientation, disabled) +
+  ToolbarButton/ToolbarLink/ToolbarInput (attach real controls via
+  render={<Toggle/>} / <Button/> / <Input/>) + ToolbarGroup +
+  ToolbarSeparator (auto perpendicular). One tab stop; arrows move.
 - Tooltip: TooltipRoot + TooltipTrigger (attach via render={<Button/>};
   delay 600ms lives here) + TooltipContent (side "top" default,
   sideOffset 8). Shows on hover and focus. A description, never a name:
