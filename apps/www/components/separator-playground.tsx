@@ -27,13 +27,15 @@ function buildCode({ orientation }: PlaygroundState): string {
   if (orientation === "vertical") {
     return `import { Separator } from "@usebones/react";
 
-<div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-  <span>Autosaved just now</span>
+<nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+  <a href="/home">Home</a>
+  <a href="/pricing">Pricing</a>
+  <a href="/blog">Blog</a>
+  <a href="/support">Support</a>
   <Separator orientation="vertical" />
-  <span>v1.4.2</span>
-  <Separator orientation="vertical" />
-  <span>3 collaborators</span>
-</div>`;
+  <a href="/log-in">Log in</a>
+  <a href="/sign-up">Sign up</a>
+</nav>`;
   }
   return `import { Separator } from "@usebones/react";
 
@@ -42,9 +44,11 @@ function buildCode({ orientation }: PlaygroundState): string {
 <p>Invited people can edit.</p>`;
 }
 
-const rowText: React.CSSProperties = {
+const navLink: React.CSSProperties = {
   fontSize: "0.875rem",
-  color: "var(--ub-text-secondary)",
+  color: "var(--ub-text-primary)",
+  textDecoration: "none",
+  cursor: "pointer",
 };
 
 export function SeparatorPlayground() {
@@ -62,13 +66,15 @@ export function SeparatorPlayground() {
         }
       >
         {orientation === "vertical" ? (
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <span style={rowText}>Autosaved just now</span>
+          <nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <a style={navLink}>Home</a>
+            <a style={navLink}>Pricing</a>
+            <a style={navLink}>Blog</a>
+            <a style={navLink}>Support</a>
             <Separator orientation="vertical" />
-            <span style={rowText}>v1.4.2</span>
-            <Separator orientation="vertical" />
-            <span style={rowText}>3 collaborators</span>
-          </div>
+            <a style={navLink}>Log in</a>
+            <a style={navLink}>Sign up</a>
+          </nav>
         ) : (
           <div
             style={{
@@ -76,11 +82,13 @@ export function SeparatorPlayground() {
               flexDirection: "column",
               gap: "0.75rem",
               width: "16rem",
+              fontSize: "0.875rem",
+              color: "var(--ub-text-secondary)",
             }}
           >
-            <span style={rowText}>Everyone with the link can view.</span>
+            <span>Everyone with the link can view.</span>
             <Separator />
-            <span style={rowText}>Invited people can edit.</span>
+            <span>Invited people can edit.</span>
           </div>
         )}
       </Showcase>

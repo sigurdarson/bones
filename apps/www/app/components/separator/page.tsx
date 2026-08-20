@@ -30,9 +30,10 @@ export default function Page() {
         layouts; horizontal spans its container's width.
       </p>
       <Showcase
-        code={`<span>Autosaved</span>
+        code={`<a href="/blog">Blog</a>
+<a href="/support">Support</a>
 <Separator orientation="vertical" />
-<span>v1.4.2</span>
+<a href="/log-in">Log in</a>
 
 <p>Everyone with the link can view.</p>
 <Separator />
@@ -45,15 +46,22 @@ export default function Page() {
             gap: "1.25rem",
             width: "16rem",
             fontSize: "0.875rem",
-            color: "var(--ub-text-secondary)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <span>Autosaved</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <span>Blog</span>
+            <span>Support</span>
             <Separator orientation="vertical" />
-            <span>v1.4.2</span>
+            <span>Log in</span>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+              color: "var(--ub-text-secondary)",
+            }}
+          >
             <span>Everyone with the link can view.</span>
             <Separator />
             <span>Invited people can edit.</span>
