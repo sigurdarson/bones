@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add OTPField wrapping the Base UI OTP Field: one component
+  where length renders the slots and the value stays one string, with
+  Field integration, autoSubmit, mask, and two sizes.
 - react: add Toolbar wrapping the Base UI Toolbar: one tab stop with
   arrow-key focus, real controls attached via render, and an
   auto-perpendicular separator.

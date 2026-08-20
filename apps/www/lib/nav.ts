@@ -52,6 +52,7 @@ export const siteNav: NavSection[] = [
       { title: "Menu", href: "/components/menu" },
       { title: "Meter", href: "/components/meter" },
       { title: "Number field", href: "/components/number-field" },
+      { title: "OTP field", href: "/components/otp-field" },
       { title: "Popover", href: "/components/popover" },
       { title: "Progress", href: "/components/progress" },
       { title: "Radio", href: "/components/radio" },

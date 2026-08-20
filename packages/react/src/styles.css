@@ -17,6 +17,7 @@
 @import "./meter/meter.css";
 @import "./number-field/number-field.css";
 @import "./progress/progress.css";
+@import "./otp-field/otp-field.css";
 @import "./popover/popover.css";
 @import "./radio/radio.css";
 @import "./scroll-area/scroll-area.css";

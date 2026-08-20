@@ -106,6 +106,11 @@ const content = `# bones
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.
+- OTPField: one component; length renders the slots, value is one string
+  (value/defaultValue/onValueChange), typing and pasting distribute.
+  autoSubmit, mask, size default | compact; autoComplete defaults to
+  one-time-code. Wrap in Field for label/validation or pass aria-label.
+  States: [data-complete] on root, [data-filled]/[data-invalid] on slots.
 - Popover: PopoverRoot + PopoverTrigger (attach a real control via
   render={<Button/>}) + PopoverContent (side "bottom" default, align,
   sideOffset 8) + PopoverTitle/PopoverDescription (wire the accessible
