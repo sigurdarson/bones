@@ -87,6 +87,16 @@
   color: var(--ub-text-secondary);
 }
 
+/* The conventional types tint the title out of the box; any other type
+   string is a bare data-type hook for the app to style. */
+.ub-toast[data-type="success"] .ub-toast-title {
+  color: var(--ub-success);
+}
+
+.ub-toast[data-type="error"] .ub-toast-title {
+  color: var(--ub-danger);
+}
+
 /* The action reads as a compact secondary button. */
 .ub-toast-action {
   align-self: center;

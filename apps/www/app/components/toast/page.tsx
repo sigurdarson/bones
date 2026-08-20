@@ -4,6 +4,7 @@ import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { ToastPlayground } from "@/components/toast-playground";
+import { ToastVariants } from "@/components/toast-variants";
 
 export const metadata: Metadata = { title: "Toast" };
 
@@ -36,17 +37,25 @@ export default function Page() {
         toasts land in this site's own Toaster, bottom right.
       </p>
       <ToastPlayground />
+      <h2>Variants</h2>
+      <p>
+        Default, success, and error, plus a promise toast that follows an
+        async call through loading, success, or failure with the types set
+        automatically.
+      </p>
+      <ToastVariants />
       <h2>Styling states</h2>
       <p>
         Each toast carries <code>data-type</code> with whatever type you
-        pass, <code>data-expanded</code> while the stack is fanned out,
+        pass (success and error come tinted; anything else is yours to
+        style), <code>data-expanded</code> while the stack is fanned out,
         and the usual <code>data-starting-style</code>/
         <code>data-ending-style</code> transitions:
       </p>
       <CodeBlock
         lang="css"
-        code={`.ub-toast[data-type="error"] .ub-toast-title {
-  color: var(--ub-danger);
+        code={`.ub-toast[data-type="warning"] .ub-toast-title {
+  color: var(--ub-warning);
 }`}
       />
       <h2>Props</h2>
