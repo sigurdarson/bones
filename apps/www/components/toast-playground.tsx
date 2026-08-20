@@ -34,7 +34,7 @@ const positions: Record<ToasterPosition, string> = {
 };
 
 /* Each type gets content that fits it. */
-const content: Record<string, { title: string; description: string }> = {
+const content = {
   none: { title: "Draft saved", description: "We keep your last ten drafts." },
   success: { title: "Changes saved", description: "Your profile is up to date." },
   info: { title: "New version available", description: "Refresh to get 1.4.2." },
@@ -46,10 +46,12 @@ const content: Record<string, { title: string; description: string }> = {
     title: "Export failed",
     description: "The PDF took too long to render.",
   },
-};
+} as const;
+
+type ToastType = keyof typeof content;
 
 interface PlaygroundState {
-  type: string;
+  type: ToastType;
   action: boolean;
   position: ToasterPosition;
 }
@@ -83,7 +85,7 @@ const toast = useToast();
 <Toaster${position !== "bottom-right" ? ` position="${position}"` : ""} />`;
 }
 
-function FireButton({ type, action }: { type: string; action: boolean }) {
+function FireButton({ type, action }: { type: ToastType; action: boolean }) {
   const toast = useToast();
   return (
     <Button
@@ -103,7 +105,7 @@ function FireButton({ type, action }: { type: string; action: boolean }) {
 }
 
 export function ToastPlayground() {
-  const [type, setType] = React.useState("none");
+  const [type, setType] = React.useState<ToastType>("none");
   const [action, setAction] = React.useState(false);
   const [position, setPosition] = React.useState<ToasterPosition>("bottom-right");
 
@@ -131,7 +133,7 @@ export function ToastPlayground() {
             size="compact"
             items={types}
             value={type}
-            onValueChange={(value) => value && setType(value)}
+            onValueChange={(value) => value && setType(value as ToastType)}
           >
             <SelectTrigger variant="borderless" />
             <SelectContent>
