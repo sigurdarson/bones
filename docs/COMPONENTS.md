@@ -39,7 +39,7 @@ skipped (with a reason).
 | Slider            | done         |       |
 | Switch            | done         |       |
 | Tabs              | done         |       |
-| Toast             | todo         |       |
+| Toast             | done         | Pre-composed Toaster + useToast hook. |
 | Toggle            | done         |       |
 | Toggle Group      | done         |       |
 | Toolbar           | todo         |       |

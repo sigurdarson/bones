@@ -3,6 +3,7 @@ import "@usebones/tokens/index.css";
 import "@usebones/tokens/scrollbars.css";
 import "@usebones/react/styles.css";
 import "./globals.css";
+import { ToastProvider, Toaster } from "@usebones/react";
 import { SiteHeader } from "@/components/site-header";
 import { Sidebar } from "@/components/sidebar";
 import { IconSetProvider } from "@/components/icon-set-provider";
@@ -34,13 +35,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <IconSetProvider>
-          <SiteHeader />
-          <div className="site-layout">
-            <Sidebar />
-            <main className="site-content">
-              <article className="prose">{children}</article>
-            </main>
-          </div>
+          <ToastProvider>
+            <SiteHeader />
+            <div className="site-layout">
+              <Sidebar />
+              <main className="site-content">
+                <article className="prose">{children}</article>
+              </main>
+            </div>
+            <Toaster />
+          </ToastProvider>
         </IconSetProvider>
       </body>
     </html>
