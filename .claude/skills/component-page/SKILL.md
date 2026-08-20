@@ -23,9 +23,14 @@ apps/www/lib/nav.ts                         # register under Components
    good (motion, wrapping Base UI, etc.).
 2. **Playground**: interactive showcase wired to the controls rail. Always
    present.
-3. **Variants**: static showcase of the visual flavors. Only when the
-   component actually has variants (Button yes, Switch no). Skip the
-   section entirely rather than padding it.
+3. **Variants**: static showcase of the distinct visual forms, side by
+   side. "Variants" is broader than a variant prop: it covers
+   orientations (Separator), sizes, image vs fallback (Avatar),
+   determinate vs indeterminate (Progress). The playground shows one
+   configuration at a time; this section is where a reader compares them
+   at a glance. Skip it only when the component has a single visual form
+   (Switch), never just because the playground can reach each form via
+   its controls.
 4. **States**: static showcase of the states that make sense for this
    component (active/inactive/disabled, checked/unchecked, ...). Mention
    interactive states (hover, focus) in the description since a static

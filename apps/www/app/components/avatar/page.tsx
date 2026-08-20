@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Avatar } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { AvatarPlayground } from "@/components/avatar-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const metadata: Metadata = { title: "Avatar" };
 
@@ -23,6 +25,22 @@ export default function Page() {
         you've configured.
       </p>
       <AvatarPlayground />
+      <h2>Variants</h2>
+      <p>
+        Picture, initials, or an icon fallback, in both sizes. The
+        fallback is whatever you pass; initials read best at these sizes.
+      </p>
+      <Showcase
+        code={`<Avatar src="https://github.com/sigurdarson.png" alt="Sigurdarson" />
+<Avatar fallback="AL" />
+<Avatar fallback="AL" size="compact" />`}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <Avatar src="https://github.com/sigurdarson.png" alt="Sigurdarson" />
+          <Avatar fallback="AL" />
+          <Avatar fallback="AL" size="compact" />
+        </div>
+      </Showcase>
       <h2>Props</h2>
       <p>
         One component; the image and fallback parts are managed

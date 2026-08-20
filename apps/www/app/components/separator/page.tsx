@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Separator } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { SeparatorPlayground } from "@/components/separator-playground";
+import { Showcase } from "@/components/showcase";
 
 export const metadata: Metadata = { title: "Separator" };
 
@@ -22,6 +24,42 @@ export default function Page() {
         for exactly what you've configured.
       </p>
       <SeparatorPlayground />
+      <h2>Variants</h2>
+      <p>
+        Two directions. Vertical stretches to the row's height inside flex
+        layouts; horizontal spans its container's width.
+      </p>
+      <Showcase
+        code={`<span>Autosaved</span>
+<Separator orientation="vertical" />
+<span>v1.4.2</span>
+
+<p>Everyone with the link can view.</p>
+<Separator />
+<p>Invited people can edit.</p>`}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
+            width: "16rem",
+            fontSize: "0.875rem",
+            color: "var(--ub-text-secondary)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <span>Autosaved</span>
+            <Separator orientation="vertical" />
+            <span>v1.4.2</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <span>Everyone with the link can view.</span>
+            <Separator />
+            <span>Invited people can edit.</span>
+          </div>
+        </div>
+      </Showcase>
       <h2>Props</h2>
       <p>
         Everything a div accepts passes through, plus:

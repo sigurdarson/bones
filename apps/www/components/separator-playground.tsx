@@ -48,7 +48,7 @@ const rowText: React.CSSProperties = {
 };
 
 export function SeparatorPlayground() {
-  const [orientation, setOrientation] = React.useState<Orientation>("horizontal");
+  const [orientation, setOrientation] = React.useState<Orientation>("vertical");
 
   return (
     <>
@@ -85,7 +85,7 @@ export function SeparatorPlayground() {
         )}
       </Showcase>
       <Controls>
-        <ControlRow label="Orientation">
+        <ControlRow label="Direction">
           <SelectRoot
             size="compact"
             items={orientations}
