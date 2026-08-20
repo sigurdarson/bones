@@ -33,6 +33,21 @@ const positions: Record<ToasterPosition, string> = {
   "top-left": "Top left",
 };
 
+/* Each type gets content that fits it. */
+const content: Record<string, { title: string; description: string }> = {
+  none: { title: "Draft saved", description: "We keep your last ten drafts." },
+  success: { title: "Changes saved", description: "Your profile is up to date." },
+  info: { title: "New version available", description: "Refresh to get 1.4.2." },
+  warning: {
+    title: "Trial ends in 3 days",
+    description: "Pick a plan to keep your projects.",
+  },
+  error: {
+    title: "Export failed",
+    description: "The PDF took too long to render.",
+  },
+};
+
 interface PlaygroundState {
   type: string;
   action: boolean;
@@ -41,9 +56,10 @@ interface PlaygroundState {
 
 /* The Code tab mirrors whatever the controls currently show. */
 function buildCode({ type, action, position }: PlaygroundState): string {
+  const { title, description } = content[type];
   const options = [
-    `\n      title: "Changes saved",`,
-    `\n      description: "Your profile is up to date.",`,
+    `\n      title: "${title}",`,
+    `\n      description: "${description}",`,
     type !== "none" ? `\n      type: "${type}",` : "",
     action
       ? `\n      actionProps: { children: "Undo", onClick: () => restore() },`
@@ -60,7 +76,7 @@ const toast = useToast();
     })
   }
 >
-  Save changes
+  Show toast
 </Button>
 
 {/* the Toaster, mounted once in the layout */}
@@ -74,14 +90,14 @@ function FireButton({ type, action }: { type: string; action: boolean }) {
       variant="secondary"
       onClick={() =>
         toast.add({
-          title: "Changes saved",
-          description: "Your profile is up to date.",
+          title: content[type].title,
+          description: content[type].description,
           type: type === "none" ? undefined : type,
           actionProps: action ? { children: "Undo" } : undefined,
         })
       }
     >
-      Save changes
+      Show toast
     </Button>
   );
 }
