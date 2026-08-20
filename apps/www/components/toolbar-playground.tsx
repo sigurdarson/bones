@@ -39,10 +39,12 @@ const alignments = [
 
 interface PlaygroundState {
   disabled: boolean;
+  compact: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ disabled }: PlaygroundState): string {
+function buildCode({ disabled, compact }: PlaygroundState): string {
+  const size = compact ? ' size="compact"' : "";
   return `import {
   SelectContent,
   SelectItem,
@@ -60,7 +62,7 @@ import { Icon } from "@usebones/icons";
 const fonts = { inter: "Inter", georgia: "Georgia", menlo: "Menlo" };
 
 <ToolbarRoot aria-label="Formatting"${disabled ? " disabled" : ""}>
-  <SelectRoot items={fonts} defaultValue="inter" size="compact">
+  <SelectRoot items={fonts} defaultValue="inter"${size}>
     <ToolbarButton render={<SelectTrigger variant="borderless" />} />
     <SelectContent>
       <SelectItem value="inter">Inter</SelectItem>
@@ -71,7 +73,7 @@ const fonts = { inter: "Inter", georgia: "Georgia", menlo: "Menlo" };
   <ToolbarSeparator />
   <ToolbarGroup render={<ToggleGroup defaultValue={["bold"]} multiple />}>
     <ToolbarButton
-      render={<Toggle value="bold" iconOnly aria-label="Bold" />}
+      render={<Toggle value="bold" iconOnly aria-label="Bold"${size} />}
     >
       <Icon name="bold" />
     </ToolbarButton>
@@ -80,7 +82,7 @@ const fonts = { inter: "Inter", georgia: "Georgia", menlo: "Menlo" };
   <ToolbarSeparator />
   <ToolbarGroup render={<ToggleGroup defaultValue={["left"]} />}>
     <ToolbarButton
-      render={<Toggle value="left" iconOnly aria-label="Align left" />}
+      render={<Toggle value="left" iconOnly aria-label="Align left"${size} />}
     >
       <Icon name="align-left" />
     </ToolbarButton>
@@ -91,11 +93,13 @@ const fonts = { inter: "Inter", georgia: "Georgia", menlo: "Menlo" };
 
 export function ToolbarPlayground() {
   const [disabled, setDisabled] = React.useState(false);
+  const [compact, setCompact] = React.useState(false);
+  const size = compact ? ("compact" as const) : ("default" as const);
 
   return (
     <>
       <Showcase
-        code={buildCode({ disabled })}
+        code={buildCode({ disabled, compact })}
         note={
           <>
             One tab stop: arrow keys move along the row. Real controls
@@ -106,7 +110,7 @@ export function ToolbarPlayground() {
         }
       >
         <ToolbarRoot aria-label="Formatting" disabled={disabled}>
-          <SelectRoot items={fonts} defaultValue="inter" size="compact">
+          <SelectRoot items={fonts} defaultValue="inter" size={size}>
             <ToolbarButton
               render={
                 <SelectTrigger
@@ -129,7 +133,12 @@ export function ToolbarPlayground() {
               <ToolbarButton
                 key={mark.value}
                 render={
-                  <Toggle value={mark.value} iconOnly aria-label={mark.label} />
+                  <Toggle
+                    value={mark.value}
+                    iconOnly
+                    aria-label={mark.label}
+                    size={size}
+                  />
                 }
               >
                 <Icon name={mark.icon} />
@@ -146,6 +155,7 @@ export function ToolbarPlayground() {
                     value={alignment.value}
                     iconOnly
                     aria-label={alignment.label}
+                    size={size}
                   />
                 }
               >
@@ -155,13 +165,23 @@ export function ToolbarPlayground() {
           </ToolbarGroup>
           <ToolbarSeparator />
           <ToolbarButton
-            render={<Button variant="ghost" iconOnly aria-label="Copy link" />}
+            render={
+              <Button
+                variant="ghost"
+                iconOnly
+                aria-label="Copy link"
+                size={size}
+              />
+            }
           >
             <Icon name="copy" />
           </ToolbarButton>
         </ToolbarRoot>
       </Showcase>
       <Controls>
+        <ControlRow label="Compact">
+          <Switch checked={compact} onCheckedChange={setCompact} />
+        </ControlRow>
         <ControlRow label="Disabled">
           <Switch checked={disabled} onCheckedChange={setDisabled} />
         </ControlRow>
