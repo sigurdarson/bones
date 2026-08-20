@@ -55,6 +55,7 @@ export const siteNav: NavSection[] = [
       { title: "Popover", href: "/components/popover" },
       { title: "Progress", href: "/components/progress" },
       { title: "Radio", href: "/components/radio" },
+      { title: "Scroll area", href: "/components/scroll-area" },
       { title: "Select", href: "/components/select" },
       { title: "Separator", href: "/components/separator" },
       { title: "Slider", href: "/components/slider" },

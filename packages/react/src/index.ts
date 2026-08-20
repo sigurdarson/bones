@@ -129,6 +129,7 @@ export {
   type SelectContentProps,
   type SelectItemProps,
 } from "./select/select";
+export { ScrollArea, type ScrollAreaProps } from "./scroll-area/scroll-area";
 export { Separator, type SeparatorProps } from "./separator/separator";
 export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";

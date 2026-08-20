@@ -118,6 +118,10 @@ const content = `# bones
 - Radio + RadioGroup: group holds defaultValue or value + onValueChange,
   disabled; <Radio value="..." /> inside; dot indicator automatic. States
   via [data-checked], [data-disabled].
+- ScrollArea: one component; wrap content, size like a box (height /
+  max-height / width); both bars wired automatically, shown only when
+  the axis overflows, revealed on hover/scroll. aria-label names the
+  region. For panes, not the page.
 - Select: SelectRoot (size, sizes trigger and items together) +
   SelectTrigger (placeholder, variant default | borderless, invalid,
   leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],

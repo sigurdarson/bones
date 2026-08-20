@@ -1,0 +1,66 @@
+.ub-scroll-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.ub-scroll-area-viewport {
+  width: 100%;
+  height: 100%;
+  overscroll-behavior: contain;
+}
+
+.ub-scroll-area-viewport:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: -2px;
+}
+
+/* Bars overlay the content and reveal on hover or while scrolling,
+   matching the site scrollbar recipe. */
+.ub-scroll-area-scrollbar {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-scroll-area-scrollbar[data-orientation="vertical"] {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-end: 0;
+  width: 0.625rem;
+  padding-block: 0.125rem;
+}
+
+.ub-scroll-area-scrollbar[data-orientation="horizontal"] {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 0.625rem;
+  padding-inline: 0.125rem;
+  flex-direction: column;
+}
+
+.ub-scroll-area-scrollbar[data-hovering],
+.ub-scroll-area-scrollbar[data-scrolling] {
+  opacity: 1;
+}
+
+.ub-scroll-area-thumb {
+  border-radius: var(--ub-radius-full);
+  background: oklch(from var(--ub-border-strong) l c h / 0.6);
+}
+
+.ub-scroll-area-scrollbar[data-orientation="vertical"] .ub-scroll-area-thumb {
+  width: 0.375rem;
+}
+
+.ub-scroll-area-scrollbar[data-orientation="horizontal"] .ub-scroll-area-thumb {
+  height: 0.375rem;
+}
+
+.ub-scroll-area-corner {
+  position: absolute;
+  bottom: 0;
+  inset-inline-end: 0;
+}
