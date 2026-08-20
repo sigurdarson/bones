@@ -14,11 +14,7 @@ toast.add({ title: "New version available", type: "info" });
 
 toast.add({ title: "Trial ends in 3 days", type: "warning" });
 
-toast.add({
-  title: "Export failed",
-  description: "The PDF took too long to render.",
-  type: "error",
-});
+toast.add({ title: "Export failed", type: "error" });
 
 /* type is set automatically: loading, then success or error. */
 toast.promise(deploy(), {
@@ -81,13 +77,7 @@ export function ToastVariants() {
         </Button>
         <Button
           variant="secondary"
-          onClick={() =>
-            toast.add({
-              title: "Export failed",
-              description: "The PDF took too long to render.",
-              type: "error",
-            })
-          }
+          onClick={() => toast.add({ title: "Export failed", type: "error" })}
         >
           Error
         </Button>
