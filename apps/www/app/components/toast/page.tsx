@@ -4,6 +4,12 @@ import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { ToastPlayground } from "@/components/toast-playground";
+import {
+  ToastDedupe,
+  ToastHeights,
+  ToastLocation,
+  ToastUndo,
+} from "@/components/toast-recipes";
 import { ToastVariants } from "@/components/toast-variants";
 
 export const metadata: Metadata = { title: "Toast" };
@@ -44,6 +50,31 @@ export default function Page() {
         automatically.
       </p>
       <ToastVariants />
+      <h2>Location</h2>
+      <p>
+        The Toaster takes a <code>position</code>: any corner or edge
+        center, bottom right by default. Top positions peek downward and
+        swipe upward.
+      </p>
+      <ToastLocation />
+      <h2>Varying heights</h2>
+      <p>
+        Each toast's height is measured, so the stack and the expanded fan
+        stay correct with mixed content lengths.
+      </p>
+      <ToastHeights />
+      <h2>Deduplication</h2>
+      <p>
+        Pass a fixed <code>id</code> and repeat events collapse into one
+        toast instead of stacking; each add refreshes the timer.
+      </p>
+      <ToastDedupe />
+      <h2>Undo action</h2>
+      <p>
+        The classic use of <code>actionProps</code>: the action closes the
+        toast and a follow-up confirms.
+      </p>
+      <ToastUndo />
       <h2>Styling states</h2>
       <p>
         Each toast carries <code>data-type</code> with whatever type you
@@ -77,6 +108,12 @@ export default function Page() {
             type: "number",
             defaultValue: "3",
             description: "Most toasts shown at once; extras queue up.",
+          },
+          {
+            name: "Toaster.position",
+            type: "ToasterPosition",
+            defaultValue: '"bottom-right"',
+            description: "Any corner or edge center; swipe direction follows.",
           },
           {
             name: "toast.add({ title, description })",

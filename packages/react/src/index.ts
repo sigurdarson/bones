@@ -139,6 +139,7 @@ export {
   useToast,
   type ToastProviderProps,
   type ToasterProps,
+  type ToasterPosition,
 } from "./toast/toast";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
 export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";

@@ -1,4 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
+import * as React from "react";
+import { describe, expect, it } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ToastProvider, Toaster, useToast } from "./toast";
@@ -58,6 +59,53 @@ describe("Toast", () => {
       "data-type",
       "success",
     );
+    expect(document.querySelector(".ub-toast-icon")).toBeInTheDocument();
+  });
+
+  it("positions the stack via the position prop", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <SaveDemo />
+        <Toaster position="top-center" />
+      </ToastProvider>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "Save" }));
+    await screen.findByText("Changes saved");
+    expect(document.querySelector(".ub-toaster")).toHaveAttribute(
+      "data-position",
+      "top-center",
+    );
+  });
+
+  it("updates in place when adding with an existing id", async () => {
+    const user = userEvent.setup();
+    function SyncDemo() {
+      const toast = useToast();
+      const count = React.useRef(0);
+      return (
+        <Button
+          onClick={() => {
+            count.current += 1;
+            toast.add({ id: "sync", title: `Synced ${count.current} files` });
+          }}
+        >
+          Sync
+        </Button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <SyncDemo />
+        <Toaster />
+      </ToastProvider>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "Sync" }));
+    await user.click(screen.getByRole("button", { name: "Sync" }));
+    expect(await screen.findByText("Synced 2 files")).toBeInTheDocument();
+    expect(document.querySelectorAll(".ub-toast")).toHaveLength(1);
   });
 
   it("dismisses from the close button", async () => {

@@ -1,3 +1,5 @@
+/* Base styles are the bottom-right default; data-position remaps the
+   corner (or edge center). */
 .ub-toaster {
   position: fixed;
   bottom: 1rem;
@@ -5,6 +7,22 @@
   z-index: var(--ub-z-overlay);
   width: 22rem;
   max-width: calc(100vw - 2rem);
+}
+
+.ub-toaster[data-position$="left"] {
+  inset-inline-end: auto;
+  inset-inline-start: 1rem;
+}
+
+.ub-toaster[data-position$="center"] {
+  inset-inline-end: auto;
+  left: 50%;
+  translate: -50% 0;
+}
+
+.ub-toaster[data-position^="top"] {
+  bottom: auto;
+  top: 1rem;
 }
 
 /* Toasts stack from the bottom right. Base UI drives the geometry through
@@ -58,6 +76,27 @@
   opacity: 0;
 }
 
+/* Top positions anchor to the top and peek downward instead. */
+.ub-toaster[data-position^="top"] .ub-toast {
+  bottom: auto;
+  top: 0;
+  transform: translateX(var(--toast-swipe-movement-x, 0px))
+    translateY(
+      calc(var(--toast-swipe-movement-y, 0px) + min(var(--toast-index), 5) * 0.5rem)
+    );
+}
+
+.ub-toaster[data-position^="top"] .ub-toast[data-expanded] {
+  transform: translateX(var(--toast-swipe-movement-x, 0px))
+    translateY(
+      calc(var(--toast-swipe-movement-y, 0px) + var(--toast-offset-y) + min(var(--toast-index), 5) * 0.5rem)
+    );
+}
+
+.ub-toaster[data-position^="top"] .ub-toast[data-starting-style] {
+  transform: translateY(-100%);
+}
+
 .ub-toast[data-swiping] {
   transition: none;
 }
@@ -87,13 +126,28 @@
   color: var(--ub-text-secondary);
 }
 
-/* The conventional types tint the title out of the box; any other type
-   string is a bare data-type hook for the app to style. */
+/* The conventional types tint the title and add an icon out of the box;
+   any other type string is a bare data-type hook for the app to style. */
 .ub-toast[data-type="success"] .ub-toast-title {
   color: var(--ub-success);
 }
 
 .ub-toast[data-type="error"] .ub-toast-title {
+  color: var(--ub-danger);
+}
+
+.ub-toast-icon {
+  display: flex;
+  width: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.ub-toast[data-type="success"] .ub-toast-icon {
+  color: var(--ub-success);
+}
+
+.ub-toast[data-type="error"] .ub-toast-icon {
   color: var(--ub-danger);
 }
 
