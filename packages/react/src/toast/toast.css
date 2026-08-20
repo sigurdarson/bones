@@ -116,6 +116,7 @@
 .ub-toast-title {
   margin: 0;
   font-size: var(--ub-font-size-compact);
+  line-height: 1.5;
   font-weight: 500;
   color: var(--ub-text-primary);
 }
@@ -123,17 +124,21 @@
 .ub-toast-description {
   margin: 0;
   font-size: var(--ub-font-size-compact);
+  line-height: 1.5;
   color: var(--ub-text-secondary);
 }
 
 /* The conventional types (success, info, warning, error) tint the title
    and add an icon out of the box; any other type string is a bare
    data-type hook for the app to style. */
+/* The icon's box matches the title's line box exactly, so the two center
+   together on the first line whether or not a description follows. */
 .ub-toast-icon {
   display: flex;
+  align-items: center;
   width: 1rem;
+  height: calc(var(--ub-font-size-compact) * 1.5);
   flex-shrink: 0;
-  margin-top: 0.125rem;
 }
 
 .ub-toast[data-type="success"] .ub-toast-title,
