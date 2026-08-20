@@ -46,55 +46,82 @@ export function ToastVariants() {
         </>
       }
     >
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-        <Button
-          variant="secondary"
-          onClick={() => toast.add({ title: "Draft saved" })}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.5rem",
+          }}
         >
-          Default
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() => toast.add({ title: "Changes saved", type: "success" })}
+          <Button
+            variant="secondary"
+            onClick={() => toast.add({ title: "Draft saved" })}
+          >
+            Default
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              toast.add({ title: "Changes saved", type: "success" })
+            }
+          >
+            Success
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              toast.add({ title: "New version available", type: "info" })
+            }
+          >
+            Info
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              toast.add({ title: "Trial ends in 3 days", type: "warning" })
+            }
+          >
+            Warning
+          </Button>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.5rem",
+          }}
         >
-          Success
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() =>
-            toast.add({ title: "New version available", type: "info" })
-          }
-        >
-          Info
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() =>
-            toast.add({ title: "Trial ends in 3 days", type: "warning" })
-          }
-        >
-          Warning
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() => toast.add({ title: "Export failed", type: "error" })}
-        >
-          Error
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() =>
-            void toast
-              .promise(deploy(), {
-                loading: { title: "Deploying..." },
-                success: { title: "Deployed", description: "Live in 42s." },
-                error: { title: "Deploy failed" },
-              })
-              .catch(() => {})
-          }
-        >
-          Promise
-        </Button>
+          <Button
+            variant="secondary"
+            onClick={() => toast.add({ title: "Export failed", type: "error" })}
+          >
+            Error
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              void toast
+                .promise(deploy(), {
+                  loading: { title: "Deploying..." },
+                  success: { title: "Deployed", description: "Live in 42s." },
+                  error: { title: "Deploy failed" },
+                })
+                .catch(() => {})
+            }
+          >
+            Promise
+          </Button>
+        </div>
       </div>
     </Showcase>
   );

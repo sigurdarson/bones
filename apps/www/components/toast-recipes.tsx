@@ -38,7 +38,14 @@ function LocationButtons({
     ["bottom-right", "Bottom right"],
   ];
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "0.5rem",
+      }}
+    >
       {positions.map(([position, label]) => (
         <Button
           key={position}
