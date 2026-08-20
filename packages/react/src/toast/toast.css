@@ -36,7 +36,7 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 0.875rem 0.875rem 1rem;
   border: 1px solid var(--ub-border);
@@ -131,14 +131,20 @@
 /* The conventional types (success, info, warning, error) tint the title
    and add an icon out of the box; any other type string is a bare
    data-type hook for the app to style. */
-/* The icon's box matches the title's line box exactly, so the two center
-   together on the first line whether or not a description follows. */
+/* The icon's box matches the title's line box exactly. The row centers
+   everything, which is right for single-line toasts; with a description
+   the content is the tall element, so the icon pins to the top to sit on
+   the title's first line. */
 .ub-toast-icon {
   display: flex;
   align-items: center;
   width: 1rem;
   height: calc(var(--ub-font-size-compact) * 1.5);
   flex-shrink: 0;
+}
+
+.ub-toast:has(.ub-toast-description) .ub-toast-icon {
+  align-self: flex-start;
 }
 
 .ub-toast[data-type="success"] .ub-toast-title,
