@@ -98,7 +98,7 @@ export function ToastPlayground() {
         note={
           <>
             Fire a few and hover the stack to fan it out. This demo runs
-            its own provider so the location control moves only these
+            its own provider so the position control moves only these
             toasts; toast.promise handles loading, success, and error in
             one call.
           </>
@@ -127,7 +127,7 @@ export function ToastPlayground() {
             </SelectContent>
           </SelectRoot>
         </ControlRow>
-        <ControlRow label="Location">
+        <ControlRow label="Position">
           <SelectRoot
             size="compact"
             items={positions}

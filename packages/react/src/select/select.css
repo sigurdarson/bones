@@ -48,9 +48,15 @@
   color: var(--ub-text-secondary);
 }
 
+/* Long values truncate instead of stretching or overflowing the
+   trigger. */
 .ub-select-value {
   flex: 1;
+  min-width: 0;
   text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ub-select-value[data-placeholder] {
@@ -156,6 +162,14 @@
 
 .ub-select-item[data-disabled] {
   color: var(--ub-text-disabled);
+}
+
+/* Item text truncates when the popup is width-constrained. */
+.ub-select-item-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ub-select-item-indicator {

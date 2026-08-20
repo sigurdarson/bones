@@ -10,16 +10,16 @@ import {
 } from "@usebones/react";
 import { Showcase } from "./showcase";
 
-/* ---------- Location ---------- */
+/* ---------- Position ---------- */
 
-const locationCode = `const [position, setPosition] = React.useState<ToasterPosition>("top-right");
+const positionCode = `const [position, setPosition] = React.useState<ToasterPosition>("top-right");
 
 <ToastProvider>
   {/* app */}
   <Toaster position={position} />
 </ToastProvider>`;
 
-function LocationButtons({
+function PositionButtons({
   onPick,
 }: {
   onPick: (position: ToasterPosition) => void;
@@ -75,11 +75,11 @@ function LocationButtons({
   );
 }
 
-export function ToastLocation() {
+export function ToastPosition() {
   const [position, setPosition] = React.useState<ToasterPosition>("top-right");
   return (
     <Showcase
-      code={locationCode}
+      code={positionCode}
       note={
         <>
           This demo runs its own provider so the site's bottom-right stack
@@ -88,7 +88,7 @@ export function ToastLocation() {
       }
     >
       <ToastProvider>
-        <LocationButtons onPick={setPosition} />
+        <PositionButtons onPick={setPosition} />
         <Toaster position={position} />
       </ToastProvider>
     </Showcase>

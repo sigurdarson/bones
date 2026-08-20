@@ -7,7 +7,7 @@ import { ToastPlayground } from "@/components/toast-playground";
 import {
   ToastDedupe,
   ToastHeights,
-  ToastLocation,
+  ToastPosition,
   ToastUndo,
 } from "@/components/toast-recipes";
 import { ToastVariants } from "@/components/toast-variants";
@@ -50,13 +50,13 @@ export default function Page() {
         loading, success, or failure with the types set automatically.
       </p>
       <ToastVariants />
-      <h2>Location</h2>
+      <h2>Position</h2>
       <p>
         The Toaster takes a <code>position</code>: any corner or edge
         center, bottom right by default. Top positions peek downward and
         swipe upward.
       </p>
-      <ToastLocation />
+      <ToastPosition />
       <h2>Varying heights</h2>
       <p>
         Each toast's height is measured, so the stack and the expanded fan
