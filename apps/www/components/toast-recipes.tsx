@@ -29,31 +29,47 @@ function LocationButtons({
     onPick(position);
     toast.add({ title: label, description: "The stack follows the prop." });
   }
-  const positions: [ToasterPosition, string][] = [
-    ["top-left", "Top left"],
-    ["top-center", "Top center"],
-    ["top-right", "Top right"],
-    ["bottom-left", "Bottom left"],
-    ["bottom-center", "Bottom center"],
-    ["bottom-right", "Bottom right"],
+  const rows: [ToasterPosition, string][][] = [
+    [
+      ["top-left", "Top left"],
+      ["top-center", "Top center"],
+      ["top-right", "Top right"],
+    ],
+    [
+      ["bottom-left", "Bottom left"],
+      ["bottom-center", "Bottom center"],
+      ["bottom-right", "Bottom right"],
+    ],
   ];
   return (
     <div
       style={{
         display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         gap: "0.5rem",
       }}
     >
-      {positions.map(([position, label]) => (
-        <Button
-          key={position}
-          variant="secondary"
-          onClick={() => fire(position, label)}
+      {rows.map((row, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.5rem",
+          }}
         >
-          {label}
-        </Button>
+          {row.map(([position, label]) => (
+            <Button
+              key={position}
+              variant="secondary"
+              onClick={() => fire(position, label)}
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
       ))}
     </div>
   );
