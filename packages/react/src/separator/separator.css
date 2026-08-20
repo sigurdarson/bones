@@ -1,0 +1,13 @@
+.ub-separator {
+  background: var(--ub-border);
+}
+
+.ub-separator[data-orientation="horizontal"] {
+  height: 1px;
+  width: 100%;
+}
+
+.ub-separator[data-orientation="vertical"] {
+  width: 1px;
+  align-self: stretch;
+}

@@ -49,6 +49,14 @@ const content = `# bones
   always modal and outside clicks never dismiss; Escape cancels. One
   AlertDialogClose per choice (Cancel ghost, action primary or danger
   with onClick). Use only for hard-to-undo actions.
+- Avatar: one component; src + alt (the person's name; required with src,
+  "" only when the name is visible beside it) + fallback (initials or
+  icon, shows until the image loads and on error); size default (36px) |
+  compact (28px); always round.
+- AvatarGroup: overlapping Avatars (a bones composition, no Base UI
+  part); children are regular Avatars ordered most-important first;
+  max={n} collapses the rest into a +N chip; size sizes the chip (match
+  the Avatars). Ring color via --ub-avatar-group-ring on surfaces.
 - Button: variants primary | secondary | ghost | danger, sizes default |
   compact, iconOnly. Icons are children. Native button props pass through;
   type defaults to "button". Anchors can reuse the styling:
@@ -114,6 +122,9 @@ const content = `# bones
   SelectTrigger (placeholder, variant default | borderless, invalid,
   leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],
   [data-popup-open].
+- Separator: a 1px line with separator semantics; orientation
+  "horizontal" (default) | "vertical" (stretches inside flex rows).
+  Menus use MenuSeparator instead.
 - Slider: one component; track/indicator/thumbs automatic; array value =
   range with a thumb per entry; min/max/step/orientation pass through.
   Always pass aria-label. Never animate thumb position.

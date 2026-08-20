@@ -10,7 +10,7 @@ skipped (with a reason).
 | Accordion         | done         |       |
 | Alert Dialog      | done         |       |
 | Autocomplete      | todo         |       |
-| Avatar            | todo         |       |
+| Avatar            | done         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |
 | Checkbox          | done         |       |
 | Checkbox Group    | done         |       |
@@ -35,7 +35,7 @@ skipped (with a reason).
 | Radio             | done         |       |
 | Scroll Area       | todo         |       |
 | Select            | done         |       |
-| Separator         | todo         |       |
+| Separator         | done         |       |
 | Slider            | done         |       |
 | Switch            | done         |       |
 | Tabs              | done         |       |
@@ -44,3 +44,12 @@ skipped (with a reason).
 | Toggle Group      | done         |       |
 | Toolbar           | todo         |       |
 | Tooltip           | done         |       |
+
+## Beyond Base UI
+
+Compositions bones ships that have no Base UI part. They build on the
+wrapped primitives; hand-rolled behavior stays minimal.
+
+| Component    | bones status | Notes |
+| ------------ | ------------ | ----- |
+| Avatar Group | done         | Overlapping Avatars with a +N overflow chip. |

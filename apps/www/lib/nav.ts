@@ -37,6 +37,8 @@ export const siteNav: NavSection[] = [
     items: [
       { title: "Accordion", href: "/components/accordion" },
       { title: "Alert dialog", href: "/components/alert-dialog" },
+      { title: "Avatar", href: "/components/avatar" },
+      { title: "Avatar group", href: "/components/avatar-group" },
       { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },
@@ -54,6 +56,7 @@ export const siteNav: NavSection[] = [
       { title: "Progress", href: "/components/progress" },
       { title: "Radio", href: "/components/radio" },
       { title: "Select", href: "/components/select" },
+      { title: "Separator", href: "/components/separator" },
       { title: "Slider", href: "/components/slider" },
       { title: "Switch", href: "/components/switch" },
       { title: "Tabs", href: "/components/tabs" },

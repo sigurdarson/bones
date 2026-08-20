@@ -22,6 +22,8 @@ export {
   type AlertDialogDescriptionProps,
   type AlertDialogCloseProps,
 } from "./alert-dialog/alert-dialog";
+export { Avatar, type AvatarProps } from "./avatar/avatar";
+export { AvatarGroup, type AvatarGroupProps } from "./avatar-group/avatar-group";
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export {
@@ -127,6 +129,7 @@ export {
   type SelectContentProps,
   type SelectItemProps,
 } from "./select/select";
+export { Separator, type SeparatorProps } from "./separator/separator";
 export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
