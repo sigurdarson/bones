@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ScrollArea } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { ScrollAreaPlayground } from "@/components/scroll-area-playground";
+import { Showcase } from "@/components/showcase";
 
 export const metadata: Metadata = { title: "Scroll area" };
 
@@ -26,6 +28,55 @@ export default function Page() {
         configured.
       </p>
       <ScrollAreaPlayground />
+      <h2>Variants</h2>
+      <p>
+        Content that overflows both axes gets both bars, and the corner
+        between them renders automatically. Deploy logs and wide tables
+        are the usual suspects.
+      </p>
+      <Showcase
+        code={`<ScrollArea
+  style={{
+    height: "10rem",
+    width: "18rem",
+    border: "1px solid var(--ub-border)",
+    borderRadius: "var(--ub-radius-md)",
+  }}
+  aria-label="Deploy log"
+>
+  <pre>{deployLog}</pre>
+</ScrollArea>`}
+      >
+        <ScrollArea
+          style={{
+            height: "10rem",
+            width: "18rem",
+            border: "1px solid var(--ub-border)",
+            borderRadius: "var(--ub-radius-md)",
+          }}
+          aria-label="Deploy log"
+        >
+          <pre
+            style={{
+              margin: 0,
+              padding: "0.75rem",
+              width: "max-content",
+              fontSize: "0.8125rem",
+              lineHeight: 1.6,
+              color: "var(--ub-text-secondary)",
+            }}
+          >
+            {`12:01:14 build   pulling base image node:22-slim (cached)
+12:01:15 build   pnpm install --frozen-lockfile completed in 8.2s
+12:01:24 build   turbo build: packages/tokens, packages/react, apps/www
+12:01:58 build   next build finished: 24 static routes, 0 warnings
+12:02:03 deploy  uploading 214 assets to the edge network
+12:02:19 deploy  promoting deployment to production
+12:02:20 deploy  aliasing usebones.com and www.usebones.com
+12:02:21 ready   deployment live in 67s`}
+          </pre>
+        </ScrollArea>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         Scrollbars carry <code>data-orientation</code>, plus{" "}

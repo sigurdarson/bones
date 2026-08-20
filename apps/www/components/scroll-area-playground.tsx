@@ -36,16 +36,29 @@ const projects = [
   "internal-tools",
 ];
 
+const pane: React.CSSProperties = {
+  border: "1px solid var(--ub-border)",
+  borderRadius: "var(--ub-radius-md)",
+};
+
 interface PlaygroundState {
   direction: Direction;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
 function buildCode({ direction }: PlaygroundState): string {
+  const paneStyle = `border: "1px solid var(--ub-border)",
+    borderRadius: "var(--ub-radius-md)",`;
   if (direction === "horizontal") {
     return `import { ScrollArea } from "@usebones/react";
 
-<ScrollArea style={{ width: "16rem" }} aria-label="Projects">
+<ScrollArea
+  style={{
+    width: "16rem",
+    ${paneStyle}
+  }}
+  aria-label="Projects"
+>
   <div style={{ display: "flex", gap: "0.5rem", width: "max-content" }}>
     {projects.map((name) => (
       <span key={name} className="chip">{name}</span>
@@ -55,7 +68,13 @@ function buildCode({ direction }: PlaygroundState): string {
   }
   return `import { ScrollArea } from "@usebones/react";
 
-<ScrollArea style={{ height: "10rem" }} aria-label="Release notes">
+<ScrollArea
+  style={{
+    height: "10rem",
+    ${paneStyle}
+  }}
+  aria-label="Release notes"
+>
   {notes.map(([version, note]) => (
     <p key={version}>
       <strong>{version}</strong> {note}
@@ -81,7 +100,7 @@ export function ScrollAreaPlayground() {
       >
         {direction === "vertical" ? (
           <ScrollArea
-            style={{ height: "10rem", width: "18rem" }}
+            style={{ ...pane, height: "10rem", width: "18rem" }}
             aria-label="Release notes"
           >
             <div
@@ -89,6 +108,7 @@ export function ScrollAreaPlayground() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "0.625rem",
+                padding: "0.75rem",
                 paddingInlineEnd: "1rem",
                 fontSize: "0.875rem",
                 color: "var(--ub-text-secondary)",
@@ -105,12 +125,13 @@ export function ScrollAreaPlayground() {
             </div>
           </ScrollArea>
         ) : (
-          <ScrollArea style={{ width: "16rem" }} aria-label="Projects">
+          <ScrollArea style={{ ...pane, width: "16rem" }} aria-label="Projects">
             <div
               style={{
                 display: "flex",
                 gap: "0.5rem",
                 width: "max-content",
+                padding: "0.75rem",
                 paddingBlockEnd: "1rem",
               }}
             >
