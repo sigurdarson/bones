@@ -136,6 +136,11 @@ const content = `# bones
   disabled. Style states via [data-checked] and [data-disabled].
 - Tabs: TabsRoot (size) + TabsList + TabsTab (iconOnly, disabled) +
   TabsPanel. Icons are children. Active state via [data-active].
+- Toast: mount ToastProvider + one <Toaster /> once; fire with
+  useToast(): toast.add({ title, description, type, actionProps }),
+  toast.promise(p, { loading, success, error }), toast.update/close.
+  Provider: timeout (5000ms, paused on hover/focus), limit (3). Style
+  via [data-type], [data-expanded].
 - Toggle: pressed state via data-pressed; defaultPressed or pressed +
   onPressedChange; size, iconOnly (needs aria-label); value joins a
   ToggleGroup.

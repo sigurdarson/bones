@@ -1,0 +1,150 @@
+.ub-toaster {
+  position: fixed;
+  bottom: 1rem;
+  inset-inline-end: 1rem;
+  z-index: var(--ub-z-overlay);
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+}
+
+/* Toasts stack from the bottom right. Base UI drives the geometry through
+   variables: --toast-index for depth, --toast-offset-y for the expanded
+   fan, --toast-swipe-movement-* while dragging. Collapsed, each deeper
+   toast peeks 0.5rem above the one in front and shrinks a step. */
+.ub-toast {
+  position: absolute;
+  bottom: 0;
+  inset-inline-end: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 2.5rem 0.875rem 1rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-lg);
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-md);
+  will-change: transform;
+  transform: translateX(var(--toast-swipe-movement-x, 0px))
+    translateY(
+      calc(var(--toast-swipe-movement-y, 0px) + min(var(--toast-index), 5) * -0.5rem)
+    );
+  scale: calc(1 - min(var(--toast-index), 5) * 0.05);
+  z-index: calc(20 - var(--toast-index));
+  transition:
+    transform var(--ub-duration-slow) var(--ub-ease-out),
+    scale var(--ub-duration-slow) var(--ub-ease-out),
+    opacity var(--ub-duration-base) var(--ub-ease-out);
+}
+
+/* Hovering the stack (or focusing it with F6) fans the toasts out. */
+.ub-toast[data-expanded] {
+  transform: translateX(var(--toast-swipe-movement-x, 0px))
+    translateY(
+      calc(var(--toast-swipe-movement-y, 0px) - var(--toast-offset-y) - min(var(--toast-index), 5) * 0.5rem)
+    );
+  scale: 1;
+}
+
+.ub-toast[data-starting-style] {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.ub-toast[data-ending-style] {
+  opacity: 0;
+}
+
+.ub-toast[data-swiping] {
+  transition: none;
+}
+
+.ub-toast[data-limited] {
+  opacity: 0;
+}
+
+.ub-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.ub-toast-title {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+}
+
+.ub-toast-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}
+
+/* The action reads as a compact secondary button. */
+.ub-toast-action {
+  align-self: center;
+  flex-shrink: 0;
+  height: 1.75rem;
+  padding-inline: 0.625rem;
+  border: none;
+  border-radius: var(--ub-radius-control);
+  background: var(--ub-bg-muted);
+  font-family: inherit;
+  font-size: var(--ub-font-size-compact);
+  font-weight: 500;
+  color: var(--ub-text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-toast-action:hover {
+  background: var(--ub-bg-muted-hover);
+}
+
+.ub-toast-action:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-toast-close {
+  position: absolute;
+  top: 0.5rem;
+  inset-inline-end: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--ub-radius-sm);
+  background: transparent;
+  color: var(--ub-text-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--ub-duration-fast) var(--ub-ease-out),
+    color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-toast-close:hover {
+  background: var(--ub-bg-muted);
+  color: var(--ub-text-primary);
+}
+
+.ub-toast-close:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-toast-close svg {
+  width: 0.625rem;
+}

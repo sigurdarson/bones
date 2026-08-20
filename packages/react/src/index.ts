@@ -133,6 +133,13 @@ export { ScrollArea, type ScrollAreaProps } from "./scroll-area/scroll-area";
 export { Separator, type SeparatorProps } from "./separator/separator";
 export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";
+export {
+  ToastProvider,
+  Toaster,
+  useToast,
+  type ToastProviderProps,
+  type ToasterProps,
+} from "./toast/toast";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
 export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
 export {
