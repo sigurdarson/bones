@@ -53,6 +53,10 @@ const content = `# bones
   "" only when the name is visible beside it) + fallback (initials or
   icon, shows until the image loads and on error); size default (36px) |
   compact (28px); always round.
+- AvatarGroup: overlapping Avatars (a bones composition, no Base UI
+  part); children are regular Avatars ordered most-important first;
+  max={n} collapses the rest into a +N chip; size sizes the chip (match
+  the Avatars). Ring color via --ub-avatar-group-ring on surfaces.
 - Button: variants primary | secondary | ghost | danger, sizes default |
   compact, iconOnly. Icons are children. Native button props pass through;
   type defaults to "button". Anchors can reuse the styling:

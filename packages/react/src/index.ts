@@ -23,6 +23,7 @@ export {
   type AlertDialogCloseProps,
 } from "./alert-dialog/alert-dialog";
 export { Avatar, type AvatarProps } from "./avatar/avatar";
+export { AvatarGroup, type AvatarGroupProps } from "./avatar-group/avatar-group";
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
 export {

@@ -44,3 +44,12 @@ skipped (with a reason).
 | Toggle Group      | done         |       |
 | Toolbar           | todo         |       |
 | Tooltip           | done         |       |
+
+## Beyond Base UI
+
+Compositions bones ships that have no Base UI part. They build on the
+wrapped primitives; hand-rolled behavior stays minimal.
+
+| Component    | bones status | Notes |
+| ------------ | ------------ | ----- |
+| Avatar Group | done         | Overlapping Avatars with a +N overflow chip. |

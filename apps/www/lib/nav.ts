@@ -38,6 +38,7 @@ export const siteNav: NavSection[] = [
       { title: "Accordion", href: "/components/accordion" },
       { title: "Alert dialog", href: "/components/alert-dialog" },
       { title: "Avatar", href: "/components/avatar" },
+      { title: "Avatar group", href: "/components/avatar-group" },
       { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },
