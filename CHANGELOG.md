@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add ScrollArea wrapping the Base UI Scroll Area: one component
+  with overlay scrollbars that reveal on hover or scroll, consistent
+  across browsers.
 - react: add Avatar wrapping the Base UI Avatar: one component with
   managed image and fallback, two sizes, always round.
 - react: add AvatarGroup, a bones composition (no Base UI part):

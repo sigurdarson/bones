@@ -33,7 +33,7 @@ skipped (with a reason).
 | Preview Card      | todo         |       |
 | Progress          | done         |       |
 | Radio             | done         |       |
-| Scroll Area       | todo         |       |
+| Scroll Area       | done         |       |
 | Select            | done         |       |
 | Separator         | done         |       |
 | Slider            | done         |       |
