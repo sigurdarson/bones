@@ -24,6 +24,12 @@ export default function Page() {
         dismissable by swipe, timer paused while you're reading. Fire them
         from anywhere with one hook.
       </p>
+      <h2>Playground</h2>
+      <p>
+        Every control maps to an option of <code>toast.add</code>. The
+        toasts land in this site's own Toaster, bottom right.
+      </p>
+      <ToastPlayground />
       <h2>Setup</h2>
       <p>
         Two pieces, mounted once: the provider holds the queue, the
@@ -37,12 +43,6 @@ export default function Page() {
   <Toaster />
 </ToastProvider>`}
       />
-      <h2>Playground</h2>
-      <p>
-        Every control maps to an option of <code>toast.add</code>. The
-        toasts land in this site's own Toaster, bottom right.
-      </p>
-      <ToastPlayground />
       <h2>Variants</h2>
       <p>
         Default plus the four conventional types, each tinted with an
