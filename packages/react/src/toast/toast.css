@@ -38,7 +38,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 0.875rem 2.5rem 0.875rem 1rem;
+  padding: 0.875rem 0.875rem 0.875rem 1rem;
   border: 1px solid var(--ub-border);
   border-radius: var(--ub-radius-lg);
   background: var(--ub-surface-glass);
@@ -126,16 +126,9 @@
   color: var(--ub-text-secondary);
 }
 
-/* The conventional types tint the title and add an icon out of the box;
-   any other type string is a bare data-type hook for the app to style. */
-.ub-toast[data-type="success"] .ub-toast-title {
-  color: var(--ub-success);
-}
-
-.ub-toast[data-type="error"] .ub-toast-title {
-  color: var(--ub-danger);
-}
-
+/* The conventional types (success, info, warning, error) tint the title
+   and add an icon out of the box; any other type string is a bare
+   data-type hook for the app to style. */
 .ub-toast-icon {
   display: flex;
   width: 1rem;
@@ -143,10 +136,22 @@
   margin-top: 0.125rem;
 }
 
+.ub-toast[data-type="success"] .ub-toast-title,
 .ub-toast[data-type="success"] .ub-toast-icon {
   color: var(--ub-success);
 }
 
+.ub-toast[data-type="info"] .ub-toast-title,
+.ub-toast[data-type="info"] .ub-toast-icon {
+  color: var(--ub-info);
+}
+
+.ub-toast[data-type="warning"] .ub-toast-title,
+.ub-toast[data-type="warning"] .ub-toast-icon {
+  color: var(--ub-warning);
+}
+
+.ub-toast[data-type="error"] .ub-toast-title,
 .ub-toast[data-type="error"] .ub-toast-icon {
   color: var(--ub-danger);
 }
@@ -178,10 +183,10 @@
   outline-offset: 2px;
 }
 
+/* Action and close sit inline after the text, vertically centered. */
 .ub-toast-close {
-  position: absolute;
-  top: 0.5rem;
-  inset-inline-end: 0.5rem;
+  align-self: center;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;

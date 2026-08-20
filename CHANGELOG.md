@@ -8,8 +8,8 @@ All @usebones packages release together with a single version (see
 - react: add Toast wrapping the Base UI Toast: ToastProvider plus a
   pre-composed Toaster stack (bottom right, hover to expand, swipe to
   dismiss) and a useToast hook with add, update, close, and promise;
-  success and error types come tinted with icons, and the Toaster takes
-  a position (any corner or edge center).
+  the success, info, warning, and error types come tinted with icons,
+  and the Toaster takes a position (any corner or edge center).
 - react: add ScrollArea wrapping the Base UI Scroll Area: one component
   with overlay scrollbars that reveal on hover or scroll, consistent
   across browsers.

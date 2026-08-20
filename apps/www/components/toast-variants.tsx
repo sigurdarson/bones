@@ -10,6 +10,10 @@ toast.add({ title: "Draft saved" });
 
 toast.add({ title: "Changes saved", type: "success" });
 
+toast.add({ title: "New version available", type: "info" });
+
+toast.add({ title: "Trial ends in 3 days", type: "warning" });
+
 toast.add({
   title: "Export failed",
   description: "The PDF took too long to render.",
@@ -39,9 +43,10 @@ export function ToastVariants() {
       code={code}
       note={
         <>
-          success and error tint the title out of the box; any other type
-          is a bare styling hook. The promise toast follows the deploy,
-          which succeeds or fails at a coin flip here.
+          success, info, warning, and error tint the title and add an icon
+          out of the box; any other type is a bare styling hook. The
+          promise toast follows the deploy, which succeeds or fails at a
+          coin flip here.
         </>
       }
     >
@@ -57,6 +62,22 @@ export function ToastVariants() {
           onClick={() => toast.add({ title: "Changes saved", type: "success" })}
         >
           Success
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() =>
+            toast.add({ title: "New version available", type: "info" })
+          }
+        >
+          Info
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() =>
+            toast.add({ title: "Trial ends in 3 days", type: "warning" })
+          }
+        >
+          Warning
         </Button>
         <Button
           variant="secondary"

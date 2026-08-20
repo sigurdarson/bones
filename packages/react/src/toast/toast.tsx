@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Toast as BaseToast } from "@base-ui/react/toast";
 import { withBase } from "../lib/with-base";
 
@@ -36,32 +37,57 @@ export interface ToasterProps extends BaseToast.Viewport.Props {
   position?: ToasterPosition;
 }
 
-const successIcon = (
-  <svg viewBox="0 0 16 16" fill="none" aria-hidden>
-    <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
-    <path
-      d="M5.5 8.2 7.2 9.9l3.3-3.8"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const errorIcon = (
-  <svg viewBox="0 0 16 16" fill="none" aria-hidden>
-    <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M8 5v3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <circle cx="8" cy="11" r="0.9" fill="currentColor" />
-  </svg>
-);
+const typeIcons: Record<string, React.ReactNode> = {
+  success: (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden>
+      <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M5.5 8.2 7.2 9.9l3.3-3.8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  info: (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden>
+      <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="8" cy="5.2" r="0.9" fill="currentColor" />
+      <path d="M8 7.5V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+  warning: (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M8 2.6 14.4 13.4H1.6z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path d="M8 6.8v2.7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="8" cy="11.4" r="0.9" fill="currentColor" />
+    </svg>
+  ),
+  error: (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden>
+      <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M5.8 5.8l4.4 4.4M10.2 5.8l-4.4 4.4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  ),
+};
 
 /**
  * Renders the toast stack, newest on top, bottom right by default. Mount
  * it once inside the ToastProvider; every toast added via useToast
  * appears here with a title, description, optional action, and a close
- * button. success and error types get an icon and tint automatically.
+ * button. The success, info, warning, and error types get an icon and
+ * tint automatically.
  * Hover (or focus with F6) to expand the stack; swipe or click to
  * dismiss, in the direction matching the corner.
  */
@@ -94,9 +120,9 @@ export function Toaster({
             swipeDirection={[...swipeDirection]}
             className="ub-toast"
           >
-            {toast.type === "success" || toast.type === "error" ? (
+            {toast.type && typeIcons[toast.type] ? (
               <span className="ub-toast-icon" aria-hidden>
-                {toast.type === "success" ? successIcon : errorIcon}
+                {typeIcons[toast.type]}
               </span>
             ) : null}
             <BaseToast.Content className="ub-toast-content">

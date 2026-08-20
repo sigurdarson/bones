@@ -45,9 +45,9 @@ export default function Page() {
       <ToastPlayground />
       <h2>Variants</h2>
       <p>
-        Default, success, and error, plus a promise toast that follows an
-        async call through loading, success, or failure with the types set
-        automatically.
+        Default plus the four conventional types, each tinted with an
+        icon, and a promise toast that follows an async call through
+        loading, success, or failure with the types set automatically.
       </p>
       <ToastVariants />
       <h2>Location</h2>
@@ -78,15 +78,16 @@ export default function Page() {
       <h2>Styling states</h2>
       <p>
         Each toast carries <code>data-type</code> with whatever type you
-        pass (success and error come tinted; anything else is yours to
-        style), <code>data-expanded</code> while the stack is fanned out,
-        and the usual <code>data-starting-style</code>/
-        <code>data-ending-style</code> transitions:
+        pass (success, info, warning, and error come tinted with icons;
+        anything else is yours to style), <code>data-expanded</code> while
+        the stack is fanned out, and the usual{" "}
+        <code>data-starting-style</code>/<code>data-ending-style</code>{" "}
+        transitions:
       </p>
       <CodeBlock
         lang="css"
-        code={`.ub-toast[data-type="warning"] .ub-toast-title {
-  color: var(--ub-warning);
+        code={`.ub-toast[data-type="deploy"] .ub-toast-title {
+  color: var(--ub-accent);
 }`}
       />
       <h2>Props</h2>
