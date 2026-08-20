@@ -4,6 +4,9 @@ import * as React from "react";
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
 import {
   ArrowDown01Icon,
+  TextAlignCenterIcon,
+  TextAlignLeftIcon,
+  TextAlignRightIcon,
   ArrowLeft02Icon,
   ArrowRight01Icon,
   ArrowRight02Icon,
@@ -33,6 +36,9 @@ function wrap(icon: IconSvgElement): IconComponent {
 }
 
 export const hugeicons: IconSet = {
+  "align-center": wrap(TextAlignCenterIcon),
+  "align-left": wrap(TextAlignLeftIcon),
+  "align-right": wrap(TextAlignRightIcon),
   "arrow-left": wrap(ArrowLeft02Icon),
   "arrow-right": wrap(ArrowRight02Icon),
   bell: wrap(Notification01Icon),
