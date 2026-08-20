@@ -67,7 +67,7 @@ export default function Page() {
 - Structure: ToolbarRoot (always pass aria-label) wrapping ToolbarButtons; group related ones with ToolbarGroup, divide with ToolbarSeparator.
 - Attach real controls via render: ToolbarButton render={<Toggle iconOnly aria-label="..." />} or render={<Button variant="ghost" ... />}; ToolbarInput render={<Input ... />}. The control keeps its own styling and state.
 - One tab stop; arrow keys move between controls (swapped by orientation "vertical"). disabled on the root switches off everything.
-- Restyle in CSS via .ub-toolbar, .ub-toolbar-separator, [data-orientation]. Tokens only.`}
+- Restyle in CSS via .ub-toolbar and [data-orientation]; the separator renders the Separator component's class (.ub-separator) plus .ub-toolbar-separator spacing, so restyling one restyles both. Tokens only.`}
       />
     </>
   );

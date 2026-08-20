@@ -31,10 +31,11 @@ describe("Toolbar", () => {
   it("renders a named toolbar with a perpendicular separator", () => {
     render(<EditorToolbar />);
     expect(screen.getByRole("toolbar", { name: "Formatting" })).toBeInTheDocument();
-    expect(screen.getByRole("separator")).toHaveAttribute(
-      "data-orientation",
-      "vertical",
-    );
+    const separator = screen.getByRole("separator");
+    expect(separator).toHaveAttribute("data-orientation", "vertical");
+    /* Shares the Separator component's class so the two restyle
+       together. */
+    expect(separator).toHaveClass("ub-separator");
   });
 
   it("is one tab stop; arrow keys move between controls", async () => {

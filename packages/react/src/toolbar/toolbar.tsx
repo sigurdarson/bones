@@ -56,11 +56,15 @@ export function ToolbarGroup({ className, ...props }: ToolbarGroupProps) {
 
 export interface ToolbarSeparatorProps extends BaseToolbar.Separator.Props {}
 
-/** A line between groups, perpendicular to the toolbar automatically. */
+/**
+ * A line between groups, perpendicular to the toolbar automatically. It
+ * is the Separator component's look (ub-separator) plus toolbar spacing,
+ * so the two restyle together.
+ */
 export function ToolbarSeparator({ className, ...props }: ToolbarSeparatorProps) {
   return (
     <BaseToolbar.Separator
-      className={withBase("ub-toolbar-separator", className)}
+      className={withBase("ub-separator ub-toolbar-separator", className)}
       {...props}
     />
   );

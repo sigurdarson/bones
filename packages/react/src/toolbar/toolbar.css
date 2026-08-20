@@ -37,20 +37,14 @@
   color: var(--ub-text-primary);
 }
 
-/* Perpendicular to the toolbar; Base UI sets the orientation. */
-.ub-toolbar-separator {
-  background: var(--ub-border);
-}
-
+/* The hairline itself comes from ub-separator (see separator.css); Base
+   UI sets the perpendicular orientation. Only the toolbar spacing lives
+   here. */
 .ub-toolbar-separator[data-orientation="vertical"] {
-  width: 1px;
-  align-self: stretch;
   margin-block: 0.25rem;
   margin-inline: 0.25rem;
 }
 
 .ub-toolbar-separator[data-orientation="horizontal"] {
-  height: 1px;
-  width: 100%;
   margin-block: 0.25rem;
 }
