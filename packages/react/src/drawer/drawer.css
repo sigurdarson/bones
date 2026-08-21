@@ -33,17 +33,16 @@
   z-index: var(--ub-z-overlay);
 }
 
-/* A bottom sheet: full width up to a cap, rounded top corners, and a
-   grab handle. Swipe movement comes through Base UI's variable; the
-   transition pauses while a finger is on it. */
+/* Base styles are the bottom sheet: full width, rounded top corners, a
+   grab handle. Swipe movement comes through Base UI's variables; the
+   transition pauses while a finger is on it. data-side remaps the sheet
+   into a left or right panel. */
 .ub-drawer-popup {
   position: absolute;
   bottom: 0;
   inset-inline: 0;
-  margin-inline: auto;
   box-sizing: border-box;
   width: 100%;
-  max-width: 30rem;
   max-height: 85dvh;
   display: flex;
   flex-direction: column;
@@ -80,6 +79,60 @@
 
 .ub-drawer-popup[data-swiping] {
   transition: none;
+}
+
+/* Side panels: full height, capped width, sliding on the x axis. */
+.ub-drawer-popup[data-side="left"],
+.ub-drawer-popup[data-side="right"] {
+  top: 0;
+  bottom: 0;
+  width: min(24rem, calc(100vw - 3rem));
+  max-height: none;
+  padding: 1.5rem;
+  transform: translateX(var(--drawer-swipe-movement-x, 0px));
+}
+
+.ub-drawer-popup[data-side="left"]::before,
+.ub-drawer-popup[data-side="right"]::before {
+  top: 50%;
+  left: auto;
+  translate: 0 -50%;
+  width: 0.25rem;
+  height: 2.25rem;
+}
+
+.ub-drawer-popup[data-side="right"] {
+  inset-inline-start: auto;
+  border-bottom: 1px solid var(--ub-border);
+  border-inline-end: none;
+  border-radius: var(--ub-radius-lg) 0 0 var(--ub-radius-lg);
+  padding-inline-start: 1.75rem;
+}
+
+.ub-drawer-popup[data-side="right"]::before {
+  inset-inline-start: 0.5rem;
+}
+
+.ub-drawer-popup[data-side="right"][data-starting-style],
+.ub-drawer-popup[data-side="right"][data-ending-style] {
+  transform: translateX(100%);
+}
+
+.ub-drawer-popup[data-side="left"] {
+  inset-inline-end: auto;
+  border-bottom: 1px solid var(--ub-border);
+  border-inline-start: none;
+  border-radius: 0 var(--ub-radius-lg) var(--ub-radius-lg) 0;
+  padding-inline-end: 1.75rem;
+}
+
+.ub-drawer-popup[data-side="left"]::before {
+  inset-inline-end: 0.5rem;
+}
+
+.ub-drawer-popup[data-side="left"][data-starting-style],
+.ub-drawer-popup[data-side="left"][data-ending-style] {
+  transform: translateX(-100%);
 }
 
 .ub-drawer-content {

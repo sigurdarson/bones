@@ -65,6 +65,7 @@ export {
   DrawerDescription,
   DrawerClose,
   type DrawerRootProps,
+  type DrawerSide,
   type DrawerTriggerProps,
   type DrawerContentProps,
   type DrawerTitleProps,

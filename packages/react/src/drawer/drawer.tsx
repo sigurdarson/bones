@@ -1,17 +1,35 @@
 "use client";
 
+import * as React from "react";
 import { Drawer as BaseDrawer } from "@base-ui/react/drawer";
 import { withBase } from "../lib/with-base";
 
-export interface DrawerRootProps extends BaseDrawer.Root.Props {}
+export type DrawerSide = "bottom" | "left" | "right";
+
+/* Side flows through context because the popup portals to the body, out
+   of CSS cascade reach of the root. */
+const DrawerSideContext = React.createContext<DrawerSide>("bottom");
+
+export interface DrawerRootProps extends BaseDrawer.Root.Props {
+  /** Which edge the sheet slides in from; the dismiss swipe matches. @default "bottom" */
+  side?: DrawerSide;
+}
 
 /**
- * A sheet that slides up from the bottom edge, wrapping the Base UI
- * Drawer. Holds open state; renders no element of its own. Modal like a
- * dialog, and dismissable by swiping down on touch screens.
+ * A sheet that slides in from an edge, wrapping the Base UI Drawer.
+ * Holds open state; renders no element of its own. Modal like a dialog,
+ * and dismissable by swiping toward its edge on touch screens. Bottom is
+ * the mobile sheet; left and right are side panels.
  */
-export function DrawerRoot(props: DrawerRootProps) {
-  return <BaseDrawer.Root {...props} />;
+export function DrawerRoot({ side = "bottom", swipeDirection, ...props }: DrawerRootProps) {
+  return (
+    <DrawerSideContext.Provider value={side}>
+      <BaseDrawer.Root
+        swipeDirection={swipeDirection ?? (side === "bottom" ? "down" : side)}
+        {...props}
+      />
+    </DrawerSideContext.Provider>
+  );
 }
 
 export interface DrawerTriggerProps extends BaseDrawer.Trigger.Props {}
@@ -37,11 +55,13 @@ export interface DrawerContentProps extends BaseDrawer.Popup.Props {}
  * scroll when taller than the sheet.
  */
 export function DrawerContent({ className, children, ...props }: DrawerContentProps) {
+  const side = React.useContext(DrawerSideContext);
   return (
     <BaseDrawer.Portal>
       <BaseDrawer.Backdrop className="ub-drawer-backdrop" />
       <BaseDrawer.Viewport className="ub-drawer-viewport">
         <BaseDrawer.Popup
+          data-side={side}
           className={withBase("ub-drawer-popup", className)}
           {...props}
         >

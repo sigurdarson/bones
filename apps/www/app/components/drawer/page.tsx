@@ -13,11 +13,11 @@ export default function Page() {
     <>
       <PageHeader title="Drawer" />
       <p className="lead">
-        A sheet that slides up from the bottom edge, wrapping the Base UI
-        Drawer. Everything the{" "}
-        <Link href="/components/dialog">Dialog</Link> does (modal, focus
-        trapped, Escape closes) plus swipe-down dismissal and a grab
-        handle, which is what makes it the mobile-friendly pick.
+        A sheet that slides in from an edge, wrapping the Base UI Drawer.
+        Everything the <Link href="/components/dialog">Dialog</Link> does
+        (modal, focus trapped, Escape closes) plus swipe dismissal and a
+        grab handle. Bottom is the mobile sheet; left and right are side
+        panels.
       </p>
       <h2>Playground</h2>
       <p>
@@ -28,16 +28,17 @@ export default function Page() {
       <DrawerPlayground />
       <h2>Styling states</h2>
       <p>
-        The popup carries <code>data-swiping</code> while a finger drags
-        it (the swipe offset comes through{" "}
-        <code>--drawer-swipe-movement-y</code>), plus the usual{" "}
+        The popup carries <code>data-side</code> and{" "}
+        <code>data-swiping</code> while a finger drags it (the swipe
+        offset comes through <code>--drawer-swipe-movement-y</code>, or
+        -x for side panels), plus the usual{" "}
         <code>data-starting-style</code>/<code>data-ending-style</code>{" "}
         transitions:
       </p>
       <CodeBlock
         lang="css"
-        code={`.ub-drawer-popup {
-  max-width: 36rem;
+        code={`.ub-drawer-popup[data-side="right"] {
+  width: min(28rem, calc(100vw - 3rem));
 }`}
       />
       <h2>Props</h2>
@@ -52,10 +53,10 @@ export default function Page() {
             description: "Controlled state. Pair with onOpenChange (also defaultOpen).",
           },
           {
-            name: "DrawerRoot.swipeDirection",
-            type: "string",
-            defaultValue: '"down"',
-            description: "Which way a swipe dismisses the sheet.",
+            name: "DrawerRoot.side",
+            type: '"bottom" | "right" | "left"',
+            defaultValue: '"bottom"',
+            description: "Which edge the sheet slides in from; the dismiss swipe matches.",
           },
           {
             name: "DrawerRoot.disablePointerDismissal",
@@ -79,8 +80,8 @@ export default function Page() {
         instructions={`DrawerRoot, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, from @usebones/react.
 - Structure: DrawerRoot wraps DrawerTrigger + DrawerContent; put DrawerTitle (names the sheet), DrawerDescription, and the body inside. DrawerClose closes it.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
-- A bottom sheet: modal with focus trap and Escape, plus swipe-down dismissal and a grab handle; content scrolls when taller than 85dvh. Prefer Dialog on wide desktop layouts.
-- Restyle in CSS via .ub-drawer-popup (30rem max-width default), .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style]. Tokens only.`}
+- side on the root: "bottom" (default; full-width mobile sheet, scrolls past 85dvh) | "right" | "left" (full-height panels, 24rem wide). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
+- Restyle in CSS via .ub-drawer-popup, [data-side], .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style]. Tokens only.`}
       />
     </>
   );

@@ -50,6 +50,22 @@ describe("Drawer", () => {
     expect(screen.getByRole("button", { name: "Filters" })).toHaveFocus();
   });
 
+  it("carries the side from the root onto the popup", async () => {
+    const user = userEvent.setup();
+    render(
+      <DrawerRoot side="right">
+        <DrawerTrigger render={<Button variant="secondary" />}>Cart</DrawerTrigger>
+        <DrawerContent>
+          <DrawerTitle>Cart</DrawerTitle>
+        </DrawerContent>
+      </DrawerRoot>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "Cart" }));
+    const drawer = await screen.findByRole("dialog");
+    expect(drawer).toHaveAttribute("data-side", "right");
+  });
+
   it("closes on Escape", async () => {
     const user = userEvent.setup();
     render(<FiltersDrawer />);
