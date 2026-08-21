@@ -18,11 +18,14 @@ import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
 interface PlaygroundState {
+  compact: boolean;
   disabled: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ disabled }: PlaygroundState): string {
+function buildCode({ compact, disabled }: PlaygroundState): string {
+  const menuSize = compact ? ' size="compact"' : "";
+  const buttonSize = compact ? ' size="compact"' : "";
   return `import {
   Button,
   Menubar,
@@ -33,31 +36,39 @@ function buildCode({ disabled }: PlaygroundState): string {
 } from "@usebones/react";
 
 <Menubar${disabled ? " disabled" : ""}>
-  <MenuRoot>
-    <MenuTrigger render={<Button variant="ghost" />}>File</MenuTrigger>
+  <MenuRoot${menuSize}>
+    <MenuTrigger render={<Button variant="ghost"${buttonSize} />}>
+      File
+    </MenuTrigger>
     <MenuContent>
       <MenuItem>New document</MenuItem>
       {/* ... */}
     </MenuContent>
   </MenuRoot>
-  <MenuRoot>
-    <MenuTrigger render={<Button variant="ghost" />}>Edit</MenuTrigger>
+  <MenuRoot${menuSize}>
+    <MenuTrigger render={<Button variant="ghost"${buttonSize} />}>
+      Edit
+    </MenuTrigger>
     <MenuContent>{/* ... */}</MenuContent>
   </MenuRoot>
-  <MenuRoot>
-    <MenuTrigger render={<Button variant="ghost" />}>View</MenuTrigger>
+  <MenuRoot${menuSize}>
+    <MenuTrigger render={<Button variant="ghost"${buttonSize} />}>
+      View
+    </MenuTrigger>
     <MenuContent>{/* ... */}</MenuContent>
   </MenuRoot>
 </Menubar>`;
 }
 
 export function MenubarPlayground() {
+  const [compact, setCompact] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
+  const size = compact ? ("compact" as const) : ("default" as const);
 
   return (
     <>
       <Showcase
-        code={buildCode({ disabled })}
+        code={buildCode({ compact, disabled })}
         note={
           <>
             A strip of regular bones Menus: once one is open, hovering
@@ -67,8 +78,10 @@ export function MenubarPlayground() {
         }
       >
         <Menubar disabled={disabled}>
-          <MenuRoot>
-            <MenuTrigger render={<Button variant="ghost" />}>File</MenuTrigger>
+          <MenuRoot size={size}>
+            <MenuTrigger render={<Button variant="ghost" size={size} />}>
+              File
+            </MenuTrigger>
             <MenuContent>
               <MenuItem>New document</MenuItem>
               <MenuItem>Duplicate</MenuItem>
@@ -82,8 +95,10 @@ export function MenubarPlayground() {
               </MenuSubmenuRoot>
             </MenuContent>
           </MenuRoot>
-          <MenuRoot>
-            <MenuTrigger render={<Button variant="ghost" />}>Edit</MenuTrigger>
+          <MenuRoot size={size}>
+            <MenuTrigger render={<Button variant="ghost" size={size} />}>
+              Edit
+            </MenuTrigger>
             <MenuContent>
               <MenuItem>Undo</MenuItem>
               <MenuItem>Redo</MenuItem>
@@ -91,8 +106,10 @@ export function MenubarPlayground() {
               <MenuItem>Find and replace</MenuItem>
             </MenuContent>
           </MenuRoot>
-          <MenuRoot>
-            <MenuTrigger render={<Button variant="ghost" />}>View</MenuTrigger>
+          <MenuRoot size={size}>
+            <MenuTrigger render={<Button variant="ghost" size={size} />}>
+              View
+            </MenuTrigger>
             <MenuContent>
               <MenuCheckboxItem defaultChecked>Show sidebar</MenuCheckboxItem>
               <MenuCheckboxItem>Show word count</MenuCheckboxItem>
@@ -101,6 +118,9 @@ export function MenubarPlayground() {
         </Menubar>
       </Showcase>
       <Controls>
+        <ControlRow label="Compact">
+          <Switch checked={compact} onCheckedChange={setCompact} />
+        </ControlRow>
         <ControlRow label="Disabled">
           <Switch checked={disabled} onCheckedChange={setDisabled} />
         </ControlRow>
