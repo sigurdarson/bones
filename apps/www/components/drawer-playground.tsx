@@ -9,10 +9,12 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
+  NumberField,
   SelectContent,
   SelectItem,
   SelectRoot,
   SelectTrigger,
+  Separator,
   Switch,
   type DrawerSide,
 } from "@usebones/react";
@@ -44,41 +46,90 @@ function buildCode({ side, outsideClick }: PlaygroundState): string {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
-  Switch,
+  NumberField,
+  Separator,
 } from "@usebones/react";
 
 <DrawerRoot${rootAttrs}>
-  <DrawerTrigger render={<Button variant="secondary" />}>Filters</DrawerTrigger>
+  <DrawerTrigger render={<Button variant="secondary" />}>
+    Cart (2)
+  </DrawerTrigger>
   <DrawerContent>
-    <DrawerTitle>Filters</DrawerTitle>
-    <DrawerDescription>Narrow the results down.</DrawerDescription>
-    {/* switch rows */}
-    <DrawerClose render={<Button />}>Done</DrawerClose>
+    <DrawerTitle>Your cart</DrawerTitle>
+    <DrawerDescription>Free shipping over $50.</DrawerDescription>
+    {items.map((item) => (
+      <CartRow key={item.name}>
+        {/* name, price, and a compact NumberField for the quantity */}
+      </CartRow>
+    ))}
+    <Separator />
+    {/* subtotal row */}
+    <DrawerClose render={<Button />}>Checkout</DrawerClose>
   </DrawerContent>
 </DrawerRoot>`;
 }
 
-function FilterRow({ label, defaultOn }: { label: string; defaultOn?: boolean }) {
-  const [on, setOn] = React.useState(Boolean(defaultOn));
+const items = [
+  { name: "Cotton tee", meta: "Black, medium", price: 24 },
+  { name: "Canvas tote", meta: "Natural", price: 18 },
+];
+
+function CartRow({
+  item,
+  quantity,
+  onQuantityChange,
+}: {
+  item: (typeof items)[number];
+  quantity: number;
+  onQuantityChange: (next: number) => void;
+}) {
   return (
-    <label
+    <div
       style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         gap: "0.75rem",
-        fontSize: "0.875rem",
       }}
     >
-      <span>{label}</span>
-      <Switch checked={on} onCheckedChange={setOn} />
-    </label>
+      <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
+        <span style={{ fontSize: "0.875rem", fontWeight: 500 }}>{item.name}</span>
+        <span style={{ fontSize: "0.75rem", color: "var(--ub-text-secondary)" }}>
+          {item.meta}
+        </span>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+        <NumberField
+          size="compact"
+          min={0}
+          max={9}
+          value={quantity}
+          onValueChange={(next) => onQuantityChange(next ?? 0)}
+          aria-label={`${item.name} quantity`}
+        />
+        <span
+          style={{
+            fontSize: "0.875rem",
+            fontVariantNumeric: "tabular-nums",
+            minWidth: "2.5rem",
+            textAlign: "end",
+          }}
+        >
+          ${item.price * quantity}
+        </span>
+      </div>
+    </div>
   );
 }
 
 export function DrawerPlayground() {
   const [side, setSide] = React.useState<DrawerSide>("right");
   const [outsideClick, setOutsideClick] = React.useState(true);
+  const [quantities, setQuantities] = React.useState<number[]>([1, 1]);
+  const subtotal = items.reduce(
+    (sum, item, index) => sum + item.price * (quantities[index] ?? 0),
+    0,
+  );
 
   return (
     <>
@@ -86,9 +137,9 @@ export function DrawerPlayground() {
         code={buildCode({ side, outsideClick })}
         note={
           <>
-            Modal like a dialog, plus swipe-to-dismiss on touch screens
-            and a grab handle. Right and left are side panels for
-            filters, carts, and inspectors; bottom is the mobile sheet.
+            A cart panel composed from bones parts: compact NumberFields
+            for quantities and a live subtotal. Right and left are side
+            panels; bottom is the mobile sheet.
           </>
         }
       >
@@ -98,22 +149,49 @@ export function DrawerPlayground() {
           disablePointerDismissal={!outsideClick}
         >
           <DrawerTrigger render={<Button variant="secondary" />}>
-            Filters
+            Cart ({quantities.reduce((sum, quantity) => sum + quantity, 0)})
           </DrawerTrigger>
           <DrawerContent>
             <div
               style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
             >
               <div>
-                <DrawerTitle>Filters</DrawerTitle>
-                <DrawerDescription>Narrow the results down.</DrawerDescription>
+                <DrawerTitle>Your cart</DrawerTitle>
+                <DrawerDescription>
+                  {subtotal >= 50
+                    ? "This order ships free."
+                    : `Free shipping over $50; you're $${50 - subtotal} away.`}
+                </DrawerDescription>
               </div>
-              <FilterRow label="In stock only" defaultOn />
-              <FilterRow label="On sale" />
-              <FilterRow label="Free shipping" />
-              <div style={{ alignSelf: "flex-end" }}>
-                <DrawerClose render={<Button />}>Done</DrawerClose>
+              {items.map((item, index) => (
+                <CartRow
+                  key={item.name}
+                  item={item}
+                  quantity={quantities[index] ?? 0}
+                  onQuantityChange={(next) =>
+                    setQuantities((current) =>
+                      current.map((quantity, i) => (i === index ? next : quantity)),
+                    )
+                  }
+                />
+              ))}
+              <Separator />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  justifyContent: "space-between",
+                  fontSize: "0.875rem",
+                }}
+              >
+                <span style={{ color: "var(--ub-text-secondary)" }}>Subtotal</span>
+                <span
+                  style={{ fontWeight: 600, fontVariantNumeric: "tabular-nums" }}
+                >
+                  ${subtotal}
+                </span>
               </div>
+              <DrawerClose render={<Button />}>Checkout</DrawerClose>
             </div>
           </DrawerContent>
         </DrawerRoot>
