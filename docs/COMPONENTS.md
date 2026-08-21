@@ -28,7 +28,7 @@ skipped (with a reason).
 | Meter             | done         |       |
 | Navigation Menu   | todo         |       |
 | Number Field      | done         |       |
-| OTP Field         | todo         |       |
+| OTP Field         | done         | Pre-composed; length renders the slots. |
 | Popover           | done         |       |
 | Preview Card      | todo         |       |
 | Progress          | done         |       |

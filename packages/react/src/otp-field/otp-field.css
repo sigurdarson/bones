@@ -1,0 +1,48 @@
+.ub-otp-field {
+  --_ub-otp-slot: var(--ub-control-height);
+  --_ub-otp-font: var(--ub-font-size);
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.ub-otp-field-input {
+  box-sizing: border-box;
+  width: var(--_ub-otp-slot);
+  height: var(--_ub-otp-slot);
+  padding: 0;
+  text-align: center;
+  border: 1px solid var(--ub-border-strong);
+  border-radius: var(--ub-radius-control);
+  background: var(--ub-bg);
+  font-family: inherit;
+  font-size: var(--_ub-otp-font);
+  color: var(--ub-text-primary);
+  caret-color: var(--ub-accent);
+  transition: border-color var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-otp-field-input:focus {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+  border-color: var(--ub-border-strong);
+}
+
+.ub-otp-field-input[data-invalid] {
+  border-color: var(--ub-danger);
+}
+
+.ub-otp-field-input[data-invalid]:focus {
+  outline-color: var(--ub-danger);
+}
+
+.ub-otp-field-input[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* sizes: base styles are the default size; compact is the only override */
+.ub-otp-field[data-size="compact"] {
+  --_ub-otp-slot: var(--ub-control-height-compact);
+  --_ub-otp-font: var(--ub-font-size-compact);
+  gap: 0.375rem;
+}

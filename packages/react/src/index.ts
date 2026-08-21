@@ -104,6 +104,7 @@ export {
 export { Meter, type MeterProps } from "./meter/meter";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
 export { Progress, type ProgressProps } from "./progress/progress";
+export { OTPField, type OTPFieldProps } from "./otp-field/otp-field";
 export {
   PopoverRoot,
   PopoverTrigger,
