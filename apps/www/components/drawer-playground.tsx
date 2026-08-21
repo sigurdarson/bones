@@ -20,9 +20,9 @@ import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
 const sides: Record<DrawerSide, string> = {
-  bottom: "Bottom",
   right: "Right",
   left: "Left",
+  bottom: "Bottom",
 };
 
 interface PlaygroundState {
@@ -33,7 +33,7 @@ interface PlaygroundState {
 /* The Code tab mirrors whatever the controls currently show. */
 function buildCode({ side, outsideClick }: PlaygroundState): string {
   const rootAttrs = [
-    side !== "bottom" ? ` side="${side}"` : "",
+    side !== "right" ? ` side="${side}"` : "",
     outsideClick ? "" : " disablePointerDismissal",
   ].join("");
   return `import {
@@ -77,7 +77,7 @@ function FilterRow({ label, defaultOn }: { label: string; defaultOn?: boolean })
 }
 
 export function DrawerPlayground() {
-  const [side, setSide] = React.useState<DrawerSide>("bottom");
+  const [side, setSide] = React.useState<DrawerSide>("right");
   const [outsideClick, setOutsideClick] = React.useState(true);
 
   return (
@@ -87,8 +87,8 @@ export function DrawerPlayground() {
         note={
           <>
             Modal like a dialog, plus swipe-to-dismiss on touch screens
-            and a grab handle. Bottom is the mobile sheet; right and left
-            are side panels for filters, carts, and inspectors.
+            and a grab handle. Right and left are side panels for
+            filters, carts, and inspectors; bottom is the mobile sheet.
           </>
         }
       >

@@ -16,8 +16,8 @@ export default function Page() {
         A sheet that slides in from an edge, wrapping the Base UI Drawer.
         Everything the <Link href="/components/dialog">Dialog</Link> does
         (modal, focus trapped, Escape closes) plus swipe dismissal and a
-        grab handle. Bottom is the mobile sheet; left and right are side
-        panels.
+        grab handle. Right and left are side panels; bottom is the mobile
+        sheet.
       </p>
       <h2>Playground</h2>
       <p>
@@ -54,8 +54,8 @@ export default function Page() {
           },
           {
             name: "DrawerRoot.side",
-            type: '"bottom" | "right" | "left"',
-            defaultValue: '"bottom"',
+            type: '"right" | "left" | "bottom"',
+            defaultValue: '"right"',
             description: "Which edge the sheet slides in from; the dismiss swipe matches.",
           },
           {
@@ -80,7 +80,7 @@ export default function Page() {
         instructions={`DrawerRoot, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, from @usebones/react.
 - Structure: DrawerRoot wraps DrawerTrigger + DrawerContent; put DrawerTitle (names the sheet), DrawerDescription, and the body inside. DrawerClose closes it.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
-- side on the root: "bottom" (default; full-width mobile sheet, scrolls past 85dvh) | "right" | "left" (full-height panels, 24rem wide). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
+- side on the root: "right" (default) | "left" (full-height panels, 24rem wide) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
 - Restyle in CSS via .ub-drawer-popup, [data-side], .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style]. Tokens only.`}
       />
     </>

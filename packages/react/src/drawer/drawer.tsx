@@ -8,20 +8,20 @@ export type DrawerSide = "bottom" | "left" | "right";
 
 /* Side flows through context because the popup portals to the body, out
    of CSS cascade reach of the root. */
-const DrawerSideContext = React.createContext<DrawerSide>("bottom");
+const DrawerSideContext = React.createContext<DrawerSide>("right");
 
 export interface DrawerRootProps extends BaseDrawer.Root.Props {
-  /** Which edge the sheet slides in from; the dismiss swipe matches. @default "bottom" */
+  /** Which edge the sheet slides in from; the dismiss swipe matches. @default "right" */
   side?: DrawerSide;
 }
 
 /**
  * A sheet that slides in from an edge, wrapping the Base UI Drawer.
  * Holds open state; renders no element of its own. Modal like a dialog,
- * and dismissable by swiping toward its edge on touch screens. Bottom is
- * the mobile sheet; left and right are side panels.
+ * and dismissable by swiping toward its edge on touch screens. Right and
+ * left are side panels; bottom is the mobile sheet.
  */
-export function DrawerRoot({ side = "bottom", swipeDirection, ...props }: DrawerRootProps) {
+export function DrawerRoot({ side = "right", swipeDirection, ...props }: DrawerRootProps) {
   return (
     <DrawerSideContext.Provider value={side}>
       <BaseDrawer.Root
