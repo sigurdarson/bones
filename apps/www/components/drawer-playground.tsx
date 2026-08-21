@@ -59,7 +59,7 @@ function buildCode({ side, outsideClick }: PlaygroundState): string {
     <DrawerDescription>Free shipping over $50.</DrawerDescription>
     {items.map((item) => (
       <CartRow key={item.name}>
-        {/* name, price, and a compact NumberField for the quantity */}
+        {/* name, price, and a NumberField for the quantity */}
       </CartRow>
     ))}
     <Separator />
@@ -100,7 +100,6 @@ function CartRow({
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
         <NumberField
-          size="compact"
           min={0}
           max={9}
           value={quantity}
@@ -137,8 +136,8 @@ export function DrawerPlayground() {
         code={buildCode({ side, outsideClick })}
         note={
           <>
-            A cart panel composed from bones parts: compact NumberFields
-            for quantities and a live subtotal. Right and left are side
+            A cart panel composed from bones parts: NumberFields for
+            quantities and a live subtotal. Right and left are side
             panels; bottom is the mobile sheet.
           </>
         }
