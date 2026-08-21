@@ -116,6 +116,10 @@ const content = `# bones
   sideOffset 8) + PopoverTitle/PopoverDescription (wire the accessible
   name/description) + PopoverClose. Non-modal by default; Escape and
   outside clicks dismiss.
+- PreviewCard: PreviewCardRoot + PreviewCardTrigger (a real anchor with
+  href; delay 600ms) + PreviewCardContent (side "bottom" default, align,
+  sideOffset 8; stays open while hovered). An enhancement: touch users
+  never see it, so the link itself must suffice.
 - Progress: one component; value (null = indeterminate) + min/max, label
   (names it; required, or aria-label), showValue, format. States via
   [data-indeterminate], [data-complete]. For tasks underway; levels use

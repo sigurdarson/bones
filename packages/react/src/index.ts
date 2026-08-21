@@ -103,6 +103,14 @@ export {
 } from "./menu/menu";
 export { Meter, type MeterProps } from "./meter/meter";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
+export {
+  PreviewCardRoot,
+  PreviewCardTrigger,
+  PreviewCardContent,
+  type PreviewCardRootProps,
+  type PreviewCardTriggerProps,
+  type PreviewCardContentProps,
+} from "./preview-card/preview-card";
 export { Progress, type ProgressProps } from "./progress/progress";
 export { OTPField, type OTPFieldProps } from "./otp-field/otp-field";
 export {

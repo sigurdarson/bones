@@ -1,0 +1,37 @@
+/* The trigger is a real link and inherits the app's link styling; the
+   bare class only guarantees a focus ring. */
+.ub-preview-card-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-preview-card-positioner {
+  z-index: var(--ub-z-overlay);
+}
+
+.ub-preview-card-popup {
+  box-sizing: border-box;
+  max-width: 20rem;
+  padding: 1rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-lg);
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-md);
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-primary);
+  transform-origin: var(--transform-origin);
+  /* Pinned to its own layer like every floating surface; see the overlay
+     recipe in the new-component skill. */
+  will-change: transform;
+  transition:
+    opacity var(--ub-duration-fast) var(--ub-ease-out),
+    scale var(--ub-duration-fast) var(--ub-ease-out);
+}
+
+.ub-preview-card-popup[data-starting-style],
+.ub-preview-card-popup[data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}

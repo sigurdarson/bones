@@ -30,7 +30,7 @@ skipped (with a reason).
 | Number Field      | done         |       |
 | OTP Field         | done         | Pre-composed; length renders the slots. |
 | Popover           | done         |       |
-| Preview Card      | todo         |       |
+| Preview Card      | done         |       |
 | Progress          | done         |       |
 | Radio             | done         |       |
 | Scroll Area       | done         |       |
