@@ -9,6 +9,7 @@
 @import "./checkbox-group/checkbox-group.css";
 @import "./context-menu/context-menu.css";
 @import "./dialog/dialog.css";
+@import "./drawer/drawer.css";
 @import "./field/field.css";
 @import "./fieldset/fieldset.css";
 @import "./form/form.css";

@@ -1,0 +1,156 @@
+/* The trigger usually wraps a real control via render, which brings its
+   own styling; the bare class only guarantees a focus ring. */
+.ub-drawer-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+  background: var(--ub-overlay);
+  -webkit-backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.25rem);
+  /* The blur transitions too; fading only opacity would leave it popping
+     in at full strength (backdrop-filter ignores element opacity). */
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    -webkit-backdrop-filter var(--ub-duration-base) var(--ub-ease-out),
+    backdrop-filter var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-drawer-backdrop[data-starting-style],
+.ub-drawer-backdrop[data-ending-style] {
+  opacity: 0;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+}
+
+.ub-drawer-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+}
+
+/* Base styles are the bottom sheet: full width, rounded top corners, a
+   grab handle. Swipe movement comes through Base UI's variables; the
+   transition pauses while a finger is on it. data-side remaps the sheet
+   into a left or right panel. */
+.ub-drawer-popup {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border: 1px solid var(--ub-border);
+  border-bottom: none;
+  border-radius: var(--ub-radius-lg) var(--ub-radius-lg) 0 0;
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-lg);
+  color: var(--ub-text-primary);
+  will-change: transform;
+  transform: translateY(var(--drawer-swipe-movement-y, 0px));
+  transition: transform var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-drawer-popup::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 2.25rem;
+  height: 0.25rem;
+  border-radius: var(--ub-radius-full);
+  background: var(--ub-border-strong);
+}
+
+.ub-drawer-popup[data-starting-style],
+.ub-drawer-popup[data-ending-style] {
+  transform: translateY(100%);
+}
+
+.ub-drawer-popup[data-swiping] {
+  transition: none;
+}
+
+/* Side panels: full height, capped width, sliding on the x axis. */
+.ub-drawer-popup[data-side="left"],
+.ub-drawer-popup[data-side="right"] {
+  top: 0;
+  bottom: 0;
+  width: min(24rem, calc(100vw - 3rem));
+  max-height: none;
+  padding: 1.5rem;
+  transform: translateX(var(--drawer-swipe-movement-x, 0px));
+}
+
+.ub-drawer-popup[data-side="left"]::before,
+.ub-drawer-popup[data-side="right"]::before {
+  top: 50%;
+  left: auto;
+  translate: 0 -50%;
+  width: 0.25rem;
+  height: 2.25rem;
+}
+
+.ub-drawer-popup[data-side="right"] {
+  inset-inline-start: auto;
+  border-bottom: 1px solid var(--ub-border);
+  border-inline-end: none;
+  border-radius: var(--ub-radius-lg) 0 0 var(--ub-radius-lg);
+  padding-inline-start: 1.75rem;
+}
+
+.ub-drawer-popup[data-side="right"]::before {
+  inset-inline-start: 0.5rem;
+}
+
+.ub-drawer-popup[data-side="right"][data-starting-style],
+.ub-drawer-popup[data-side="right"][data-ending-style] {
+  transform: translateX(100%);
+}
+
+.ub-drawer-popup[data-side="left"] {
+  inset-inline-end: auto;
+  border-bottom: 1px solid var(--ub-border);
+  border-inline-start: none;
+  border-radius: 0 var(--ub-radius-lg) var(--ub-radius-lg) 0;
+  padding-inline-end: 1.75rem;
+}
+
+.ub-drawer-popup[data-side="left"]::before {
+  inset-inline-end: 0.5rem;
+}
+
+.ub-drawer-popup[data-side="left"][data-starting-style],
+.ub-drawer-popup[data-side="left"][data-ending-style] {
+  transform: translateX(-100%);
+}
+
+.ub-drawer-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.ub-drawer-title {
+  margin: 0 0 0.25rem;
+  font-size: var(--ub-font-size);
+  font-weight: 600;
+  color: var(--ub-text-primary);
+}
+
+.ub-drawer-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}

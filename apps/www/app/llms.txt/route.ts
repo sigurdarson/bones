@@ -80,6 +80,11 @@ const content = `# bones
   DialogDescription (wire the accessible name/description) + DialogClose
   (render several for Cancel/Save). Escape closes; focus is trapped and
   returned.
+- Drawer: the Dialog's shape and behavior
+  (DrawerRoot/Trigger/Content/Title/Description/Close; modal, Escape,
+  focus trap) plus swipe dismissal and a grab handle. side on the root:
+  "right" (default) | "left" (full-height 24rem panels) | "bottom"
+  (full-width mobile sheet, scrolls past 85dvh).
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
   FieldDescription + FieldError (match). Wrap any bones form control;
   validation state flows to it automatically.

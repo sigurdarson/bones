@@ -18,7 +18,7 @@ skipped (with a reason).
 | Combobox          | todo         |       |
 | Context Menu      | done         | Root, trigger, and content only; items come from Menu. |
 | Dialog            | done         |       |
-| Drawer            | todo         |       |
+| Drawer            | done         | Bottom sheet plus left/right side panels. |
 | Field             | done         | Labels, descriptions, and errors for all form controls. |
 | Fieldset          | done         |       |
 | Form              | done         |       |

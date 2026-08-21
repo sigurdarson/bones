@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Drawer wrapping the Base UI Drawer: the dialog's modality
+  plus swipe dismissal and a grab handle; side on the root picks a
+  right (default) or left panel, or a full-width bottom sheet.
 - react: add PreviewCard wrapping the Base UI Preview Card: a rich
   hover preview on a real anchor, on the shared overlay recipe.
 - react: add OTPField wrapping the Base UI OTP Field: one component
