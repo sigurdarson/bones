@@ -1,0 +1,103 @@
+/* The trigger usually wraps a real control via render, which brings its
+   own styling; the bare class only guarantees a focus ring. */
+.ub-drawer-trigger:focus-visible {
+  outline: 2px solid var(--ub-ring);
+  outline-offset: 2px;
+}
+
+.ub-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+  background: var(--ub-overlay);
+  -webkit-backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.25rem);
+  /* The blur transitions too; fading only opacity would leave it popping
+     in at full strength (backdrop-filter ignores element opacity). */
+  transition:
+    opacity var(--ub-duration-base) var(--ub-ease-out),
+    -webkit-backdrop-filter var(--ub-duration-base) var(--ub-ease-out),
+    backdrop-filter var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-drawer-backdrop[data-starting-style],
+.ub-drawer-backdrop[data-ending-style] {
+  opacity: 0;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+}
+
+.ub-drawer-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ub-z-overlay);
+}
+
+/* A bottom sheet: full width up to a cap, rounded top corners, and a
+   grab handle. Swipe movement comes through Base UI's variable; the
+   transition pauses while a finger is on it. */
+.ub-drawer-popup {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 30rem;
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border: 1px solid var(--ub-border);
+  border-bottom: none;
+  border-radius: var(--ub-radius-lg) var(--ub-radius-lg) 0 0;
+  background: var(--ub-surface-glass);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--ub-shadow-lg);
+  color: var(--ub-text-primary);
+  will-change: transform;
+  transform: translateY(var(--drawer-swipe-movement-y, 0px));
+  transition: transform var(--ub-duration-base) var(--ub-ease-out);
+}
+
+.ub-drawer-popup::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 2.25rem;
+  height: 0.25rem;
+  border-radius: var(--ub-radius-full);
+  background: var(--ub-border-strong);
+}
+
+.ub-drawer-popup[data-starting-style],
+.ub-drawer-popup[data-ending-style] {
+  transform: translateY(100%);
+}
+
+.ub-drawer-popup[data-swiping] {
+  transition: none;
+}
+
+.ub-drawer-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.ub-drawer-title {
+  margin: 0 0 0.25rem;
+  font-size: var(--ub-font-size);
+  font-weight: 600;
+  color: var(--ub-text-primary);
+}
+
+.ub-drawer-description {
+  margin: 0;
+  font-size: var(--ub-font-size-compact);
+  color: var(--ub-text-secondary);
+}

@@ -58,6 +58,20 @@ export {
   type DialogCloseProps,
 } from "./dialog/dialog";
 export {
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+  type DrawerRootProps,
+  type DrawerTriggerProps,
+  type DrawerContentProps,
+  type DrawerTitleProps,
+  type DrawerDescriptionProps,
+  type DrawerCloseProps,
+} from "./drawer/drawer";
+export {
   FieldsetRoot,
   FieldsetLegend,
   type FieldsetRootProps,

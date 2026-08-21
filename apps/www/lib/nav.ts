@@ -45,6 +45,7 @@ export const siteNav: NavSection[] = [
       { title: "Collapsible", href: "/components/collapsible" },
       { title: "Context menu", href: "/components/context-menu" },
       { title: "Dialog", href: "/components/dialog" },
+      { title: "Drawer", href: "/components/drawer" },
       { title: "Field", href: "/components/field" },
       { title: "Fieldset", href: "/components/fieldset" },
       { title: "Form", href: "/components/form" },
