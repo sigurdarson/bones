@@ -19,21 +19,39 @@ interface PlaygroundState {
   compact: boolean;
   mask: boolean;
   disabled: boolean;
+  autoSubmit: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ length, compact, mask, disabled }: PlaygroundState): string {
+function buildCode({
+  length,
+  compact,
+  mask,
+  disabled,
+  autoSubmit,
+}: PlaygroundState): string {
   const attrs = [
-    `\n  length={${length}}`,
-    `\n  aria-label="Verification code"`,
-    compact ? `\n  size="compact"` : "",
-    mask ? "\n  mask" : "",
-    disabled ? "\n  disabled" : "",
-    `\n  onValueChange={(code) => setCode(code)}`,
+    `\n    length={${length}}`,
+    `\n    aria-label="Verification code"`,
+    compact ? `\n    size="compact"` : "",
+    mask ? "\n    mask" : "",
+    disabled ? "\n    disabled" : "",
+    autoSubmit ? "\n    autoSubmit" : "",
+    `\n    value={code}`,
+    `\n    onValueChange={setCode}`,
   ].join("");
+  if (autoSubmit) {
+    return `import { OTPField } from "@usebones/react";
+
+/* autoSubmit submits the surrounding form once the last slot fills. */
+<form onSubmit={signIn}>
+  <OTPField${attrs}
+  />
+</form>`;
+  }
   return `import { OTPField } from "@usebones/react";
 
-<OTPField${attrs}
+<OTPField${attrs.replace(/\n    /g, "\n  ")}
 />`;
 }
 
@@ -42,27 +60,62 @@ export function OTPFieldPlayground() {
   const [compact, setCompact] = React.useState(false);
   const [mask, setMask] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
+  const [autoSubmit, setAutoSubmit] = React.useState(false);
+  const [code, setCode] = React.useState("");
+  const [signingIn, setSigningIn] = React.useState(false);
+
+  function onSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    setSigningIn(true);
+    setTimeout(() => {
+      setSigningIn(false);
+      setCode("");
+    }, 1500);
+  }
 
   return (
     <>
       <Showcase
-        code={buildCode({ length, compact, mask, disabled })}
+        code={buildCode({ length, compact, mask, disabled, autoSubmit })}
         note={
           <>
             Type or paste: characters distribute across the slots and the
-            value is one string. Wrap it in a Field with a FieldLabel in
-            real forms; the label wires up automatically.
+            value is one string. With auto submit on, filling the last
+            slot submits the form; this demo fakes a sign-in and resets.
           </>
         }
       >
-        <OTPField
-          key={length}
-          length={length}
-          aria-label="Verification code"
-          size={compact ? "compact" : "default"}
-          mask={mask}
-          disabled={disabled}
-        />
+        <form
+          onSubmit={onSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
+        >
+          <OTPField
+            key={length}
+            length={length}
+            aria-label="Verification code"
+            size={compact ? "compact" : "default"}
+            mask={mask}
+            disabled={disabled || signingIn}
+            autoSubmit={autoSubmit}
+            value={code}
+            onValueChange={setCode}
+          />
+          <p
+            style={{
+              margin: 0,
+              minHeight: "1.3125rem",
+              fontSize: "0.875rem",
+              color: "var(--ub-text-secondary)",
+            }}
+          >
+            {signingIn ? "Signing in..." : ""}
+          </p>
+        </form>
       </Showcase>
       <Controls>
         <ControlRow label="Length">
@@ -70,7 +123,12 @@ export function OTPFieldPlayground() {
             size="compact"
             items={lengths}
             value={String(length)}
-            onValueChange={(value) => value && setLength(Number(value))}
+            onValueChange={(value) => {
+              if (value) {
+                setLength(Number(value));
+                setCode("");
+              }
+            }}
           >
             <SelectTrigger variant="borderless" />
             <SelectContent>
@@ -81,6 +139,9 @@ export function OTPFieldPlayground() {
               ))}
             </SelectContent>
           </SelectRoot>
+        </ControlRow>
+        <ControlRow label="Auto submit">
+          <Switch checked={autoSubmit} onCheckedChange={setAutoSubmit} />
         </ControlRow>
         <ControlRow label="Compact">
           <Switch checked={compact} onCheckedChange={setCompact} />
