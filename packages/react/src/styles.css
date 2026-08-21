@@ -15,6 +15,7 @@
 @import "./form/form.css";
 @import "./input/input.css";
 @import "./menu/menu.css";
+@import "./menubar/menubar.css";
 @import "./meter/meter.css";
 @import "./number-field/number-field.css";
 @import "./progress/progress.css";

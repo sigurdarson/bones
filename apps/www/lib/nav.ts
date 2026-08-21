@@ -51,6 +51,7 @@ export const siteNav: NavSection[] = [
       { title: "Form", href: "/components/form" },
       { title: "Input", href: "/components/input" },
       { title: "Menu", href: "/components/menu" },
+      { title: "Menubar", href: "/components/menubar" },
       { title: "Meter", href: "/components/meter" },
       { title: "Number field", href: "/components/number-field" },
       { title: "OTP field", href: "/components/otp-field" },

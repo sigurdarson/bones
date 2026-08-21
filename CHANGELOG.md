@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Menubar wrapping the Base UI Menubar: a strip of regular
+  bones Menus with one open at a time, hover switching, and arrow-key
+  movement.
 - react: add Drawer wrapping the Base UI Drawer: the dialog's modality
   plus swipe dismissal and a grab handle; side on the root picks a
   right (default) or left panel, or a full-width bottom sheet.

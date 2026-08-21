@@ -105,6 +105,10 @@ const content = `# bones
   MenuGroup/MenuGroupLabel + MenuSeparator + MenuSubmenuRoot +
   MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
   [data-checked], [data-popup-open].
+- Menubar: one container (disabled, orientation, loopFocus); put regular
+  bones Menus inside (MenuRoot + MenuTrigger render={<Button
+  variant="ghost"/>} + MenuContent). One menu open at a time; hover
+  switches, arrows move along the bar.
 - Meter: one component; value + min/max, label (names it; required, or
   aria-label), showValue, format (Intl.NumberFormatOptions). A current
   level (storage, seats), never a loading state.

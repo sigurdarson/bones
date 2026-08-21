@@ -24,7 +24,7 @@ skipped (with a reason).
 | Form              | done         |       |
 | Input             | done         |       |
 | Menu              | done         |       |
-| Menubar           | todo         |       |
+| Menubar           | done         | One container; menus inside come from Menu. |
 | Meter             | done         |       |
 | Navigation Menu   | todo         |       |
 | Number Field      | done         |       |
