@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add PreviewCard wrapping the Base UI Preview Card: a rich
+  hover preview on a real anchor, on the shared overlay recipe.
 - react: add OTPField wrapping the Base UI OTP Field: one component
   where length renders the slots and the value stays one string, with
   Field integration, autoSubmit, mask, and two sizes.
