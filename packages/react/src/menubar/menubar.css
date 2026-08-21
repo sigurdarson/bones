@@ -1,11 +1,11 @@
+/* Layout only on purpose: the bar carries no border, background, or
+   padding of its own, so it drops into headers and toolbars unstyled.
+   Apps that want a standalone strip add their own chrome (see the
+   Menubar page's styling example). */
 .ub-menubar {
   display: inline-flex;
   align-items: center;
   gap: 0.125rem;
-  padding: 0.25rem;
-  border: 1px solid var(--ub-border);
-  border-radius: var(--ub-radius-md);
-  background: var(--ub-bg);
 }
 
 .ub-menubar[data-orientation="vertical"] {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentInstructions } from "@/components/agent-instructions";
+import { CodeBlock } from "@/components/code-block";
 import { MenubarPlayground } from "@/components/menubar-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
@@ -24,6 +25,20 @@ export default function Page() {
         configured.
       </p>
       <MenubarPlayground />
+      <h2>Styling</h2>
+      <p>
+        The bar ships as layout only (no border, background, or padding),
+        so it drops into a header without a fight. For a standalone strip,
+        add your own chrome:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-menubar {
+  padding: 0.25rem;
+  border: 1px solid var(--ub-border);
+  border-radius: var(--ub-radius-md);
+}`}
+      />
       <h2>Props</h2>
       <p>
         The menus and their items accept everything Menu accepts. The
@@ -56,7 +71,7 @@ export default function Page() {
 - One container: put regular bones Menus inside (MenuRoot + MenuTrigger render={<Button variant="ghost" />} + MenuContent with MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuSeparator, submenus).
 - One menu open at a time; hovering another trigger switches to it, arrow keys move along the bar (swapped by orientation "vertical").
 - disabled on the bar switches off every menu.
-- Restyle in CSS via .ub-menubar and [data-orientation]; the menus use Menu's classes. Tokens only.`}
+- The bar is layout only (no border/background/padding); add chrome via .ub-menubar in the app when it stands alone. [data-orientation] for vertical; the menus use Menu's classes. Tokens only.`}
       />
     </>
   );
