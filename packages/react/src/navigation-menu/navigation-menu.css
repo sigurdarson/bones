@@ -97,13 +97,7 @@
   overflow: hidden;
 }
 
-/* Absolutely positioned: while the popup morphs, the outgoing and
-   incoming content are both mounted, and stacking them in flow would
-   double the height mid-transition. */
 .ub-navigation-menu-content {
-  position: absolute;
-  top: 0;
-  inset-inline-start: 0;
   box-sizing: border-box;
   padding: 0.75rem;
   /* Content transitions sideways as the highlight moves between items. */
