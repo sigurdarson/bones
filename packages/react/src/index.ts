@@ -116,6 +116,7 @@ export {
   type MenuSubmenuRootProps,
   type MenuSubmenuTriggerProps,
 } from "./menu/menu";
+export { Menubar, type MenubarProps } from "./menubar/menubar";
 export { Meter, type MeterProps } from "./meter/meter";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
 export {
