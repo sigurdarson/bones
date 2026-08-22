@@ -40,24 +40,29 @@ function buildCode({ delay }: PlaygroundState): string {
 <NavigationMenuRoot${delay !== 50 ? ` delay={${delay}}` : ""}>
   <NavigationMenuList>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+      <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <NavigationMenuLink href="/components">
-          Components
-        </NavigationMenuLink>
-        <NavigationMenuLink href="/theming">Theming</NavigationMenuLink>
+        <div className="two-column-grid">
+          <NavigationMenuLink href="/quick-start">
+            Quick start
+            <span>Install and import the tokens.</span>
+          </NavigationMenuLink>
+          {/* Accessibility, Changelog, Theming */}
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="/motion">Motion</NavigationMenuLink>
+        <NavigationMenuLink href="/sizes">Sizes</NavigationMenuLink>
         <NavigationMenuLink href="/skills">Skills</NavigationMenuLink>
       </NavigationMenuContent>
     </NavigationMenuItem>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink href="/changelog">Changelog</NavigationMenuLink>
-        <NavigationMenuLink href="/llms.txt">llms.txt</NavigationMenuLink>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-      <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+      <NavigationMenuLink href="https://github.com/sigurdarson/bones">
+        GitHub
+      </NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenuRoot>`;
@@ -88,35 +93,61 @@ export function NavigationMenuPlayground() {
         <NavigationMenuRoot delay={delay}>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div style={{ display: "flex", flexDirection: "column", width: "14rem" }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2, 1fr)",
+                    gap: "0.25rem",
+                    width: "26rem",
+                  }}
+                >
                   <NavigationMenuLink>
-                    Components
-                    <span style={description}>Every primitive, themed</span>
+                    Quick start
+                    <span style={description}>
+                      Install and import the tokens.
+                    </span>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink>
+                    Accessibility
+                    <span style={description}>
+                      How every part stays operable.
+                    </span>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink>
+                    Changelog
+                    <span style={description}>
+                      What's new in each release.
+                    </span>
                   </NavigationMenuLink>
                   <NavigationMenuLink>
                     Theming
-                    <span style={description}>Tokens and attributes</span>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink>
-                    Skills
-                    <span style={description}>Teach your agent bones</span>
+                    <span style={description}>
+                      Tokens, attributes, accents.
+                    </span>
                   </NavigationMenuLink>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div style={{ display: "flex", flexDirection: "column", width: "11rem" }}>
-                  <NavigationMenuLink>Changelog</NavigationMenuLink>
-                  <NavigationMenuLink>llms.txt</NavigationMenuLink>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "11rem",
+                  }}
+                >
+                  <NavigationMenuLink>Motion</NavigationMenuLink>
+                  <NavigationMenuLink>Sizes</NavigationMenuLink>
+                  <NavigationMenuLink>Skills</NavigationMenuLink>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink>Pricing</NavigationMenuLink>
+              <NavigationMenuLink>GitHub</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenuRoot>
