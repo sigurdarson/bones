@@ -97,7 +97,13 @@
   overflow: hidden;
 }
 
+/* Absolutely positioned: while the popup morphs, the outgoing and
+   incoming content are both mounted, and stacking them in flow would
+   double the height mid-transition. */
 .ub-navigation-menu-content {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
   box-sizing: border-box;
   padding: 0.75rem;
   /* Content transitions sideways as the highlight moves between items. */
@@ -127,11 +133,14 @@
   translate: -3rem 0;
 }
 
-/* Links inside content read as menu rows. */
+/* Links inside content read as menu rows: title above description. */
 .ub-navigation-menu-content .ub-navigation-menu-link {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
   height: auto;
   padding: 0.5rem 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   border-radius: var(--ub-radius-sm);
 }
