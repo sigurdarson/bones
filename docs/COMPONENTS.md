@@ -26,7 +26,7 @@ skipped (with a reason).
 | Menu              | done         |       |
 | Menubar           | done         | One container; menus inside come from Menu. |
 | Meter             | done         |       |
-| Navigation Menu   | todo         |       |
+| Navigation Menu   | done         |       |
 | Number Field      | done         |       |
 | OTP Field         | done         | Pre-composed; length renders the slots. |
 | Popover           | done         |       |
