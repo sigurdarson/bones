@@ -118,6 +118,20 @@ export {
 } from "./menu/menu";
 export { Menubar, type MenubarProps } from "./menubar/menubar";
 export { Meter, type MeterProps } from "./meter/meter";
+export {
+  NavigationMenuRoot,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  type NavigationMenuRootProps,
+  type NavigationMenuListProps,
+  type NavigationMenuItemProps,
+  type NavigationMenuTriggerProps,
+  type NavigationMenuContentProps,
+  type NavigationMenuLinkProps,
+} from "./navigation-menu/navigation-menu";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
 export {
   PreviewCardRoot,
