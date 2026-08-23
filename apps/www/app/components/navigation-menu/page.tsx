@@ -22,6 +22,77 @@ const exampleDescription: React.CSSProperties = {
   color: "var(--ub-text-secondary)",
 };
 
+const audiences = [
+  {
+    value: "developers",
+    title: "Developers",
+    tagline: "Go from idea to UI faster.",
+    heading: "Ship real screens sooner",
+    body: "Import the tokens once and every part arrives styled, accessible, and ready to compose.",
+    links: [
+      {
+        title: "Quick start",
+        description: "Install and assemble your first screen.",
+      },
+      {
+        title: "Components",
+        description: "Every primitive with a live playground.",
+      },
+    ],
+  },
+  {
+    value: "design-teams",
+    title: "Design teams",
+    tagline: "Keep patterns aligned across teams.",
+    heading: "One source of visual truth",
+    body: "Semantic tokens keep color, radius, and motion consistent everywhere; change them once to retheme.",
+    links: [
+      { title: "Theming", description: "Tokens, attributes, and accents." },
+      { title: "Sizes", description: "Two sizes, no drift." },
+    ],
+  },
+  {
+    value: "agents",
+    title: "Agents",
+    tagline: "Let coding agents ship UI.",
+    heading: "Readable by machines on purpose",
+    body: "Zero-guesswork conventions, agent instructions on every page, and llms.txt for context.",
+    links: [
+      { title: "Skills", description: "Teach your agent the workflow." },
+      {
+        title: "llms.txt",
+        description: "The library, summarized for tools.",
+      },
+    ],
+  },
+  {
+    value: "startups",
+    title: "Startups",
+    tagline: "Ship polished basics while things change.",
+    heading: "Defaults you can outgrow",
+    body: "Start with the stock look, then retheme with tokens when the brand lands; nothing to rewrite.",
+    links: [
+      { title: "Quick start", description: "Zero to a working page." },
+      { title: "Changelog", description: "What's new in each release." },
+    ],
+  },
+];
+
+function PanelLink({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <NavigationMenuLink>
+      {title}
+      <span style={exampleDescription}>{description}</span>
+    </NavigationMenuLink>
+  );
+}
+
 export const metadata: Metadata = { title: "Navigation menu" };
 
 export default function Page() {
@@ -78,42 +149,52 @@ export default function Page() {
                     display: "grid",
                     gridTemplateColumns: "repeat(2, 1fr)",
                     gap: "0.25rem",
-                    width: "26rem",
+                    width: "27rem",
                   }}
                 >
-                  <NavigationMenuLink>
-                    Quick start
-                    <span style={exampleDescription}>
-                      Install and import the tokens.
-                    </span>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink>
-                    Accessibility
-                    <span style={exampleDescription}>
-                      How every part stays operable.
-                    </span>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink>
-                    Changelog
-                    <span style={exampleDescription}>
-                      What's new in each release.
-                    </span>
-                  </NavigationMenuLink>
+                  <PanelLink
+                    title="Quick start"
+                    description="Install and assemble your first component."
+                  />
+                  <PanelLink
+                    title="Accessibility"
+                    description="How every part stays keyboard operable."
+                  />
+                  <PanelLink
+                    title="Changelog"
+                    description="See what's new in the latest releases."
+                  />
                   <NavigationMenuRoot side="inline-end" align="start">
                     <NavigationMenuList style={{ display: "block" }}>
                       <NavigationMenuItem>
-                        <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+                        <NavigationMenuTrigger>
+                          <span>
+                            Handbook
+                            <span style={exampleDescription}>
+                              How to use bones effectively.
+                            </span>
+                          </span>
+                        </NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <div
                             style={{
                               display: "flex",
                               flexDirection: "column",
-                              width: "13rem",
+                              width: "17rem",
                             }}
                           >
-                            <NavigationMenuLink>Motion</NavigationMenuLink>
-                            <NavigationMenuLink>Sizes</NavigationMenuLink>
-                            <NavigationMenuLink>Skills</NavigationMenuLink>
+                            <PanelLink
+                              title="Styling"
+                              description="Plain CSS and semantic tokens; restyle anything without forking."
+                            />
+                            <PanelLink
+                              title="Motion"
+                              description="Duration and easing tokens; reduced motion comes free."
+                            />
+                            <PanelLink
+                              title="Composition"
+                              description="Swap any part for your own component with render."
+                            />
                           </div>
                         </NavigationMenuContent>
                       </NavigationMenuItem>
@@ -163,78 +244,56 @@ export default function Page() {
                 <NavigationMenuRoot
                   inline
                   orientation="vertical"
-                  defaultValue="theming"
+                  defaultValue="developers"
                   style={{ display: "flex", gap: "0.5rem" }}
                 >
                   <NavigationMenuList
                     style={{
                       flexDirection: "column",
                       alignItems: "stretch",
-                      width: "10rem",
+                      width: "12rem",
                     }}
                   >
-                    <NavigationMenuItem value="primitives">
-                      <NavigationMenuTrigger>Primitives</NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div style={{ width: "16rem" }}>
-                          <strong style={{ fontSize: "0.875rem" }}>
-                            Every part, wrapped
-                          </strong>
-                          <p
-                            style={{
-                              margin: "0.25rem 0 0",
-                              fontSize: "0.8125rem",
-                              color: "var(--ub-text-secondary)",
-                            }}
-                          >
-                            All Base UI parts, styled with tokens and
-                            documented with playgrounds.
-                          </p>
-                        </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem value="theming">
-                      <NavigationMenuTrigger>Theming</NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div style={{ width: "16rem" }}>
-                          <strong style={{ fontSize: "0.875rem" }}>
-                            Attributes over config
-                          </strong>
-                          <p
-                            style={{
-                              margin: "0.25rem 0 0",
-                              fontSize: "0.8125rem",
-                              color: "var(--ub-text-secondary)",
-                            }}
-                          >
-                            Dark mode, radius, and accents flip with data
-                            attributes; tokens do the rest.
-                          </p>
-                        </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem value="agents">
-                      <NavigationMenuTrigger>Agents</NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div style={{ width: "16rem" }}>
-                          <strong style={{ fontSize: "0.875rem" }}>
-                            Built to be read
-                          </strong>
-                          <p
-                            style={{
-                              margin: "0.25rem 0 0",
-                              fontSize: "0.8125rem",
-                              color: "var(--ub-text-secondary)",
-                            }}
-                          >
-                            Skills, llms.txt, and agent instructions on
-                            every page.
-                          </p>
-                        </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
+                    {audiences.map((audience) => (
+                      <NavigationMenuItem
+                        key={audience.value}
+                        value={audience.value}
+                      >
+                        <NavigationMenuTrigger>
+                          <span>
+                            {audience.title}
+                            <span style={exampleDescription}>
+                              {audience.tagline}
+                            </span>
+                          </span>
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <div style={{ width: "18rem" }}>
+                            <strong style={{ fontSize: "0.875rem" }}>
+                              {audience.heading}
+                            </strong>
+                            <p
+                              style={{
+                                margin: "0.25rem 0 0.5rem",
+                                fontSize: "0.8125rem",
+                                color: "var(--ub-text-secondary)",
+                              }}
+                            >
+                              {audience.body}
+                            </p>
+                            {audience.links.map((link) => (
+                              <PanelLink
+                                key={link.title}
+                                title={link.title}
+                                description={link.description}
+                              />
+                            ))}
+                          </div>
+                        </NavigationMenuContent>
+                      </NavigationMenuItem>
+                    ))}
                   </NavigationMenuList>
-                  <NavigationMenuViewport style={{ width: "17rem" }} />
+                  <NavigationMenuViewport style={{ width: "19.5rem" }} />
                 </NavigationMenuRoot>
               </NavigationMenuContent>
             </NavigationMenuItem>
