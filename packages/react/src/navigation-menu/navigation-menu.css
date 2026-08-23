@@ -145,16 +145,31 @@
   border-radius: var(--ub-radius-sm);
 }
 
-/* A trigger inside content opens a nested menu; it reads as a row with
-   the chevron pointing toward the flyout. text-align resets the
-   button default, which centers text unlike the anchors beside it. */
+/* A trigger inside content opens a nested menu; it reads exactly like
+   the link rows beside it (top-aligned text block, same gap), with the
+   chevron centered on the row pointing toward the flyout. text-align
+   resets the button default, which centers text unlike anchors. */
 .ub-navigation-menu-content .ub-navigation-menu-trigger {
   width: 100%;
   height: auto;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
   text-align: start;
   border-radius: var(--ub-radius-sm);
+}
+
+.ub-navigation-menu-content
+  .ub-navigation-menu-trigger
+  > span:not(.ub-navigation-menu-chevron) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron {
+  align-self: center;
 }
 
 .ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron,
