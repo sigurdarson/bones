@@ -146,12 +146,14 @@
 }
 
 /* A trigger inside content opens a nested menu; it reads as a row with
-   the chevron pointing toward the flyout. */
+   the chevron pointing toward the flyout. text-align resets the
+   button default, which centers text unlike the anchors beside it. */
 .ub-navigation-menu-content .ub-navigation-menu-trigger {
   width: 100%;
   height: auto;
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
+  text-align: start;
   border-radius: var(--ub-radius-sm);
 }
 
