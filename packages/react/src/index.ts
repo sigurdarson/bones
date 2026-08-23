@@ -125,12 +125,14 @@ export {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
+  NavigationMenuViewport,
   type NavigationMenuRootProps,
   type NavigationMenuListProps,
   type NavigationMenuItemProps,
   type NavigationMenuTriggerProps,
   type NavigationMenuContentProps,
   type NavigationMenuLinkProps,
+  type NavigationMenuViewportProps,
 } from "./navigation-menu/navigation-menu";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
 export {

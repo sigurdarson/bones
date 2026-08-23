@@ -116,7 +116,10 @@ const content = `# bones
   machinery bundled) + NavigationMenuList + NavigationMenuItem holding a
   NavigationMenuTrigger (chevron automatic) + NavigationMenuContent, or
   just a NavigationMenuLink (real anchor; render={<Link/>} for routers).
-  One shared popup morphs between items. For links; app actions use Menu.
+  One shared popup morphs between items. Nest a Root inside Content for
+  flyout submenus (side="inline-end"), or a Root with inline plus a
+  NavigationMenuViewport + defaultValue for same-panel submenus. For
+  links; app actions use Menu.
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.

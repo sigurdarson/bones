@@ -8,6 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuRoot,
   NavigationMenuTrigger,
+  NavigationMenuViewport,
 } from "./navigation-menu";
 
 function SiteNav() {
@@ -50,6 +51,24 @@ describe("NavigationMenu", () => {
     expect(
       await screen.findByRole("link", { name: "Components" }),
     ).toHaveAttribute("href", "/components");
+  });
+
+  it("renders inline submenu content in a viewport via defaultValue", () => {
+    render(
+      <NavigationMenuRoot inline orientation="vertical" defaultValue="theming">
+        <NavigationMenuList>
+          <NavigationMenuItem value="theming">
+            <NavigationMenuTrigger>Theming</NavigationMenuTrigger>
+            <NavigationMenuContent>Tokens everywhere.</NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+        <NavigationMenuViewport />
+      </NavigationMenuRoot>,
+    );
+    expect(screen.getByText("Tokens everywhere.")).toBeInTheDocument();
+    expect(
+      document.querySelector(".ub-navigation-menu-inline-viewport"),
+    ).toBeInTheDocument();
   });
 
   it("closes on Escape", async () => {

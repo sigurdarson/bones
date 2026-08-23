@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuRoot,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { NavigationMenuPlayground } from "@/components/navigation-menu-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
+
+const exampleDescription: React.CSSProperties = {
+  display: "block",
+  fontSize: "0.75rem",
+  color: "var(--ub-text-secondary)",
+};
 
 export const metadata: Metadata = { title: "Navigation menu" };
 
@@ -26,6 +42,205 @@ export default function Page() {
         what you've configured.
       </p>
       <NavigationMenuPlayground />
+      <h2>Nested submenus</h2>
+      <p>
+        A <code>NavigationMenuRoot</code> nested inside a{" "}
+        <code>NavigationMenuContent</code> makes a multi-level menu: its
+        trigger reads as a row, and its content opens in a flyout beside
+        the panel (<code>side="inline-end"</code>).
+      </p>
+      <Showcase
+        code={`<NavigationMenuContent>
+  <NavigationMenuLink href="/quick-start">Quick start</NavigationMenuLink>
+  <NavigationMenuLink href="/accessibility">Accessibility</NavigationMenuLink>
+  {/* a nested menu, opening beside the panel */}
+  <NavigationMenuRoot side="inline-end" align="start">
+    <NavigationMenuList style={{ display: "block" }}>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <NavigationMenuLink href="/motion">Motion</NavigationMenuLink>
+          <NavigationMenuLink href="/sizes">Sizes</NavigationMenuLink>
+          <NavigationMenuLink href="/skills">Skills</NavigationMenuLink>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenuRoot>
+</NavigationMenuContent>`}
+      >
+        <NavigationMenuRoot>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2, 1fr)",
+                    gap: "0.25rem",
+                    width: "26rem",
+                  }}
+                >
+                  <NavigationMenuLink>
+                    Quick start
+                    <span style={exampleDescription}>
+                      Install and import the tokens.
+                    </span>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink>
+                    Accessibility
+                    <span style={exampleDescription}>
+                      How every part stays operable.
+                    </span>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink>
+                    Changelog
+                    <span style={exampleDescription}>
+                      What's new in each release.
+                    </span>
+                  </NavigationMenuLink>
+                  <NavigationMenuRoot side="inline-end" align="start">
+                    <NavigationMenuList style={{ display: "block" }}>
+                      <NavigationMenuItem>
+                        <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              width: "13rem",
+                            }}
+                          >
+                            <NavigationMenuLink>Motion</NavigationMenuLink>
+                            <NavigationMenuLink>Sizes</NavigationMenuLink>
+                            <NavigationMenuLink>Skills</NavigationMenuLink>
+                          </div>
+                        </NavigationMenuContent>
+                      </NavigationMenuItem>
+                    </NavigationMenuList>
+                  </NavigationMenuRoot>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenuRoot>
+      </Showcase>
+      <h2>Nested inline submenus</h2>
+      <p>
+        For second-level navigation that should stay in the same panel,
+        give the nested root <code>inline</code> and render a{" "}
+        <code>NavigationMenuViewport</code> beside its list with a{" "}
+        <code>defaultValue</code>: the selected item's content shows there
+        instead of a flyout.
+      </p>
+      <Showcase
+        code={`<NavigationMenuContent>
+  <NavigationMenuRoot
+    inline
+    orientation="vertical"
+    defaultValue="theming"
+    style={{ display: "flex", gap: "0.5rem" }}
+  >
+    <NavigationMenuList style={{ flexDirection: "column", alignItems: "stretch" }}>
+      <NavigationMenuItem value="primitives">
+        <NavigationMenuTrigger>Primitives</NavigationMenuTrigger>
+        <NavigationMenuContent>{/* panel content */}</NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem value="theming">
+        <NavigationMenuTrigger>Theming</NavigationMenuTrigger>
+        <NavigationMenuContent>{/* panel content */}</NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+    <NavigationMenuViewport style={{ width: "17rem" }} />
+  </NavigationMenuRoot>
+</NavigationMenuContent>`}
+      >
+        <NavigationMenuRoot>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <NavigationMenuRoot
+                  inline
+                  orientation="vertical"
+                  defaultValue="theming"
+                  style={{ display: "flex", gap: "0.5rem" }}
+                >
+                  <NavigationMenuList
+                    style={{
+                      flexDirection: "column",
+                      alignItems: "stretch",
+                      width: "10rem",
+                    }}
+                  >
+                    <NavigationMenuItem value="primitives">
+                      <NavigationMenuTrigger>Primitives</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div style={{ width: "16rem" }}>
+                          <strong style={{ fontSize: "0.875rem" }}>
+                            Every part, wrapped
+                          </strong>
+                          <p
+                            style={{
+                              margin: "0.25rem 0 0",
+                              fontSize: "0.8125rem",
+                              color: "var(--ub-text-secondary)",
+                            }}
+                          >
+                            All Base UI parts, styled with tokens and
+                            documented with playgrounds.
+                          </p>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem value="theming">
+                      <NavigationMenuTrigger>Theming</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div style={{ width: "16rem" }}>
+                          <strong style={{ fontSize: "0.875rem" }}>
+                            Attributes over config
+                          </strong>
+                          <p
+                            style={{
+                              margin: "0.25rem 0 0",
+                              fontSize: "0.8125rem",
+                              color: "var(--ub-text-secondary)",
+                            }}
+                          >
+                            Dark mode, radius, and accents flip with data
+                            attributes; tokens do the rest.
+                          </p>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem value="agents">
+                      <NavigationMenuTrigger>Agents</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div style={{ width: "16rem" }}>
+                          <strong style={{ fontSize: "0.875rem" }}>
+                            Built to be read
+                          </strong>
+                          <p
+                            style={{
+                              margin: "0.25rem 0 0",
+                              fontSize: "0.8125rem",
+                              color: "var(--ub-text-secondary)",
+                            }}
+                          >
+                            Skills, llms.txt, and agent instructions on
+                            every page.
+                          </p>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                  <NavigationMenuViewport style={{ width: "17rem" }} />
+                </NavigationMenuRoot>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenuRoot>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         Triggers carry <code>data-popup-open</code> (the built-in chevron
@@ -71,9 +286,10 @@ export default function Page() {
         ]}
       />
       <AgentInstructions
-        instructions={`NavigationMenuRoot, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, from @usebones/react.
+        instructions={`NavigationMenuRoot, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuViewport, from @usebones/react.
 - Structure: NavigationMenuRoot wraps NavigationMenuList of NavigationMenuItems. An item holds a NavigationMenuTrigger (label as children; chevron automatic) + NavigationMenuContent, or just a NavigationMenuLink for a plain link.
 - The popup machinery is bundled in the root; one shared popup morphs between the open item's content.
+- Nested submenus: put another NavigationMenuRoot inside a NavigationMenuContent (side="inline-end" opens the flyout beside the panel). Same-panel submenus: nested root with inline plus a NavigationMenuViewport next to its list and a defaultValue.
 - Links are real anchors: pass href, or render={<Link href="..." />} for a router. Fill content with NavigationMenuLinks in your own layout.
 - For links only; app command surfaces use Menu.
 - Restyle in CSS via .ub-navigation-menu-trigger, .ub-navigation-menu-link, .ub-navigation-menu-popup, [data-popup-open], [data-activation-direction]. Size morph runs on --popup-width/--popup-height; keep those transitions. Tokens only.`}

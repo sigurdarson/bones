@@ -11,8 +11,12 @@
   list-style: none;
 }
 
+/* Links use two-class selectors on purpose: they are real anchors, and
+   app-wide link styles (like a docs site's prose rules) would otherwise
+   out-rank a single class and restyle them. */
 .ub-navigation-menu-trigger,
-.ub-navigation-menu-link {
+.ub-navigation-menu-list .ub-navigation-menu-link,
+.ub-navigation-menu-content .ub-navigation-menu-link {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -34,14 +38,16 @@
 }
 
 .ub-navigation-menu-trigger:hover,
-.ub-navigation-menu-link:hover,
+.ub-navigation-menu-list .ub-navigation-menu-link:hover,
+.ub-navigation-menu-content .ub-navigation-menu-link:hover,
 .ub-navigation-menu-trigger[data-popup-open] {
   color: var(--ub-text-primary);
   background: var(--ub-bg-muted);
 }
 
 .ub-navigation-menu-trigger:focus-visible,
-.ub-navigation-menu-link:focus-visible {
+.ub-navigation-menu-list .ub-navigation-menu-link:focus-visible,
+.ub-navigation-menu-content .ub-navigation-menu-link:focus-visible {
   outline: 2px solid var(--ub-ring);
   outline-offset: 2px;
 }
@@ -137,4 +143,28 @@
   padding: 0.5rem 0.75rem;
   font-weight: 500;
   border-radius: var(--ub-radius-sm);
+}
+
+/* A trigger inside content opens a nested menu; it reads as a row with
+   the chevron pointing toward the flyout. */
+.ub-navigation-menu-content .ub-navigation-menu-trigger {
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--ub-radius-sm);
+}
+
+.ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron,
+.ub-navigation-menu-content
+  .ub-navigation-menu-trigger[data-popup-open]
+  .ub-navigation-menu-chevron {
+  rotate: -90deg;
+}
+
+/* The inline viewport hosts a nested menu's content inside the same
+   panel instead of a popup. */
+.ub-navigation-menu-inline-viewport {
+  position: relative;
+  overflow: hidden;
 }

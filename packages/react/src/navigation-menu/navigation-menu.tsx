@@ -3,17 +3,33 @@
 import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-menu";
 import { withBase } from "../lib/with-base";
 
-export interface NavigationMenuRootProps extends BaseNavigationMenu.Root.Props {}
+export interface NavigationMenuRootProps extends BaseNavigationMenu.Root.Props {
+  /** Which side of the trigger the popup opens on; nested menus usually want "inline-end". Base UI's default otherwise. */
+  side?: BaseNavigationMenu.Positioner.Props["side"];
+  /** Alignment along that side. */
+  align?: BaseNavigationMenu.Positioner.Props["align"];
+  /**
+   * Renders children only, without the bundled popup. Pair with an
+   * inline NavigationMenuViewport for second-level navigation that stays
+   * in the same panel. @default false
+   */
+  inline?: boolean;
+}
 
 /**
  * Site navigation with rich dropdowns, wrapping the Base UI Navigation
  * Menu. One shared popup morphs between the open item's content instead
  * of opening a new one per item. The Portal, Positioner, Popup, and
- * Viewport are bundled here, so children are just the list.
+ * Viewport are bundled here, so children are just the list. Nest a Root
+ * inside a Content for flyout submenus, or an inline Root for submenus
+ * that stay in the panel.
  */
 export function NavigationMenuRoot({
   className,
   children,
+  side,
+  align,
+  inline = false,
   ...props
 }: NavigationMenuRootProps) {
   return (
@@ -22,18 +38,41 @@ export function NavigationMenuRoot({
       {...props}
     >
       {children}
-      <BaseNavigationMenu.Portal>
-        <BaseNavigationMenu.Positioner
-          className="ub-navigation-menu-positioner"
-          sideOffset={8}
-          collisionPadding={16}
-        >
-          <BaseNavigationMenu.Popup className="ub-navigation-menu-popup">
-            <BaseNavigationMenu.Viewport className="ub-navigation-menu-viewport" />
-          </BaseNavigationMenu.Popup>
-        </BaseNavigationMenu.Positioner>
-      </BaseNavigationMenu.Portal>
+      {inline ? null : (
+        <BaseNavigationMenu.Portal>
+          <BaseNavigationMenu.Positioner
+            className="ub-navigation-menu-positioner"
+            side={side}
+            align={align}
+            sideOffset={8}
+            collisionPadding={16}
+          >
+            <BaseNavigationMenu.Popup className="ub-navigation-menu-popup">
+              <BaseNavigationMenu.Viewport className="ub-navigation-menu-viewport" />
+            </BaseNavigationMenu.Popup>
+          </BaseNavigationMenu.Positioner>
+        </BaseNavigationMenu.Portal>
+      )}
     </BaseNavigationMenu.Root>
+  );
+}
+
+export interface NavigationMenuViewportProps
+  extends BaseNavigationMenu.Viewport.Props {}
+
+/**
+ * An inline viewport for a nested Root with inline: the open item's
+ * content renders here, inside the same panel, instead of a popup.
+ */
+export function NavigationMenuViewport({
+  className,
+  ...props
+}: NavigationMenuViewportProps) {
+  return (
+    <BaseNavigationMenu.Viewport
+      className={withBase("ub-navigation-menu-inline-viewport", className)}
+      {...props}
+    />
   );
 }
 
