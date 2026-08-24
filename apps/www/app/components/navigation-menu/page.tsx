@@ -26,7 +26,7 @@ const audiences = [
   {
     value: "developers",
     title: "Developers",
-    tagline: "Go from idea to UI faster.",
+    tagline: "Idea to UI, faster.",
     heading: "Ship real screens sooner",
     body: "Import the tokens once and every part arrives styled, accessible, and ready to compose.",
     links: [
@@ -43,7 +43,7 @@ const audiences = [
   {
     value: "design-teams",
     title: "Design teams",
-    tagline: "Keep patterns aligned across teams.",
+    tagline: "Patterns stay aligned.",
     heading: "One source of visual truth",
     body: "Semantic tokens keep color, radius, and motion consistent everywhere; change them once to retheme.",
     links: [
@@ -54,7 +54,7 @@ const audiences = [
   {
     value: "agents",
     title: "Agents",
-    tagline: "Let coding agents ship UI.",
+    tagline: "Machine-readable UI.",
     heading: "Readable by machines on purpose",
     body: "Zero-guesswork conventions, agent instructions on every page, and llms.txt for context.",
     links: [
@@ -68,7 +68,7 @@ const audiences = [
   {
     value: "startups",
     title: "Startups",
-    tagline: "Ship polished basics while things change.",
+    tagline: "Polished from day one.",
     heading: "Defaults you can outgrow",
     body: "Start with the stock look, then retheme with tokens when the brand lands; nothing to rewrite.",
     links: [
