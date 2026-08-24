@@ -170,8 +170,11 @@
   gap: 0.125rem;
 }
 
+/* Right-aligned across every row (inside the row padding), centered on
+   the title's line. */
 .ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron {
   align-self: flex-start;
+  margin-inline-start: auto;
   height: calc(var(--ub-font-size) * 1.5);
   align-items: center;
 }
