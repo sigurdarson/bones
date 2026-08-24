@@ -141,21 +141,23 @@
   gap: 0.125rem;
   height: auto;
   padding: 0.5rem 0.75rem;
+  line-height: 1.5;
   font-weight: 500;
   border-radius: var(--ub-radius-sm);
 }
 
-/* A trigger inside content opens a nested menu; it reads exactly like
-   the link rows beside it (top-aligned text block, same gap), with the
-   chevron centered on the row pointing toward the flyout. text-align
-   resets the button default, which centers text unlike anchors. */
+/* A trigger inside content opens a nested menu. Identical metrics to the
+   link rows (padding, line height, text-block gap); the only difference
+   is the chevron, sitting right beside the title and centered on its
+   line. text-align resets the button default, which centers text unlike
+   anchors. */
 .ub-navigation-menu-content .ub-navigation-menu-trigger {
   width: 100%;
   height: auto;
   align-items: flex-start;
-  justify-content: space-between;
   padding: 0.5rem 0.75rem;
   text-align: start;
+  line-height: 1.5;
   border-radius: var(--ub-radius-sm);
 }
 
@@ -169,7 +171,9 @@
 }
 
 .ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron {
-  align-self: center;
+  align-self: flex-start;
+  height: calc(var(--ub-font-size) * 1.5);
+  align-items: center;
 }
 
 .ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron,
