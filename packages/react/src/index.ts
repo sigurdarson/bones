@@ -36,6 +36,20 @@ export {
 } from "./collapsible/collapsible";
 export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
+  ComboboxRoot,
+  ComboboxInput,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxGroupLabel,
+  type ComboboxRootProps,
+  type ComboboxInputProps,
+  type ComboboxContentProps,
+  type ComboboxItemProps,
+  type ComboboxGroupProps,
+  type ComboboxGroupLabelProps,
+} from "./combobox/combobox";
+export {
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuContent,
