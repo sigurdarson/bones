@@ -56,7 +56,7 @@ const audiences = [
     title: "Agents",
     tagline: "Machine-readable UI.",
     heading: "Readable by machines on purpose",
-    body: "Zero-guesswork conventions, agent instructions on every page, and llms.txt for context.",
+    body: "Zero-guesswork conventions, with agent instructions and llms.txt.",
     links: [
       { title: "Skills", description: "Teach your agent the workflow." },
       {
