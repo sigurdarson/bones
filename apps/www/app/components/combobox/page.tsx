@@ -66,6 +66,12 @@ export default function Page() {
             description: "Sizes the input and the list together.",
           },
           {
+            name: "ComboboxInput.variant",
+            type: '"default" | "borderless"',
+            defaultValue: '"default"',
+            description: "Borderless swaps the border for a muted fill, like the Select trigger.",
+          },
+          {
             name: "ComboboxInput.clearable",
             type: "boolean",
             defaultValue: "true",
@@ -85,7 +91,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`ComboboxRoot, ComboboxInput, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, from @usebones/react.
-- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, clearable default true; chevron and clear built in) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
+- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true; chevron and clear built in) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
 - value/defaultValue/onValueChange like every control; multiple turns the value into an array. Object items need itemToStringLabel.
 - Typing filters and opens; the chevron browses everything; the selected check renders automatically.
 - Prefer Select for short fixed lists; the combobox earns its input when the list is long enough to search.

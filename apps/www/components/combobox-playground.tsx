@@ -27,14 +27,21 @@ const members = [
 
 interface PlaygroundState {
   compact: boolean;
+  borderless: boolean;
   clearable: boolean;
   disabled: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ compact, clearable, disabled }: PlaygroundState): string {
+function buildCode({
+  compact,
+  borderless,
+  clearable,
+  disabled,
+}: PlaygroundState): string {
   const inputAttrs = [
     `\n    placeholder="Assign to..."`,
+    borderless ? `\n    variant="borderless"` : "",
     clearable ? "" : "\n    clearable={false}",
     disabled ? "\n    disabled" : "",
   ].join("");
@@ -62,13 +69,14 @@ const members = ["Gunnar á Hlíðarenda", "Eiríkur rauði", /* ... */];
 
 export function ComboboxPlayground() {
   const [compact, setCompact] = React.useState(false);
+  const [borderless, setBorderless] = React.useState(false);
   const [clearable, setClearable] = React.useState(true);
   const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
       <Showcase
-        code={buildCode({ compact, clearable, disabled })}
+        code={buildCode({ compact, borderless, clearable, disabled })}
         note={
           <>
             Type to filter, or browse everything with the chevron. items
@@ -85,6 +93,7 @@ export function ComboboxPlayground() {
           <ComboboxInput
             placeholder="Assign to..."
             aria-label="Assignee"
+            variant={borderless ? "borderless" : "default"}
             clearable={clearable}
             disabled={disabled}
           />
@@ -100,6 +109,9 @@ export function ComboboxPlayground() {
       <Controls>
         <ControlRow label="Compact">
           <Switch checked={compact} onCheckedChange={setCompact} />
+        </ControlRow>
+        <ControlRow label="Borderless">
+          <Switch checked={borderless} onCheckedChange={setBorderless} />
         </ControlRow>
         <ControlRow label="Clearable">
           <Switch checked={clearable} onCheckedChange={setClearable} />

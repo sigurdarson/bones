@@ -96,6 +96,10 @@ describe("Combobox", () => {
       "data-size",
       "compact",
     );
+    expect(document.querySelector(".ub-combobox-input")).toHaveAttribute(
+      "data-variant",
+      "default",
+    );
     await user.click(screen.getByRole("button", { name: "Open list" }));
     await waitFor(() =>
       expect(document.querySelector(".ub-combobox-popup")).toHaveAttribute(

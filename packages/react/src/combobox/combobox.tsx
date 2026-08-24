@@ -37,6 +37,8 @@ export function ComboboxRoot<
 }
 
 export interface ComboboxInputProps extends BaseCombobox.Input.Props {
+  /** Bordered by default; borderless swaps the border for a muted fill, like the Select trigger. @default "default" */
+  variant?: "default" | "borderless";
   /** Show the clear button while something is selected or typed. @default true */
   clearable?: boolean;
 }
@@ -46,7 +48,12 @@ export interface ComboboxInputProps extends BaseCombobox.Input.Props {
  * in. Typing opens and filters the list; the chevron browses it without
  * typing.
  */
-export function ComboboxInput({ className, clearable = true, ...props }: ComboboxInputProps) {
+export function ComboboxInput({
+  className,
+  variant = "default",
+  clearable = true,
+  ...props
+}: ComboboxInputProps) {
   const size = React.useContext(ComboboxSizeContext);
   return (
     <BaseCombobox.InputGroup
@@ -54,6 +61,7 @@ export function ComboboxInput({ className, clearable = true, ...props }: Combobo
       className="ub-combobox-input-group"
     >
       <BaseCombobox.Input
+        data-variant={variant}
         className={withBase("ub-combobox-input", className)}
         {...props}
       />

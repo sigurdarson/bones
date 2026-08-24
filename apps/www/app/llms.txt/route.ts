@@ -72,8 +72,9 @@ const content = `# bones
   --collapsible-panel-height; state via [data-panel-open] on the trigger.
 - Combobox: ComboboxRoot (items required for filtering/empty; value or
   defaultValue + onValueChange; multiple for arrays; size) +
-  ComboboxInput (placeholder, clearable default true; chevron and clear
-  built in) + ComboboxContent (empty="..."; function children render a
+  ComboboxInput (placeholder, variant default | borderless, clearable
+  default true; chevron and clear built in) + ComboboxContent
+  (empty="..."; function children render a
   ComboboxItem per filtered item) + ComboboxGroup/GroupLabel. Prefer
   Select for short fixed lists.
 - ContextMenu: ContextMenuRoot (size) + ContextMenuTrigger (a div around

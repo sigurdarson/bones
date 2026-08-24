@@ -35,6 +35,12 @@
   cursor: not-allowed;
 }
 
+/* variants */
+.ub-combobox-input[data-variant="borderless"] {
+  border-color: transparent;
+  background: var(--ub-bg-muted);
+}
+
 /* The chevron and clear sit inside the input's reserved end padding. */
 .ub-combobox-trigger,
 .ub-combobox-clear {
