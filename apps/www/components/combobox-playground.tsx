@@ -11,13 +11,18 @@ import {
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
+/* The roster comes from Snorri Sturluson's Edda. */
 const members = [
-  "Ada Lovelace",
-  "Grace Hopper",
-  "Katherine Johnson",
-  "Margaret Hamilton",
-  "Radia Perlman",
-  "Sigurdarson",
+  "Óðinn",
+  "Frigg",
+  "Þór",
+  "Loki",
+  "Freyja",
+  "Baldur",
+  "Heimdallur",
+  "Iðunn",
+  "Bragi",
+  "Týr",
 ];
 
 interface PlaygroundState {
@@ -40,7 +45,7 @@ function buildCode({ compact, clearable, disabled }: PlaygroundState): string {
   ComboboxRoot,
 } from "@usebones/react";
 
-const members = ["Ada Lovelace", "Grace Hopper", /* ... */];
+const members = ["Óðinn", "Frigg", "Þór", "Loki", /* ... */];
 
 <ComboboxRoot items={members}${compact ? ' size="compact"' : ""}>
   <ComboboxInput${inputAttrs}
