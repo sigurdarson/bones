@@ -200,8 +200,14 @@
 }
 
 /* The inline viewport hosts a nested menu's content inside the same
-   panel instead of a popup. */
+   panel instead of a popup. That content drops its own panel padding:
+   the outer panel already provides it, and doubling up would open a
+   wider gap around the inline region than around the popup itself. */
 .ub-navigation-menu-inline-viewport {
   position: relative;
   overflow: hidden;
+}
+
+.ub-navigation-menu-inline-viewport .ub-navigation-menu-content {
+  padding: 0;
 }
