@@ -176,6 +176,22 @@
   align-items: center;
 }
 
+/* A nested flyout menu stretches through to its trigger, so the row's
+   hover surface fills the cell even when a neighbor is taller. Inline
+   nested menus (data-inline) keep natural heights in their column. */
+.ub-navigation-menu-content .ub-navigation-menu:not([data-inline]),
+.ub-navigation-menu-content
+  .ub-navigation-menu:not([data-inline])
+  .ub-navigation-menu-list,
+.ub-navigation-menu-content
+  .ub-navigation-menu:not([data-inline])
+  .ub-navigation-menu-item,
+.ub-navigation-menu-content
+  .ub-navigation-menu:not([data-inline])
+  .ub-navigation-menu-trigger {
+  height: 100%;
+}
+
 .ub-navigation-menu-content .ub-navigation-menu-trigger .ub-navigation-menu-chevron,
 .ub-navigation-menu-content
   .ub-navigation-menu-trigger[data-popup-open]

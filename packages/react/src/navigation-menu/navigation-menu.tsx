@@ -34,6 +34,7 @@ export function NavigationMenuRoot({
 }: NavigationMenuRootProps) {
   return (
     <BaseNavigationMenu.Root
+      data-inline={inline ? "" : undefined}
       className={withBase("ub-navigation-menu", className)}
       {...props}
     >
