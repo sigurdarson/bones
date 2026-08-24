@@ -28,7 +28,7 @@ const audiences = [
     title: "Developers",
     tagline: "Idea to UI, faster.",
     heading: "Ship real screens sooner",
-    body: "Import the tokens once and every part arrives styled, accessible, and ready to compose.",
+    body: "Import the tokens once; every part arrives styled and accessible.",
     links: [
       {
         title: "Quick start",
@@ -45,7 +45,7 @@ const audiences = [
     title: "Design teams",
     tagline: "Patterns stay aligned.",
     heading: "One source of visual truth",
-    body: "Semantic tokens keep color, radius, and motion consistent everywhere; change them once to retheme.",
+    body: "Semantic tokens keep everything consistent; retheme in one place.",
     links: [
       { title: "Theming", description: "Tokens, attributes, and accents." },
       { title: "Sizes", description: "Two sizes, no drift." },
@@ -70,7 +70,7 @@ const audiences = [
     title: "Startups",
     tagline: "Polished from day one.",
     heading: "Defaults you can outgrow",
-    body: "Start with the stock look, then retheme with tokens when the brand lands; nothing to rewrite.",
+    body: "Ship the stock look now; retheme with tokens when the brand lands.",
     links: [
       { title: "Quick start", description: "Zero to a working page." },
       { title: "Changelog", description: "What's new in each release." },
