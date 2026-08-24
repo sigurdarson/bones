@@ -220,7 +220,7 @@ export default function Page() {
     inline
     orientation="vertical"
     defaultValue="theming"
-    style={{ display: "flex", gap: "0.5rem" }}
+    style={{ display: "flex", gap: "0.75rem" }}
   >
     <NavigationMenuList style={{ flexDirection: "column", alignItems: "stretch" }}>
       <NavigationMenuItem value="primitives">
@@ -245,7 +245,7 @@ export default function Page() {
                   inline
                   orientation="vertical"
                   defaultValue="developers"
-                  style={{ display: "flex", gap: "0.5rem" }}
+                  style={{ display: "flex", gap: "0.75rem" }}
                 >
                   <NavigationMenuList
                     style={{
@@ -269,18 +269,23 @@ export default function Page() {
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <div style={{ width: "18rem" }}>
-                            <strong style={{ fontSize: "0.875rem" }}>
-                              {audience.heading}
-                            </strong>
-                            <p
-                              style={{
-                                margin: "0.25rem 0 0.5rem",
-                                fontSize: "0.8125rem",
-                                color: "var(--ub-text-secondary)",
-                              }}
-                            >
-                              {audience.body}
-                            </p>
+                            {/* Same inset as the link rows, so the
+                                heading and body text share their left
+                                edge and vertical rhythm. */}
+                            <div style={{ padding: "0.5rem 0.75rem" }}>
+                              <strong style={{ fontSize: "0.875rem" }}>
+                                {audience.heading}
+                              </strong>
+                              <p
+                                style={{
+                                  margin: "0.25rem 0 0",
+                                  fontSize: "0.8125rem",
+                                  color: "var(--ub-text-secondary)",
+                                }}
+                              >
+                                {audience.body}
+                              </p>
+                            </div>
                             {audience.links.map((link) => (
                               <PanelLink
                                 key={link.title}
