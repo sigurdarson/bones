@@ -23,6 +23,8 @@
   font-family: inherit;
   font-size: var(--_ub-cb-font);
   color: var(--ub-text-primary);
+  /* Long values truncate while unfocused; editing scrolls natively. */
+  text-overflow: ellipsis;
   transition: border-color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
