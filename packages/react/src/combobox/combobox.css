@@ -1,7 +1,11 @@
-/* sizes resolve through vars on the group; compact remaps them */
+/* sizes resolve through vars on the group; compact remaps them. The
+   buttons keep an equal inset on top, end, and bottom: their size
+   derives from the control height minus twice the inset. */
 .ub-combobox-input-group {
   --_ub-cb-height: var(--ub-control-height);
   --_ub-cb-font: var(--ub-font-size);
+  --_ub-cb-inset: 0.375rem;
+  --_ub-cb-button: calc(var(--_ub-cb-height) - 2 * var(--_ub-cb-inset));
   position: relative;
   display: inline-flex;
   min-width: 12rem;
@@ -11,7 +15,8 @@
   box-sizing: border-box;
   width: 100%;
   height: var(--_ub-cb-height);
-  padding-inline: 0.75rem 3.5rem;
+  padding-inline: 0.75rem
+    calc(var(--_ub-cb-inset) + 2 * var(--_ub-cb-button) + 0.625rem);
   border: 1px solid var(--ub-border-strong);
   border-radius: var(--ub-radius-control);
   background: var(--ub-bg);
@@ -50,8 +55,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--_ub-cb-button);
+  height: var(--_ub-cb-button);
   padding: 0;
   border: none;
   border-radius: var(--ub-radius-sm);
@@ -65,11 +70,13 @@
 }
 
 .ub-combobox-trigger {
-  inset-inline-end: 0.25rem;
+  inset-inline-end: var(--_ub-cb-inset);
 }
 
 .ub-combobox-clear {
-  inset-inline-end: 1.75rem;
+  inset-inline-end: calc(
+    var(--_ub-cb-inset) + var(--_ub-cb-button) + 0.125rem
+  );
 }
 
 .ub-combobox-trigger:hover,
