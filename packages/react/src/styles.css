@@ -17,6 +17,7 @@
 @import "./menu/menu.css";
 @import "./menubar/menubar.css";
 @import "./meter/meter.css";
+@import "./navigation-menu/navigation-menu.css";
 @import "./number-field/number-field.css";
 @import "./progress/progress.css";
 @import "./otp-field/otp-field.css";

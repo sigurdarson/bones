@@ -112,6 +112,14 @@ const content = `# bones
 - Meter: one component; value + min/max, label (names it; required, or
   aria-label), showValue, format (Intl.NumberFormatOptions). A current
   level (storage, seats), never a loading state.
+- NavigationMenu: NavigationMenuRoot (delay 50ms, orientation; popup
+  machinery bundled) + NavigationMenuList + NavigationMenuItem holding a
+  NavigationMenuTrigger (chevron automatic) + NavigationMenuContent, or
+  just a NavigationMenuLink (real anchor; render={<Link/>} for routers).
+  One shared popup morphs between items. Nest a Root inside Content for
+  flyout submenus (side="inline-end"), or a Root with inline plus a
+  NavigationMenuViewport + defaultValue for same-panel submenus. For
+  links; app actions use Menu.
 - NumberField: one component with steppers; min/max/step/largeStep/value/
   onValueChange/disabled pass through; variant default | borderless, size,
   invalid, hint, placeholder.

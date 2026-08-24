@@ -5,6 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add NavigationMenu wrapping the Base UI Navigation Menu: site
+  navigation whose shared popup morphs between the open item's content,
+  with real anchor links, an automatic chevron, nested flyout submenus,
+  and inline same-panel submenus via inline + NavigationMenuViewport.
 - react: add Menubar wrapping the Base UI Menubar: a strip of regular
   bones Menus with one open at a time, hover switching, and arrow-key
   movement; ships as layout only so apps own the chrome.
