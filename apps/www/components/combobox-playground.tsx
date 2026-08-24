@@ -11,18 +11,18 @@ import {
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
-/* The roster comes from Snorri Sturluson's Edda. */
+/* The roster is Icelanders of saga fame. */
 const members = [
-  "Óðinn",
-  "Frigg",
-  "Þór",
-  "Loki",
-  "Freyja",
-  "Baldur",
-  "Heimdallur",
-  "Iðunn",
-  "Bragi",
-  "Týr",
+  "Gunnar á Hlíðarenda",
+  "Eiríkur rauði",
+  "Leifur heppni",
+  "Snorri Sturluson",
+  "Egill Skallagrímsson",
+  "Ingólfur Arnarson",
+  "Auður djúpúðga",
+  "Guðríður Þorbjarnardóttir",
+  "Hallgerður langbrók",
+  "Grettir sterki",
 ];
 
 interface PlaygroundState {
@@ -45,7 +45,7 @@ function buildCode({ compact, clearable, disabled }: PlaygroundState): string {
   ComboboxRoot,
 } from "@usebones/react";
 
-const members = ["Óðinn", "Frigg", "Þór", "Loki", /* ... */];
+const members = ["Gunnar á Hlíðarenda", "Eiríkur rauði", /* ... */];
 
 <ComboboxRoot items={members}${compact ? ' size="compact"' : ""}>
   <ComboboxInput${inputAttrs}
