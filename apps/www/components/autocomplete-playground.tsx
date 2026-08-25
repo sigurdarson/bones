@@ -6,10 +6,6 @@ import {
   AutocompleteInput,
   AutocompleteItem,
   AutocompleteRoot,
-  SelectContent,
-  SelectItem,
-  SelectRoot,
-  SelectTrigger,
   Switch,
 } from "@usebones/react";
 import { Showcase } from "./showcase";
@@ -26,21 +22,19 @@ const pages = [
   "Tokens",
 ];
 
-type Mode = "list" | "both";
-
-const modes: Record<Mode, string> = {
-  list: "List",
-  both: "Both",
-};
-
 interface PlaygroundState {
-  mode: Mode;
   compact: boolean;
+  borderless: boolean;
   disabled: boolean;
 }
 
 /* The Code tab mirrors whatever the controls currently show. */
-function buildCode({ mode, compact, disabled }: PlaygroundState): string {
+function buildCode({ compact, borderless, disabled }: PlaygroundState): string {
+  const inputAttrs = [
+    `\n    placeholder="Search the docs"`,
+    borderless ? `\n    variant="borderless"` : "",
+    disabled ? "\n    disabled" : "",
+  ].join("");
   return `import {
   AutocompleteContent,
   AutocompleteInput,
@@ -50,9 +44,8 @@ function buildCode({ mode, compact, disabled }: PlaygroundState): string {
 
 const pages = ["Accessibility", "Button", /* ... */];
 
-<AutocompleteRoot items={pages}${mode !== "list" ? ` mode="${mode}"` : ""}${compact ? ' size="compact"' : ""}>
-  <AutocompleteInput
-    placeholder="Search the docs"${disabled ? "\n    disabled" : ""}
+<AutocompleteRoot items={pages}${compact ? ' size="compact"' : ""}>
+  <AutocompleteInput${inputAttrs}
   />
   <AutocompleteContent empty="No pages found.">
     {(page) => (
@@ -64,33 +57,73 @@ const pages = ["Accessibility", "Button", /* ... */];
 </AutocompleteRoot>`;
 }
 
+const tags = ["feature", "fix", "docs", "refactor", "release", "tests"];
+
+const inlineCompletionCode = `<AutocompleteRoot items={tags} mode="both">
+  <AutocompleteInput placeholder="e.g. feature" />
+  <AutocompleteContent empty="No tags found.">
+    {(tag) => (
+      <AutocompleteItem key={tag} value={tag}>
+        {tag}
+      </AutocompleteItem>
+    )}
+  </AutocompleteContent>
+</AutocompleteRoot>`;
+
+export function AutocompleteInlineCompletion() {
+  return (
+    <Showcase
+      code={inlineCompletionCode}
+      note={
+        <>
+          Arrow through the list and the input autofills with the
+          highlighted tag; keep typing and the filter takes over again.
+        </>
+      }
+    >
+      <div style={{ width: "18rem" }}>
+        <AutocompleteRoot items={tags} mode="both">
+          <AutocompleteInput placeholder="e.g. feature" aria-label="Search tags" />
+          <AutocompleteContent empty="No tags found.">
+            {(tag: string) => (
+              <AutocompleteItem key={tag} value={tag}>
+                {tag}
+              </AutocompleteItem>
+            )}
+          </AutocompleteContent>
+        </AutocompleteRoot>
+      </div>
+    </Showcase>
+  );
+}
+
 export function AutocompletePlayground() {
-  const [mode, setMode] = React.useState<Mode>("list");
   const [compact, setCompact] = React.useState(false);
+  const [borderless, setBorderless] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
 
   return (
     <>
       <Showcase
-        code={buildCode({ mode, compact, disabled })}
+        code={buildCode({ compact, borderless, disabled })}
         note={
           <>
             The value is the text itself: suggestions fill it in, and
-            anything typed stays valid. mode "both" also completes the
-            input inline as you arrow through the list.
+            anything typed stays valid. Typing filters the list; the
+            clear button appears once there is something to clear.
           </>
         }
       >
         <div style={{ width: "18rem" }}>
           <AutocompleteRoot
-            key={mode}
+            key={String(compact)}
             items={pages}
-            mode={mode}
             size={compact ? "compact" : "default"}
           >
             <AutocompleteInput
               placeholder="Search the docs"
               aria-label="Search the docs"
+              variant={borderless ? "borderless" : "default"}
               disabled={disabled}
             />
             <AutocompleteContent empty="No pages found.">
@@ -104,25 +137,11 @@ export function AutocompletePlayground() {
         </div>
       </Showcase>
       <Controls>
-        <ControlRow label="Mode">
-          <SelectRoot
-            size="compact"
-            items={modes}
-            value={mode}
-            onValueChange={(value) => value && setMode(value as Mode)}
-          >
-            <SelectTrigger variant="borderless" />
-            <SelectContent>
-              {(Object.keys(modes) as Mode[]).map((value) => (
-                <SelectItem key={value} value={value}>
-                  {modes[value]}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </SelectRoot>
-        </ControlRow>
         <ControlRow label="Compact">
           <Switch checked={compact} onCheckedChange={setCompact} />
+        </ControlRow>
+        <ControlRow label="Borderless">
+          <Switch checked={borderless} onCheckedChange={setBorderless} />
         </ControlRow>
         <ControlRow label="Disabled">
           <Switch checked={disabled} onCheckedChange={setDisabled} />

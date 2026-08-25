@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentInstructions } from "@/components/agent-instructions";
-import { AutocompletePlayground } from "@/components/autocomplete-playground";
+import {
+  AutocompleteInlineCompletion,
+  AutocompletePlayground,
+} from "@/components/autocomplete-playground";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
@@ -26,6 +29,16 @@ export default function Page() {
         you've configured.
       </p>
       <AutocompletePlayground />
+      <h2>Inline completion</h2>
+      <p>
+        <code>mode</code> autofills the input with the highlighted item
+        while arrowing through the list. It accepts the aria-autocomplete
+        values: <code>list</code> (the default) filters without
+        autofilling, <code>both</code> filters and autofills,{" "}
+        <code>inline</code> autofills over a static list, and{" "}
+        <code>none</code> does neither.
+      </p>
+      <AutocompleteInlineCompletion />
       <h2>Styling states</h2>
       <p>
         The autocomplete shares the Combobox's classes, so the two restyle
