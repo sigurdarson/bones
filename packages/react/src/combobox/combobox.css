@@ -1,8 +1,8 @@
 /* sizes resolve through vars on the group; compact remaps them. The
    buttons keep an equal inset on top, end, and bottom: their size
-   derives from the control height minus twice the inset. The reserved
-   end padding covers the chevron alone, or both buttons when the group
-   is clearable. */
+   derives from the control height minus twice the inset. The clear
+   button takes the chevron's slot while something is clearable, so the
+   reserved end padding always covers a single button. */
 /* The border and background live on the group (not the input) so the
    text fade mask below can never eat the control's own edge. */
 .ub-combobox-input-group {
@@ -20,12 +20,6 @@
   border-radius: var(--ub-radius-control);
   background: var(--ub-bg);
   transition: border-color var(--ub-duration-fast) var(--ub-ease-out);
-}
-
-.ub-combobox-input-group[data-clearable] {
-  --_ub-cb-pad-end: calc(
-    var(--_ub-cb-inset) + 2 * var(--_ub-cb-button) + 0.625rem
-  );
 }
 
 /* Focusing the inner input rings the whole group, like the number
@@ -107,14 +101,15 @@
     color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
-.ub-combobox-trigger {
+.ub-combobox-trigger,
+.ub-combobox-clear {
   inset-inline-end: var(--_ub-cb-inset);
 }
 
-.ub-combobox-clear {
-  inset-inline-end: calc(
-    var(--_ub-cb-inset) + var(--_ub-cb-button) + 0.125rem
-  );
+/* Base UI only mounts Clear while something is clearable, so its
+   presence swaps it into the chevron's slot. */
+.ub-combobox-input-group:has(.ub-combobox-clear) .ub-combobox-trigger {
+  display: none;
 }
 
 .ub-combobox-trigger:hover,

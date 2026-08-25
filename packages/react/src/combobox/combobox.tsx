@@ -60,9 +60,9 @@ export interface ComboboxInputProps extends BaseCombobox.Input.Props {
 }
 
 /**
- * The text input, with the list-toggle chevron and a clear button built
- * in. Typing opens and filters the list; the chevron browses it without
- * typing.
+ * The text input, with the list-toggle chevron built in. Typing opens
+ * and filters the list; the chevron browses it without typing, and a
+ * clear button takes its place while something is selected.
  */
 export function ComboboxInput({
   className,
