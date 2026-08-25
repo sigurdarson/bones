@@ -26,13 +26,11 @@ const pages = [
   "Tokens",
 ];
 
-type Mode = "list" | "both" | "inline" | "none";
+type Mode = "list" | "both";
 
 const modes: Record<Mode, string> = {
   list: "List",
   both: "Both",
-  inline: "Inline",
-  none: "None",
 };
 
 interface PlaygroundState {
@@ -78,9 +76,8 @@ export function AutocompletePlayground() {
         note={
           <>
             The value is the text itself: suggestions fill it in, and
-            anything typed stays valid. Only "list" and "both" filter
-            while typing; "inline" and "none" keep the list static on
-            purpose, with "both" and "inline" completing as you arrow.
+            anything typed stays valid. mode "both" also completes the
+            input inline as you arrow through the list.
           </>
         }
       >
