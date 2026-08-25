@@ -25,7 +25,7 @@ export interface InputProps extends Omit<BaseInput.Props, "size"> {
  * attributes the stylesheet targets (data-focused, data-filled,
  * data-invalid, ...). The native size attribute is replaced by the bones
  * size prop; control width with CSS. With icons or a hint, the input
- * renders inside a ub-input-root wrapper.
+ * renders inside a ub-input-field wrapper, like the Select.
  */
 export function Input({
   className,
@@ -59,21 +59,19 @@ export function Input({
 
   return (
     <span
-      className="ub-input-root"
+      className="ub-input-field"
       data-size={size}
       data-invalid={invalid ? "" : undefined}
-      data-leading={leadingIcon ? "" : undefined}
-      data-trailing={trailingIcon ? "" : undefined}
     >
-      <span className="ub-input-field">
+      <span className="ub-input-box">
         {leadingIcon ? (
-          <span className="ub-input-icon" data-side="leading" aria-hidden>
+          <span className="ub-input-leading-icon" aria-hidden>
             {leadingIcon}
           </span>
         ) : null}
         {input}
         {trailingIcon ? (
-          <span className="ub-input-icon" data-side="trailing" aria-hidden>
+          <span className="ub-input-trailing-icon" aria-hidden>
             {trailingIcon}
           </span>
         ) : null}
