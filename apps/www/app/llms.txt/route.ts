@@ -49,6 +49,13 @@ const content = `# bones
   always modal and outside clicks never dismiss; Escape cancels. One
   AlertDialogClose per choice (Cancel ghost, action primary or danger
   with onClick). Use only for hard-to-undo actions.
+- Autocomplete: free text with suggestions; the value IS the input
+  string (value/defaultValue/onValueChange fire per keystroke).
+  AutocompleteRoot (items, mode "list" default | "both" | "inline" |
+  "none", size) + AutocompleteInput (clearable, variant; no chevron) +
+  AutocompleteContent (empty, status; function children render an
+  AutocompleteItem per suggestion). Shares the Combobox classes. Use
+  Combobox when the value must come from the list.
 - Avatar: one component; src + alt (the person's name; required with src,
   "" only when the name is visible beside it) + fallback (initials or
   icon, shows until the image loads and on error); size default (36px) |

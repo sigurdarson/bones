@@ -37,6 +37,7 @@ export const siteNav: NavSection[] = [
     items: [
       { title: "Accordion", href: "/components/accordion" },
       { title: "Alert dialog", href: "/components/alert-dialog" },
+      { title: "Autocomplete", href: "/components/autocomplete" },
       { title: "Avatar", href: "/components/avatar" },
       { title: "Avatar group", href: "/components/avatar-group" },
       { title: "Button", href: "/components/button" },

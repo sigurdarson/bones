@@ -1,0 +1,4 @@
+/* The autocomplete reuses the combobox's classes (ub-combobox-*) so the
+   two restyle together; see combobox.css. It has no chevron, and the
+   clear button already sits in that end slot, so no overrides are
+   needed. The ub-autocomplete-* classes stay as styling hooks. */

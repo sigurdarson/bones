@@ -9,6 +9,16 @@ export {
   type AccordionPanelProps,
 } from "./accordion/accordion";
 export {
+  AutocompleteRoot,
+  AutocompleteInput,
+  AutocompleteContent,
+  AutocompleteItem,
+  type AutocompleteRootProps,
+  type AutocompleteInputProps,
+  type AutocompleteContentProps,
+  type AutocompleteItemProps,
+} from "./autocomplete/autocomplete";
+export {
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,

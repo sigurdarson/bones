@@ -123,7 +123,7 @@ export default function Page() {
             name: "ComboboxInput.clearable",
             type: "boolean",
             defaultValue: "true",
-            description: "Shows the clear button while something is typed or selected.",
+            description: "Swaps the chevron for a clear button while something is selected.",
           },
           {
             name: "ComboboxContent.empty",
@@ -139,7 +139,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`ComboboxRoot, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, ComboboxChips, ComboboxChip, ComboboxValue, ComboboxCollection, ComboboxStatus, from @usebones/react.
-- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true; chevron and clear built in) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
+- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true; chevron built in, swapped for a clear button while something is selected) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
 - value/defaultValue/onValueChange like every control; multiple turns the value into an array. Object items need itemToStringLabel.
 - Multiple with chips: ComboboxChips wrapping ComboboxValue's function children (map values to ComboboxChip; put ComboboxInput clearable={false} after them). Chip remove buttons are automatic.
 - Select-like: ComboboxTrigger (placeholder is visual only; name it via aria-label or a Field label) with searchInput="..." on ComboboxContent putting the input inside the popup.
