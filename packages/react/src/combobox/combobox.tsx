@@ -10,6 +10,13 @@ type ComboboxSize = "default" | "compact";
    the body, out of CSS cascade reach of the input. */
 const ComboboxSizeContext = React.createContext<ComboboxSize>("default");
 
+/* With chips, the popup should anchor to the whole chips box, not the
+   small inline input; the chips register themselves here. */
+const ComboboxAnchorContext = React.createContext<{
+  chipsElement: HTMLElement | null;
+  setChipsElement: (element: HTMLElement | null) => void;
+}>({ chipsElement: null, setChipsElement: () => {} });
+
 export interface ComboboxRootProps<
   Value = string,
   Multiple extends boolean | undefined = false,
@@ -29,9 +36,18 @@ export function ComboboxRoot<
   Value = string,
   Multiple extends boolean | undefined = false,
 >({ size = "default", ...props }: ComboboxRootProps<Value, Multiple>) {
+  const [chipsElement, setChipsElement] = React.useState<HTMLElement | null>(
+    null,
+  );
+  const anchor = React.useMemo(
+    () => ({ chipsElement, setChipsElement }),
+    [chipsElement],
+  );
   return (
     <ComboboxSizeContext.Provider value={size}>
-      <BaseCombobox.Root {...props} />
+      <ComboboxAnchorContext.Provider value={anchor}>
+        <BaseCombobox.Root {...props} />
+      </ComboboxAnchorContext.Provider>
     </ComboboxSizeContext.Provider>
   );
 }
@@ -166,9 +182,14 @@ export function ComboboxContent({
   ...props
 }: ComboboxContentProps) {
   const size = React.useContext(ComboboxSizeContext);
+  const { chipsElement } = React.useContext(ComboboxAnchorContext);
   return (
     <BaseCombobox.Portal>
-      <BaseCombobox.Positioner className="ub-combobox-positioner" sideOffset={4}>
+      <BaseCombobox.Positioner
+        className="ub-combobox-positioner"
+        sideOffset={4}
+        anchor={chipsElement ?? undefined}
+      >
         <BaseCombobox.Popup
           data-size={size}
           className={withBase("ub-combobox-popup", className)}
@@ -210,8 +231,10 @@ export interface ComboboxChipsProps extends BaseCombobox.Chips.Props {}
  */
 export function ComboboxChips({ className, ...props }: ComboboxChipsProps) {
   const size = React.useContext(ComboboxSizeContext);
+  const { setChipsElement } = React.useContext(ComboboxAnchorContext);
   return (
     <BaseCombobox.Chips
+      ref={setChipsElement}
       data-size={size}
       className={withBase("ub-combobox-chips", className)}
       {...props}
