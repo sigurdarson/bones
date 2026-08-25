@@ -92,14 +92,10 @@ describe("Combobox", () => {
       </ComboboxRoot>,
     );
 
-    expect(document.querySelector(".ub-combobox-input-group")).toHaveAttribute(
-      "data-size",
-      "compact",
-    );
-    expect(document.querySelector(".ub-combobox-input")).toHaveAttribute(
-      "data-variant",
-      "default",
-    );
+    const group = document.querySelector(".ub-combobox-input-group");
+    expect(group).toHaveAttribute("data-size", "compact");
+    expect(group).toHaveAttribute("data-variant", "default");
+    expect(group).toHaveAttribute("data-clearable");
     await user.click(screen.getByRole("button", { name: "Open list" }));
     await waitFor(() =>
       expect(document.querySelector(".ub-combobox-popup")).toHaveAttribute(

@@ -58,10 +58,11 @@ export function ComboboxInput({
   return (
     <BaseCombobox.InputGroup
       data-size={size}
+      data-variant={variant}
+      data-clearable={clearable ? "" : undefined}
       className="ub-combobox-input-group"
     >
       <BaseCombobox.Input
-        data-variant={variant}
         className={withBase("ub-combobox-input", className)}
         {...props}
       />
