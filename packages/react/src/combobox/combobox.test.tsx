@@ -120,6 +120,26 @@ describe("Combobox", () => {
     expect(screen.queryByText("French")).not.toBeInTheDocument();
   });
 
+  it("honors a consumer ref on the chips box", () => {
+    const chipsRef = { current: null as HTMLDivElement | null };
+    render(
+      <ComboboxRoot items={languages} multiple>
+        <ComboboxChips ref={chipsRef}>
+          <ComboboxInput aria-label="Languages" clearable={false} />
+        </ComboboxChips>
+        <ComboboxContent>
+          {(item: string) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxContent>
+      </ComboboxRoot>,
+    );
+
+    expect(chipsRef.current).toHaveClass("ub-combobox-chips");
+  });
+
   it("supports a select-like trigger with the input inside the popup", async () => {
     const user = userEvent.setup();
     render(

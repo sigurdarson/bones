@@ -229,12 +229,25 @@ export interface ComboboxChipsProps extends BaseCombobox.Chips.Props {}
  * input inline after them. Use with multiple on the root; render chips
  * via ComboboxValue's function children.
  */
-export function ComboboxChips({ className, ...props }: ComboboxChipsProps) {
+export function ComboboxChips({ className, ref, ...props }: ComboboxChipsProps) {
   const size = React.useContext(ComboboxSizeContext);
   const { setChipsElement } = React.useContext(ComboboxAnchorContext);
+  /* The anchor registration has to survive a consumer ref, so merge the
+     two instead of letting one clobber the other. */
+  const mergedRef = React.useCallback(
+    (element: HTMLDivElement | null) => {
+      setChipsElement(element);
+      if (typeof ref === "function") {
+        ref(element);
+      } else if (ref) {
+        ref.current = element;
+      }
+    },
+    [ref, setChipsElement],
+  );
   return (
     <BaseCombobox.Chips
-      ref={setChipsElement}
+      ref={mergedRef}
       data-size={size}
       className={withBase("ub-combobox-chips", className)}
       {...props}
