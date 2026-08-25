@@ -405,9 +405,12 @@ const visible = labels.filter((label) =>
 );
 const canCreate =
   query.trim() !== "" && !labels.includes(query.trim().toLowerCase());
+/* Registering the create row in items gives it the same highlight and
+   keyboard navigation as the real rows. */
+const listItems = canCreate ? [...visible, query.trim().toLowerCase()] : visible;
 
 <ComboboxRoot
-  items={visible}
+  items={listItems}
   multiple
   onInputValueChange={setQuery}
   onValueChange={(next) =>
@@ -444,6 +447,7 @@ export function ComboboxCreatable() {
   const normalized = query.trim().toLowerCase();
   const visible = labels.filter((label) => label.includes(normalized));
   const canCreate = normalized !== "" && !labels.includes(normalized);
+  const listItems = canCreate ? [...visible, normalized] : visible;
 
   return (
     <Showcase
@@ -458,7 +462,7 @@ export function ComboboxCreatable() {
     >
       <div style={{ width: "22rem" }}>
         <ComboboxRoot
-          items={visible}
+          items={listItems}
           multiple
           defaultValue={["enhancement"]}
           onInputValueChange={setQuery}
