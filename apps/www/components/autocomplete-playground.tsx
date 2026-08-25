@@ -78,8 +78,9 @@ export function AutocompletePlayground() {
         note={
           <>
             The value is the text itself: suggestions fill it in, and
-            anything typed stays valid. mode "both" and "inline" complete
-            the input as you arrow through the list.
+            anything typed stays valid. Only "list" and "both" filter
+            while typing; "inline" and "none" keep the list static on
+            purpose, with "both" and "inline" completing as you arrow.
           </>
         }
       >
