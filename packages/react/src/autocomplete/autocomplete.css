@@ -1,0 +1,11 @@
+/* The autocomplete reuses the combobox's classes (ub-combobox-*) so the
+   two restyle together; see combobox.css. Only the chevron-less layout
+   differs: the clear button takes the end slot and the input reserves
+   room for a single button. */
+.ub-combobox-input-group.ub-autocomplete-input-group[data-clearable] {
+  --_ub-cb-pad-end: calc(var(--_ub-cb-inset) + var(--_ub-cb-button) + 0.5rem);
+}
+
+.ub-autocomplete-input-group .ub-combobox-clear {
+  inset-inline-end: var(--_ub-cb-inset);
+}

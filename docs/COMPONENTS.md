@@ -9,7 +9,7 @@ skipped (with a reason).
 | ----------------- | ------------ | ----- |
 | Accordion         | done         |       |
 | Alert Dialog      | done         |       |
-| Autocomplete      | todo         |       |
+| Autocomplete      | done         | Shares the Combobox styling. |
 | Avatar            | done         |       |
 | Button            | done         | Hand-rolled (predates the Base UI part); revisit wrapping later. |
 | Checkbox          | done         |       |

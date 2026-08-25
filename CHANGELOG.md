@@ -5,6 +5,9 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Autocomplete wrapping the Base UI Autocomplete: free text
+  with suggestions, four completion modes, a clearable typing-first
+  input, and styling shared with the Combobox.
 - react: add Combobox wrapping the Base UI Combobox: a filtering input
   with built-in chevron and clear buttons, a borderless variant, a
   bundled dropdown with empty and status states, chips for multiple
