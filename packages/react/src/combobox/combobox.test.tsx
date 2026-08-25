@@ -198,4 +198,40 @@ describe("Combobox", () => {
       ),
     );
   });
+
+  it("marks invalid with data-invalid and aria-invalid", () => {
+    render(
+      <ComboboxRoot items={languages}>
+        <ComboboxInput aria-label="Language" invalid />
+        <ComboboxContent>
+          {(item: string) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxContent>
+      </ComboboxRoot>,
+    );
+    const input = document.querySelector(".ub-combobox-input");
+    expect(input).toHaveAttribute("data-invalid");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("marks a select-like trigger invalid", () => {
+    render(
+      <ComboboxRoot items={languages}>
+        <ComboboxTrigger placeholder="Choose" aria-label="Language" invalid />
+        <ComboboxContent>
+          {(item: string) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxContent>
+      </ComboboxRoot>,
+    );
+    const trigger = screen.getByRole("combobox", { name: "Language" });
+    expect(trigger).toHaveAttribute("data-invalid");
+    expect(trigger).toHaveAttribute("aria-invalid", "true");
+  });
 });

@@ -91,5 +91,5 @@
 }
 
 .ub-button[data-variant="danger"]:hover:not(:disabled) {
-  filter: brightness(1.08);
+  background: var(--ub-danger-hover);
 }

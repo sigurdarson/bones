@@ -5,6 +5,25 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- tokens: add --ub-danger-hover (one step lighter in light mode, one
+  step darker in dark); the danger Button hovers with it instead of a
+  brightness filter.
+- react: Combobox and Autocomplete gain the invalid state: an invalid
+  prop on the inputs and the select-like trigger, danger border and
+  focus ring, and a surrounding Field sets the same state automatically,
+  matching Input and Select.
+- react: Select and Menu popups cap at 18rem and scroll, matching the
+  Combobox, so long lists stay usable.
+- react: SelectContent, ComboboxContent, AutocompleteContent, and
+  NavigationMenuRoot expose side, align, and sideOffset.
+- react: AutocompleteRoot is generic over the item type instead of any.
+- react: consistency pass from the component audit: uniform focus-ring
+  offsets, disabled and hover treatments (tabs dim like every other
+  control, hovers pause while disabled), one glyph size everywhere,
+  popup row heights read the control-height tokens, the switch thumb
+  shadow and inset are tokenized, and avatar initials scale with the
+  circle.
+
 - react: add Autocomplete wrapping the Base UI Autocomplete: free text
   with suggestions, four completion modes, a clearable typing-first
   input, and styling shared with the Combobox.

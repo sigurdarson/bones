@@ -37,9 +37,9 @@
     color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
-.ub-navigation-menu-trigger:hover,
-.ub-navigation-menu-list .ub-navigation-menu-link:hover,
-.ub-navigation-menu-content .ub-navigation-menu-link:hover,
+.ub-navigation-menu-trigger:hover:not([data-disabled]),
+.ub-navigation-menu-list .ub-navigation-menu-link:hover:not([data-disabled]),
+.ub-navigation-menu-content .ub-navigation-menu-link:hover:not([data-disabled]),
 .ub-navigation-menu-trigger[data-popup-open] {
   color: var(--ub-text-primary);
   background: var(--ub-bg-muted);

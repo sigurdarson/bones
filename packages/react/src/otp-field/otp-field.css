@@ -21,6 +21,8 @@
   transition: border-color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
+/* :focus, not :focus-visible: like every text field, the ring marks
+   where typing goes even after a click. */
 .ub-otp-field-input:focus {
   outline: 2px solid var(--ub-ring);
   outline-offset: 2px;

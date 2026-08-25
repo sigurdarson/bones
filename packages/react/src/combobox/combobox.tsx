@@ -57,6 +57,8 @@ export interface ComboboxInputProps extends BaseCombobox.Input.Props {
   variant?: "default" | "borderless";
   /** Show the clear button while something is selected or typed. @default true */
   clearable?: boolean;
+  /** Marks the value as invalid: danger border and aria-invalid, like the Input. A surrounding Field's validation sets the same state automatically. @default false */
+  invalid?: boolean;
 }
 
 /**
@@ -68,9 +70,13 @@ export function ComboboxInput({
   className,
   variant = "default",
   clearable = true,
+  invalid = false,
   ...props
 }: ComboboxInputProps) {
   const size = React.useContext(ComboboxSizeContext);
+  /* Only claim the invalid attributes when this prop asserts them; a
+     surrounding Field sets the same ones through Base UI. */
+  const invalidProps = invalid ? { "data-invalid": "", "aria-invalid": true } : {};
   return (
     <BaseCombobox.InputGroup
       data-size={size}
@@ -80,6 +86,7 @@ export function ComboboxInput({
     >
       <BaseCombobox.Input
         className={withBase("ub-combobox-input", className)}
+        {...invalidProps}
         {...props}
       />
       {clearable ? (
@@ -112,6 +119,8 @@ export function ComboboxInput({
 export interface ComboboxTriggerProps extends BaseCombobox.Trigger.Props {
   /** Shown while nothing is selected. */
   placeholder?: React.ReactNode;
+  /** Marks the value as invalid: danger border and aria-invalid, like the Select trigger. @default false */
+  invalid?: boolean;
 }
 
 /**
@@ -124,13 +133,16 @@ export function ComboboxTrigger({
   className,
   placeholder,
   children,
+  invalid = false,
   ...props
 }: ComboboxTriggerProps) {
   const size = React.useContext(ComboboxSizeContext);
+  const invalidProps = invalid ? { "data-invalid": "", "aria-invalid": true } : {};
   return (
     <BaseCombobox.Trigger
       data-size={size}
       className={withBase("ub-select-trigger ub-combobox-select-trigger", className)}
+      {...invalidProps}
       {...props}
     >
       {children ?? (
@@ -166,6 +178,12 @@ export interface ComboboxContentProps
   searchInput?: boolean | string;
   /** A status line above the list ("Searching..."), announced politely; swap its content rather than unmounting. */
   status?: React.ReactNode;
+  /** Which side of the input to open on. Defaults to below the input. */
+  side?: BaseCombobox.Positioner.Props["side"];
+  /** Alignment along that side. */
+  align?: BaseCombobox.Positioner.Props["align"];
+  /** Gap between the input and the popup, in pixels. @default 4 */
+  sideOffset?: number;
 }
 
 /**
@@ -179,6 +197,9 @@ export function ComboboxContent({
   empty,
   searchInput,
   status,
+  side,
+  align,
+  sideOffset = 4,
   ...props
 }: ComboboxContentProps) {
   const size = React.useContext(ComboboxSizeContext);
@@ -187,7 +208,9 @@ export function ComboboxContent({
     <BaseCombobox.Portal>
       <BaseCombobox.Positioner
         className="ub-combobox-positioner"
-        sideOffset={4}
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
         anchor={chipsElement ?? undefined}
       >
         <BaseCombobox.Popup

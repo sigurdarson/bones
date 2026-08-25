@@ -87,4 +87,22 @@ describe("Autocomplete", () => {
       screen.queryByRole("button", { name: "Open list" }),
     ).not.toBeInTheDocument();
   });
+
+  it("marks invalid with data-invalid and aria-invalid", () => {
+    render(
+      <AutocompleteRoot items={pages}>
+        <AutocompleteInput aria-label="Search" invalid />
+        <AutocompleteContent>
+          {(page: string) => (
+            <AutocompleteItem key={page} value={page}>
+              {page}
+            </AutocompleteItem>
+          )}
+        </AutocompleteContent>
+      </AutocompleteRoot>,
+    );
+    const input = document.querySelector(".ub-autocomplete-input");
+    expect(input).toHaveAttribute("data-invalid");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+  });
 });

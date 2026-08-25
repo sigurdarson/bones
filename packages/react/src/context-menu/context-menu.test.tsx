@@ -77,4 +77,21 @@ describe("ContextMenu", () => {
       expect(screen.queryByRole("menu")).not.toBeInTheDocument(),
     );
   });
+
+  it("passes aria attributes through to the trigger surface", () => {
+    render(
+      <ContextMenuRoot>
+        <ContextMenuTrigger aria-label="File card" data-testid="surface">
+          <span>report.pdf</span>
+        </ContextMenuTrigger>
+        <ContextMenuContent>
+          <MenuItem>Rename</MenuItem>
+        </ContextMenuContent>
+      </ContextMenuRoot>,
+    );
+    expect(screen.getByTestId("surface")).toHaveAttribute(
+      "aria-label",
+      "File card",
+    );
+  });
 });

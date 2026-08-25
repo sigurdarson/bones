@@ -46,7 +46,7 @@ export interface PopoverContentProps extends BasePopover.Popup.Props {
 export function PopoverContent({
   className,
   side = "bottom",
-  align,
+  align = "center",
   sideOffset = 8,
   children,
   ...props

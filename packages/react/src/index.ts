@@ -9,16 +9,6 @@ export {
   type AccordionPanelProps,
 } from "./accordion/accordion";
 export {
-  AutocompleteRoot,
-  AutocompleteInput,
-  AutocompleteContent,
-  AutocompleteItem,
-  type AutocompleteRootProps,
-  type AutocompleteInputProps,
-  type AutocompleteContentProps,
-  type AutocompleteItemProps,
-} from "./autocomplete/autocomplete";
-export {
   AlertDialogRoot,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -32,10 +22,21 @@ export {
   type AlertDialogDescriptionProps,
   type AlertDialogCloseProps,
 } from "./alert-dialog/alert-dialog";
+export {
+  AutocompleteRoot,
+  AutocompleteInput,
+  AutocompleteContent,
+  AutocompleteItem,
+  type AutocompleteRootProps,
+  type AutocompleteInputProps,
+  type AutocompleteContentProps,
+  type AutocompleteItemProps,
+} from "./autocomplete/autocomplete";
 export { Avatar, type AvatarProps } from "./avatar/avatar";
 export { AvatarGroup, type AvatarGroupProps } from "./avatar-group/avatar-group";
 export { Button, type ButtonProps } from "./button/button";
 export { Checkbox, type CheckboxProps } from "./checkbox/checkbox";
+export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
   CollapsibleRoot,
   CollapsibleTrigger,
@@ -44,7 +45,6 @@ export {
   type CollapsibleTriggerProps,
   type CollapsiblePanelProps,
 } from "./collapsible/collapsible";
-export { CheckboxGroup, type CheckboxGroupProps } from "./checkbox-group/checkbox-group";
 export {
   ComboboxRoot,
   ComboboxInput,
@@ -109,13 +109,6 @@ export {
   type DrawerCloseProps,
 } from "./drawer/drawer";
 export {
-  FieldsetRoot,
-  FieldsetLegend,
-  type FieldsetRootProps,
-  type FieldsetLegendProps,
-} from "./fieldset/fieldset";
-export { Form, type FormProps } from "./form/form";
-export {
   FieldRoot,
   FieldLabel,
   FieldDescription,
@@ -125,6 +118,13 @@ export {
   type FieldDescriptionProps,
   type FieldErrorProps,
 } from "./field/field";
+export {
+  FieldsetRoot,
+  FieldsetLegend,
+  type FieldsetRootProps,
+  type FieldsetLegendProps,
+} from "./fieldset/fieldset";
+export { Form, type FormProps } from "./form/form";
 export { Input, type InputProps } from "./input/input";
 export {
   MenuRoot,
@@ -171,15 +171,6 @@ export {
   type NavigationMenuViewportProps,
 } from "./navigation-menu/navigation-menu";
 export { NumberField, type NumberFieldProps } from "./number-field/number-field";
-export {
-  PreviewCardRoot,
-  PreviewCardTrigger,
-  PreviewCardContent,
-  type PreviewCardRootProps,
-  type PreviewCardTriggerProps,
-  type PreviewCardContentProps,
-} from "./preview-card/preview-card";
-export { Progress, type ProgressProps } from "./progress/progress";
 export { OTPField, type OTPFieldProps } from "./otp-field/otp-field";
 export {
   PopoverRoot,
@@ -195,7 +186,17 @@ export {
   type PopoverDescriptionProps,
   type PopoverCloseProps,
 } from "./popover/popover";
+export {
+  PreviewCardRoot,
+  PreviewCardTrigger,
+  PreviewCardContent,
+  type PreviewCardRootProps,
+  type PreviewCardTriggerProps,
+  type PreviewCardContentProps,
+} from "./preview-card/preview-card";
+export { Progress, type ProgressProps } from "./progress/progress";
 export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from "./radio/radio";
+export { ScrollArea, type ScrollAreaProps } from "./scroll-area/scroll-area";
 export {
   SelectRoot,
   SelectTrigger,
@@ -206,10 +207,19 @@ export {
   type SelectContentProps,
   type SelectItemProps,
 } from "./select/select";
-export { ScrollArea, type ScrollAreaProps } from "./scroll-area/scroll-area";
 export { Separator, type SeparatorProps } from "./separator/separator";
 export { Slider, type SliderProps } from "./slider/slider";
 export { Switch, type SwitchProps } from "./switch/switch";
+export {
+  TabsRoot,
+  TabsList,
+  TabsTab,
+  TabsPanel,
+  type TabsRootProps,
+  type TabsListProps,
+  type TabsTabProps,
+  type TabsPanelProps,
+} from "./tabs/tabs";
 export {
   ToastProvider,
   Toaster,
@@ -219,6 +229,7 @@ export {
   type ToasterPosition,
 } from "./toast/toast";
 export { Toggle, type ToggleProps } from "./toggle/toggle";
+export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
 export {
   ToolbarRoot,
   ToolbarButton,
@@ -233,7 +244,6 @@ export {
   type ToolbarSeparatorProps,
   type ToolbarInputProps,
 } from "./toolbar/toolbar";
-export { ToggleGroup, type ToggleGroupProps } from "./toggle-group/toggle-group";
 export {
   TooltipProvider,
   TooltipRoot,
@@ -244,13 +254,3 @@ export {
   type TooltipTriggerProps,
   type TooltipContentProps,
 } from "./tooltip/tooltip";
-export {
-  TabsRoot,
-  TabsList,
-  TabsTab,
-  TabsPanel,
-  type TabsRootProps,
-  type TabsListProps,
-  type TabsTabProps,
-  type TabsPanelProps,
-} from "./tabs/tabs";

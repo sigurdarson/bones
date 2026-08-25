@@ -21,6 +21,29 @@ a decision lands; keep open questions at the top.
    (versioning, changelogs, peer ranges) for little gain. Current call: one
    `@usebones/react` package, tree-shakeable via ESM.
 
+## 2026-08-25: Consistency audit rules
+
+A full audit of all 38 components fixed the outliers and wrote down the
+rules that were real but undocumented (now in the new-component skill):
+
+- **Radius by role**: `--ub-radius-control` for standalone controls,
+  `--ub-radius-sm` for popup rows and small embedded icon buttons.
+- **Disabled by role**: controls use opacity 0.5 + not-allowed; popup
+  rows and labels use `--ub-text-disabled`.
+- **Focus ring exceptions**: text fields ring on `:focus`; inset
+  (-2px) rings where an outset ring would clip.
+- **Structural glyphs are inline svg by design** (0.75rem,
+  aria-hidden); `@usebones/icons` is for app-facing semantic icons, so
+  `@usebones/react` stays dependency-free.
+- **Dev name-warnings only where a Field cannot provide the name**;
+  Field-integrated controls (input, select, slider, otp) skip them.
+- **Listbox metrics**: rows at control height, popups pad 0.375rem and
+  cap at 18rem with a defined scroll container.
+- **sideOffset**: 4 for dropdowns, 8 for panels, none for the context
+  menu (pointer-anchored), exposed as a prop everywhere.
+- **Size contexts are exported on demand** (Menu's is, because the
+  Context Menu consumes it), not as blanket public API.
+
 ## 2026-08-19: Overlay rendering rules
 
 - **One overlay recipe** for every floating surface, codified in the

@@ -84,4 +84,22 @@ describe("NavigationMenu", () => {
       ).not.toBeInTheDocument(),
     );
   });
+
+  it("passes aria attributes through", () => {
+    render(
+      <NavigationMenuRoot>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/docs" aria-describedby="hint">
+              Docs
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenuRoot>,
+    );
+    expect(screen.getByRole("link", { name: "Docs" })).toHaveAttribute(
+      "aria-describedby",
+      "hint",
+    );
+  });
 });

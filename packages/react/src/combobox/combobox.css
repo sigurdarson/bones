@@ -40,6 +40,17 @@
   background: var(--ub-bg-muted);
 }
 
+/* invalid comes after the variants so it wins on either; the chrome
+   turns danger whether the invalid prop or the surrounding Field marks
+   the input. */
+.ub-combobox-input-group:has(.ub-combobox-input[data-invalid]) {
+  border-color: var(--ub-danger);
+}
+
+.ub-combobox-input-group:has(.ub-combobox-input[data-invalid]:focus) {
+  outline-color: var(--ub-danger);
+}
+
 .ub-combobox-input {
   box-sizing: border-box;
   width: 100%;
@@ -143,9 +154,10 @@
 /* The popup itself never scrolls (its scrollbar would carve width off
    the in-popup search input); the list below does. */
 .ub-combobox-popup {
-  --_ub-item-height: 2.25rem;
+  --_ub-item-height: var(--ub-control-height);
   --_ub-item-pad: 0.75rem;
   --_ub-item-font: var(--ub-font-size);
+  --ub-icon-size: var(--ub-icon-size-default);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -175,9 +187,10 @@
 }
 
 .ub-combobox-popup[data-size="compact"] {
-  --_ub-item-height: 1.75rem;
+  --_ub-item-height: var(--ub-control-height-compact);
   --_ub-item-pad: 0.625rem;
   --_ub-item-font: var(--ub-font-size-compact);
+  --ub-icon-size: var(--ub-icon-size-compact);
 }
 
 .ub-combobox-input-group[data-size="compact"] {
@@ -263,6 +276,14 @@
   outline-offset: 2px;
 }
 
+.ub-combobox-chips:has(.ub-combobox-input[data-invalid]) {
+  border-color: var(--ub-danger);
+}
+
+.ub-combobox-chips:has(.ub-combobox-input[data-invalid]:focus) {
+  outline-color: var(--ub-danger);
+}
+
 .ub-combobox-chips .ub-combobox-input-group {
   flex: 1;
   min-width: 6rem;
@@ -326,7 +347,7 @@
 
 .ub-combobox-chip-remove:focus-visible {
   outline: 2px solid var(--ub-ring);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
 .ub-combobox-chip-remove svg {

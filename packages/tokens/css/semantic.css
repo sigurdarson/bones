@@ -34,6 +34,7 @@
 
   /* feedback */
   --ub-danger: var(--ub-red-600);
+  --ub-danger-hover: var(--ub-red-500);
   --ub-danger-contrast: var(--ub-white);
   --ub-success: var(--ub-green-600);
   --ub-warning: var(--ub-orange-500);
@@ -81,6 +82,7 @@
   --ub-ring: var(--ub-gray-500);
 
   --ub-danger: var(--ub-red-500);
+  --ub-danger-hover: var(--ub-red-400);
   --ub-success: var(--ub-green-500);
   --ub-warning: var(--ub-orange-400);
   --ub-info: var(--ub-blue-400);

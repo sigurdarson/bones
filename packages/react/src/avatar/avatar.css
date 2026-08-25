@@ -1,16 +1,19 @@
 .ub-avatar {
+  --_ub-avatar-size: var(--ub-control-height);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--_ub-avatar-size);
+  height: var(--_ub-avatar-size);
   flex-shrink: 0;
   overflow: hidden;
   /* People are round regardless of the radius setting. */
   border-radius: var(--ub-radius-full);
   background: var(--ub-bg-muted);
   color: var(--ub-text-secondary);
-  font-size: var(--ub-font-size-compact);
+  /* Initials scale with the circle rather than the text tokens, so both
+     sizes keep the same proportions. */
+  font-size: calc(var(--_ub-avatar-size) * 0.39);
   font-weight: 500;
   user-select: none;
 }
@@ -31,7 +34,5 @@
 
 /* sizes: base styles are the default size; compact is the only override */
 .ub-avatar[data-size="compact"] {
-  width: 1.75rem;
-  height: 1.75rem;
-  font-size: 0.6875rem;
+  --_ub-avatar-size: var(--ub-control-height-compact);
 }

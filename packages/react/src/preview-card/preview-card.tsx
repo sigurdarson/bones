@@ -45,7 +45,7 @@ export interface PreviewCardContentProps extends BasePreviewCard.Popup.Props {
 export function PreviewCardContent({
   className,
   side = "bottom",
-  align,
+  align = "center",
   sideOffset = 8,
   children,
   ...props

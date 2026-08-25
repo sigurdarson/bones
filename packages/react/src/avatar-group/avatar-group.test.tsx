@@ -56,4 +56,16 @@ describe("AvatarGroup", () => {
     expect(group).toHaveClass("ub-avatar-group");
     expect(group).toHaveClass("extra");
   });
+
+  it("passes aria attributes through", () => {
+    render(
+      <AvatarGroup aria-label="Reviewers" data-testid="named">
+        <Avatar fallback="AL" />
+      </AvatarGroup>,
+    );
+    expect(screen.getByTestId("named")).toHaveAttribute(
+      "aria-label",
+      "Reviewers",
+    );
+  });
 });

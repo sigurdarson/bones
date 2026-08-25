@@ -10,7 +10,8 @@ type AutocompleteSize = "default" | "compact";
    the body, out of CSS cascade reach of the input. */
 const AutocompleteSizeContext = React.createContext<AutocompleteSize>("default");
 
-export interface AutocompleteRootProps extends BaseAutocomplete.Root.Props<any> {
+export interface AutocompleteRootProps<Value = string>
+  extends BaseAutocomplete.Root.Props<Value> {
   /** Two sizes only, applied to the input and the list together: default is 36px tall, compact is 28px. @default "default" */
   size?: AutocompleteSize;
 }
@@ -22,10 +23,17 @@ export interface AutocompleteRootProps extends BaseAutocomplete.Root.Props<any> 
  * the suggestions; mode tunes the behavior (inline completion, static
  * lists).
  */
-export function AutocompleteRoot({ size = "default", ...props }: AutocompleteRootProps) {
+export function AutocompleteRoot<Value = string>({
+  size = "default",
+  ...props
+}: AutocompleteRootProps<Value>) {
+  /* Base UI declares Root as overloads (flat vs grouped items) that a
+     generic spread can't satisfy; the public interface stays typed and
+     the cast never leaves this function. */
+  const Root = BaseAutocomplete.Root as React.FC<BaseAutocomplete.Root.Props<Value>>;
   return (
     <AutocompleteSizeContext.Provider value={size}>
-      <BaseAutocomplete.Root {...props} />
+      <Root {...props} />
     </AutocompleteSizeContext.Provider>
   );
 }
@@ -35,6 +43,8 @@ export interface AutocompleteInputProps extends BaseAutocomplete.Input.Props {
   variant?: "default" | "borderless";
   /** Show the clear button while something is typed. @default true */
   clearable?: boolean;
+  /** Marks the value as invalid: danger border and aria-invalid, like the Input. A surrounding Field's validation sets the same state automatically. @default false */
+  invalid?: boolean;
 }
 
 /**
@@ -46,9 +56,13 @@ export function AutocompleteInput({
   className,
   variant = "default",
   clearable = true,
+  invalid = false,
   ...props
 }: AutocompleteInputProps) {
   const size = React.useContext(AutocompleteSizeContext);
+  /* Only claim the invalid attributes when this prop asserts them; a
+     surrounding Field sets the same ones through Base UI. */
+  const invalidProps = invalid ? { "data-invalid": "", "aria-invalid": true } : {};
   return (
     <BaseAutocomplete.InputGroup
       data-size={size}
@@ -58,6 +72,7 @@ export function AutocompleteInput({
     >
       <BaseAutocomplete.Input
         className={withBase("ub-combobox-input ub-autocomplete-input", className)}
+        {...invalidProps}
         {...props}
       />
       {clearable ? (
@@ -84,6 +99,12 @@ export interface AutocompleteContentProps
   empty?: React.ReactNode;
   /** A status line above the list ("Searching..."), announced politely; swap its content rather than unmounting. */
   status?: React.ReactNode;
+  /** Which side of the input to open on. Defaults to below the input. */
+  side?: BaseAutocomplete.Positioner.Props["side"];
+  /** Alignment along that side. */
+  align?: BaseAutocomplete.Positioner.Props["align"];
+  /** Gap between the input and the popup, in pixels. @default 4 */
+  sideOffset?: number;
 }
 
 /**
@@ -96,6 +117,9 @@ export function AutocompleteContent({
   children,
   empty,
   status,
+  side,
+  align,
+  sideOffset = 4,
   ...props
 }: AutocompleteContentProps) {
   const size = React.useContext(AutocompleteSizeContext);
@@ -103,7 +127,9 @@ export function AutocompleteContent({
     <BaseAutocomplete.Portal>
       <BaseAutocomplete.Positioner
         className="ub-combobox-positioner"
-        sideOffset={4}
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
       >
         <BaseAutocomplete.Popup
           data-size={size}

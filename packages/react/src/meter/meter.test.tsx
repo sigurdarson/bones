@@ -34,4 +34,9 @@ describe("Meter", () => {
     expect(warn).not.toHaveBeenCalled();
     warn.mockRestore();
   });
+
+  it("passes data attributes through", () => {
+    render(<Meter value={30} label="Quota" data-tone="high" />);
+    expect(screen.getByRole("meter")).toHaveAttribute("data-tone", "high");
+  });
 });

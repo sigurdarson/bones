@@ -86,4 +86,18 @@ describe("Drawer", () => {
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument(),
     );
   });
+
+  it("passes aria attributes through to the dialog", async () => {
+    render(
+      <DrawerRoot defaultOpen>
+        <DrawerContent aria-label="Filters">
+          <DrawerTitle>Filters</DrawerTitle>
+        </DrawerContent>
+      </DrawerRoot>,
+    );
+    expect(await screen.findByRole("dialog")).toHaveAttribute(
+      "aria-label",
+      "Filters",
+    );
+  });
 });
