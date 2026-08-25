@@ -2,10 +2,14 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
+  ComboboxChip,
+  ComboboxChips,
   ComboboxContent,
   ComboboxInput,
   ComboboxItem,
   ComboboxRoot,
+  ComboboxTrigger,
+  ComboboxValue,
 } from "./combobox";
 
 const languages = ["English", "French", "German", "Icelandic", "Italian"];
@@ -75,6 +79,76 @@ describe("Combobox", () => {
 
     await user.click(screen.getByRole("button", { name: "Clear" }));
     expect(input).toHaveValue("");
+  });
+
+  it("renders multiple selections as removable chips", async () => {
+    const user = userEvent.setup();
+    render(
+      <ComboboxRoot items={languages} multiple defaultValue={["French"]}>
+        <ComboboxChips>
+          <ComboboxValue>
+            {(values: string[]) => (
+              <>
+                {values.map((value) => (
+                  <ComboboxChip key={value}>{value}</ComboboxChip>
+                ))}
+                <ComboboxInput aria-label="Languages" clearable={false} />
+              </>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent>
+          {(item: string) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxContent>
+      </ComboboxRoot>,
+    );
+
+    expect(screen.getByText("French")).toBeInTheDocument();
+
+    await user.type(screen.getByRole("combobox"), "Ger");
+    await user.click(await screen.findByRole("option", { name: "German" }));
+    expect(screen.getByText("German")).toBeInTheDocument();
+    expect(screen.getByText("French")).toBeInTheDocument();
+
+    const removes = screen.getAllByRole("button", { name: "Remove" });
+    expect(removes).toHaveLength(2);
+    await user.click(removes[0]!);
+    expect(screen.queryByText("French")).not.toBeInTheDocument();
+  });
+
+  it("supports a select-like trigger with the input inside the popup", async () => {
+    const user = userEvent.setup();
+    render(
+      <ComboboxRoot items={languages}>
+        {/* role=combobox takes no name from contents, so the trigger
+            needs aria-label (or a Field label); the placeholder is
+            visual only. */}
+        <ComboboxTrigger placeholder="Choose a language" aria-label="Language" />
+        <ComboboxContent searchInput="Search languages...">
+          {(item: string) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxContent>
+      </ComboboxRoot>,
+    );
+
+    const trigger = screen.getByRole("combobox", { name: "Language" });
+    expect(trigger).toHaveClass("ub-select-trigger");
+    expect(trigger).toHaveTextContent("Choose a language");
+    await user.click(trigger);
+
+    const search = await screen.findByPlaceholderText("Search languages...");
+    await user.type(search, "Ita");
+    await user.click(await screen.findByRole("option", { name: "Italian" }));
+    expect(screen.getByRole("combobox", { name: "Language" })).toHaveTextContent(
+      "Italian",
+    );
   });
 
   it("carries the size from the root onto the input group and popup", async () => {

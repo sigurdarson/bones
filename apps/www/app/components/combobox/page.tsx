@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
+import {
+  ComboboxAsyncMultiple,
+  ComboboxAsyncSingle,
+  ComboboxCreatable,
+  ComboboxGrouped,
+  ComboboxMultiple,
+  ComboboxPopupInput,
+} from "@/components/combobox-examples";
 import { ComboboxPlayground } from "@/components/combobox-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
@@ -26,6 +34,46 @@ export default function Page() {
         you've configured.
       </p>
       <ComboboxPlayground />
+      <h2>Multiple select</h2>
+      <p>
+        <code>multiple</code> turns the value into an array, and{" "}
+        <code>ComboboxChips</code> shows it as removable chips with the
+        input riding inline after them.
+      </p>
+      <ComboboxMultiple />
+      <h2>Input inside popup</h2>
+      <p>
+        For a select-like control, swap the input for a{" "}
+        <code>ComboboxTrigger</code> and put the search field inside the
+        popup with <code>searchInput</code> on the content.
+      </p>
+      <ComboboxPopupInput />
+      <h2>Grouped</h2>
+      <p>
+        Pass groups as the root's items and render each group's own items
+        through <code>ComboboxCollection</code>; filtering reaches into
+        every group.
+      </p>
+      <ComboboxGrouped />
+      <h2>Async search</h2>
+      <p>
+        Fetch on <code>onInputValueChange</code>, hand the results to{" "}
+        <code>items</code>, and keep a status line up while the request
+        runs; the demo fakes the network with a delay.
+      </p>
+      <ComboboxAsyncSingle />
+      <h2>Async search, multiple</h2>
+      <p>
+        The same pattern with chips: picked people stay selected while
+        new searches stream fresh results into the list.
+      </p>
+      <ComboboxAsyncMultiple />
+      <h2>Creatable</h2>
+      <p>
+        Manage the items yourself and append a create row when the query
+        matches nothing; selecting it adds the value and keeps it chosen.
+      </p>
+      <ComboboxCreatable />
       <h2>Styling states</h2>
       <p>
         Items carry <code>data-highlighted</code> and{" "}
@@ -90,12 +138,16 @@ export default function Page() {
         ]}
       />
       <AgentInstructions
-        instructions={`ComboboxRoot, ComboboxInput, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, from @usebones/react.
+        instructions={`ComboboxRoot, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, ComboboxChips, ComboboxChip, ComboboxValue, ComboboxCollection, ComboboxStatus, from @usebones/react.
 - Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true; chevron and clear built in) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
 - value/defaultValue/onValueChange like every control; multiple turns the value into an array. Object items need itemToStringLabel.
-- Typing filters and opens; the chevron browses everything; the selected check renders automatically.
+- Multiple with chips: ComboboxChips wrapping ComboboxValue's function children (map values to ComboboxChip; put ComboboxInput clearable={false} after them). Chip remove buttons are automatic.
+- Select-like: ComboboxTrigger (placeholder is visual only; name it via aria-label or a Field label) with searchInput="..." on ComboboxContent putting the input inside the popup.
+- Grouped: items are groups; function children get each group; ComboboxGroup items={group.items} + ComboboxGroupLabel + ComboboxCollection render the rows.
+- Async: fetch in onInputValueChange, pass results as items, status="Searching..." on the content while loading (announced politely), empty={null} while loading.
+- Creatable: manage items in state, render static children, and append a ComboboxItem whose value is the query when nothing matches.
 - Prefer Select for short fixed lists; the combobox earns its input when the list is long enough to search.
-- Restyle in CSS via .ub-combobox-input, .ub-combobox-popup, .ub-combobox-item, [data-highlighted], [data-selected], [data-popup-open] on the trigger. Tokens only.`}
+- Restyle in CSS via .ub-combobox-input, .ub-combobox-chips, .ub-combobox-chip, .ub-combobox-popup, .ub-combobox-item, [data-highlighted], [data-selected], [data-popup-open] on the trigger. Tokens only.`}
       />
     </>
   );

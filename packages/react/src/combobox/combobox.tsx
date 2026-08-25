@@ -93,12 +93,63 @@ export function ComboboxInput({
   );
 }
 
+export interface ComboboxTriggerProps extends BaseCombobox.Trigger.Props {
+  /** Shown while nothing is selected. */
+  placeholder?: React.ReactNode;
+}
+
+/**
+ * A select-like button alternative to ComboboxInput: it shows the
+ * current value and opens the popup, with typing happening inside the
+ * popup instead (pair with searchInput on ComboboxContent). Renders the
+ * Select trigger's classes, so the two restyle together.
+ */
+export function ComboboxTrigger({
+  className,
+  placeholder,
+  children,
+  ...props
+}: ComboboxTriggerProps) {
+  const size = React.useContext(ComboboxSizeContext);
+  return (
+    <BaseCombobox.Trigger
+      data-size={size}
+      className={withBase("ub-select-trigger ub-combobox-select-trigger", className)}
+      {...props}
+    >
+      {children ?? (
+        <span className="ub-select-value">
+          <BaseCombobox.Value placeholder={placeholder} />
+        </span>
+      )}
+      <span className="ub-select-icon" aria-hidden>
+        <svg viewBox="0 0 12 12" fill="none">
+          <path
+            d="M3 4.5l3 3 3-3"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    </BaseCombobox.Trigger>
+  );
+}
+
 export interface ComboboxContentProps
   extends Omit<BaseCombobox.Popup.Props, "children"> {
   /** The items, or a function called with each filtered item. */
   children?: BaseCombobox.List.Props["children"];
   /** Shown while the filter matches nothing; requires items on the root. */
   empty?: React.ReactNode;
+  /**
+   * Puts the text input inside the popup (for ComboboxTrigger usage);
+   * pass true or a placeholder string.
+   */
+  searchInput?: boolean | string;
+  /** A status line above the list ("Searching..."), announced politely; swap its content rather than unmounting. */
+  status?: React.ReactNode;
 }
 
 /**
@@ -110,6 +161,8 @@ export function ComboboxContent({
   className,
   children,
   empty,
+  searchInput,
+  status,
   ...props
 }: ComboboxContentProps) {
   const size = React.useContext(ComboboxSizeContext);
@@ -121,6 +174,19 @@ export function ComboboxContent({
           className={withBase("ub-combobox-popup", className)}
           {...props}
         >
+          {searchInput ? (
+            <BaseCombobox.Input
+              className="ub-combobox-popup-input"
+              placeholder={
+                typeof searchInput === "string" ? searchInput : undefined
+              }
+            />
+          ) : null}
+          {status !== undefined ? (
+            <BaseCombobox.Status className="ub-combobox-status">
+              {status}
+            </BaseCombobox.Status>
+          ) : null}
           {empty != null ? (
             <BaseCombobox.Empty className="ub-combobox-empty">
               {empty}
@@ -132,6 +198,80 @@ export function ComboboxContent({
         </BaseCombobox.Popup>
       </BaseCombobox.Positioner>
     </BaseCombobox.Portal>
+  );
+}
+
+export interface ComboboxChipsProps extends BaseCombobox.Chips.Props {}
+
+/**
+ * The multi-select control: selected values as removable chips with the
+ * input inline after them. Use with multiple on the root; render chips
+ * via ComboboxValue's function children.
+ */
+export function ComboboxChips({ className, ...props }: ComboboxChipsProps) {
+  const size = React.useContext(ComboboxSizeContext);
+  return (
+    <BaseCombobox.Chips
+      data-size={size}
+      className={withBase("ub-combobox-chips", className)}
+      {...props}
+    />
+  );
+}
+
+export interface ComboboxChipProps extends BaseCombobox.Chip.Props {}
+
+/** One selected value; the remove button renders automatically. */
+export function ComboboxChip({ className, children, ...props }: ComboboxChipProps) {
+  return (
+    <BaseCombobox.Chip className={withBase("ub-combobox-chip", className)} {...props}>
+      {children}
+      <BaseCombobox.ChipRemove
+        className="ub-combobox-chip-remove"
+        aria-label="Remove"
+      >
+        <svg viewBox="0 0 12 12" fill="none" aria-hidden>
+          <path
+            d="M3 3l6 6M9 3l-6 6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
+      </BaseCombobox.ChipRemove>
+    </BaseCombobox.Chip>
+  );
+}
+
+export interface ComboboxValueProps extends BaseCombobox.Value.Props {}
+
+/**
+ * The current selection, for custom rendering: function children receive
+ * the value (an array with multiple), for mapping to chips.
+ */
+export function ComboboxValue(props: ComboboxValueProps) {
+  return <BaseCombobox.Value {...props} />;
+}
+
+export interface ComboboxCollectionProps extends BaseCombobox.Collection.Props {}
+
+/** Renders a group's items; use inside a ComboboxGroup with items. */
+export function ComboboxCollection(props: ComboboxCollectionProps) {
+  return <BaseCombobox.Collection {...props} />;
+}
+
+export interface ComboboxStatusProps extends BaseCombobox.Status.Props {}
+
+/**
+ * A status line in the popup ("Searching..."), announced politely to
+ * screen readers. Keep it mounted and swap its children.
+ */
+export function ComboboxStatus({ className, ...props }: ComboboxStatusProps) {
+  return (
+    <BaseCombobox.Status
+      className={withBase("ub-combobox-status", className)}
+      {...props}
+    />
   );
 }
 
