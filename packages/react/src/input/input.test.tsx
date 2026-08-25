@@ -30,14 +30,15 @@ describe("Input", () => {
     expect(input).toHaveAttribute("aria-invalid", "true");
   });
 
-  it("renders a wrapper with icon markers when icons are present", () => {
+  it("renders the field wrapper with a hidden icon when icons are present", () => {
     const { container } = render(
       <Input aria-label="Email" leadingIcon={<svg data-testid="lead" />} />,
     );
-    const root = container.firstChild as HTMLElement;
-    expect(root).toHaveClass("ub-input-root");
-    expect(root).toHaveAttribute("data-leading");
-    expect(root.querySelector('[data-side="leading"]')).toHaveAttribute("aria-hidden");
+    const field = container.firstChild as HTMLElement;
+    expect(field).toHaveClass("ub-input-field");
+    expect(field.querySelector(".ub-input-leading-icon")).toHaveAttribute(
+      "aria-hidden",
+    );
   });
 
   it("links the hint via aria-describedby and merges an existing one", () => {

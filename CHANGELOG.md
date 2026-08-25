@@ -5,6 +5,12 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: breaking: Input's wrapper anatomy is renamed to match the
+  Select: ub-input-root is now ub-input-field, the inner row is
+  ub-input-box, and the icon spans are ub-input-leading-icon and
+  ub-input-trailing-icon. The data-side, data-leading, and
+  data-trailing attributes are gone; style off the classes.
+
 - react: add Autocomplete wrapping the Base UI Autocomplete: free text
   with suggestions, four completion modes, a clearable typing-first
   input, and styling shared with the Combobox.
