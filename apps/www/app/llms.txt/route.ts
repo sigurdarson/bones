@@ -70,6 +70,16 @@ const content = `# bones
   disabled) + CollapsibleTrigger (label as children, chevron automatic) +
   CollapsiblePanel (hiddenUntilFound, keepMounted). Height animates via
   --collapsible-panel-height; state via [data-panel-open] on the trigger.
+- Combobox: ComboboxRoot (items required for filtering/empty; value or
+  defaultValue + onValueChange; multiple for arrays; size) +
+  ComboboxInput (placeholder, variant default | borderless, clearable
+  default true; chevron and clear built in) + ComboboxContent
+  (empty="..."; searchInput puts the input in the popup; status for
+  async; function children render a ComboboxItem per filtered item) +
+  ComboboxGroup/GroupLabel/Collection. Chips for multiple:
+  ComboboxChips > ComboboxValue fn children mapping to ComboboxChip +
+  inline ComboboxInput. ComboboxTrigger is the select-like button
+  (aria-label required). Prefer Select for short fixed lists.
 - ContextMenu: ContextMenuRoot (size) + ContextMenuTrigger (a div around
   the right-clickable surface) + ContextMenuContent; opens at the pointer,
   long press on touch. Fill the content with the regular Menu parts

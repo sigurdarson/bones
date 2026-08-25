@@ -43,6 +43,7 @@ export const siteNav: NavSection[] = [
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },
       { title: "Collapsible", href: "/components/collapsible" },
+      { title: "Combobox", href: "/components/combobox" },
       { title: "Context menu", href: "/components/context-menu" },
       { title: "Dialog", href: "/components/dialog" },
       { title: "Drawer", href: "/components/drawer" },

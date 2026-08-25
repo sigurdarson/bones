@@ -15,7 +15,7 @@ skipped (with a reason).
 | Checkbox          | done         |       |
 | Checkbox Group    | done         |       |
 | Collapsible       | done         |       |
-| Combobox          | todo         |       |
+| Combobox          | done         |       |
 | Context Menu      | done         | Root, trigger, and content only; items come from Menu. |
 | Dialog            | done         |       |
 | Drawer            | done         | Bottom sheet plus left/right side panels. |

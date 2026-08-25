@@ -5,6 +5,11 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- react: add Combobox wrapping the Base UI Combobox: a filtering input
+  with built-in chevron and clear buttons, a borderless variant, a
+  bundled dropdown with empty and status states, chips for multiple
+  selection, a select-like trigger with in-popup search, groups, and
+  two sizes flowing from the root.
 - react: add NavigationMenu wrapping the Base UI Navigation Menu: site
   navigation whose shared popup morphs between the open item's content,
   with real anchor links, an automatic chevron, nested flyout submenus,
