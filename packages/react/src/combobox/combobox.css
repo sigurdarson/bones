@@ -278,11 +278,15 @@
   display: none;
 }
 
+/* A fixed height keeps the remove button's inset uniform: 0.25rem from
+   the top, end, and bottom edges, and the same 0.25rem gap to the label
+   beside it. */
 .ub-combobox-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.125rem 0.25rem 0.125rem 0.5rem;
+  height: 1.5rem;
+  padding-inline: 0.5rem 0.25rem;
   border-radius: var(--ub-radius-sm);
   background: var(--ub-bg-muted);
   font-size: var(--ub-font-size-compact);
