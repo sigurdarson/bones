@@ -85,26 +85,28 @@ export function ComboboxPlayground() {
           </>
         }
       >
-        <ComboboxRoot
-          key={String(compact)}
-          items={members}
-          size={compact ? "compact" : "default"}
-        >
-          <ComboboxInput
-            placeholder="Assign to..."
-            aria-label="Assignee"
-            variant={borderless ? "borderless" : "default"}
-            clearable={clearable}
-            disabled={disabled}
-          />
-          <ComboboxContent empty="No one matches.">
-            {(member: string) => (
-              <ComboboxItem key={member} value={member}>
-                {member}
-              </ComboboxItem>
-            )}
-          </ComboboxContent>
-        </ComboboxRoot>
+        <div style={{ width: "22rem" }}>
+          <ComboboxRoot
+            key={String(compact)}
+            items={members}
+            size={compact ? "compact" : "default"}
+          >
+            <ComboboxInput
+              placeholder="Assign to..."
+              aria-label="Assignee"
+              variant={borderless ? "borderless" : "default"}
+              clearable={clearable}
+              disabled={disabled}
+            />
+            <ComboboxContent empty="No one matches.">
+              {(member: string) => (
+                <ComboboxItem key={member} value={member}>
+                  {member}
+                </ComboboxItem>
+              )}
+            </ComboboxContent>
+          </ComboboxRoot>
+        </div>
       </Showcase>
       <Controls>
         <ControlRow label="Compact">

@@ -371,6 +371,19 @@ html,
   min-width: 0;
 }
 
+/* Combobox demos share one width: the wrapper div sets it and the
+   controls stretch to fill, instead of sizing to their content. The
+   input riding inline inside chips keeps its flexible width. */
+.showcase-preview .ub-combobox-chips,
+.showcase-preview .ub-combobox-input-group,
+.showcase-preview .ub-combobox-select-trigger {
+  width: 100%;
+}
+
+.showcase-preview .ub-combobox-chips .ub-combobox-input-group {
+  width: auto;
+}
+
 /* ---------- page header ---------- */
 
 .page-header {

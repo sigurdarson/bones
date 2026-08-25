@@ -133,16 +133,18 @@ export function ComboboxPopupInput() {
         </>
       }
     >
-      <ComboboxRoot items={cities}>
-        <ComboboxTrigger placeholder="Choose a city" aria-label="Time zone" />
-        <ComboboxContent searchInput="Search cities..." empty="No cities found.">
-          {(city: string) => (
-            <ComboboxItem key={city} value={city}>
-              {city}
-            </ComboboxItem>
-          )}
-        </ComboboxContent>
-      </ComboboxRoot>
+      <div style={{ width: "22rem" }}>
+        <ComboboxRoot items={cities}>
+          <ComboboxTrigger placeholder="Choose a city" aria-label="Time zone" />
+          <ComboboxContent searchInput="Search cities..." empty="No cities found.">
+            {(city: string) => (
+              <ComboboxItem key={city} value={city}>
+                {city}
+              </ComboboxItem>
+            )}
+          </ComboboxContent>
+        </ComboboxRoot>
+      </div>
     </Showcase>
   );
 }
@@ -189,23 +191,25 @@ export function ComboboxGrouped() {
         </>
       }
     >
-      <ComboboxRoot items={produce}>
-        <ComboboxInput placeholder="Select produce" aria-label="Produce" />
-        <ComboboxContent empty="Nothing in season.">
-          {(group: (typeof produce)[number]) => (
-            <ComboboxGroup key={group.value} items={group.items}>
-              <ComboboxGroupLabel>{group.value}</ComboboxGroupLabel>
-              <ComboboxCollection>
-                {(item: string) => (
-                  <ComboboxItem key={item} value={item}>
-                    {item}
-                  </ComboboxItem>
-                )}
-              </ComboboxCollection>
-            </ComboboxGroup>
-          )}
-        </ComboboxContent>
-      </ComboboxRoot>
+      <div style={{ width: "22rem" }}>
+        <ComboboxRoot items={produce}>
+          <ComboboxInput placeholder="Select produce" aria-label="Produce" />
+          <ComboboxContent empty="Nothing in season.">
+            {(group: (typeof produce)[number]) => (
+              <ComboboxGroup key={group.value} items={group.items}>
+                <ComboboxGroupLabel>{group.value}</ComboboxGroupLabel>
+                <ComboboxCollection>
+                  {(item: string) => (
+                    <ComboboxItem key={item} value={item}>
+                      {item}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+              </ComboboxGroup>
+            )}
+          </ComboboxContent>
+        </ComboboxRoot>
+      </div>
     </Showcase>
   );
 }
@@ -303,7 +307,7 @@ export function ComboboxAsyncSingle() {
         </>
       }
     >
-      <div style={{ width: "20rem" }}>
+      <div style={{ width: "22rem" }}>
         <ComboboxRoot
           items={results}
           itemToStringLabel={(person: Person) => person.name}
