@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/code-block";
 import { ColorScales } from "@/components/color-scale";
+import { MatrixSwitch } from "@/components/matrix-switch";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = { title: "Theming" };
@@ -45,7 +46,21 @@ export default function Page() {
       <p className="lead">
         Every design decision in bones is a CSS custom property prefixed{" "}
         <code>--ub-</code>. Components only ever read the semantic layer, so a
-        theme is a handful of overrides, not a fork.
+        theme is a handful of overrides, not a fork. This page is the whole
+        styling story: the token layers, the built-in switches, restyling
+        component states, and writing a theme of your own.
+      </p>
+      <h2>How styling works</h2>
+      <p>
+        Three layers. The palette (<code>--ub-gray-500</code>,{" "}
+        <code>--ub-green-600</code>, ...) holds raw color steps. The semantic
+        layer (<code>--ub-bg</code>, <code>--ub-text-primary</code>,{" "}
+        <code>--ub-accent</code>, plus radius, motion, and size tokens) gives
+        those values meaning, and it is the only layer components read. The
+        component CSS turns semantic tokens into actual controls. Theming
+        happens entirely at the middle layer: override a semantic token and
+        every component follows, with no provider, no config file, and no
+        build step. The switches are plain HTML attributes.
       </p>
       <h2>Color steps</h2>
       <p>
@@ -99,6 +114,96 @@ export default function Page() {
         everything that means "primary action" in both modes:
       </p>
       <CodeBlock code={`import "@usebones/tokens/themes/blue.css";`} />
+      <h2>Full themes</h2>
+      <p>
+        An accent theme recolors primary actions and leaves the rest alone. A
+        full theme replaces every color role: backgrounds, text, borders,
+        accent, feedback, shadows, and (optionally) the radius scale. Full
+        themes ship inert and activate with an attribute, the same switch
+        that drives dark mode, so importing one costs nothing until you turn
+        it on:
+      </p>
+      <CodeBlock
+        code={`import "@usebones/tokens/themes/matrix.css";
+
+<html data-theme="matrix">`}
+      />
+      <p>
+        matrix is the first one: green phosphor on near-black, sharp
+        corners, and a faint glow for elevation. Because a full theme defines
+        every role itself, there is no separate light or dark inside it; it
+        replaces both.
+      </p>
+      <MatrixSwitch />
+      <h2>Creating a theme</h2>
+      <p>
+        A theme is a plain CSS file, no build step and no special format.
+        Import it after <code>index.css</code> and override semantic tokens.
+        For an accent theme, that's the four action tokens in both modes
+        (copy <code>themes/blue.css</code> as a starting point). For a full
+        theme, scope everything under your own <code>data-theme</code> value:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`[data-theme="my-theme"] {
+  color-scheme: dark; /* or light: pick one, a full theme replaces both */
+
+  /* backgrounds */
+  --ub-bg: ...;
+  --ub-bg-subtle: ...;
+  --ub-bg-muted: ...;
+  --ub-bg-muted-hover: ...;
+  --ub-surface: ...;
+  --ub-overlay: ...;
+
+  /* text: primary, secondary, tertiary, disabled */
+  /* borders: border, border-strong */
+  /* interactive: accent, accent-hover, accent-contrast, ring */
+  /* feedback: danger (+hover/contrast), success, warning, info */
+  /* elevation: shadow-sm/md/lg */
+  /* optional: the radius scale, like matrix does */
+}`}
+      />
+      <p>
+        The rules that keep a theme feeling like bones: define every color
+        role (the override reference below is the checklist), set{" "}
+        <code>color-scheme</code> so native form parts match, keep text roles
+        at WCAG contrast against your backgrounds (primary text 4.5:1 or
+        better), and think twice before recoloring danger; destructive
+        should still read as destructive. <code>--ub-surface-glass</code>{" "}
+        derives from your <code>--ub-surface</code> automatically. Reference
+        palette steps when they fit and raw <code>oklch()</code> when they
+        don't.
+      </p>
+      <p>
+        Distribution is just as boring: a theme file works from anywhere
+        (your app's CSS, a gist, an npm package of your own). Themes that
+        should ship in <code>@usebones/tokens</code> itself arrive as pull
+        requests adding one file under <code>css/themes/</code>; the{" "}
+        <code>themes/*</code> export path picks it up automatically.
+      </p>
+      <h2>Styling component states</h2>
+      <p>
+        Below the token layer, every part has a stable class
+        (<code>ub-button</code>, <code>ub-select-trigger</code>,{" "}
+        <code>ub-combobox-chip</code>) and exposes its state as data
+        attributes (<code>data-checked</code>, <code>data-highlighted</code>,{" "}
+        <code>data-popup-open</code>, <code>data-invalid</code>), so app CSS
+        can restyle any state without touching JavaScript:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-combobox-item[data-highlighted] {
+  background: var(--ub-accent);
+  color: var(--ub-accent-contrast);
+}`}
+      />
+      <p>
+        Shared anatomies multiply the effect: restyle <code>ub-menu-*</code>{" "}
+        and the context menu and menubar follow; restyle{" "}
+        <code>ub-combobox-*</code> and the autocomplete follows. Every
+        component page has a "Styling states" section with its exact hooks.
+      </p>
       <h2>Density is a token override</h2>
       <p>
         Because components read the size tokens for their default size,

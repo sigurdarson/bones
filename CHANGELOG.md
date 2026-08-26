@@ -5,6 +5,11 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- tokens: add matrix, the first full theme: green phosphor on
+  near-black, sharp corners, and a glow for elevation. Full themes ship
+  inert and activate with data-theme="matrix" on any subtree, unlike
+  accent themes, which apply on import.
+
 ## 0.2.0 (2026-08-26)
 
 - react: breaking: Input's wrapper anatomy is renamed to match the
