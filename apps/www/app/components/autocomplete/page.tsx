@@ -90,6 +90,12 @@ export default function Page() {
             description: "Shows the clear button while something is typed.",
           },
           {
+            name: "AutocompleteInput.invalid",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Danger border and aria-invalid, like the Input; a surrounding Field sets it automatically.",
+          },
+          {
             name: "AutocompleteContent.empty / status",
             type: "ReactNode",
             description: "Empty state, and a politely announced status line for async searches.",

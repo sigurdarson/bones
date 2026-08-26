@@ -126,6 +126,12 @@ export default function Page() {
             description: "Swaps the chevron for a clear button while something is selected.",
           },
           {
+            name: "ComboboxInput.invalid",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Danger border and aria-invalid, like the Input; a surrounding Field sets it automatically. Also on ComboboxTrigger.",
+          },
+          {
             name: "ComboboxContent.empty",
             type: "ReactNode",
             description: "Shown while the filter matches nothing.",

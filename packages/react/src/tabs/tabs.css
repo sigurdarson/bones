@@ -45,7 +45,7 @@
   transition: color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
-.ub-tabs-tab:hover {
+.ub-tabs-tab:hover:not([data-disabled]) {
   color: var(--ub-text-primary);
 }
 
@@ -60,7 +60,7 @@
 
 .ub-tabs-tab[data-disabled] {
   cursor: not-allowed;
-  color: var(--ub-text-disabled);
+  opacity: 0.5;
 }
 
 /* icon-only tabs are square */

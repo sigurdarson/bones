@@ -51,6 +51,9 @@
       calc(var(--toast-swipe-movement-y, 0px) + min(var(--toast-index), 5) * -0.5rem)
     );
   scale: calc(1 - min(var(--toast-index), 5) * 0.05);
+  /* Orders toasts within the viewport's own stacking context (the
+     viewport carries --ub-z-overlay); these numbers never compete with
+     other overlays. */
   z-index: calc(20 - var(--toast-index));
   transition:
     transform var(--ub-duration-slow) var(--ub-ease-out),
@@ -171,7 +174,7 @@
 .ub-toast-action {
   align-self: center;
   flex-shrink: 0;
-  height: 1.75rem;
+  height: var(--ub-control-height-compact);
   padding-inline: 0.625rem;
   border: none;
   border-radius: var(--ub-radius-control);
@@ -226,5 +229,5 @@
 }
 
 .ub-toast-close svg {
-  width: 0.625rem;
+  width: 0.75rem;
 }

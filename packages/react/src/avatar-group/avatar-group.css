@@ -7,7 +7,7 @@
    avatar dimensions stay exact. Override --ub-avatar-group-ring when the
    group sits on a surface instead of the page background. */
 .ub-avatar-group .ub-avatar {
-  box-shadow: 0 0 0 2px var(--ub-avatar-group-ring, var(--ub-bg));
+  box-shadow: 0 0 0 0.125rem var(--ub-avatar-group-ring, var(--ub-bg));
 }
 
 .ub-avatar-group > * + * {

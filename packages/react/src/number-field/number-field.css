@@ -82,11 +82,14 @@
   color: var(--ub-text-secondary);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--ub-duration-fast) var(--ub-ease-out);
+  transition:
+    background-color var(--ub-duration-fast) var(--ub-ease-out),
+    color var(--ub-duration-fast) var(--ub-ease-out);
 }
 
 .ub-number-field-step:hover:not([data-disabled]) {
   background: var(--ub-bg-muted);
+  color: var(--ub-text-primary);
 }
 
 .ub-number-field-step:focus-visible {

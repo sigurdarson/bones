@@ -107,19 +107,35 @@ export function SelectTrigger({
   );
 }
 
-export interface SelectContentProps extends BaseSelect.Popup.Props {}
+export interface SelectContentProps extends BaseSelect.Popup.Props {
+  /** Which side of the trigger to open on. Defaults to below the trigger. */
+  side?: BaseSelect.Positioner.Props["side"];
+  /** Alignment along that side. */
+  align?: BaseSelect.Positioner.Props["align"];
+  /** Gap between the trigger and the popup, in pixels. @default 4 */
+  sideOffset?: number;
+}
 
 /**
  * The dropdown. Bundles the Base UI Portal, Positioner, and Popup so usage
  * stays small; opens below the trigger and matches its width.
  */
-export function SelectContent({ className, children, ...props }: SelectContentProps) {
+export function SelectContent({
+  className,
+  side,
+  align,
+  sideOffset = 4,
+  children,
+  ...props
+}: SelectContentProps) {
   const size = React.useContext(SelectSizeContext);
   return (
     <BaseSelect.Portal>
       <BaseSelect.Positioner
         className="ub-select-positioner"
-        sideOffset={4}
+        side={side}
+        align={align}
+        sideOffset={sideOffset}
         alignItemWithTrigger={false}
       >
         <BaseSelect.Popup

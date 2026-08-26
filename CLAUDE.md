@@ -77,7 +77,11 @@ pnpm test           # component contract tests (Vitest), also run in CI
   `will-change: transform` to pin each surface to its own layer (floating,
   transient surfaces only; never persistent elements).
 - Icons come from `@usebones/icons` semantic names; never import an icon
-  library directly in components.
+  library directly in components. Exception: tiny structural glyphs that
+  are part of a component's anatomy (chevrons, checks, dismiss x-marks,
+  stepper plus/minus, toast status icons) are hand-rolled inline `<svg>`
+  so `@usebones/react` stays dependency-free; they are 0.75rem wide and
+  `aria-hidden`.
 - Every component ships a contract test file (`src/<name>/<name>.test.tsx`)
   covering semantics, data-attribute states, aria passthrough, and the dev
   warnings; CI runs the suite on every PR.

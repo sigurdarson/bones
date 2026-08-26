@@ -8,6 +8,8 @@ export interface NavigationMenuRootProps extends BaseNavigationMenu.Root.Props {
   side?: BaseNavigationMenu.Positioner.Props["side"];
   /** Alignment along that side. */
   align?: BaseNavigationMenu.Positioner.Props["align"];
+  /** Gap between the trigger and the popup, in pixels. @default 8 */
+  sideOffset?: number;
   /**
    * Renders children only, without the bundled popup. Pair with an
    * inline NavigationMenuViewport for second-level navigation that stays
@@ -29,6 +31,7 @@ export function NavigationMenuRoot({
   children,
   side,
   align,
+  sideOffset = 8,
   inline = false,
   ...props
 }: NavigationMenuRootProps) {
@@ -45,7 +48,7 @@ export function NavigationMenuRoot({
             className="ub-navigation-menu-positioner"
             side={side}
             align={align}
-            sideOffset={8}
+            sideOffset={sideOffset}
             collisionPadding={16}
           >
             <BaseNavigationMenu.Popup className="ub-navigation-menu-popup">
