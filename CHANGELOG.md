@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+## 0.2.1 (2026-08-26)
+
 - tokens, react, icons: the library name is capitalized (Bones) across
   package descriptions, comments, and dev warnings.
 - tokens: add a matrix full theme (green phosphor, sharp corners, glow
