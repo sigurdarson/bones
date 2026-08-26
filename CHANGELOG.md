@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+## 0.2.0 (2026-08-26)
+
 - react: breaking: Input's wrapper anatomy is renamed to match the
   Select: ub-input-root is now ub-input-field, the inner row is
   ub-input-box, and the icon spans are ub-input-leading-icon and
