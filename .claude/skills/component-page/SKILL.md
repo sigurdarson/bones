@@ -14,6 +14,7 @@ Reference implementation: `apps/www/app/components/tabs/page.tsx` plus
 apps/www/app/components/<name>/page.tsx     # the page (server component)
 apps/www/components/<name>-playground.tsx   # playground (client component)
 apps/www/lib/nav.ts                         # register under Components
+apps/www/app/llms.txt/route.ts              # component entry + slug list
 ```
 
 ## Page structure, in order

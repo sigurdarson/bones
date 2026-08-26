@@ -20,11 +20,27 @@ description: Add a new primitive component to @usebones/react following Bones co
 ## Files to create/edit
 
 ```
-packages/react/src/<name>/<name>.tsx   # component
-packages/react/src/<name>/<name>.css   # styles
-packages/react/src/index.ts            # export { X, type XProps }
-packages/react/src/styles.css          # @import "./<name>/<name>.css";
+packages/react/src/<name>/<name>.tsx        # component
+packages/react/src/<name>/<name>.css        # styles
+packages/react/src/<name>/<name>.test.tsx   # contract tests
+packages/react/src/index.ts                 # export block, kept alphabetical
+packages/react/src/styles.css               # @import, kept alphabetical
 ```
+
+Docs surfaces, in the same PR (a component missing from any of these is
+incomplete):
+
+```
+apps/www/app/components/<name>/page.tsx   # docs page (component-page skill)
+apps/www/lib/nav.ts                       # sidebar entry
+apps/www/app/llms.txt/route.ts            # component entry + the slug list
+docs/COMPONENTS.md                        # roadmap status to done
+CHANGELOG.md                              # react: add <name>, under Unreleased
+```
+
+Also check `apps/www/lib/bones-skill.ts` (the installable skill served at
+/skills/bones.md): update it if the component changes the
+which-component-to-reach-for guidance or adds a new pattern worth a line.
 
 ## Component rules
 
