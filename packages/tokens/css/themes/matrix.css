@@ -6,7 +6,12 @@
  * so it ships inert: import it, then activate with data-theme="matrix" on
  * <html> or any subtree. There is no separate light or dark inside a full
  * theme; it replaces both.
+ *
+ * The :root form carries extra specificity so an active full theme beats
+ * accent overrides that land later in the cascade; the bare form keeps
+ * subtree activation working.
  */
+:root[data-theme="matrix"],
 [data-theme="matrix"] {
   color-scheme: dark;
 

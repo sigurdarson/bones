@@ -5,10 +5,10 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
-- tokens: add matrix, the first full theme: green phosphor on
-  near-black, sharp corners, and a glow for elevation. Full themes ship
-  inert and activate with data-theme="matrix" on any subtree, unlike
-  accent themes, which apply on import.
+- tokens: add a matrix full theme (green phosphor, sharp corners, glow
+  shadows). Full themes replace every color role, ship inert, and
+  activate with data-theme="matrix" on any subtree; accent themes still
+  apply on import.
 
 ## 0.2.0 (2026-08-26)
 

@@ -320,30 +320,6 @@ html,
   padding: 1rem;
 }
 
-/* The theming page's matrix demo panel. */
-.matrix-switch {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-block: 1rem;
-  background: var(--ub-bg-subtle);
-  border: 1px solid var(--ub-border);
-  border-radius: var(--ub-radius-lg);
-  padding: 1rem;
-}
-
-.matrix-switch-title {
-  margin: 0;
-  font-weight: 600;
-}
-
-.matrix-switch-hint {
-  margin: 0.25rem 0 0;
-  font-size: var(--ub-font-size-compact);
-  color: var(--ub-text-secondary);
-}
-
 .controls-title {
   font-weight: 600;
 }

@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { Switch } from "@usebones/react";
+import { Controls, ControlRow } from "./controls";
 
 /**
- * The theming page's "see it in action" demo: flips the whole site into
- * the matrix full theme by setting data-theme="matrix" on <html>, exactly
- * how an app would activate it. Turning it off restores whatever the
- * regular theme choice was (stored preference or system); the demo itself
- * is never persisted, so a reload always comes back normal.
+ * The theming page's demo: flips the whole site into the matrix theme by
+ * setting data-theme="matrix" on <html>, exactly how an app would.
+ * Turning it off restores the stored or system theme; never persisted, so
+ * a reload comes back normal.
  */
 export function MatrixSwitch() {
   const [mounted, setMounted] = React.useState(false);
@@ -25,7 +25,6 @@ export function MatrixSwitch() {
       document.documentElement.setAttribute("data-theme", "matrix");
       return;
     }
-    /* Back to the regular resolution: stored choice first, then system. */
     let stored: string | null = null;
     try {
       stored = localStorage.getItem("ub-theme");
@@ -41,20 +40,15 @@ export function MatrixSwitch() {
   }
 
   return (
-    <div className="matrix-switch">
-      <div>
-        <p className="matrix-switch-title">See it in action</p>
-        <p className="matrix-switch-hint">
-          Sets <code>data-theme="matrix"</code> on the page, nothing else.
-          Stays on while you browse; reload to reset.
-        </p>
-      </div>
-      <Switch
-        checked={mounted ? on : false}
-        onCheckedChange={toggle}
-        disabled={!mounted}
-        aria-label="Turn on the matrix theme"
-      />
-    </div>
+    <Controls>
+      <ControlRow label="Matrix">
+        <Switch
+          checked={mounted ? on : false}
+          onCheckedChange={toggle}
+          disabled={!mounted}
+          aria-label="Turn on the matrix theme"
+        />
+      </ControlRow>
+    </Controls>
   );
 }
