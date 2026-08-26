@@ -235,9 +235,12 @@ const content = `# Bones
 ## Source
 
 - https://github.com/sigurdarson/bones
+- Installable agent skill for codebases that use Bones:
+  https://usebones.com/skills/bones.md (drop into
+  .claude/skills/bones/SKILL.md).
 - Conventions for contributors and agents: CLAUDE.md in the repo root.
-- Agent skills ship in .claude/skills (new-component, component-page,
-  release).
+- Library-development skills ship in the repo's .claude/skills
+  (new-component, component-page, release).
 `;
 
 export function GET() {
