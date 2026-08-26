@@ -11,7 +11,7 @@ Site: usebones.com.
 | `packages/tokens` | `@usebones/tokens`| CSS custom properties: palette, semantic, radius, motion. No JS. | MIT        |
 | `packages/react`  | `@usebones/react` | Styled primitives wrapping Base UI parts.           | MIT        |
 | `packages/icons`  | `@usebones/icons` | Semantic icon adapter (Lucide default, swappable).  | MIT        |
-| `apps/www`        | n/a               | Landing page + docs (Next.js).                      | n/a        |
+| `apps/www`        | n/a               | Landing page + docs (TanStack Start, prerendered static, Cloudflare). | n/a        |
 | `interface/`      | n/a               | Commercial tier (AI chat, chat bubbles, thinking states). Reserved, see its README. | Commercial |
 
 Dependency direction: `interface/` may depend on `packages/*`; `packages/*`

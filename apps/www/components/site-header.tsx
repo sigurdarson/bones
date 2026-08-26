@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@usebones/react";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
@@ -7,7 +7,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link href="/" className="site-logo" aria-label="Bones home">
+        <Link to="/" className="site-logo" aria-label="Bones home">
           <Logo />
         </Link>
         <div className="site-header-actions">

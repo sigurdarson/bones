@@ -1,18 +1,25 @@
-import { codeToHtml } from "shiki";
+import { useHighlighted } from "@/lib/use-highlighted";
 
 export interface CodeBlockProps {
   code: string;
   lang?: string;
 }
 
-/* Server component. Highlights once at build time, in both themes; the
-   active theme is chosen by CSS (see .code-block rules in globals.css). */
-export async function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
-  const html = await codeToHtml(code.trim(), {
-    lang,
-    themes: { light: "github-light", dark: "min-dark" },
-    defaultColor: false,
-  });
+/* Highlights in the browser through the shared lazy shiki hook; the plain
+   string renders in the same chrome until colors arrive. */
+export function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
+  const html = useHighlighted(code.trim(), lang);
 
-  return <div className="code-block" dangerouslySetInnerHTML={{ __html: html }} />;
+  if (html) {
+    return (
+      <div className="code-block" dangerouslySetInnerHTML={{ __html: html }} />
+    );
+  }
+  return (
+    <div className="code-block">
+      <pre>
+        <code>{code.trim()}</code>
+      </pre>
+    </div>
+  );
 }
