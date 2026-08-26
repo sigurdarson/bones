@@ -25,7 +25,7 @@ export default function Page() {
       <h2>Props</h2>
       <p>
         The group passes the full Base UI API through, and the toggles
-        inside are regular bones Toggles. The essentials:
+        inside are regular Bones Toggles. The essentials:
       </p>
       <PropsTable
         rows={[
@@ -65,7 +65,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`ToggleGroup, from @usebones/react.
-- Wraps bones Toggles; each joins via value="...". Group state is a string array: defaultValue or value + onValueChange.
+- Wraps Bones Toggles; each joins via value="...". Group state is a string array: defaultValue or value + onValueChange.
 - Single-select by default (alignment); multiple for independent toggles (formatting marks).
 - disabled on the group disables every member.
 - Restyle the container in CSS via .ub-toggle-group; the toggles style themselves. Tokens only.`}

@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 /**
- * bones components never import an icon library directly; they ask for a
+ * Bones components never import an icon library directly; they ask for a
  * semantic name through this adapter. The default set is Lucide; apps swap
  * sets (e.g. Hugeicons) by mounting <IconProvider icons={...}> once.
  */

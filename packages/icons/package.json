@@ -1,7 +1,7 @@
 {
   "name": "@usebones/icons",
   "version": "0.2.0",
-  "description": "Icon adapter for bones: semantic icon names with swappable icon sets (Lucide default, Hugeicons supported).",
+  "description": "Icon adapter for Bones: semantic icon names with swappable icon sets (Lucide default, Hugeicons supported).",
   "license": "MIT",
   "homepage": "https://usebones.com",
   "repository": {

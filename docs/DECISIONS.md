@@ -83,8 +83,8 @@ rules that were real but undocumented (now in the new-component skill):
 ## 2026-08-16: npm scope claimed
 
 - The `usebones` org exists on npm and 0.0.1 of all three packages is
-  published under `@usebones`. The bare `bones` package name is taken by an
-  unmaintained package; `bones-ui` is left unclaimed for now.
+  published under `@usebones`. The bare `Bones` package name is taken by an
+  unmaintained package; `Bones-ui` is left unclaimed for now.
 
 ## 2026-08-16: Writing style rules
 

@@ -57,7 +57,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`Form, from @usebones/react.
-- Wrap Fields inside (FieldRoot name="..." + control + FieldError); submit with a bones Button type="submit".
+- Wrap Fields inside (FieldRoot name="..." + control + FieldError); submit with a Bones Button type="submit".
 - onFormSubmit(values) fires only when all fields are valid; values are keyed by Field name.
 - validationMode: "onSubmit" (default) | "onBlur" | "onChange".
 - Server errors: pass errors={{ fieldName: "message" }} and render a bare <FieldError /> in that field; clear by passing undefined.

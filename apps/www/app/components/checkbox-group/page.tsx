@@ -25,7 +25,7 @@ export default function Page() {
       <h2>Props</h2>
       <p>
         The group passes the full Base UI API through, and the checkboxes
-        inside are regular bones Checkboxes. The essentials:
+        inside are regular Bones Checkboxes. The essentials:
       </p>
       <PropsTable
         rows={[
@@ -70,7 +70,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`CheckboxGroup, from @usebones/react.
-- Wraps bones Checkboxes; each joins via value="...". Group state: defaultValue or value + onValueChange (string arrays).
+- Wraps Bones Checkboxes; each joins via value="...". Group state: defaultValue or value + onValueChange (string arrays).
 - Select-all: pass allValues={[...]} on the group and render one <Checkbox parent /> row; it checks, unchecks, and shows indeterminate automatically.
 - disabled on the group disables every member.
 - Wrap each checkbox in a <label> with its text so the text is clickable.`}

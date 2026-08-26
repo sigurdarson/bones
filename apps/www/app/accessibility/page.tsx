@@ -9,14 +9,14 @@ export default function Page() {
     <>
       <PageHeader title="Accessibility" />
       <p className="lead">
-        Table stakes, not a feature. bones treats accessibility as part of a
+        Table stakes, not a feature. Bones treats accessibility as part of a
         component being correct, the same as its visual states.
       </p>
       <h2>Behavior comes from Base UI</h2>
       <p>
         Interactive components wrap Base UI parts, which handle the hard
         parts: roles and ARIA attributes, keyboard interaction, focus
-        management, and screen reader semantics. bones adds styling on top and
+        management, and screen reader semantics. Bones adds styling on top and
         deliberately avoids reimplementing behavior, so those guarantees stay
         intact.
       </p>

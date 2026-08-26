@@ -1,4 +1,4 @@
-# bones
+# Bones
 
 A minimal, themable React component library built on Base UI, designed so
 humans and coding agents can read, compose, and extend it with zero guesswork.
@@ -50,6 +50,10 @@ pnpm test           # component contract tests (Vitest), also run in CI
   transitions make components that wait for transitions before unmounting
   (tab panels, closing overlays) linger on screen, and animate things that
   were never meant to move.
+- A new semantic token ripples, in the same PR: a row in the theming
+  page's override reference (`apps/www/app/theming/page.tsx`), a value in
+  every full theme (`packages/tokens/css/themes/`, currently matrix;
+  color roles only), and llms.txt if it changes the theming story.
 
 ### Components (`packages/react`)
 
@@ -103,7 +107,10 @@ pnpm test           # component contract tests (Vitest), also run in CI
   semicolon, or parentheses instead. The repo stays free of the character
   entirely; `grep -rn $'\xe2\x80\x94' .` coming back empty is the check
   (that escape is the em dash, spelled without using it).
-- Lowercase "bones" everywhere, even at the start of a sentence.
+- The library name is "Bones", capitalized wherever prose mentions it:
+  docs, comments, UI copy, commit messages, warnings. Code identifiers
+  stay lowercase (`@usebones`, usebones.com, the `bones` repo slug,
+  `ub-` prefixes).
 - Sentence case everywhere: headings, labels, buttons, nav items. Never all
   caps, in copy or via CSS `text-transform: uppercase`. Acronyms (CSS, API,
   WCAG) and conventional filenames (README, CHANGELOG) are the exception.

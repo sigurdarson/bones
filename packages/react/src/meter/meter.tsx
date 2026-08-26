@@ -24,7 +24,7 @@ export function Meter({ className, label, showValue = false, ...props }: MeterPr
     !props["aria-labelledby"]
   ) {
     console.warn(
-      "bones: a Meter needs a label (or aria-label/aria-labelledby) so screen readers can name it.",
+      "Bones: a Meter needs a label (or aria-label/aria-labelledby) so screen readers can name it.",
     );
   }
   return (

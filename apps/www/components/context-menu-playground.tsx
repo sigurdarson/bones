@@ -52,7 +52,7 @@ export function ContextMenuPlayground() {
         note={
           <>
             The trigger wraps any surface; the menu opens at the pointer.
-            Everything inside the content is the regular bones Menu parts,
+            Everything inside the content is the regular Bones Menu parts,
             so the two menus restyle together.
           </>
         }

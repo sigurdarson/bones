@@ -95,7 +95,7 @@ export default function Page() {
         Everything a div accepts passes through; size it like any box
         (height, max-height, width). Give a named region an{" "}
         <code>aria-label</code> so screen readers know what's scrolling.
-        There are no bones-specific props; both bars are always wired and
+        There are no Bones-specific props; both bars are always wired and
         each appears only when its axis actually overflows.
       </p>
       <PropsTable

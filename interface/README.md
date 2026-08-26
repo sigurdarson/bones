@@ -1,6 +1,6 @@
-# bones interface
+# Bones interface
 
-Higher-level, product-ready components built on the open-source bones
+Higher-level, product-ready components built on the open-source Bones
 primitives: AI chat, message bubbles, thinking/streaming states, prompt
 textarea, and friends.
 

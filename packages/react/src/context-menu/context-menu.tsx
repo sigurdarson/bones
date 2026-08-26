@@ -13,7 +13,7 @@ export interface ContextMenuRootProps extends BaseContextMenu.Root.Props {
 /**
  * Holds open state; renders no element of its own. Opens at the pointer
  * on right click (or long press on touch). Everything inside the content
- * is the regular bones Menu parts: MenuItem, MenuCheckboxItem,
+ * is the regular Bones Menu parts: MenuItem, MenuCheckboxItem,
  * MenuRadioGroup, MenuGroup, MenuSeparator, submenus.
  */
 export function ContextMenuRoot({ size = "default", ...props }: ContextMenuRootProps) {

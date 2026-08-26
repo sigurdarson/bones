@@ -23,7 +23,7 @@ export interface InputProps extends Omit<BaseInput.Props, "size"> {
 /**
  * A text input wrapping the Base UI Input. Field state comes through data
  * attributes the stylesheet targets (data-focused, data-filled,
- * data-invalid, ...). The native size attribute is replaced by the bones
+ * data-invalid, ...). The native size attribute is replaced by the Bones
  * size prop; control width with CSS. With icons or a hint, the input
  * renders inside a ub-input-field wrapper, like the Select.
  */

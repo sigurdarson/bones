@@ -1,6 +1,6 @@
 # @usebones/tokens
 
-Design tokens for bones. Plain CSS custom properties. No build step, no runtime.
+Design tokens for Bones. Plain CSS custom properties. No build step, no runtime.
 
 ## Install
 

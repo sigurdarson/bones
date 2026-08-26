@@ -2,9 +2,9 @@ export const dynamic = "force-static";
 
 /* llms.txt: a machine-readable summary of the library for AI tools.
    Served at /llms.txt, linked from the sidebar. */
-const content = `# bones
+const content = `# Bones
 
-> bones is a minimal, themable React component library built on Base UI.
+> Bones is a minimal, themable React component library built on Base UI.
 > All design values are CSS custom properties prefixed --ub-. Components are
 > styled through class names (ub-<component>) and data attributes, never
 > inline styles, so they can be restyled without forking.
@@ -32,7 +32,13 @@ const content = `# bones
 - Motion: --ub-duration-fast/base/slow and --ub-ease-out/in-out/spring.
   Durations collapse to zero under prefers-reduced-motion.
 - Prebuilt accent themes: import "@usebones/tokens/themes/<scale>.css"
-  (blue, violet, teal, fuchsia, rose, red, orange, green).
+  (blue, violet, teal, fuchsia, rose, red, orange, green). They apply on
+  import and recolor primary actions only.
+- Full themes replace every color role (and may reshape radii) and ship
+  inert: import "@usebones/tokens/themes/matrix.css" then activate with
+  data-theme="matrix" on <html> or any subtree. A custom theme is a
+  plain CSS file overriding semantic tokens after index.css; full themes
+  scope under their own data-theme value.
 - No theme provider and no config file: attributes and tokens are the
   configuration API. JS context exists only where CSS cannot express the
   need (the icon set).
@@ -54,13 +60,14 @@ const content = `# bones
   AutocompleteRoot (items, mode "list" default | "both" | "inline" |
   "none", size) + AutocompleteInput (clearable, variant; no chevron) +
   AutocompleteContent (empty, status; function children render an
-  AutocompleteItem per suggestion). Shares the Combobox classes. Use
-  Combobox when the value must come from the list.
+  AutocompleteItem per suggestion). invalid on the input matches Input.
+  Shares the Combobox classes. Use Combobox when the value must come
+  from the list.
 - Avatar: one component; src + alt (the person's name; required with src,
   "" only when the name is visible beside it) + fallback (initials or
   icon, shows until the image loads and on error); size default (36px) |
   compact (28px); always round.
-- AvatarGroup: overlapping Avatars (a bones composition, no Base UI
+- AvatarGroup: overlapping Avatars (a Bones composition, no Base UI
   part); children are regular Avatars ordered most-important first;
   max={n} collapses the rest into a +N chip; size sizes the chip (match
   the Avatars). Ring color via --ub-avatar-group-ring on surfaces.
@@ -80,7 +87,8 @@ const content = `# bones
 - Combobox: ComboboxRoot (items required for filtering/empty; value or
   defaultValue + onValueChange; multiple for arrays; size) +
   ComboboxInput (placeholder, variant default | borderless, clearable
-  default true; chevron and clear built in) + ComboboxContent
+  default true, the clear button replacing the chevron while something
+  is selected; invalid matches Input) + ComboboxContent
   (empty="..."; searchInput puts the input in the popup; status for
   async; function children render a ComboboxItem per filtered item) +
   ComboboxGroup/GroupLabel/Collection. Chips for multiple:
@@ -103,7 +111,7 @@ const content = `# bones
   "right" (default) | "left" (full-height 24rem panels) | "bottom"
   (full-width mobile sheet, scrolls past 85dvh).
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
-  FieldDescription + FieldError (match). Wrap any bones form control;
+  FieldDescription + FieldError (match). Wrap any Bones form control;
   validation state flows to it automatically.
 - Fieldset: FieldsetRoot (disabled) + FieldsetLegend; groups Fields under
   one legend; disabled switches off every control inside, natively.
@@ -113,7 +121,7 @@ const content = `# bones
   (render a bare FieldError in that field).
 - Input: two sizes; variants default | borderless; leadingIcon and
   trailingIcon (ReactNode), hint (linked via aria-describedby), invalid.
-  Native input props pass through (bones size prop replaces the native
+  Native input props pass through (Bones size prop replaces the native
   size attribute). States via [data-focused], [data-filled],
   [data-invalid].
 - Menu: MenuRoot (size) + MenuTrigger (attach via render={<Button/>}) +
@@ -123,7 +131,7 @@ const content = `# bones
   MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
   [data-checked], [data-popup-open].
 - Menubar: one container (disabled, orientation, loopFocus); put regular
-  bones Menus inside (MenuRoot + MenuTrigger render={<Button
+  Bones Menus inside (MenuRoot + MenuTrigger render={<Button
   variant="ghost"/>} + MenuContent). One menu open at a time; hover
   switches, arrows move along the bar.
 - Meter: one component; value + min/max, label (names it; required, or
@@ -208,18 +216,31 @@ const content = `# bones
 
 - https://usebones.com/ (introduction)
 - https://usebones.com/quick-start
-- https://usebones.com/sizes
 - https://usebones.com/theming
+- https://usebones.com/sizes
 - https://usebones.com/motion
+- https://usebones.com/scrollbars
 - https://usebones.com/accessibility
-- https://usebones.com/components/button
-- https://usebones.com/components/switch
+- https://usebones.com/skills
+- https://usebones.com/changelog
+- Every component has a page at https://usebones.com/components/<slug>
+  with a playground, styling states, props, and agent instructions.
+  Slugs: accordion, alert-dialog, autocomplete, avatar, avatar-group,
+  button, checkbox, checkbox-group, collapsible, combobox, context-menu,
+  dialog, drawer, field, fieldset, form, input, menu, menubar, meter,
+  navigation-menu, number-field, otp-field, popover, preview-card,
+  progress, radio, scroll-area, select, separator, slider, switch, tabs,
+  toast, toggle, toggle-group, toolbar, tooltip.
 
 ## Source
 
 - https://github.com/sigurdarson/bones
+- Installable agent skill for codebases that use Bones:
+  https://usebones.com/skills/bones.md (drop into
+  .claude/skills/bones/SKILL.md).
 - Conventions for contributors and agents: CLAUDE.md in the repo root.
-- Agent skills ship in .claude/skills (new-component, release).
+- Library-development skills ship in the repo's .claude/skills
+  (new-component, component-page, release).
 `;
 
 export function GET() {

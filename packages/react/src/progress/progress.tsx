@@ -29,7 +29,7 @@ export function Progress({
     !props["aria-labelledby"]
   ) {
     console.warn(
-      "bones: a Progress needs a label (or aria-label/aria-labelledby) so screen readers can name it.",
+      "Bones: a Progress needs a label (or aria-label/aria-labelledby) so screen readers can name it.",
     );
   }
   return (

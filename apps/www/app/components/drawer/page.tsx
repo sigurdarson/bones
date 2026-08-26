@@ -67,12 +67,12 @@ export default function Page() {
           {
             name: "DrawerTrigger.render",
             type: "ReactElement",
-            description: "The real control that opens the drawer, usually a bones Button.",
+            description: "The real control that opens the drawer, usually a Bones Button.",
           },
           {
             name: "DrawerClose.render",
             type: "ReactElement",
-            description: "A button that closes the sheet, usually a bones Button.",
+            description: "A button that closes the sheet, usually a Bones Button.",
           },
         ]}
       />

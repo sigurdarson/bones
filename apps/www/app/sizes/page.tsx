@@ -11,7 +11,7 @@ export default function Page() {
     <>
       <PageHeader title="Sizes" />
       <p className="lead">
-        Everything in bones comes in exactly two sizes: default and compact.
+        Everything in Bones comes in exactly two sizes: default and compact.
         No sm, md, lg, xl scale to memorize, and nothing to configure. One
         prop covers text, control height, and icons together.
       </p>
@@ -94,7 +94,7 @@ export default function Page() {
       />
       <p>
         Components read the tokens; they never hardcode a height, font size,
-        or icon size. That's the deal across all of bones: understand one
+        or icon size. That's the deal across all of Bones: understand one
         token, and you understand it everywhere it appears.
       </p>
     </>

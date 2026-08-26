@@ -1,5 +1,5 @@
 /**
- * The bones logo. Canonical asset lives at public/logo.svg; this component
+ * The Bones logo. Canonical asset lives at public/logo.svg; this component
  * is the version to use in the UI. The mark keeps its brand colors (light
  * plaque, dark glyph) in both themes; the wordmark follows currentColor so
  * it stays readable in dark mode.
@@ -24,7 +24,7 @@ export function Logo({ height = 26, wordmark = true, ...props }: LogoProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="bones"
+      aria-label="Bones"
       {...props}
     >
       <path

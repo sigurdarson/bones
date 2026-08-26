@@ -97,7 +97,7 @@ export function DrawerDescription({ className, ...props }: DrawerDescriptionProp
 
 export interface DrawerCloseProps extends BaseDrawer.Close.Props {}
 
-/** A button that closes the drawer. Usually wraps a bones Button via render. */
+/** A button that closes the drawer. Usually wraps a Bones Button via render. */
 export function DrawerClose({ className, ...props }: DrawerCloseProps) {
   return (
     <BaseDrawer.Close className={withBase("ub-drawer-close", className)} {...props} />

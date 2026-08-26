@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CodeBlock } from "@/components/code-block";
 import { ColorScales } from "@/components/color-scale";
+import { MatrixSwitch } from "@/components/matrix-switch";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = { title: "Theming" };
@@ -24,11 +25,13 @@ const overrideReference = [
   { token: "--ub-accent-contrast", light: "white", dark: "gray-950", controls: "Text and icons on the accent" },
   { token: "--ub-ring", light: "gray-400", dark: "gray-500", controls: "Focus rings" },
   { token: "--ub-danger", light: "red-600", dark: "red-500", controls: "Destructive actions, invalid states" },
+  { token: "--ub-danger-hover", light: "red-500", dark: "red-400", controls: "Destructive actions on hover" },
   { token: "--ub-danger-contrast", light: "white", dark: "white", controls: "Text on danger" },
   { token: "--ub-success", light: "green-600", dark: "green-500", controls: "Positive feedback" },
   { token: "--ub-warning", light: "orange-500", dark: "orange-400", controls: "Caution" },
   { token: "--ub-info", light: "blue-600", dark: "blue-400", controls: "Informational" },
   { token: "--ub-shadow-sm / md / lg", light: "soft", dark: "stronger", controls: "Elevation scale for overlays" },
+  { token: "--ub-z-overlay", light: "1000", dark: "same", controls: "One layer for every floating part; raise above taller app chrome" },
   { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps" },
   { token: "--ub-radius-control", light: "8px (pill: full)", dark: "same", controls: "Every interactive element" },
   { token: "--ub-font-size / -compact", light: "16px / 14px", dark: "same", controls: "The two text sizes" },
@@ -43,9 +46,11 @@ export default function Page() {
     <>
       <PageHeader title="Theming" />
       <p className="lead">
-        Every design decision in bones is a CSS custom property prefixed{" "}
-        <code>--ub-</code>. Components only ever read the semantic layer, so a
-        theme is a handful of overrides, not a fork.
+        Every design decision in Bones is a CSS custom property prefixed{" "}
+        <code>--ub-</code>. Components only ever read the semantic layer
+        (<code>--ub-bg</code>, <code>--ub-accent</code>, ...), never raw
+        palette steps, so a theme is a handful of overrides, not a fork.
+        No provider, no config file; the switches are HTML attributes.
       </p>
       <h2>Color steps</h2>
       <p>
@@ -99,6 +104,69 @@ export default function Page() {
         everything that means "primary action" in both modes:
       </p>
       <CodeBlock code={`import "@usebones/tokens/themes/blue.css";`} />
+      <h2>Full themes</h2>
+      <p>
+        A full theme replaces every color role, not just the accent. It
+        ships inert and activates with the same attribute that drives dark
+        mode. matrix is a quirky one to try: green phosphor, sharp corners.
+      </p>
+      <CodeBlock
+        code={`import "@usebones/tokens/themes/matrix.css";
+
+<html data-theme="matrix">`}
+      />
+      <h2>Creating a theme</h2>
+      <p>
+        A theme is a plain CSS file imported after <code>index.css</code>.
+        Accent theme: override the four action tokens in both modes (copy{" "}
+        <code>themes/blue.css</code>). Full theme: scope every color role
+        under your own <code>data-theme</code> value:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`[data-theme="my-theme"] {
+  color-scheme: dark; /* or light: pick one, a full theme replaces both */
+
+  /* backgrounds */
+  --ub-bg: ...;
+  --ub-bg-subtle: ...;
+  --ub-bg-muted: ...;
+  --ub-bg-muted-hover: ...;
+  --ub-surface: ...;
+  --ub-overlay: ...;
+
+  /* text: primary, secondary, tertiary, disabled */
+  /* borders: border, border-strong */
+  /* interactive: accent, accent-hover, accent-contrast, ring */
+  /* feedback: danger (+hover/contrast), success, warning, info */
+  /* elevation: shadow-sm/md/lg */
+  /* optional: the radius scale, like matrix does */
+}`}
+      />
+      <p>
+        The override reference below is the checklist. Keep primary text at
+        4.5:1 contrast, leave danger red so destructive reads as
+        destructive, and skip <code>--ub-surface-glass</code>; it derives
+        from your surface automatically. A theme file works from anywhere;
+        to ship one in <code>@usebones/tokens</code>, open a PR adding a
+        file under <code>css/themes/</code>.
+      </p>
+      <MatrixSwitch />
+      <h2>Styling component states</h2>
+      <p>
+        Below the token layer, every part has a stable class
+        (<code>ub-button</code>, <code>ub-select-trigger</code>) and exposes
+        state as data attributes (<code>data-checked</code>,{" "}
+        <code>data-highlighted</code>, <code>data-invalid</code>). Each
+        component page lists its hooks under "Styling states".
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-combobox-item[data-highlighted] {
+  background: var(--ub-accent);
+  color: var(--ub-accent-contrast);
+}`}
+      />
       <h2>Density is a token override</h2>
       <p>
         Because components read the size tokens for their default size,

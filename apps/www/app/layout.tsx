@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "@usebones/tokens/index.css";
 import "@usebones/tokens/scrollbars.css";
+/* Inert until data-theme="matrix"; the theming page's demo switch sets it. */
+import "@usebones/tokens/themes/matrix.css";
 import "@usebones/react/styles.css";
 import "./globals.css";
 import { ToastProvider, Toaster } from "@usebones/react";
@@ -17,8 +19,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://usebones.com"),
   title: {
-    default: "bones · minimal components, built for AI",
-    template: "%s · bones",
+    default: "Bones · minimal components, built for AI",
+    template: "%s · Bones",
   },
   description:
     "A minimal, themable component library built on Base UI. Designed to be read, composed, and extended by humans and agents alike.",

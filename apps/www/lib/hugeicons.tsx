@@ -27,7 +27,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import type { IconComponent, IconSet } from "@usebones/icons";
 
-/* Adapts a Hugeicons glyph to the plain SVG component shape the bones icon
+/* Adapts a Hugeicons glyph to the plain SVG component shape the Bones icon
    adapter expects. */
 function wrap(icon: IconSvgElement): IconComponent {
   return function WrappedHugeicon(props: React.SVGProps<SVGSVGElement>) {

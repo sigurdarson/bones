@@ -96,7 +96,7 @@ export function PopoverDescription({ className, ...props }: PopoverDescriptionPr
 
 export interface PopoverCloseProps extends BasePopover.Close.Props {}
 
-/** A button that closes the popover. Usually wraps a bones Button via render. */
+/** A button that closes the popover. Usually wraps a Bones Button via render. */
 export function PopoverClose({ className, ...props }: PopoverCloseProps) {
   return (
     <BasePopover.Close

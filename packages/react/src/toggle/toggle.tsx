@@ -32,7 +32,7 @@ export function Toggle({
     !props["aria-labelledby"]
   ) {
     console.warn(
-      "bones: an icon-only Toggle needs an aria-label (or aria-labelledby) so it has an accessible name.",
+      "Bones: an icon-only Toggle needs an aria-label (or aria-labelledby) so it has an accessible name.",
     );
   }
   return (

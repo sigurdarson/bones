@@ -123,7 +123,7 @@ export default function Page() {
         instructions={`Input, from @usebones/react.
 - variant: "default" | "borderless". size: "default" | "compact". invalid for standalone error state.
 - leadingIcon/trailingIcon take a ReactNode (use <Icon /> from @usebones/icons); they are decorative. hint renders below, linked via aria-describedby.
-- The bones size prop replaces the native size attribute; control width with CSS. All other native input props pass through.
+- The Bones size prop replaces the native size attribute; control width with CSS. All other native input props pass through.
 - Inside FieldRoot, drop invalid and hint and use FieldLabel, FieldDescription, and FieldError instead.
 - Restyle in CSS via [data-focused], [data-filled], [data-invalid], [data-disabled], using --ub-* tokens only.`}
       />

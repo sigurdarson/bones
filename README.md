@@ -1,4 +1,4 @@
-# bones
+# Bones
 
 A minimal, themable component library built on [Base UI](https://base-ui.com),
 designed to be read, composed, and extended by humans and coding agents alike.

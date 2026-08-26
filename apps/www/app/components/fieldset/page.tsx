@@ -59,7 +59,7 @@ export default function Page() {
         instructions={`FieldsetRoot and FieldsetLegend, from @usebones/react.
 - Put Field components (FieldRoot + FieldLabel + a control) inside FieldsetRoot; FieldsetLegend names the group.
 - disabled on the root disables every control inside (native fieldset behavior).
-- For a whole form, wrap fieldsets in the bones Form component.
+- For a whole form, wrap fieldsets in the Bones Form component.
 - Restyle in CSS via .ub-fieldset, .ub-fieldset-legend, [data-disabled]. Tokens only.`}
       />
     </>

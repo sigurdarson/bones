@@ -8,7 +8,7 @@ export interface FieldRootProps extends BaseField.Root.Props {}
 
 /**
  * Groups a form control with its label, description, and error, and feeds
- * validation state to whatever control sits inside. bones controls (Input,
+ * validation state to whatever control sits inside. Bones controls (Input,
  * Checkbox, Select) pick the state up automatically through their data
  * attributes.
  */

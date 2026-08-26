@@ -14,12 +14,13 @@ Reference implementation: `apps/www/app/components/tabs/page.tsx` plus
 apps/www/app/components/<name>/page.tsx     # the page (server component)
 apps/www/components/<name>-playground.tsx   # playground (client component)
 apps/www/lib/nav.ts                         # register under Components
+apps/www/app/llms.txt/route.ts              # component entry + slug list
 ```
 
 ## Page structure, in order
 
 1. `<PageHeader title="<Name>" />` then a `lead` paragraph: one or two
-   sentences on what the component is and what makes the bones version feel
+   sentences on what the component is and what makes the Bones version feel
    good (motion, wrapping Base UI, etc.).
 2. **Playground**: interactive showcase wired to the controls rail. Always
    present.
@@ -58,7 +59,7 @@ show). No filler like "here are the variants".
 - Client component using `Showcase` (preview + live Code tab) and
   `Controls` (right rail; the Library panel is appended automatically).
 - Controls map one-to-one to props: `ControlRow` + `Switch` for booleans,
-  a borderless compact bones Select for enums, `ControlField` for wide
+  a borderless compact Bones Select for enums, `ControlField` for wide
   controls. Disable controls that a current state makes meaningless
   (leading icon while icon-only is on).
 - `buildCode(state)` returns the exact copy-pasteable markup for the
@@ -72,7 +73,7 @@ show). No filler like "here are the variants".
 
 ## Conventions that apply everywhere
 
-- Sentence case headings; no em dashes; lowercase bones.
+- Sentence case headings; no em dashes; the library name is capitalized: Bones.
 - Icons via `@usebones/icons` semantic names only. If a demo needs an icon
   the set lacks, add it to the package (with a changelog entry) instead of
   importing a vendor directly.

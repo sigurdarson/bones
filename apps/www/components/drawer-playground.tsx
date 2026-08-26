@@ -136,7 +136,7 @@ export function DrawerPlayground() {
         code={buildCode({ side, outsideClick })}
         note={
           <>
-            A cart panel composed from bones parts: NumberFields for
+            A cart panel composed from Bones parts: NumberFields for
             quantities and a live subtotal. Right and left are side
             panels; bottom is the mobile sheet.
           </>

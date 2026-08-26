@@ -101,7 +101,7 @@ export function PopoverPlayground() {
         code={buildCode({ side, align })}
         note={
           <>
-            A share sheet composed from bones parts: input, select, and
+            A share sheet composed from Bones parts: input, select, and
             button inside the popover. The title names the panel; Escape
             or an outside click dismisses it.
           </>

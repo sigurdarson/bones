@@ -1,6 +1,6 @@
 # @usebones/icons
 
-Icon adapter for [bones](https://usebones.com). Components ask for semantic
+Icon adapter for [Bones](https://usebones.com). Components ask for semantic
 names; the app decides which icon set renders them. Lucide by default.
 
 ## Install

@@ -29,7 +29,7 @@ export interface ComboboxRootProps<
  * Pick from a list by typing, wrapping the Base UI Combobox. Holds the
  * state; renders no element of its own. Pass items so typing filters the
  * list (and ComboboxContent's empty state can show); value/defaultValue/
- * onValueChange work like every other bones control, and multiple turns
+ * onValueChange work like every other Bones control, and multiple turns
  * the value into an array.
  */
 export function ComboboxRoot<

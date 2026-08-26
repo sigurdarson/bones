@@ -1,7 +1,7 @@
 # @usebones/react
 
 Minimal, themable React primitives built on Base UI. Part of
-[bones](https://usebones.com).
+[Bones](https://usebones.com).
 
 ## Install
 

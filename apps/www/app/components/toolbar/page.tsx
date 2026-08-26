@@ -14,7 +14,7 @@ export default function Page() {
       <p className="lead">
         A row of controls that acts as one tab stop, wrapping the Base UI
         Toolbar: Tab lands once, arrow keys move along the row. The
-        controls themselves are regular bones parts (
+        controls themselves are regular Bones parts (
         <Link href="/components/button">Buttons</Link>,{" "}
         <Link href="/components/toggle">Toggles</Link>) attached via{" "}
         <code>render</code>.
@@ -53,7 +53,7 @@ export default function Page() {
           {
             name: "ToolbarButton.render",
             type: "ReactElement",
-            description: "The real control: a bones Button, Toggle, or anything focusable.",
+            description: "The real control: a Bones Button, Toggle, or anything focusable.",
           },
           {
             name: "ToolbarSeparator",

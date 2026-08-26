@@ -1,7 +1,7 @@
 {
   "name": "@usebones/tokens",
   "version": "0.2.0",
-  "description": "Design tokens for bones: themable CSS custom properties for color, radius, and motion.",
+  "description": "Design tokens for Bones: themable CSS custom properties for color, radius, and motion.",
   "license": "MIT",
   "homepage": "https://usebones.com",
   "repository": {

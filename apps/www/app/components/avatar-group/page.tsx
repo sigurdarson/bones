@@ -15,7 +15,7 @@ export default function Page() {
       <PageHeader title="Avatar group" />
       <p className="lead">
         Overlapping <Link href="/components/avatar">Avatars</Link> for a
-        team or a set of collaborators. This one is a bones composition
+        team or a set of collaborators. This one is a Bones composition
         (Base UI has no such part): a layout around Avatars, with anything
         past <code>max</code> collapsing into a +N chip.
       </p>
@@ -72,7 +72,7 @@ export default function Page() {
       <h2>Props</h2>
       <p>
         Everything a div accepts passes through. The avatars inside are
-        regular bones Avatars and keep their own props; match their size
+        regular Bones Avatars and keep their own props; match their size
         to the group's. The essentials:
       </p>
       <PropsTable
@@ -92,7 +92,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`AvatarGroup, from @usebones/react.
-- Put bones Avatars inside; order most-important first. max={n} collapses the rest into a +N chip; size sizes the chip (match the Avatars' size).
+- Put Bones Avatars inside; order most-important first. max={n} collapses the rest into a +N chip; size sizes the chip (match the Avatars' size).
 - A composition, not a Base UI wrapper: it is a div, so every div prop passes through.
 - Each avatar gets a ring in the page background so the stack reads cleanly; override --ub-avatar-group-ring when the group sits on a card or other surface.
 - Restyle in CSS via .ub-avatar-group and .ub-avatar-group-overflow. Tokens only.`}
