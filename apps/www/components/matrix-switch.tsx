@@ -47,7 +47,7 @@ export function MatrixSwitch() {
         marginBlock: "1.5rem",
       }}
     >
-      <span>Try a theme</span>
+      <span>Switch to the Matrix</span>
       <Switch
         checked={mounted ? on : false}
         onCheckedChange={toggle}
