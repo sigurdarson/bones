@@ -90,7 +90,7 @@ export function PreviewCardPlayground() {
                       color: "var(--ub-text-secondary)",
                     }}
                   >
-                    Building bones
+                    Building Bones
                   </span>
                 </div>
               </div>

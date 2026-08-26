@@ -5,7 +5,7 @@ left. Update the status in the same PR that ships a component (the
 new-component skill points here). Statuses: done, in progress, todo, or
 skipped (with a reason).
 
-| Base UI component | bones status | Notes |
+| Base UI component | Bones status | Notes |
 | ----------------- | ------------ | ----- |
 | Accordion         | done         |       |
 | Alert Dialog      | done         |       |
@@ -47,9 +47,9 @@ skipped (with a reason).
 
 ## Beyond Base UI
 
-Compositions bones ships that have no Base UI part. They build on the
+Compositions Bones ships that have no Base UI part. They build on the
 wrapped primitives; hand-rolled behavior stays minimal.
 
-| Component    | bones status | Notes |
+| Component    | Bones status | Notes |
 | ------------ | ------------ | ----- |
 | Avatar Group | done         | Overlapping Avatars with a +N overflow chip. |

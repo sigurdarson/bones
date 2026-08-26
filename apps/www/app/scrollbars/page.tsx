@@ -9,7 +9,7 @@ export default function Page() {
     <>
       <PageHeader title="Scrollbars" />
       <p className="lead">
-        Default scrollbars are loud and ignore your theme. bones ships an
+        Default scrollbars are loud and ignore your theme. Bones ships an
         opt-in stylesheet that makes every scrollbar thin, theme-aware, and
         invisible until you hover whatever is scrolling.
       </p>

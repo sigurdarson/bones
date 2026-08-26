@@ -1,7 +1,7 @@
 {
   "name": "@usebones/react",
   "version": "0.2.0",
-  "description": "Minimal, themable React primitives built on Base UI. Part of bones.",
+  "description": "Minimal, themable React primitives built on Base UI. Part of Bones.",
   "license": "MIT",
   "homepage": "https://usebones.com",
   "repository": {

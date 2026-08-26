@@ -9,7 +9,7 @@ export default function Page() {
     <>
       <PageHeader title="Skills" />
       <p className="lead">
-        bones is built for coding agents as much as for people. Skills are the
+        Bones is built for coding agents as much as for people. Skills are the
         written-down procedures that make an agent productive in a codebase
         that uses it.
       </p>
@@ -46,7 +46,7 @@ export default function Page() {
       <h2>Planned</h2>
       <p>
         Installable skills alongside the packages, so an agent in your repo
-        knows bones conventions the moment you add the dependency: how to
+        knows Bones conventions the moment you add the dependency: how to
         theme, which tokens to reach for, and how to compose components
         without reading the whole docs site.
       </p>

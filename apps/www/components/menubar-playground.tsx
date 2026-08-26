@@ -71,7 +71,7 @@ export function MenubarPlayground() {
         code={buildCode({ compact, disabled })}
         note={
           <>
-            A strip of regular bones Menus: once one is open, hovering
+            A strip of regular Bones Menus: once one is open, hovering
             another trigger switches to it, and everything inside is the
             usual Menu vocabulary, submenus and checkbox items included.
           </>

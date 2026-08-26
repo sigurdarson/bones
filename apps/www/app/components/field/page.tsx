@@ -13,7 +13,7 @@ export default function Page() {
       <PageHeader title="Field" />
       <p className="lead">
         Label, description, and error for any form control, wrapping the
-        Base UI Field. Drop a bones control inside and the accessibility
+        Base UI Field. Drop a Bones control inside and the accessibility
         wiring and validation state happen automatically.
       </p>
       <h2>Playground</h2>
@@ -85,7 +85,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`FieldRoot, FieldLabel, FieldDescription, FieldError, from @usebones/react.
-- Put one bones control inside FieldRoot (Input, Checkbox, Select, Switch); label wiring, aria-describedby, and validation state are automatic.
+- Put one Bones control inside FieldRoot (Input, Checkbox, Select, Switch); label wiring, aria-describedby, and validation state are automatic.
 - FieldRoot: name, disabled, invalid (for server errors), validate(value).
 - FieldError renders only while invalid; match="valueMissing" (or any ValidityState key) binds it to one condition.
 - Inside a Field, prefer FieldDescription and FieldError over the control's own hint and invalid props.`}

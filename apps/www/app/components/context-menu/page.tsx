@@ -14,7 +14,7 @@ export default function Page() {
       <p className="lead">
         A menu that opens at the pointer on right click (long press on
         touch), wrapping the Base UI Context Menu. Only the root, trigger,
-        and content are new; everything inside is the regular bones{" "}
+        and content are new; everything inside is the regular Bones{" "}
         <Link href="/components/menu">Menu</Link> parts.
       </p>
       <h2>Playground</h2>

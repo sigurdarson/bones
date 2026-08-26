@@ -1,9 +1,9 @@
 ---
 name: new-component
-description: Add a new primitive component to @usebones/react following bones conventions: Base UI wrapping, token-driven CSS, data-attribute variants, and docs registration. Use whenever creating or scaffolding a component in packages/react.
+description: Add a new primitive component to @usebones/react following Bones conventions: Base UI wrapping, token-driven CSS, data-attribute variants, and docs registration. Use whenever creating or scaffolding a component in packages/react.
 ---
 
-# Add a new bones component
+# Add a new Bones component
 
 ## Before writing code
 

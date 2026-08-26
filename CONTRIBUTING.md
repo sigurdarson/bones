@@ -1,4 +1,4 @@
-# Contributing to bones
+# Contributing to Bones
 
 Thanks for wanting to help out. This should get you productive quickly.
 
@@ -8,7 +8,7 @@ You'll need Node 22+ and pnpm 11+.
 
 ```sh
 git clone https://github.com/sigurdarson/bones.git
-cd bones
+cd Bones
 pnpm install
 pnpm dev        # watch mode across all packages and the site
 ```

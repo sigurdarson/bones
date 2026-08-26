@@ -5,6 +5,8 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- tokens, react, icons: the library name is capitalized (Bones) across
+  package descriptions, comments, and dev warnings.
 - tokens: add a matrix full theme (green phosphor, sharp corners, glow
   shadows). Full themes replace every color role, ship inert, and
   activate with data-theme="matrix" on any subtree; accent themes still
@@ -49,7 +51,7 @@ All @usebones packages release together with a single version (see
   with real anchor links, an automatic chevron, nested flyout submenus,
   and inline same-panel submenus via inline + NavigationMenuViewport.
 - react: add Menubar wrapping the Base UI Menubar: a strip of regular
-  bones Menus with one open at a time, hover switching, and arrow-key
+  Bones Menus with one open at a time, hover switching, and arrow-key
   movement; ships as layout only so apps own the chrome.
 - react: add Drawer wrapping the Base UI Drawer: the dialog's modality
   plus swipe dismissal and a grab handle; side on the root picks a
@@ -75,7 +77,7 @@ All @usebones packages release together with a single version (see
   across browsers.
 - react: add Avatar wrapping the Base UI Avatar: one component with
   managed image and fallback, two sizes, always round.
-- react: add AvatarGroup, a bones composition (no Base UI part):
+- react: add AvatarGroup, a Bones composition (no Base UI part):
   overlapping Avatars with a ring and a +N overflow chip past max.
 - react: add Separator wrapping the Base UI Separator: a hairline with
   real separator semantics, horizontal or vertical.
@@ -143,7 +145,7 @@ All @usebones packages release together with a single version (see
 ## 0.1.0 (2026-08-19)
 
 - react: add Field (FieldRoot, FieldLabel, FieldDescription, FieldError)
-  wrapping the Base UI Field; bones form controls pick up its validation
+  wrapping the Base UI Field; Bones form controls pick up its validation
   state automatically.
 - react: add Input wrapping the Base UI Input: two sizes, a borderless
   variant, leading/trailing icons, a hint line linked via aria-describedby,

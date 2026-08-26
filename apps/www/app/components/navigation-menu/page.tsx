@@ -171,7 +171,7 @@ export default function Page() {
                           <span>
                             Handbook
                             <span style={exampleDescription}>
-                              How to use bones effectively.
+                              How to use Bones effectively.
                             </span>
                           </span>
                         </NavigationMenuTrigger>

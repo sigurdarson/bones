@@ -66,7 +66,7 @@ export default function Page() {
           {
             name: "DialogTrigger.render",
             type: "ReactElement",
-            description: "The real control that opens the dialog, usually a bones Button.",
+            description: "The real control that opens the dialog, usually a Bones Button.",
           },
           {
             name: "DialogContent.initialFocus",

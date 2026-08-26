@@ -7,7 +7,7 @@ export interface ToolbarRootProps extends BaseToolbar.Root.Props {}
 
 /**
  * A row of controls that acts as one tab stop, wrapping the Base UI
- * Toolbar: arrow keys move between the controls inside. Put bones
+ * Toolbar: arrow keys move between the controls inside. Put Bones
  * controls in via ToolbarButton render={<Button ... />} (or a Toggle,
  * ToggleGroup, Select trigger); disabled switches off everything.
  */
@@ -74,7 +74,7 @@ export interface ToolbarInputProps extends BaseToolbar.Input.Props {}
 
 /**
  * An input that participates in the toolbar's focus order. Usually wraps
- * the bones Input via render={<Input ... />}.
+ * the Bones Input via render={<Input ... />}.
  */
 export function ToolbarInput({ className, ...props }: ToolbarInputProps) {
   return (

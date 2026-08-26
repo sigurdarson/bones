@@ -2,9 +2,9 @@ export const dynamic = "force-static";
 
 /* llms.txt: a machine-readable summary of the library for AI tools.
    Served at /llms.txt, linked from the sidebar. */
-const content = `# bones
+const content = `# Bones
 
-> bones is a minimal, themable React component library built on Base UI.
+> Bones is a minimal, themable React component library built on Base UI.
 > All design values are CSS custom properties prefixed --ub-. Components are
 > styled through class names (ub-<component>) and data attributes, never
 > inline styles, so they can be restyled without forking.
@@ -60,7 +60,7 @@ const content = `# bones
   "" only when the name is visible beside it) + fallback (initials or
   icon, shows until the image loads and on error); size default (36px) |
   compact (28px); always round.
-- AvatarGroup: overlapping Avatars (a bones composition, no Base UI
+- AvatarGroup: overlapping Avatars (a Bones composition, no Base UI
   part); children are regular Avatars ordered most-important first;
   max={n} collapses the rest into a +N chip; size sizes the chip (match
   the Avatars). Ring color via --ub-avatar-group-ring on surfaces.
@@ -103,7 +103,7 @@ const content = `# bones
   "right" (default) | "left" (full-height 24rem panels) | "bottom"
   (full-width mobile sheet, scrolls past 85dvh).
 - Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
-  FieldDescription + FieldError (match). Wrap any bones form control;
+  FieldDescription + FieldError (match). Wrap any Bones form control;
   validation state flows to it automatically.
 - Fieldset: FieldsetRoot (disabled) + FieldsetLegend; groups Fields under
   one legend; disabled switches off every control inside, natively.
@@ -113,7 +113,7 @@ const content = `# bones
   (render a bare FieldError in that field).
 - Input: two sizes; variants default | borderless; leadingIcon and
   trailingIcon (ReactNode), hint (linked via aria-describedby), invalid.
-  Native input props pass through (bones size prop replaces the native
+  Native input props pass through (Bones size prop replaces the native
   size attribute). States via [data-focused], [data-filled],
   [data-invalid].
 - Menu: MenuRoot (size) + MenuTrigger (attach via render={<Button/>}) +
@@ -123,7 +123,7 @@ const content = `# bones
   MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
   [data-checked], [data-popup-open].
 - Menubar: one container (disabled, orientation, loopFocus); put regular
-  bones Menus inside (MenuRoot + MenuTrigger render={<Button
+  Bones Menus inside (MenuRoot + MenuTrigger render={<Button
   variant="ghost"/>} + MenuContent). One menu open at a time; hover
   switches, arrows move along the bar.
 - Meter: one component; value + min/max, label (names it; required, or

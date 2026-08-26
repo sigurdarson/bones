@@ -1,4 +1,4 @@
-# bones
+# Bones
 
 A minimal, themable React component library built on Base UI, designed so
 humans and coding agents can read, compose, and extend it with zero guesswork.
@@ -103,7 +103,10 @@ pnpm test           # component contract tests (Vitest), also run in CI
   semicolon, or parentheses instead. The repo stays free of the character
   entirely; `grep -rn $'\xe2\x80\x94' .` coming back empty is the check
   (that escape is the em dash, spelled without using it).
-- Lowercase "bones" everywhere, even at the start of a sentence.
+- The library name is "Bones", capitalized wherever prose mentions it:
+  docs, comments, UI copy, commit messages, warnings. Code identifiers
+  stay lowercase (`@usebones`, usebones.com, the `bones` repo slug,
+  `ub-` prefixes).
 - Sentence case everywhere: headings, labels, buttons, nav items. Never all
   caps, in copy or via CSS `text-transform: uppercase`. Acronyms (CSS, API,
   WCAG) and conventional filenames (README, CHANGELOG) are the exception.

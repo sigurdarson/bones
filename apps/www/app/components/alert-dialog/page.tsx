@@ -55,7 +55,7 @@ export default function Page() {
           {
             name: "AlertDialogTrigger.render",
             type: "ReactElement",
-            description: "The real control that opens the alert, usually a bones Button.",
+            description: "The real control that opens the alert, usually a Bones Button.",
           },
           {
             name: "AlertDialogClose.render",

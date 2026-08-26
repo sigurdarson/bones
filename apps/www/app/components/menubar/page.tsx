@@ -15,7 +15,7 @@ export default function Page() {
       <p className="lead">
         A horizontal strip of menus (File, Edit, View), wrapping the Base
         UI Menubar. Only the bar is new; every menu inside is a regular
-        bones <Link href="/components/menu">Menu</Link>, submenus and
+        Bones <Link href="/components/menu">Menu</Link>, submenus and
         checkbox items included.
       </p>
       <h2>Playground</h2>
@@ -68,7 +68,7 @@ export default function Page() {
       />
       <AgentInstructions
         instructions={`Menubar, from @usebones/react.
-- One container: put regular bones Menus inside (MenuRoot + MenuTrigger render={<Button variant="ghost" />} + MenuContent with MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuSeparator, submenus).
+- One container: put regular Bones Menus inside (MenuRoot + MenuTrigger render={<Button variant="ghost" />} + MenuContent with MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuSeparator, submenus).
 - One menu open at a time; hovering another trigger switches to it, arrow keys move along the bar (swapped by orientation "vertical").
 - disabled on the bar switches off every menu.
 - The bar is layout only (no border/background/padding); add chrome via .ub-menubar in the app when it stands alone. [data-orientation] for vertical; the menus use Menu's classes. Tokens only.`}

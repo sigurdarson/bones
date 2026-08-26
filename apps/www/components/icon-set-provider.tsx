@@ -17,7 +17,7 @@ export function useIconLibrary() {
 
 /**
  * Wraps the whole site so the icon library can be swapped live from the
- * controls panel. Lucide is the bones default; Hugeicons demonstrates the
+ * controls panel. Lucide is the Bones default; Hugeicons demonstrates the
  * IconProvider adapter doing its job.
  */
 export function IconSetProvider({ children }: { children: React.ReactNode }) {

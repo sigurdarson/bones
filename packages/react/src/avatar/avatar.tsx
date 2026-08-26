@@ -34,7 +34,7 @@ export function Avatar({
 }: AvatarProps) {
   if (process.env.NODE_ENV !== "production" && src && alt == null) {
     console.warn(
-      "bones: an Avatar with an image needs alt (the person's name), or alt=\"\" when the name is already visible beside it.",
+      "Bones: an Avatar with an image needs alt (the person's name), or alt=\"\" when the name is already visible beside it.",
     );
   }
   return (

@@ -101,7 +101,7 @@ export default function Page() {
           {
             name: "MenuTrigger.render",
             type: "ReactElement",
-            description: "The real control that opens the menu, usually a bones Button.",
+            description: "The real control that opens the menu, usually a Bones Button.",
           },
           {
             name: "MenuContent.align",

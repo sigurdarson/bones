@@ -48,7 +48,7 @@ export default function Page() {
           {
             name: "PopoverTrigger.render",
             type: "ReactElement",
-            description: "The real control that opens the panel, usually a bones Button.",
+            description: "The real control that opens the panel, usually a Bones Button.",
           },
           {
             name: "PopoverContent.side",

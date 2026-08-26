@@ -34,7 +34,7 @@ export function Button({
     !props["aria-labelledby"]
   ) {
     console.warn(
-      "bones: an icon-only Button needs an aria-label (or aria-labelledby) so it has an accessible name.",
+      "Bones: an icon-only Button needs an aria-label (or aria-labelledby) so it has an accessible name.",
     );
   }
   return (

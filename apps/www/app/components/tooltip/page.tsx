@@ -50,7 +50,7 @@ export default function Page() {
           {
             name: "TooltipTrigger.render",
             type: "ReactElement",
-            description: "The real control the tooltip attaches to, usually a bones Button.",
+            description: "The real control the tooltip attaches to, usually a Bones Button.",
           },
           {
             name: "TooltipTrigger.delay",

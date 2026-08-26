@@ -88,7 +88,7 @@ export interface AlertDialogCloseProps extends BaseAlertDialog.Close.Props {}
 
 /**
  * A button that closes the alert. Render one per choice (Cancel and the
- * action itself), usually wrapping bones Buttons via render.
+ * action itself), usually wrapping Bones Buttons via render.
  */
 export function AlertDialogClose({ className, ...props }: AlertDialogCloseProps) {
   return (

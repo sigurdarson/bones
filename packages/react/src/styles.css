@@ -1,4 +1,4 @@
-/* All bones component styles. Import once, after @usebones/tokens. */
+/* All Bones component styles. Import once, after @usebones/tokens. */
 @import "./accordion/accordion.css";
 @import "./alert-dialog/alert-dialog.css";
 @import "./autocomplete/autocomplete.css";

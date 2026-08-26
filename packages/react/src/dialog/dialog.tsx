@@ -74,7 +74,7 @@ export function DialogDescription({ className, ...props }: DialogDescriptionProp
 
 export interface DialogCloseProps extends BaseDialog.Close.Props {}
 
-/** A button that closes the dialog. Usually wraps a bones Button via render. */
+/** A button that closes the dialog. Usually wraps a Bones Button via render. */
 export function DialogClose({ className, ...props }: DialogCloseProps) {
   return (
     <BaseDialog.Close className={withBase("ub-dialog-close", className)} {...props} />

@@ -1,4 +1,4 @@
-/* bones design tokens. Import this once, before any component styles. */
+/* Bones design tokens. Import this once, before any component styles. */
 @import "./palette.css";
 @import "./semantic.css";
 @import "./radius.css";

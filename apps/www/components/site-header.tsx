@@ -7,7 +7,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link href="/" className="site-logo" aria-label="bones home">
+        <Link href="/" className="site-logo" aria-label="Bones home">
           <Logo />
         </Link>
         <div className="site-header-actions">

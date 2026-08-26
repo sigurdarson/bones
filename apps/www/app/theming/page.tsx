@@ -46,7 +46,7 @@ export default function Page() {
     <>
       <PageHeader title="Theming" />
       <p className="lead">
-        Every design decision in bones is a CSS custom property prefixed{" "}
+        Every design decision in Bones is a CSS custom property prefixed{" "}
         <code>--ub-</code>. Components only ever read the semantic layer
         (<code>--ub-bg</code>, <code>--ub-accent</code>, ...), never raw
         palette steps, so a theme is a handful of overrides, not a fork.
