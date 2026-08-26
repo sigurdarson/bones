@@ -32,7 +32,13 @@ const content = `# Bones
 - Motion: --ub-duration-fast/base/slow and --ub-ease-out/in-out/spring.
   Durations collapse to zero under prefers-reduced-motion.
 - Prebuilt accent themes: import "@usebones/tokens/themes/<scale>.css"
-  (blue, violet, teal, fuchsia, rose, red, orange, green).
+  (blue, violet, teal, fuchsia, rose, red, orange, green). They apply on
+  import and recolor primary actions only.
+- Full themes replace every color role (and may reshape radii) and ship
+  inert: import "@usebones/tokens/themes/matrix.css" then activate with
+  data-theme="matrix" on <html> or any subtree. A custom theme is a
+  plain CSS file overriding semantic tokens after index.css; full themes
+  scope under their own data-theme value.
 - No theme provider and no config file: attributes and tokens are the
   configuration API. JS context exists only where CSS cannot express the
   need (the icon set).
@@ -54,8 +60,9 @@ const content = `# Bones
   AutocompleteRoot (items, mode "list" default | "both" | "inline" |
   "none", size) + AutocompleteInput (clearable, variant; no chevron) +
   AutocompleteContent (empty, status; function children render an
-  AutocompleteItem per suggestion). Shares the Combobox classes. Use
-  Combobox when the value must come from the list.
+  AutocompleteItem per suggestion). invalid on the input matches Input.
+  Shares the Combobox classes. Use Combobox when the value must come
+  from the list.
 - Avatar: one component; src + alt (the person's name; required with src,
   "" only when the name is visible beside it) + fallback (initials or
   icon, shows until the image loads and on error); size default (36px) |
@@ -80,7 +87,8 @@ const content = `# Bones
 - Combobox: ComboboxRoot (items required for filtering/empty; value or
   defaultValue + onValueChange; multiple for arrays; size) +
   ComboboxInput (placeholder, variant default | borderless, clearable
-  default true; chevron and clear built in) + ComboboxContent
+  default true, the clear button replacing the chevron while something
+  is selected; invalid matches Input) + ComboboxContent
   (empty="..."; searchInput puts the input in the popup; status for
   async; function children render a ComboboxItem per filtered item) +
   ComboboxGroup/GroupLabel/Collection. Chips for multiple:
@@ -208,18 +216,28 @@ const content = `# Bones
 
 - https://usebones.com/ (introduction)
 - https://usebones.com/quick-start
-- https://usebones.com/sizes
 - https://usebones.com/theming
+- https://usebones.com/sizes
 - https://usebones.com/motion
+- https://usebones.com/scrollbars
 - https://usebones.com/accessibility
-- https://usebones.com/components/button
-- https://usebones.com/components/switch
+- https://usebones.com/skills
+- https://usebones.com/changelog
+- Every component has a page at https://usebones.com/components/<slug>
+  with a playground, styling states, props, and agent instructions.
+  Slugs: accordion, alert-dialog, autocomplete, avatar, avatar-group,
+  button, checkbox, checkbox-group, collapsible, combobox, context-menu,
+  dialog, drawer, field, fieldset, form, input, menu, menubar, meter,
+  navigation-menu, number-field, otp-field, popover, preview-card,
+  progress, radio, scroll-area, select, separator, slider, switch, tabs,
+  toast, toggle, toggle-group, toolbar, tooltip.
 
 ## Source
 
 - https://github.com/sigurdarson/bones
 - Conventions for contributors and agents: CLAUDE.md in the repo root.
-- Agent skills ship in .claude/skills (new-component, release).
+- Agent skills ship in .claude/skills (new-component, component-page,
+  release).
 `;
 
 export function GET() {
