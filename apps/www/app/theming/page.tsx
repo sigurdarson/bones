@@ -113,7 +113,6 @@ export default function Page() {
 
 <html data-theme="matrix">`}
       />
-      <MatrixSwitch />
       <h2>Creating a theme</h2>
       <p>
         A theme is a plain CSS file imported after <code>index.css</code>.
@@ -150,6 +149,7 @@ export default function Page() {
         to ship one in <code>@usebones/tokens</code>, open a PR adding a
         file under <code>css/themes/</code>.
       </p>
+      <MatrixSwitch />
       <h2>Styling component states</h2>
       <p>
         Below the token layer, every part has a stable class

@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Switch } from "@usebones/react";
-import { Controls, ControlRow } from "./controls";
 
 /**
  * The theming page's demo: flips the whole site into the matrix theme by
@@ -40,15 +39,21 @@ export function MatrixSwitch() {
   }
 
   return (
-    <Controls>
-      <ControlRow label="Matrix">
-        <Switch
-          checked={mounted ? on : false}
-          onCheckedChange={toggle}
-          disabled={!mounted}
-          aria-label="Turn on the matrix theme"
-        />
-      </ControlRow>
-    </Controls>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "0.75rem",
+        marginBlock: "1.5rem",
+      }}
+    >
+      <span>Try a theme</span>
+      <Switch
+        checked={mounted ? on : false}
+        onCheckedChange={toggle}
+        disabled={!mounted}
+        aria-label="Turn on the matrix theme"
+      />
+    </div>
   );
 }
