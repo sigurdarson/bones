@@ -41,7 +41,7 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: matrixCss },
       { rel: "stylesheet", href: reactCss },
       { rel: "stylesheet", href: globalsCss },
-      { rel: "icon", href: "/favicon.ico" },
+      { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
     ],
     scripts: [{ children: themeInit }],
   }),

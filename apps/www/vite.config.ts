@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   server: {
+    port: 3000,
     fs: {
       /* The changelog page imports CHANGELOG.md from the repo root. */
       allow: ["../.."],

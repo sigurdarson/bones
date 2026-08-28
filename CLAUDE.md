@@ -51,7 +51,7 @@ pnpm test           # component contract tests (Vitest), also run in CI
   (tab panels, closing overlays) linger on screen, and animate things that
   were never meant to move.
 - A new semantic token ripples, in the same PR: a row in the theming
-  page's override reference (`apps/www/app/theming/page.tsx`), a value in
+  page's override reference (`apps/www/src/routes/theming.tsx`), a value in
   every full theme (`packages/tokens/css/themes/`, currently matrix;
   color roles only), and llms.txt if it changes the theming story.
 
