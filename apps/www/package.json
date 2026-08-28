@@ -1,19 +1,21 @@
 {
   "name": "www",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.2.3",
     "@hugeicons/react": "^1.1.9",
+    "@tanstack/react-router": "^1.170.32",
+    "@tanstack/react-start": "^1.168.49",
     "@usebones/icons": "workspace:*",
     "@usebones/react": "workspace:*",
     "@usebones/tokens": "workspace:*",
-    "next": "^16.3.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "shiki": "^4.4.3"
@@ -22,6 +24,8 @@
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "typescript": "^7.0.2"
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.6"
   }
 }

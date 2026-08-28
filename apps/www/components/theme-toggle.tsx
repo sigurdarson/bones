@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Button } from "@usebones/react";
 import { Icon } from "@usebones/icons";

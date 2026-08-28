@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Switch, TabsList, TabsPanel, TabsRoot, TabsTab } from "@usebones/react";
 import { Icon, type IconName } from "@usebones/icons";

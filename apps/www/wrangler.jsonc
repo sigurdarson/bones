@@ -1,0 +1,16 @@
+{
+  // Static deploy: every route is prerendered at build time, so Cloudflare
+  // only serves assets; there is no Worker runtime.
+  "name": "usebones-www",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist/client",
+    // Pages prerender as <path>/index.html; serve them at slash-free URLs
+    // so the served path matches the router's hrefs (sidebar active state,
+    // prev/next) instead of redirecting to /path/.
+    "html_handling": "drop-trailing-slash",
+    // Unknown paths fall back to the app shell, where the router renders
+    // the root notFoundComponent.
+    "not_found_handling": "single-page-application"
+  }
+}
