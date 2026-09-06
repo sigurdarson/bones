@@ -195,8 +195,10 @@ html,
 /* Inside the drawer the nav is a plain stretched block, not the sticky
    rail: no own scroll region (a flex item with overflow set would be
    squeezed to the panel height and scroll in the middle), so the drawer
-   content scrolls as one and the nav fills the panel. */
-.sidebar-in-drawer {
+   content scrolls as one and the nav fills the panel. The compound
+   selector outranks the base .sidebar rule, which comes later in this
+   file. */
+.sidebar.sidebar-in-drawer {
   position: static;
   max-height: none;
   overflow: visible;
