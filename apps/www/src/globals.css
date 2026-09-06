@@ -311,23 +311,25 @@ html,
   min-width: 0;
 }
 
-/* Tablets and phones (64rem and under) get the drawer navigation. Above
-   that, below the width the three columns need, the rail would float over
-   the prose: reserve its width (14rem plus the 3rem gap) on pages that have
-   one, so the content narrows instead. */
+/* Desktop below the width the three columns need: the rail would float
+   over the prose, so pages with a rail reserve its width (14rem plus the
+   3rem gap) and the content narrows instead. */
 @media (min-width: 64.0625rem) and (max-width: 80rem) {
   .site-content:has(.controls-rail) {
     padding-inline-end: 17rem;
   }
 }
 
+/* Tablets and phones (64rem and under): the sidebar gives way to the
+   drawer opened from the header, and the content column centers. Tablets
+   keep the controls rail beside the content. */
 @media (max-width: 64rem) {
   .site-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 57rem);
+    justify-content: center;
     gap: 0;
   }
 
-  /* The layout's sidebar gives way to the drawer opened from the header. */
   .site-layout > .sidebar {
     display: none;
   }
@@ -340,8 +342,22 @@ html,
     grid-column: auto;
   }
 
-  /* The configurator rail is a desktop affordance; playgrounds keep their
-     defaults here. */
+  .site-content:has(.controls-rail) {
+    padding-inline-end: 17rem;
+  }
+}
+
+/* Phones: one column, and the configurator rail is a wider-screen
+   affordance, so playgrounds keep their defaults. */
+@media (max-width: 47.5rem) {
+  .site-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .site-content:has(.controls-rail) {
+    padding-inline-end: 0;
+  }
+
   .controls-rail {
     display: none;
   }
