@@ -65,48 +65,46 @@ function Page() {
       </Showcase>
       <h2>Sizes, status, and icons</h2>
       <p>
-        Default is 24px tall with the compact text size; compact is 20px
-        with text one step smaller and the small radius, for table cells and dense lists. The
-        status dot goes first, then any icon, then the text; the dot and
-        the icon are hidden from screen readers, so the text carries the
-        meaning.
+        Default is 24px, compact is a 20px tag for dense rows. The status
+        dot goes first, then any icon, then the text; the dot and the icon
+        are hidden from screen readers, so the text carries the meaning.
       </p>
       <Showcase
-        code={`<Badge status="success">Deployed</Badge>
-<Badge status="warning" color="orange">Degraded</Badge>
-<Badge status="danger" size="compact">Failed</Badge>
-<Badge color="blue">
+        code={`<Badge color="blue">Design</Badge>
+<Badge color="green">
   <Icon name="check" />
   Verified
 </Badge>
-<Badge color="violet" size="compact">
-  <Icon name="user" />
-  Owner
-</Badge>`}
-        note={
-          <>
-            Counts and short states read best in a badge; anything a user
-            needs to act on belongs in a real control, since a badge is
-            not focusable.
-          </>
-        }
+<Badge status="success">Deployed</Badge>
+
+<Badge color="blue" size="compact">Design</Badge>
+<Badge color="green" size="compact">
+  <Icon name="check" />
+  Verified
+</Badge>
+<Badge status="success" size="compact">Deployed</Badge>`}
       >
-        <div className="showcase-row">
-          <Badge status="success">Deployed</Badge>
-          <Badge status="warning" color="orange">
-            Degraded
-          </Badge>
-          <Badge status="danger" size="compact">
-            Failed
-          </Badge>
-          <Badge color="blue">
-            <Icon name="check" />
-            Verified
-          </Badge>
-          <Badge color="violet" size="compact">
-            <Icon name="user" />
-            Owner
-          </Badge>
+        <div className="showcase-columns">
+          <div className="showcase-stack">
+            <Badge color="blue">Design</Badge>
+            <Badge color="green">
+              <Icon name="check" />
+              Verified
+            </Badge>
+            <Badge status="success">Deployed</Badge>
+          </div>
+          <div className="showcase-stack">
+            <Badge color="blue" size="compact">
+              Design
+            </Badge>
+            <Badge color="green" size="compact">
+              <Icon name="check" />
+              Verified
+            </Badge>
+            <Badge status="success" size="compact">
+              Deployed
+            </Badge>
+          </div>
         </div>
       </Showcase>
       <h2>Styling states</h2>

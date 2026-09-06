@@ -730,6 +730,18 @@ html,
   border-radius: var(--ub-radius-md);
 }
 
+/* Two side-by-side stacks in a static showcase, e.g. default beside
+   compact. */
+.showcase-columns {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.showcase-columns .showcase-stack {
+  align-items: flex-start;
+}
+
 /* A wrapping row of small items in a static showcase. */
 .showcase-row {
   display: inline-flex;
