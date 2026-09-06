@@ -1,17 +1,27 @@
 import { describe, expect, it, vi } from "vitest";
 import { render } from "@testing-library/react";
-import { Icon, IconProvider, defaultIcons } from "./index";
-
-/* An app grows the vocabulary by augmenting the registry. */
-declare module "./index" {
-  interface IconRegistry {
-    rocket: true;
-    "thumbs-up": true;
-  }
-}
+import {
+  defineIcons,
+  Icon,
+  IconProvider,
+  defaultIcons,
+  type IconNamesOf,
+} from "./index";
 
 function Rocket(props: React.SVGProps<SVGSVGElement>) {
   return <svg data-testid="rocket" {...props} />;
+}
+
+function ThumbsUp(props: React.SVGProps<SVGSVGElement>) {
+  return <svg data-testid="thumbs-up" {...props} />;
+}
+
+/* An app grows the vocabulary in one place: the object supplies the
+   glyphs, its keys become registry entries. */
+const appIcons = defineIcons({ rocket: Rocket, "thumbs-up": ThumbsUp });
+
+declare module "./index" {
+  interface IconRegistry extends IconNamesOf<typeof appIcons> {}
 }
 
 describe("Icon", () => {
@@ -25,7 +35,7 @@ describe("Icon", () => {
 
   it("renders an added name from the glyph the provider supplies", () => {
     const { getByTestId } = render(
-      <IconProvider icons={{ rocket: Rocket }}>
+      <IconProvider icons={appIcons}>
         <Icon name="rocket" />
       </IconProvider>,
     );

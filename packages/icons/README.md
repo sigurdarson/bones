@@ -34,23 +34,28 @@ Anything not overridden falls back to the Lucide default.
 ## Adding your own names
 
 Names are a typed vocabulary, so a misspelled or invented name fails to
-compile. Grow it on purpose: augment the registry, then supply the glyph.
-
-```ts
-// icons.d.ts (anywhere your tsconfig includes)
-declare module "@usebones/icons" {
-  interface IconRegistry {
-    rocket: true;
-  }
-}
-```
+compile. Grow it in one place: declare the glyphs once, and their keys
+become registry entries.
 
 ```tsx
-<IconProvider icons={{ rocket: RocketGlyph }}>
+// icons.tsx
+import { defineIcons, IconProvider, type IconNamesOf } from "@usebones/icons";
+import { Rocket, ThumbsUp } from "lucide-react";
+
+export const icons = defineIcons({ rocket: Rocket, "thumbs-up": ThumbsUp });
+
+declare module "@usebones/icons" {
+  interface IconRegistry extends IconNamesOf<typeof icons> {}
+}
+
+<IconProvider icons={icons}>
   <App />
 </IconProvider>;
 
 <Icon name="rocket" />;
 ```
 
-A name with no glyph renders nothing and warns once in development.
+Only the glyphs you import ship; the vocabulary can be as large as the
+app needs. A registered name with no glyph renders nothing and warns once
+in development. Bones components also take any icon component as
+children, so the adapter is never required for your own UI.

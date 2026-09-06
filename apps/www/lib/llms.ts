@@ -12,9 +12,10 @@ export const llmsTxt = `# Bones
 - pnpm add @usebones/react @usebones/tokens (components + tokens); React 19
   or newer is a peer dependency
 - pnpm add @usebones/icons (optional icon adapter, Lucide default). Icon
-  names are a typed vocabulary: the built-in set plus any names the app
-  adds by augmenting IconRegistry and supplying glyphs via IconProvider.
-  Never guess a name; add it.
+  names are a typed vocabulary: the built-in set plus whatever the app
+  declares with defineIcons (keys become names via IconNamesOf, glyphs
+  go to IconProvider). Never guess a name; add it. Any icon component
+  also works directly as a child of a Bones component.
 - Import once: "@usebones/tokens/index.css" then "@usebones/react/styles.css"
 - Use explicit .css paths in imports; TypeScript 7 rejects extensionless
   side-effect CSS imports.

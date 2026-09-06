@@ -82,6 +82,24 @@ export type IconSet = Record<IconName, IconComponent>;
 /** The Lucide defaults for the built-in names. */
 export const defaultIcons: Record<BuiltInIconName, IconComponent> = builtInIcons;
 
+/**
+ * Declare an app's icons once. The returned object is what IconProvider
+ * takes, and IconNamesOf<typeof icons> is what IconRegistry extends, so
+ * adding fifty names is fifty lines in one object plus a single type
+ * line, with every name typed and only the imported glyphs bundled:
+ *
+ *   export const icons = defineIcons({ rocket: Rocket, "thumbs-up": ThumbsUp });
+ *   declare module "@usebones/icons" {
+ *     interface IconRegistry extends IconNamesOf<typeof icons> {}
+ *   }
+ */
+export function defineIcons<const T extends Record<string, IconComponent>>(icons: T): T {
+  return icons;
+}
+
+/** The names of a defineIcons object as registry entries. */
+export type IconNamesOf<T> = { [K in keyof T & string]: true };
+
 const IconContext = React.createContext<Partial<IconSet>>(defaultIcons);
 
 export interface IconProviderProps {

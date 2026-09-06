@@ -49,19 +49,19 @@ function Page() {
     <>
       <PageHeader title="Icons" />
       <p className="lead">
-        Icons are a typed vocabulary of semantic names, not a vendor.{" "}
-        <code>@usebones/icons</code> maps each name to a glyph (Lucide by
-        default), sizes it from the same tokens as every control, and lets
-        an app grow the vocabulary and swap sets in one place. Bones
-        components also take any icon component as children, so nothing
-        forces the adapter on you.
+        Any icon works in Bones: every component takes icons as children, so
+        your existing set drops straight in. <code>@usebones/icons</code>{" "}
+        adds a typed vocabulary on top: semantic names that fail to compile
+        when misspelled, size from the same tokens as every control, and
+        swap sets in one place.
       </p>
       <InstallTabs pkg="@usebones/icons" />
       <h2>Use an icon</h2>
       <p>
         Names are typed as <code>IconName</code>, so a typo fails at compile
-        time. Icons render <code>aria-hidden</code>; the control around
-        them carries the accessible name.
+        time, for people and coding agents alike. Icons render{" "}
+        <code>aria-hidden</code>; the control around them carries the
+        accessible name.
       </p>
       <CodeBlock
         code={`import { Icon } from "@usebones/icons";
@@ -71,40 +71,25 @@ import { Button } from "@usebones/react";
   <Icon name="search" />
 </Button>`}
       />
-      <h2>The set</h2>
+      <h2>Grow the vocabulary</h2>
       <p>
-        The built-in names. Components hand-roll their own tiny structural
-        glyphs (chevrons, checks); this vocabulary is for your UI and for
-        Bones-built UI that should follow your set.
-      </p>
-      <ul className="icon-grid" aria-label="Available icons">
-        {names.map((name) => (
-          <li key={name}>
-            <Icon name={name} />
-            <code>{name}</code>
-          </li>
-        ))}
-      </ul>
-      <h2>Add your own names</h2>
-      <p>
-        A misspelled or invented name fails to compile, for people and
-        coding agents alike, so grow the vocabulary on purpose: augment the
-        registry in a declaration file your tsconfig includes, then supply
-        the glyph. A registered name with no glyph renders nothing and
-        warns once in development.
+        Declare your glyphs once and their keys become names: fifty icons is
+        fifty lines in one object plus a single type line, and only the
+        glyphs you import ship. A registered name with no glyph renders
+        nothing and warns once in development.
       </p>
       <CodeBlock
-        lang="ts"
-        code={`// icons.d.ts
+        code={`// icons.tsx
+import { defineIcons, IconProvider, type IconNamesOf } from "@usebones/icons";
+import { Rocket, ThumbsUp } from "lucide-react";
+
+export const icons = defineIcons({ rocket: Rocket, "thumbs-up": ThumbsUp });
+
 declare module "@usebones/icons" {
-  interface IconRegistry {
-    rocket: true;
-    "thumbs-up": true;
-  }
-}`}
-      />
-      <CodeBlock
-        code={`<IconProvider icons={{ rocket: RocketGlyph, "thumbs-up": ThumbsUpGlyph }}>
+  interface IconRegistry extends IconNamesOf<typeof icons> {}
+}
+
+<IconProvider icons={icons}>
   <App />
 </IconProvider>
 
@@ -112,17 +97,31 @@ declare module "@usebones/icons" {
       />
       <h2>Swap the set</h2>
       <p>
-        Wrap the app in <code>IconProvider</code> with a partial map from
-        name to component; anything you leave out keeps the default. The
-        toggle in this site's sidebar is exactly that.
+        The same provider overrides built-in names, so pointing the app at
+        a different set is one object at the root; anything you leave out
+        keeps the default. The toggle in this site's sidebar is exactly
+        that.
       </p>
       <CodeBlock
-        code={`import { IconProvider } from "@usebones/icons";
-
-<IconProvider icons={{ search: MySearchGlyph, bell: MyBellGlyph }}>
+        code={`<IconProvider icons={{ search: MySearchGlyph, bell: MyBellGlyph }}>
   <App />
 </IconProvider>`}
       />
+      <h2>Built-in names</h2>
+      <p>
+        The names Bones-built UI may ask for, with Lucide defaults; when
+        you swap sets, these are the glyphs to supply. Components hand-roll
+        their own tiny structural glyphs (chevrons, checks), so nothing here
+        is required by a component.
+      </p>
+      <ul className="icon-grid" aria-label="Built-in icons">
+        {names.map((name) => (
+          <li key={name}>
+            <Icon name={name} />
+            <code>{name}</code>
+          </li>
+        ))}
+      </ul>
       <h2>Props</h2>
       <p>Everything an SVG accepts passes through, plus:</p>
       <PropsTable
@@ -130,7 +129,7 @@ declare module "@usebones/icons" {
           {
             name: "Icon.name",
             type: "IconName",
-            description: "Which glyph to render; the union above.",
+            description: "Which glyph to render; a built-in name or one you registered.",
           },
           {
             name: "Icon.size",
@@ -143,9 +142,14 @@ declare module "@usebones/icons" {
             description: "Glyphs by name: overrides for built-in names and the glyphs for names you added; omitted names fall back to the default set.",
           },
           {
-            name: "IconRegistry",
-            type: "interface",
-            description: "The vocabulary; augment it to add names.",
+            name: "defineIcons(icons)",
+            type: "(icons) => icons",
+            description: "Declares your glyphs once with their keys preserved as types; pass the result to IconProvider.",
+          },
+          {
+            name: "IconNamesOf<typeof icons>",
+            type: "type",
+            description: "The registry entries for a defineIcons object; extend IconRegistry with it.",
           },
         ]}
       />

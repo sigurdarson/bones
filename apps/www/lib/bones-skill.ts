@@ -61,10 +61,11 @@ classes (ub-<component>) and data attributes, never inline styles.
   <Icon name="search" />. Names are typed as IconName ("search",
   "close", "chevron-down", ...), the icon sizes from --ub-icon-size, and
   a whole set swaps by mounting one <IconProvider icons={...}> at the
-  root, so components never change. A name the set lacks is added on
-  purpose (declare module "@usebones/icons" { interface IconRegistry {
-  rocket: true } }) with its glyph supplied to IconProvider; never guess
-  a name.
+  root, so components never change. Grow the vocabulary in one place:
+  const icons = defineIcons({ rocket: Rocket }) plus declare module
+  "@usebones/icons" { interface IconRegistry extends IconNamesOf<typeof
+  icons> {} }, then <IconProvider icons={icons}>. Never guess a name;
+  add it there. Any icon component also works directly as a child.
 - Respect the two-size system and the token layer and any Bones app
   restyles consistently from one place.
 `;
