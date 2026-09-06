@@ -335,10 +335,6 @@ html,
     display: inline-flex;
   }
 
-  .site-configurator {
-    display: none;
-  }
-
   .site-content {
     grid-column: auto;
   }

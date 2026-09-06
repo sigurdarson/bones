@@ -65,10 +65,6 @@ export function SiteHeader() {
           >
             <GithubMark />v{reactPackage.version}
           </a>
-          {/* Configurator ships later: component browser plus styling options. */}
-          <Button className="site-configurator" disabled title="Coming soon">
-            Configurator
-          </Button>
           <MobileNav />
         </div>
       </div>
