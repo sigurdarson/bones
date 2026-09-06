@@ -8,6 +8,7 @@ import {
   DrawerTrigger,
 } from "@usebones/react";
 import { Icon } from "@usebones/icons";
+import { GithubMark } from "./github-mark";
 import { Logo } from "./logo";
 import { Sidebar } from "./sidebar";
 import { ThemeToggle } from "./theme-toggle";
@@ -62,7 +63,7 @@ export function SiteHeader() {
             rel="noreferrer"
             aria-label={`Bones v${reactPackage.version} on GitHub`}
           >
-            <Icon name="github" />v{reactPackage.version}
+            <GithubMark />v{reactPackage.version}
           </a>
           {/* Configurator ships later: component browser plus styling options. */}
           <Button className="site-configurator" disabled title="Coming soon">
