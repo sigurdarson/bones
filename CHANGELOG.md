@@ -5,6 +5,16 @@ entry notes the package it affects.
 
 ## Unreleased
 
+- tokens: add tint tokens, a soft fill and readable text per palette hue
+  (--ub-tint-<hue>-bg and -text, gray as the neutral), in both modes and
+  the matrix theme.
+- react: add Badge, a Bones component with no Base UI part: a plain span
+  in nine tints and two sizes (24px, 16px) with an optional status dot
+  and icons as children.
+- react: add Status, an 8px dot in the five feedback colors that names
+  itself for screen readers when standing alone and is decorative beside
+  text.
+
 - icons: add a menu icon.
 
 ## 0.2.2 (2026-08-27)

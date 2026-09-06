@@ -1,0 +1,25 @@
+.ub-status {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  border-radius: var(--ub-radius-full);
+  background: var(--ub-text-tertiary);
+  vertical-align: middle;
+}
+
+.ub-status[data-color="success"] {
+  background: var(--ub-success);
+}
+
+.ub-status[data-color="info"] {
+  background: var(--ub-info);
+}
+
+.ub-status[data-color="warning"] {
+  background: var(--ub-warning);
+}
+
+.ub-status[data-color="danger"] {
+  background: var(--ub-danger);
+}

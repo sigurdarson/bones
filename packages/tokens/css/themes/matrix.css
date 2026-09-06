@@ -48,6 +48,26 @@
   --ub-warning: var(--ub-orange-400);
   --ub-info: oklch(0.75 0.12 190);
 
+  /* tints: the theme is monochrome, so every hue collapses to phosphor */
+  --ub-tint-gray-bg: oklch(0.24 0.05 150);
+  --ub-tint-gray-text: oklch(0.87 0.19 150);
+  --ub-tint-red-bg: oklch(0.24 0.05 150);
+  --ub-tint-red-text: oklch(0.87 0.19 150);
+  --ub-tint-orange-bg: oklch(0.24 0.05 150);
+  --ub-tint-orange-text: oklch(0.87 0.19 150);
+  --ub-tint-green-bg: oklch(0.24 0.05 150);
+  --ub-tint-green-text: oklch(0.87 0.19 150);
+  --ub-tint-teal-bg: oklch(0.24 0.05 150);
+  --ub-tint-teal-text: oklch(0.87 0.19 150);
+  --ub-tint-blue-bg: oklch(0.24 0.05 150);
+  --ub-tint-blue-text: oklch(0.87 0.19 150);
+  --ub-tint-violet-bg: oklch(0.24 0.05 150);
+  --ub-tint-violet-text: oklch(0.87 0.19 150);
+  --ub-tint-fuchsia-bg: oklch(0.24 0.05 150);
+  --ub-tint-fuchsia-text: oklch(0.87 0.19 150);
+  --ub-tint-rose-bg: oklch(0.24 0.05 150);
+  --ub-tint-rose-text: oklch(0.87 0.19 150);
+
   /* elevation: a phosphor bloom instead of a gray shadow */
   --ub-shadow-sm: 0 2px 8px oklch(0.8 0.2 150 / 0.08);
   --ub-shadow-md: 0 8px 24px oklch(0.8 0.2 150 / 0.12);

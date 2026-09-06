@@ -40,6 +40,27 @@
   --ub-warning: var(--ub-orange-500);
   --ub-info: var(--ub-blue-600);
 
+  /* tints: a soft fill with readable text per palette hue, for badges
+     and highlights; gray is the neutral one */
+  --ub-tint-gray-bg: var(--ub-gray-200);
+  --ub-tint-gray-text: var(--ub-gray-700);
+  --ub-tint-red-bg: var(--ub-red-100);
+  --ub-tint-red-text: var(--ub-red-700);
+  --ub-tint-orange-bg: var(--ub-orange-100);
+  --ub-tint-orange-text: var(--ub-orange-700);
+  --ub-tint-green-bg: var(--ub-green-100);
+  --ub-tint-green-text: var(--ub-green-700);
+  --ub-tint-teal-bg: var(--ub-teal-100);
+  --ub-tint-teal-text: var(--ub-teal-700);
+  --ub-tint-blue-bg: var(--ub-blue-100);
+  --ub-tint-blue-text: var(--ub-blue-700);
+  --ub-tint-violet-bg: var(--ub-violet-100);
+  --ub-tint-violet-text: var(--ub-violet-700);
+  --ub-tint-fuchsia-bg: var(--ub-fuchsia-100);
+  --ub-tint-fuchsia-text: var(--ub-fuchsia-700);
+  --ub-tint-rose-bg: var(--ub-rose-100);
+  --ub-tint-rose-text: var(--ub-rose-700);
+
   /* elevation */
   --ub-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.08);
   --ub-shadow-md: 0 8px 24px oklch(0 0 0 / 0.12);
@@ -86,6 +107,25 @@
   --ub-success: var(--ub-green-500);
   --ub-warning: var(--ub-orange-400);
   --ub-info: var(--ub-blue-400);
+
+  --ub-tint-gray-bg: var(--ub-gray-800);
+  --ub-tint-gray-text: var(--ub-gray-300);
+  --ub-tint-red-bg: var(--ub-red-900);
+  --ub-tint-red-text: var(--ub-red-300);
+  --ub-tint-orange-bg: var(--ub-orange-900);
+  --ub-tint-orange-text: var(--ub-orange-300);
+  --ub-tint-green-bg: var(--ub-green-900);
+  --ub-tint-green-text: var(--ub-green-300);
+  --ub-tint-teal-bg: var(--ub-teal-900);
+  --ub-tint-teal-text: var(--ub-teal-300);
+  --ub-tint-blue-bg: var(--ub-blue-900);
+  --ub-tint-blue-text: var(--ub-blue-300);
+  --ub-tint-violet-bg: var(--ub-violet-900);
+  --ub-tint-violet-text: var(--ub-violet-300);
+  --ub-tint-fuchsia-bg: var(--ub-fuchsia-900);
+  --ub-tint-fuchsia-text: var(--ub-fuchsia-300);
+  --ub-tint-rose-bg: var(--ub-rose-900);
+  --ub-tint-rose-text: var(--ub-rose-300);
 
   --ub-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.4);
   --ub-shadow-md: 0 8px 24px oklch(0 0 0 / 0.55);

@@ -82,6 +82,12 @@ export const llmsTxt = `# Bones
   max={n} collapses the rest into a +N chip; size default | compact
   sizes the chip (match the Avatars). Ring color via
   --ub-avatar-group-ring on surfaces.
+- Badge: a small label (a Bones component, no Base UI part); a plain
+  span, never focusable. color "neutral" (default) | red | orange | green
+  | teal | blue | violet | fuchsia | rose (categories, not feedback);
+  size default (24px) | compact (16px); status adds a decorative dot in a
+  feedback color before the label; icons are children before the text.
+  Fills come from the --ub-tint-<hue>-bg/-text tokens.
 - Button: variant primary (default) | secondary | ghost | danger; size
   default | compact (36px/28px control height, 16px/14px text); iconOnly
   (requires aria-label). Icons are children. Native button props pass
@@ -230,6 +236,11 @@ export const llmsTxt = `# Bones
   defaultValue/value + onValueChange (continuous)/onValueCommitted (on
   release)/disabled pass through. Always pass aria-label (ranges suffix
   it per thumb) or wrap in a Field. Never animate thumb position.
+- Status: an 8px dot (a Bones component, no Base UI part); color
+  "neutral" (default) | success | info | warning | danger from the
+  feedback tokens. Standing alone pass label (it becomes role="img" with
+  that name); beside text that says the state, omit label and it is
+  aria-hidden. Never let color be the only signal.
 - Switch: checked/defaultChecked/onCheckedChange/disabled. Style states
   via [data-checked] and [data-disabled].
 - Tabs: TabsRoot (defaultValue or value + onValueChange; size default |
@@ -280,10 +291,11 @@ export const llmsTxt = `# Bones
 - Every component has a page at https://usebones.com/components/<slug>
   with a playground, styling states, props, and agent instructions.
   Slugs: accordion, alert-dialog, autocomplete, avatar, avatar-group,
-  button, checkbox, checkbox-group, collapsible, combobox, context-menu,
+  badge, button, checkbox, checkbox-group, collapsible, combobox, context-menu,
   dialog, drawer, field, fieldset, form, input, menu, menubar, meter,
   navigation-menu, number-field, otp-field, popover, preview-card,
-  progress, radio, scroll-area, select, separator, slider, switch, tabs,
+  progress, radio, scroll-area, select, separator, slider, status,
+  switch, tabs,
   toast, toggle, toggle-group, toolbar, tooltip.
 
 ## Source

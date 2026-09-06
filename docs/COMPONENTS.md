@@ -53,3 +53,5 @@ wrapped primitives; hand-rolled behavior stays minimal.
 | Component    | Bones status | Notes |
 | ------------ | ------------ | ----- |
 | Avatar Group | done         | Overlapping Avatars with a +N overflow chip. |
+| Badge        | done         | Tinted label in nine colors and two sizes, with an optional status dot and icon. |
+| Status       | done         | 8px feedback dot, named for screen readers or decorative beside text. |
