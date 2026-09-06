@@ -24,6 +24,7 @@ import {
   TextUnderlineIcon,
   Tick02Icon,
   UserIcon,
+  Menu01Icon,
 } from "@hugeicons/core-free-icons";
 import type { IconComponent, IconSet } from "@usebones/icons";
 
@@ -54,6 +55,7 @@ export const hugeicons: IconSet = {
   info: wrap(InformationCircleIcon),
   italic: wrap(TextItalicIcon),
   loader: wrap(Loading03Icon),
+  menu: wrap(Menu01Icon),
   moon: wrap(Moon02Icon),
   search: wrap(Search01Icon),
   sun: wrap(Sun01Icon),

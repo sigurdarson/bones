@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
 function Page() {
   return (
     <>
-      <PageHeader className="intro-title" title="Components with good Bones." />
+      <PageHeader title="Components with good bones." />
       <p className="lead">
         Bones is a minimal, themable component library built on Base UI.
         Fluid by default, quiet until you theme it, and designed so coding
@@ -19,16 +19,9 @@ function Page() {
         <Link to="/quick-start" className="ub-button" data-variant="primary">
           Quick start
         </Link>
-        <Link to="/components/button" className="ub-button" data-variant="secondary">
+        <Link to="/components/accordion" className="ub-button" data-variant="secondary">
           Browse components
         </Link>
-        <a
-          href="https://github.com/sigurdarson/bones"
-          className="ub-button"
-          data-variant="ghost"
-        >
-          GitHub
-        </a>
       </div>
       <InstallTabs pkg="@usebones/react @usebones/tokens" />
       <h2>Agents are first-class users</h2>

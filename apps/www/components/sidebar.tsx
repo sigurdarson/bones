@@ -2,11 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { useLocation } from "@tanstack/react-router";
 import { siteNav } from "@/lib/nav";
 
-export function Sidebar() {
+export function Sidebar({ className }: { className?: string } = {}) {
   const pathname = useLocation({ select: (location) => location.pathname });
 
   return (
-    <nav className="sidebar" aria-label="Documentation">
+    <nav
+      className={className ? `sidebar ${className}` : "sidebar"}
+      aria-label="Documentation"
+    >
       {siteNav.map((section) => (
         <div key={section.title} className="sidebar-section">
           <div className="sidebar-title">{section.title}</div>
