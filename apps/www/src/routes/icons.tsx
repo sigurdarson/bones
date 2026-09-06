@@ -37,6 +37,7 @@ const names: IconName[] = [
   "info",
   "italic",
   "loader",
+  "menu",
   "moon",
   "search",
   "sun",

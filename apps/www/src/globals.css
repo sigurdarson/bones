@@ -180,6 +180,34 @@ html,
   color: var(--ub-text-primary);
 }
 
+/* The drawer trigger only exists on narrow screens. */
+.site-nav-toggle {
+  display: none;
+}
+
+.site-nav-drawer-title {
+  margin: 0 0 0.5rem;
+  font-size: var(--ub-font-size-compact);
+  font-weight: 600;
+  color: var(--ub-text-secondary);
+}
+
+/* Inside the drawer the nav is a plain block, not the sticky rail. */
+.sidebar-in-drawer {
+  position: static;
+  max-height: none;
+  padding: 0;
+  border: none;
+}
+
+@media (min-width: 761px) {
+  /* Lines the logo up with the nav text below it, which sits behind the
+     sidebar items' 0.75rem inline padding. */
+  .site-logo {
+    padding-inline-start: 0.75rem;
+  }
+}
+
 .site-header-actions {
   display: flex;
   align-items: center;
@@ -290,11 +318,17 @@ html,
     gap: 0;
   }
 
-  .sidebar {
-    position: static;
-    max-height: none;
-    border-bottom: 1px solid var(--ub-border);
-    padding: 1.5rem 0;
+  /* The layout's sidebar gives way to the drawer opened from the header. */
+  .site-layout > .sidebar {
+    display: none;
+  }
+
+  .site-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-configurator {
+    display: none;
   }
 
   .site-content {
