@@ -3,6 +3,8 @@ export interface NavItem {
   href: string;
   /* Plain files (like llms.txt) use a regular anchor, not a router Link. */
   plain?: boolean;
+  /* A short status shown beside the title, e.g. "Experimental". */
+  badge?: string;
 }
 
 export interface NavSection {
@@ -23,7 +25,7 @@ export const siteNav: NavSection[] = [
       { title: "Quick start", href: "/quick-start" },
       { title: "Theming", href: "/theming" },
       { title: "Sizes", href: "/sizes" },
-      { title: "Icons", href: "/icons" },
+      { title: "Icons", href: "/icons", badge: "Experimental" },
       { title: "Changelog", href: "/changelog" },
       { title: "llms.txt", href: "/llms.txt", plain: true },
     ],

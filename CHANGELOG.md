@@ -5,6 +5,15 @@ entry notes the package it affects.
 
 ## Unreleased
 
+- icons: icon names come from an augmentable IconRegistry interface, so
+  apps add their own names with full typing (declare module
+  "@usebones/icons" { interface IconRegistry { rocket: true } }) and
+  supply the glyphs through IconProvider; defineIcons and IconNamesOf
+  register a whole object of glyphs at once with their keys as names. A
+  name with no glyph warns in development instead of crashing. Existing
+  exports keep their shapes. The package is marked experimental (README,
+  docs, and @experimental JSDoc) while the interface tier settles the
+  API.
 - icons: add arrow-up and arrow-down icons.
 
 ## 0.2.1 (2026-08-26)

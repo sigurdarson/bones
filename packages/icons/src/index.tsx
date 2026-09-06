@@ -27,41 +27,10 @@ import {
   X,
 } from "lucide-react";
 
-/**
- * Bones components never import an icon library directly; they ask for a
- * semantic name through this adapter. The default set is Lucide; apps swap
- * sets (e.g. Hugeicons) by mounting <IconProvider icons={...}> once.
- */
-export type IconName =
-  | "align-center"
-  | "align-left"
-  | "align-right"
-  | "arrow-down"
-  | "arrow-left"
-  | "arrow-right"
-  | "arrow-up"
-  | "bell"
-  | "bold"
-  | "check"
-  | "chevron-down"
-  | "chevron-right"
-  | "close"
-  | "copy"
-  | "credit-card"
-  | "info"
-  | "italic"
-  | "loader"
-  | "moon"
-  | "search"
-  | "sun"
-  | "underline"
-  | "user";
-
 export type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
-export type IconSet = Record<IconName, IconComponent>;
-
-export const defaultIcons: IconSet = {
+/* The built-in vocabulary and its Lucide defaults. */
+const builtInIcons = {
   "align-center": AlignCenter,
   "align-left": AlignLeft,
   "align-right": AlignRight,
@@ -85,12 +54,64 @@ export const defaultIcons: IconSet = {
   sun: Sun,
   underline: Underline,
   user: User,
-};
+} satisfies Record<string, IconComponent>;
 
-const IconContext = React.createContext<IconSet>(defaultIcons);
+export type BuiltInIconName = keyof typeof builtInIcons;
+
+/**
+ * The icon vocabulary: every name an app can ask for. It starts with the
+ * built-in set, and an app grows it by augmenting this interface, then
+ * supplying the glyphs through IconProvider:
+ *
+ *   declare module "@usebones/icons" {
+ *     interface IconRegistry { rocket: true }
+ *   }
+ *
+ *   <IconProvider icons={{ rocket: RocketGlyph }}>
+ *
+ * A typed vocabulary means a misspelled or invented name fails to
+ * compile, for people and coding agents alike; add names on purpose.
+ *
+ * @experimental The registry API may change between releases.
+ */
+export interface IconRegistry extends Record<BuiltInIconName, true> {}
+
+export type IconName = keyof IconRegistry;
+
+/** Every name in the vocabulary mapped to a component. */
+export type IconSet = Record<IconName, IconComponent>;
+
+/** The Lucide defaults for the built-in names. */
+export const defaultIcons: Record<BuiltInIconName, IconComponent> = builtInIcons;
+
+/**
+ * Declare an app's icons once. The returned object is what IconProvider
+ * takes, and IconNamesOf<typeof icons> is what IconRegistry extends, so
+ * adding fifty names is fifty lines in one object plus a single type
+ * line, with every name typed and only the imported glyphs bundled:
+ *
+ *   export const icons = defineIcons({ rocket: Rocket, "thumbs-up": ThumbsUp });
+ *   declare module "@usebones/icons" {
+ *     interface IconRegistry extends IconNamesOf<typeof icons> {}
+ *   }
+ *
+ * @experimental
+ */
+export function defineIcons<const T extends Record<string, IconComponent>>(icons: T): T {
+  return icons;
+}
+
+/** The names of a defineIcons object as registry entries. @experimental */
+export type IconNamesOf<T> = { [K in keyof T & string]: true };
+
+const IconContext = React.createContext<Partial<IconSet>>(defaultIcons);
 
 export interface IconProviderProps {
-  /** Partial overrides; anything omitted falls back to the Lucide default. */
+  /**
+   * Glyphs by name: overrides for built-in names, and the glyphs for any
+   * names the app added to IconRegistry. Anything omitted falls back to
+   * the Lucide default.
+   */
   icons: Partial<IconSet>;
   children: React.ReactNode;
 }
@@ -100,8 +121,23 @@ export function IconProvider({ icons, children }: IconProviderProps) {
   return <IconContext.Provider value={value}>{children}</IconContext.Provider>;
 }
 
+const MissingIcon: IconComponent = () => null;
+const warned = new Set<string>();
+
+/**
+ * The component behind a name. A name with no glyph (an added name the
+ * provider never supplied) renders nothing and warns once in development.
+ */
 export function useIcon(name: IconName): IconComponent {
-  return React.useContext(IconContext)[name];
+  const Component = React.useContext(IconContext)[name];
+  if (Component) return Component;
+  if (process.env.NODE_ENV !== "production" && !warned.has(name)) {
+    warned.add(name);
+    console.warn(
+      `Bones: no icon is registered for "${name}". Supply it through <IconProvider icons={{ "${name}": ... }}>.`,
+    );
+  }
+  return MissingIcon;
 }
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
