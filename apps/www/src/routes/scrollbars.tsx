@@ -1,9 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/scrollbars")({
-  head: () => ({ meta: [{ title: "Scrollbars · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Scrollbars · Bones" },
+      { name: "description", content: "Thin, theme-aware scrollbars from one opt-in stylesheet." },
+    ],
+  }),
   component: Page,
 });
 
@@ -14,7 +19,9 @@ function Page() {
       <p className="lead">
         Default scrollbars are loud and ignore your theme. Bones ships an
         opt-in stylesheet that makes every scrollbar thin, theme-aware, and
-        invisible until you hover whatever is scrolling.
+        invisible until you hover whatever is scrolling. For one scrolling
+        pane rather than the whole page, use the{" "}
+        <Link to="/components/scroll-area">Scroll area</Link> component.
       </p>
       <h2>Opt in</h2>
       <p>

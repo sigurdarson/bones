@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CodeBlock } from "@/components/code-block";
 import { ColorScales } from "@/components/color-scale";
 import { MatrixSwitch } from "@/components/matrix-switch";
@@ -40,7 +40,12 @@ const overrideReference = [
 ];
 
 export const Route = createFileRoute("/theming")({
-  head: () => ({ meta: [{ title: "Theming · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Theming · Bones" },
+      { name: "description", content: "Theme Bones with CSS custom properties: dark mode, radius, accent and full themes, and your own." },
+    ],
+  }),
   component: Page,
 });
 
@@ -49,11 +54,11 @@ function Page() {
     <>
       <PageHeader title="Theming" />
       <p className="lead">
-        Every design decision in Bones is a CSS custom property prefixed{" "}
-        <code>--ub-</code>. Components only ever read the semantic layer
-        (<code>--ub-bg</code>, <code>--ub-accent</code>, ...), never raw
-        palette steps, so a theme is a handful of overrides, not a fork.
-        No provider, no config file; the switches are HTML attributes.
+        A theme in Bones is a short CSS file, not a fork. Every design
+        decision is a custom property prefixed <code>--ub-</code>, and
+        components only ever read the semantic ones (<code>--ub-bg</code>,{" "}
+        <code>--ub-accent</code>, ...), never raw palette steps. No provider,
+        no config file; the switches are HTML attributes.
       </p>
       <h2>Color steps</h2>
       <p>
@@ -187,11 +192,9 @@ function Page() {
   --ub-icon-size-default: var(--ub-icon-size-compact);
 }`}
       />
-      <h2>Sizing is tokens too</h2>
       <p>
-        The same override-a-token approach covers dimensions: text, control
-        heights, and icons all come in two sizes (default and compact) driven
-        by size tokens. See <a href="/sizes">Sizes</a> for the whole system.
+        The size tokens themselves are covered in{" "}
+        <Link to="/sizes">Sizes</Link>.
       </p>
       <h2>Scoped themes</h2>
       <p>
