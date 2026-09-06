@@ -22,13 +22,6 @@ function Page() {
         <Link to="/components/button" className="ub-button" data-variant="secondary">
           Browse components
         </Link>
-        <a
-          href="https://github.com/sigurdarson/bones"
-          className="ub-button"
-          data-variant="ghost"
-        >
-          GitHub
-        </a>
       </div>
       <InstallTabs pkg="@usebones/react @usebones/tokens" />
       <h2>Agents are first-class users</h2>
