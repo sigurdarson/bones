@@ -11,14 +11,10 @@ export interface NavSection {
 }
 
 /* Single source of truth for the sidebar, and the prev/next reading order
-   (see page-nav.tsx). New pages register here.
-
-   Component categories, alphabetical within each: Forms hold values a
-   user enters or picks; Overlays float above the page; Navigation moves
-   between places; Feedback reports state back; General is everything
-   else (actions, grouping, display). Ambiguous cases follow the
-   primary job: Button is an action (General), Toggle holds a value
-   (Forms), Tabs move between panels (Navigation). */
+   (see page-nav.tsx). New pages register here. Components stay one
+   alphabetical list on purpose: the sidebar mirrors the product's tiers,
+   and the commercial Interface components land as their own section
+   beside this one. */
 export const siteNav: NavSection[] = [
   {
     title: "Overview",
@@ -28,6 +24,8 @@ export const siteNav: NavSection[] = [
       { title: "Theming", href: "/theming" },
       { title: "Sizes", href: "/sizes" },
       { title: "Icons", href: "/icons" },
+      { title: "Changelog", href: "/changelog" },
+      { title: "llms.txt", href: "/llms.txt", plain: true },
     ],
   },
   {
@@ -40,73 +38,46 @@ export const siteNav: NavSection[] = [
     ],
   },
   {
-    title: "Forms",
+    title: "Components",
     items: [
+      { title: "Accordion", href: "/components/accordion" },
+      { title: "Alert dialog", href: "/components/alert-dialog" },
       { title: "Autocomplete", href: "/components/autocomplete" },
+      { title: "Avatar", href: "/components/avatar" },
+      { title: "Avatar group", href: "/components/avatar-group" },
+      { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },
+      { title: "Collapsible", href: "/components/collapsible" },
       { title: "Combobox", href: "/components/combobox" },
+      { title: "Context menu", href: "/components/context-menu" },
+      { title: "Dialog", href: "/components/dialog" },
+      { title: "Drawer", href: "/components/drawer" },
       { title: "Field", href: "/components/field" },
       { title: "Fieldset", href: "/components/fieldset" },
       { title: "Form", href: "/components/form" },
       { title: "Input", href: "/components/input" },
+      { title: "Menu", href: "/components/menu" },
+      { title: "Menubar", href: "/components/menubar" },
+      { title: "Meter", href: "/components/meter" },
+      { title: "Navigation menu", href: "/components/navigation-menu" },
       { title: "Number field", href: "/components/number-field" },
       { title: "OTP field", href: "/components/otp-field" },
-      { title: "Radio", href: "/components/radio" },
-      { title: "Select", href: "/components/select" },
-      { title: "Slider", href: "/components/slider" },
-      { title: "Switch", href: "/components/switch" },
-      { title: "Toggle", href: "/components/toggle" },
-      { title: "Toggle group", href: "/components/toggle-group" },
-    ],
-  },
-  {
-    title: "Overlays",
-    items: [
-      { title: "Alert dialog", href: "/components/alert-dialog" },
-      { title: "Context menu", href: "/components/context-menu" },
-      { title: "Dialog", href: "/components/dialog" },
-      { title: "Drawer", href: "/components/drawer" },
-      { title: "Menu", href: "/components/menu" },
       { title: "Popover", href: "/components/popover" },
       { title: "Preview card", href: "/components/preview-card" },
-      { title: "Tooltip", href: "/components/tooltip" },
-    ],
-  },
-  {
-    title: "Navigation",
-    items: [
-      { title: "Menubar", href: "/components/menubar" },
-      { title: "Navigation menu", href: "/components/navigation-menu" },
-      { title: "Tabs", href: "/components/tabs" },
-      { title: "Toolbar", href: "/components/toolbar" },
-    ],
-  },
-  {
-    title: "Feedback",
-    items: [
-      { title: "Meter", href: "/components/meter" },
       { title: "Progress", href: "/components/progress" },
-      { title: "Toast", href: "/components/toast" },
-    ],
-  },
-  {
-    title: "General",
-    items: [
-      { title: "Accordion", href: "/components/accordion" },
-      { title: "Avatar", href: "/components/avatar" },
-      { title: "Avatar group", href: "/components/avatar-group" },
-      { title: "Button", href: "/components/button" },
-      { title: "Collapsible", href: "/components/collapsible" },
+      { title: "Radio", href: "/components/radio" },
       { title: "Scroll area", href: "/components/scroll-area" },
+      { title: "Select", href: "/components/select" },
       { title: "Separator", href: "/components/separator" },
-    ],
-  },
-  {
-    title: "More",
-    items: [
-      { title: "Changelog", href: "/changelog" },
-      { title: "llms.txt", href: "/llms.txt", plain: true },
+      { title: "Slider", href: "/components/slider" },
+      { title: "Switch", href: "/components/switch" },
+      { title: "Tabs", href: "/components/tabs" },
+      { title: "Toast", href: "/components/toast" },
+      { title: "Toggle", href: "/components/toggle" },
+      { title: "Toggle group", href: "/components/toggle-group" },
+      { title: "Toolbar", href: "/components/toolbar" },
+      { title: "Tooltip", href: "/components/tooltip" },
     ],
   },
 ];
