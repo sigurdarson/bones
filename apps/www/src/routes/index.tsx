@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
 function Page() {
   return (
     <>
-      <PageHeader className="intro-title" title="Components with good Bones." />
+      <PageHeader className="intro-title" title="Components with good bones." />
       <p className="lead">
         Bones is a minimal, themable component library built on Base UI.
         Fluid by default, quiet until you theme it, and designed so coding
