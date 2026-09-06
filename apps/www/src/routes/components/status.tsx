@@ -46,7 +46,7 @@ function Page() {
 <Status color="warning" label="Degraded" />
 <Status color="danger" label="Failed" />`}
       >
-        <div className="showcase-row">
+        <div className="showcase-row showcase-row-loose">
           <span className="showcase-row"><Status label="Offline" /> Offline</span>
           <span className="showcase-row"><Status color="success" label="Online" /> Online</span>
           <span className="showcase-row"><Status color="info" label="Syncing" /> Syncing</span>

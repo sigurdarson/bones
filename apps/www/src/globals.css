@@ -739,6 +739,12 @@ html,
   gap: 0.5rem;
 }
 
+/* Wider spacing when each item is itself a small pair, like a dot and
+   its word. */
+.showcase-row-loose {
+  gap: 0.75rem 1.5rem;
+}
+
 .props-table-wrap {
   margin: 1rem 0;
   border: 1px solid var(--ub-border);

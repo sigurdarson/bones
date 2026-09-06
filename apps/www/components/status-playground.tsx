@@ -37,15 +37,15 @@ export function StatusPlayground() {
         code={buildCode(color, labeled)}
         note={
           <>
-            With a label the dot is an image named by it; without one it is
-            hidden from screen readers, which is only right beside text
-            that already says the state.
+            Label on: the dot stands alone and screen readers hear its
+            name. Label off: it sits beside text that already says the
+            state and is hidden from them, which is the Badge's case.
           </>
         }
       >
         <div className="showcase-row">
           <Status color={color} label={labeled ? names[color] : undefined} />
-          <span>{names[color]}</span>
+          {labeled ? null : <span>{names[color]}</span>}
         </div>
       </Showcase>
       <Controls>
