@@ -30,7 +30,7 @@ const overrideReference = [
   { token: "--ub-info", light: "blue-600", dark: "blue-400", controls: "Informational" },
   { token: "--ub-shadow-sm / md / lg", light: "soft", dark: "stronger", controls: "Elevation scale for overlays" },
   { token: "--ub-z-overlay", light: "1000", dark: "same", controls: "One layer for every floating part; raise above taller app chrome" },
-  { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps; pill also enlarges sm, md, and lg" },
+  { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps (radii, not sizes); pill mode also rounds the sm, md, and lg steps further" },
   { token: "--ub-radius-control", light: "8px (pill: full)", dark: "same", controls: "Every interactive element" },
   { token: "--ub-font-size / -compact", light: "16px / 14px", dark: "same", controls: "The two text sizes" },
   { token: "--ub-control-height / -compact", light: "36px / 28px", dark: "same", controls: "The two control heights" },
