@@ -12,6 +12,21 @@ export const Route = createFileRoute("/scrollbars")({
   component: Page,
 });
 
+const deploys = [
+  { time: "09:41", what: "Deployed v0.2.1 to production" },
+  { time: "09:38", what: "Smoke tests passed on preview" },
+  { time: "09:36", what: "Built 47 pages in 3.6s" },
+  { time: "09:12", what: "Merged: matrix full theme" },
+  { time: "08:57", what: "Deployed v0.2.0 to production" },
+  { time: "08:55", what: "Tagged v0.2.0" },
+  { time: "08:40", what: "Merged: consistency pass" },
+  { time: "08:31", what: "Merged: rename Input wrapper anatomy" },
+  { time: "08:02", what: "Merged: autocomplete" },
+  { time: "07:48", what: "Merged: combobox" },
+  { time: "07:30", what: "Merged: navigation menu" },
+  { time: "07:15", what: "Deployed v0.1.0 to production" },
+];
+
 function Page() {
   return (
     <>
@@ -34,13 +49,13 @@ function Page() {
       <p>
         This box scrolls; this site has the stylesheet enabled. The scrollbar
         fades in when your cursor is over the box and hides again when it
-        leaves. The gutter stays reserved, so content never shifts.
+        leaves, picking up <code>--ub-border-strong</code> so it follows the
+        theme. The gutter stays reserved, so content never shifts.
       </p>
       <div className="scroll-demo">
-        {Array.from({ length: 12 }, (_, i) => (
-          <p key={i}>
-            Row {i + 1}. The scrollbar picks up <code>--ub-border-strong</code>,
-            so it follows the theme, light or dark.
+        {deploys.map((deploy) => (
+          <p key={deploy.time}>
+            <code>{deploy.time}</code> {deploy.what}
           </p>
         ))}
       </div>

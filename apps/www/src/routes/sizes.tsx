@@ -65,12 +65,12 @@ function Page() {
         icons included, resizes as one.
       </p>
       <Preview>
-        <Button>Default</Button>
-        <Button size="compact">Compact</Button>
+        <Button>Invite member</Button>
+        <Button size="compact">Filter</Button>
       </Preview>
       <CodeBlock
-        code={`<Button>Default</Button>
-<Button size="compact">Compact</Button>`}
+        code={`<Button>Invite member</Button>
+<Button size="compact">Filter</Button>`}
       />
       <h2>Sizes nest cleanly</h2>
       <p>
@@ -83,11 +83,11 @@ function Page() {
       <Preview>
         <TabsRoot defaultValue="one" size="compact">
           <TabsList>
-            <TabsTab value="one">Compact tabs</TabsTab>
-            <TabsTab value="two">In a toolbar</TabsTab>
+            <TabsTab value="one">Activity</TabsTab>
+            <TabsTab value="two">Settings</TabsTab>
           </TabsList>
         </TabsRoot>
-        <Button>Default button</Button>
+        <Button>Save changes</Button>
         <Switch defaultChecked />
       </Preview>
       <h2>Easy to retune</h2>
