@@ -308,7 +308,6 @@ html,
 
 .sidebar a[aria-current="page"] {
   background: var(--ub-bg-muted);
-  font-weight: 500;
 }
 
 /* Content spans the middle column and the rail; pages that render
