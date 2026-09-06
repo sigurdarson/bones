@@ -1,7 +1,7 @@
 # Changelog
 
-All @usebones packages release together with a single version (see
-`.claude/skills/release/SKILL.md`). Entries note the affected package.
+All @usebones packages ship together under one version number. Each
+entry notes the package it affects.
 
 ## Unreleased
 
@@ -10,6 +10,7 @@ All @usebones packages release together with a single version (see
   "@usebones/icons" { interface IconRegistry { rocket: true } }) and
   supply the glyphs through IconProvider; a name with no glyph warns in
   development instead of crashing. Existing exports keep their shapes.
+- icons: add arrow-up and arrow-down icons.
 
 ## 0.2.1 (2026-08-26)
 
@@ -102,7 +103,7 @@ All @usebones packages release together with a single version (see
 - react: add ContextMenu wrapping the Base UI Context Menu: opens at the
   pointer on right click or long press, hosts the regular Menu parts,
   and shares the menu's popup styling.
-- react: fix floating surfaces nudging half a pixel when a child repaints
+- react: fix: floating surfaces nudging half a pixel when a child repaints
   on hover; every overlay popup (select, menu, popover, tooltip, both
   dialogs) now pins its own layer with will-change: transform.
 - react: add AlertDialog wrapping the Base UI Alert Dialog: a

@@ -56,11 +56,15 @@ classes (ub-<component>) and data attributes, never inline styles.
 - Reach for the composed parts before building custom: Select for short
   fixed lists, Combobox to search long ones, Autocomplete for free
   text, Menu for app actions, NavigationMenu for links.
-- Never import an icon library into shared UI; use @usebones/icons
-  semantic names so sets stay swappable. Names are typed: use one from
-  the set, or add a new one (declare module "@usebones/icons" {
-  interface IconRegistry { rocket: true } }) and supply its glyph through
-  IconProvider. Never guess a name.
+- Never import an icon library into shared UI. Use the semantic adapter
+  instead: import { Icon } from "@usebones/icons" and render
+  <Icon name="search" />. Names are typed as IconName ("search",
+  "close", "chevron-down", ...), the icon sizes from --ub-icon-size, and
+  a whole set swaps by mounting one <IconProvider icons={...}> at the
+  root, so components never change. A name the set lacks is added on
+  purpose (declare module "@usebones/icons" { interface IconRegistry {
+  rocket: true } }) with its glyph supplied to IconProvider; never guess
+  a name.
 - Respect the two-size system and the token layer and any Bones app
   restyles consistently from one place.
 `;

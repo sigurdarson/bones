@@ -62,9 +62,10 @@ export function AccordionPlayground() {
         code={buildCode({ multiple })}
         note={
           <>
-            Each trigger sits in a real heading element, so screen readers
-            can navigate the sections; chevrons and height animation come
-            free.
+            <code>value</code> is always an array, even with one section
+            open, so a controlled root reads <code>value[0]</code> in single
+            mode. Arrow keys move between triggers and Home and End jump to
+            the first and last.
           </>
         }
       >

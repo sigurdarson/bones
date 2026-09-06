@@ -22,25 +22,39 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Flip Indeterminate to see the dash take over the check, then click
+        the box in the preview: the Checked control moves with it, since
+        they share one piece of state. The Code tab shows the markup for
+        exactly what you've configured.
       </p>
       <CheckboxPlayground />
       <h2>States</h2>
       <p>
-        Unchecked, checked, indeterminate, and disabled. The radius stays
-        fixed even in pill mode, so a checkbox never reads as a radio.
+        Unchecked, checked, indeterminate, and disabled, one preference
+        four ways. Hover changes nothing on purpose and keyboard focus adds
+        a ring; the radius stays fixed even in pill mode, so a checkbox
+        never reads as a radio.
       </p>
       <Showcase
-        code={`<Checkbox />
-<Checkbox defaultChecked />
-<Checkbox indeterminate />
-<Checkbox defaultChecked disabled />`}
+        code={`<label><Checkbox /> Email me about product updates</label>
+<label><Checkbox defaultChecked /> Email me about product updates</label>
+<label><Checkbox indeterminate /> Email me about product updates</label>
+<label><Checkbox defaultChecked disabled /> Email me about product updates</label>`}
       >
-        <Checkbox aria-label="Unchecked" />
-        <Checkbox defaultChecked aria-label="Checked" />
-        <Checkbox indeterminate aria-label="Indeterminate" />
-        <Checkbox defaultChecked disabled aria-label="Disabled" />
+        <div className="showcase-stack">
+          <label className="preview-field">
+            <Checkbox /> Email me about product updates
+          </label>
+          <label className="preview-field">
+            <Checkbox defaultChecked /> Email me about product updates
+          </label>
+          <label className="preview-field">
+            <Checkbox indeterminate /> Email me about product updates
+          </label>
+          <label className="preview-field">
+            <Checkbox defaultChecked disabled /> Email me about product updates
+          </label>
+        </div>
       </Showcase>
       <h2>Styling states</h2>
       <p>
@@ -105,9 +119,9 @@ function Page() {
       />
       <AgentInstructions
         instructions={`Checkbox, from @usebones/react.
-- Uncontrolled: defaultChecked. Controlled: checked + onCheckedChange. indeterminate for a parent of a partly checked group. disabled.
+- Uncontrolled: defaultChecked. Controlled: checked + onCheckedChange. indeterminate is display only (it shows the dash without changing checked); use it for a parent of a partly checked group. disabled.
 - Wrap in a <label> with its text so the text is clickable, or put it inside FieldRoot with a FieldLabel.
-- Restyle in CSS via [data-checked], [data-indeterminate], [data-disabled], using --ub-* tokens only.`}
+- Restyle in CSS via .ub-checkbox, .ub-checkbox-indicator, [data-checked], [data-indeterminate], [data-disabled]. Tokens only.`}
       />
     </>
   );

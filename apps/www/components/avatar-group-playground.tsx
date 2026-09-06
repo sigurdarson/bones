@@ -11,12 +11,12 @@ import {
 import { Showcase } from "./showcase";
 import { Controls, ControlRow } from "./controls";
 
-const team = [
-  { fallback: "SS", src: "https://github.com/sigurdarson.png" },
-  { fallback: "AL" },
-  { fallback: "GH" },
-  { fallback: "KJ" },
-  { fallback: "MB" },
+const team: Array<{ name: string; initials: string; src?: string }> = [
+  { name: "Sigurdarson", initials: "SS", src: "https://github.com/sigurdarson.png" },
+  { name: "Ada Lindqvist", initials: "AL" },
+  { name: "Gabriel Huang", initials: "GH" },
+  { name: "Kofi Jallow", initials: "KJ" },
+  { name: "Maya Brooks", initials: "MB" },
 ];
 
 const maxOptions: Record<string, string> = {
@@ -35,8 +35,8 @@ function buildCode({ max, compact }: PlaygroundState): string {
   const sizeAttr = compact ? ' size="compact"' : "";
   const avatars = team
     .map(
-      (member) =>
-        `  <Avatar${member.src ? `\n    src="${member.src}"\n    alt=""\n   ` : ""} fallback="${member.fallback}"${sizeAttr} />`,
+      (person) =>
+        `  <Avatar${person.src ? `\n    src="${person.src}"\n    alt="${person.name}"\n   ` : ""} fallback="${person.initials}"${sizeAttr} />`,
     )
     .join("\n");
   const groupAttrs = [
@@ -50,6 +50,22 @@ ${avatars}
 </AvatarGroup>`;
 }
 
+function TeamAvatars({ count, compact }: { count: number; compact?: boolean }) {
+  return (
+    <>
+      {team.slice(0, count).map((person) => (
+        <Avatar
+          key={person.name}
+          src={person.src}
+          alt={person.src ? person.name : undefined}
+          fallback={person.initials}
+          size={compact ? "compact" : "default"}
+        />
+      ))}
+    </>
+  );
+}
+
 export function AvatarGroupPlayground() {
   const [max, setMax] = React.useState("3");
   const [compact, setCompact] = React.useState(false);
@@ -60,9 +76,11 @@ export function AvatarGroupPlayground() {
         code={buildCode({ max, compact })}
         note={
           <>
-            Avatars past <code>max</code> collapse into a +N chip. Each
-            avatar gets a ring in the page background; override{" "}
-            <code>--ub-avatar-group-ring</code> on a surface.
+            <code>max</code> counts children, not people: render one Avatar
+            per person and let the group trim the tail. The ring is a
+            shadow in <code>--ub-bg</code>, so on a card set{" "}
+            <code>--ub-avatar-group-ring</code> to that surface or the
+            seams show.
           </>
         }
       >
@@ -70,15 +88,7 @@ export function AvatarGroupPlayground() {
           max={max === "none" ? undefined : Number(max)}
           size={compact ? "compact" : "default"}
         >
-          {team.map((member) => (
-            <Avatar
-              key={member.fallback}
-              src={member.src}
-              alt={member.src ? "" : undefined}
-              fallback={member.fallback}
-              size={compact ? "compact" : "default"}
-            />
-          ))}
+          <TeamAvatars count={team.length} compact={compact} />
         </AvatarGroup>
       </Showcase>
       <Controls>
@@ -104,5 +114,67 @@ export function AvatarGroupPlayground() {
         </ControlRow>
       </Controls>
     </>
+  );
+}
+
+const variantsCode = `const team = [
+  { name: "Sigurdarson", initials: "SS", src: "https://github.com/sigurdarson.png" },
+  { name: "Ada Lindqvist", initials: "AL" },
+  { name: "Gabriel Huang", initials: "GH" },
+  { name: "Kofi Jallow", initials: "KJ" },
+  { name: "Maya Brooks", initials: "MB" },
+];
+
+<AvatarGroup>
+  {team.slice(0, 3).map((person) => (
+    <Avatar key={person.name} src={person.src} alt={person.name} fallback={person.initials} />
+  ))}
+</AvatarGroup>
+
+<AvatarGroup max={3}>
+  {team.map((person) => (
+    <Avatar key={person.name} src={person.src} alt={person.name} fallback={person.initials} />
+  ))}
+</AvatarGroup>
+
+<AvatarGroup max={3} size="compact">
+  {team.map((person) => (
+    <Avatar key={person.name} src={person.src} alt={person.name} fallback={person.initials} size="compact" />
+  ))}
+</AvatarGroup>`;
+
+export function AvatarGroupVariants() {
+  return (
+    <Showcase
+      code={variantsCode}
+      note={
+        <>
+          The chip is a plain span, so "+2" says nothing about who is
+          hidden; put the full list a click away (a popover or the
+          members page) when it matters.
+        </>
+      }
+    >
+      <div className="showcase-stack">
+        <div className="preview-field">
+          <AvatarGroup>
+            <TeamAvatars count={3} />
+          </AvatarGroup>
+          Editing now
+        </div>
+        <div className="preview-field">
+          <AvatarGroup max={3}>
+            <TeamAvatars count={5} />
+          </AvatarGroup>
+          Shared with 5 people
+        </div>
+        <div className="preview-field">
+          <AvatarGroup max={3} size="compact">
+            <TeamAvatars count={5} compact />
+          </AvatarGroup>
+          Reviewers
+        </div>
+      </div>
+    </Showcase>
   );
 }

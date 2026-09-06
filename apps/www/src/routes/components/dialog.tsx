@@ -23,21 +23,37 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Open the dialog and try Escape, a click on the backdrop, and tabbing
+        past the last button; switch off Outside click to see the backdrop
+        stop dismissing while the keyboard still does.
       </p>
       <DialogPlayground />
+      <h2>States</h2>
+      <p>
+        A dialog is closed, opening, open, or closing, and only the trigger
+        can be shown at rest: while open it carries{" "}
+        <code>data-popup-open</code>, the popup and backdrop pass through
+        their enter and exit transitions on the motion tokens, and hover and
+        focus inside the window belong to the controls you put there. With{" "}
+        <code>modal={"{false}"}</code> the page behind stays interactive and
+        undimmed; <code>"trap-focus"</code> keeps the trap without the dim.
+      </p>
       <h2>Styling states</h2>
       <p>
         The popup and backdrop both carry <code>data-starting-style</code>{" "}
         and <code>data-ending-style</code> during the enter and exit
         transitions, and the trigger carries <code>data-popup-open</code>{" "}
-        while open:
+        while open, so a wider window or a pressed-looking trigger needs no
+        JavaScript:
       </p>
       <CodeBlock
         lang="css"
         code={`.ub-dialog-popup {
   max-width: 32rem;
+}
+
+.ub-dialog-trigger[data-popup-open] {
+  background: var(--ub-bg-muted);
 }`}
       />
       <h2>Props</h2>
@@ -82,13 +98,18 @@ function Page() {
           },
         ]}
       />
+      <p>
+        One quirk: the accessible name comes from <code>DialogTitle</code>,
+        so keep one even in a tiny confirm; without it the dialog is
+        announced as an unnamed dialog.
+      </p>
       <AgentInstructions
         instructions={`DialogRoot, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose, from @usebones/react.
-- Structure: DialogRoot wraps DialogTrigger + DialogContent; put DialogTitle (names the dialog), DialogDescription, and the body inside the content. DialogClose closes it; render several for Cancel/Save pairs.
+- Structure: DialogRoot wraps DialogTrigger + DialogContent; put DialogTitle (names the dialog, always include one), DialogDescription, and the body inside the content. DialogClose closes it; render several for Cancel/Save pairs.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
-- Modal by default: page dimmed and inert, focus trapped, Escape closes, focus returns to the trigger. disablePointerDismissal ignores outside clicks for forms.
+- Modal by default: page dimmed and inert, focus trapped, Escape closes, focus returns to the trigger. modal={false} keeps the page interactive; disablePointerDismissal ignores outside clicks for forms.
 - The content scrolls when taller than the screen; no height handling needed.
-- Restyle in CSS via .ub-dialog-popup (26rem max-width default), .ub-dialog-backdrop, .ub-dialog-title, .ub-dialog-description, [data-starting-style]/[data-ending-style] for enter/exit. Tokens only.`}
+- Restyle in CSS via .ub-dialog-popup (26rem max-width default), .ub-dialog-backdrop, .ub-dialog-title, .ub-dialog-description, [data-starting-style]/[data-ending-style] for enter/exit, [data-popup-open] on the trigger. Tokens only.`}
       />
     </>
   );

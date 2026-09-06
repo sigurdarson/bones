@@ -1,11 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button, Switch, TabsList, TabsRoot, TabsTab } from "@usebones/react";
 import { CodeBlock } from "@/components/code-block";
 import { Preview } from "@/components/preview";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/sizes")({
-  head: () => ({ meta: [{ title: "Sizes · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Sizes · Bones" },
+      { name: "description", content: "The two-size system: default and compact, driven by three tokens." },
+    ],
+  }),
   component: Page,
 });
 
@@ -60,27 +65,29 @@ function Page() {
         icons included, resizes as one.
       </p>
       <Preview>
-        <Button>Default</Button>
-        <Button size="compact">Compact</Button>
+        <Button>Invite member</Button>
+        <Button size="compact">Filter</Button>
       </Preview>
       <CodeBlock
-        code={`<Button>Default</Button>
-<Button size="compact">Compact</Button>`}
+        code={`<Button>Invite member</Button>
+<Button size="compact">Filter</Button>`}
       />
       <h2>Sizes nest cleanly</h2>
       <p>
         Size is resolved per component, not inherited from the page. A
         default-size component inside a compact one (or the reverse) keeps
-        its own size, so dense toolbars and roomy forms can mix freely.
+        its own size, so dense toolbars and roomy forms can mix freely. The <code>size</code> prop never cascades; to change the default for a
+        whole region, remap the tokens instead (see{" "}
+        <Link to="/theming">Theming</Link>).
       </p>
       <Preview>
         <TabsRoot defaultValue="one" size="compact">
           <TabsList>
-            <TabsTab value="one">Compact tabs</TabsTab>
-            <TabsTab value="two">In a toolbar</TabsTab>
+            <TabsTab value="one">Activity</TabsTab>
+            <TabsTab value="two">Settings</TabsTab>
           </TabsList>
         </TabsRoot>
-        <Button>Default button</Button>
+        <Button>Save changes</Button>
         <Switch defaultChecked />
       </Preview>
       <h2>Easy to retune</h2>

@@ -46,9 +46,10 @@ export function FieldsetPlayground() {
         code={buildCode({ disabled })}
         note={
           <>
-            A native fieldset: the legend names the group for screen
-            readers, and <code>disabled</code> switches off every control
-            inside at once.
+            Disabled controls leave the tab order entirely, so say why in
+            the legend or a <code>FieldDescription</code> instead of
+            leaving a dead group. Nest the other way round too: one Form,
+            many fieldsets, never a form inside a fieldset.
           </>
         }
       >

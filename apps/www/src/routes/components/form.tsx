@@ -1,8 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Button,
+  FieldError,
+  FieldLabel,
+  FieldRoot,
+  Form,
+  Input,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
+import { CodeBlock } from "@/components/code-block";
 import { FormPlayground } from "@/components/form-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/form")({
   head: () => ({ meta: [{ title: "Form · Bones" }] }),
@@ -26,6 +36,55 @@ function Page() {
         <code>errors</code> prop land on the right field.
       </p>
       <FormPlayground />
+      <h2>States</h2>
+      <p>
+        The form has no state of its own; its fields carry it. Invalid,
+        touched, and dirty arrive as the user works (focus rings the
+        control being edited), and <code>errors</code> pushes a field into
+        the invalid state from outside, before any submit:
+      </p>
+      <Showcase
+        code={`<Form errors={{ username: "That name is taken." }}>
+  <FieldRoot name="username">
+    <FieldLabel>Username</FieldLabel>
+    <Input defaultValue="ada" />
+    <FieldError />
+  </FieldRoot>
+  <Button type="submit">Claim username</Button>
+</Form>`}
+        note={
+          <>
+            A bare <code>FieldError</code> (no <code>match</code>) renders
+            whatever message the <code>errors</code> prop holds for its
+            field; editing the field clears it again, so pass the prop from
+            state rather than a constant.
+          </>
+        }
+      >
+        <div style={{ width: "18rem" }}>
+          <Form errors={{ username: "That name is taken." }}>
+            <FieldRoot name="username">
+              <FieldLabel>Username</FieldLabel>
+              <Input defaultValue="ada" />
+              <FieldError />
+            </FieldRoot>
+            <Button type="submit">Claim username</Button>
+          </Form>
+        </div>
+      </Showcase>
+      <h2>Styling states</h2>
+      <p>
+        The form element carries no state attributes; the fields inside do
+        (<code>data-invalid</code>, <code>data-valid</code>,{" "}
+        <code>data-touched</code>, <code>data-dirty</code>), so a form-wide
+        treatment scopes through <code>.ub-form</code>:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-form .ub-input[data-valid] {
+  border-color: var(--ub-success);
+}`}
+      />
       <h2>Props</h2>
       <p>
         Everything a native form accepts passes through. Submission goes
@@ -64,7 +123,7 @@ function Page() {
 - validationMode: "onSubmit" (default) | "onBlur" | "onChange".
 - Server errors: pass errors={{ fieldName: "message" }} and render a bare <FieldError /> in that field; clear by passing undefined.
 - Group related fields with FieldsetRoot + FieldsetLegend inside the form.
-- Restyle in CSS via .ub-form (a 1rem column flex stack). Tokens only.`}
+- Restyle in CSS via .ub-form (a 1rem column flex stack) scoping the fields' [data-invalid], [data-valid], [data-touched], [data-dirty]. Tokens only.`}
       />
     </>
   );

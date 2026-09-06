@@ -23,56 +23,53 @@ const exampleDescription: React.CSSProperties = {
 
 const audiences = [
   {
-    value: "developers",
-    title: "Developers",
-    tagline: "Idea to UI, faster.",
-    heading: "Ship real screens sooner",
-    body: "Import the tokens once; every part arrives styled and accessible.",
-    links: [
-      {
-        title: "Quick start",
-        description: "Install and assemble your first screen.",
-      },
-      {
-        title: "Components",
-        description: "Every primitive with a live playground.",
-      },
-    ],
-  },
-  {
-    value: "design-teams",
-    title: "Design teams",
-    tagline: "Patterns stay aligned.",
-    heading: "One source of visual truth",
-    body: "Semantic tokens keep everything consistent; retheme in one place.",
-    links: [
-      { title: "Theming", description: "Tokens, attributes, and accents." },
-      { title: "Sizes", description: "Two sizes, no drift." },
-    ],
-  },
-  {
-    value: "agents",
-    title: "Agents",
-    tagline: "Machine-readable UI.",
-    heading: "Readable by machines on purpose",
-    body: "Zero-guesswork conventions, with agent instructions and llms.txt.",
-    links: [
-      { title: "Skills", description: "Teach your agent the workflow." },
-      {
-        title: "llms.txt",
-        description: "The library, summarized for tools.",
-      },
-    ],
-  },
-  {
     value: "startups",
     title: "Startups",
-    tagline: "Polished from day one.",
-    heading: "Defaults you can outgrow",
-    body: "Ship the stock look now; retheme with tokens when the brand lands.",
+    tagline: "Ship fast, measure faster.",
+    heading: "Find product-market fit sooner",
+    body: "Activation and retention tracked from day one, no data team required.",
     links: [
-      { title: "Quick start", description: "Zero to a working page." },
-      { title: "Changelog", description: "What's new in each release." },
+      { title: "Startup program", description: "Free for your first year." },
+      {
+        title: "Case studies",
+        description: "How early teams put it to work.",
+      },
+    ],
+  },
+  {
+    value: "agencies",
+    title: "Agencies",
+    tagline: "Every client, one login.",
+    heading: "Report across every client",
+    body: "A workspace per client and shared templates for the whole team.",
+    links: [
+      {
+        title: "Client workspaces",
+        description: "Isolate data, share dashboards.",
+      },
+      { title: "White-label reports", description: "Your logo on every export." },
+    ],
+  },
+  {
+    value: "enterprise",
+    title: "Enterprise",
+    tagline: "Security and scale.",
+    heading: "Built for large teams",
+    body: "SSO, audit logs, and regional data residency on every plan.",
+    links: [
+      { title: "Security", description: "SOC 2, SSO, and audit logs." },
+      { title: "Contact sales", description: "Custom plans and onboarding." },
+    ],
+  },
+  {
+    value: "developers",
+    title: "Developers",
+    tagline: "API first, SDKs included.",
+    heading: "Instrument an app in an afternoon",
+    body: "Typed SDKs for web, mobile, and server, plus a plain HTTP API.",
+    links: [
+      { title: "API reference", description: "Every endpoint, with examples." },
+      { title: "SDKs", description: "Web, iOS, Android, and Node." },
     ],
   },
 ];
@@ -104,9 +101,9 @@ function Page() {
       <p className="lead">
         Site navigation with rich dropdowns, wrapping the Base UI
         Navigation Menu. One shared popup morphs between the open item's
-        content instead of popping a new one per item. For app actions,
-        reach for the <Link to="/components/menu">Menu</Link>; this one
-        is for links.
+        content instead of popping a new one per item, and it's built for
+        links: app actions belong in the{" "}
+        <Link to="/components/menu">Menu</Link>.
       </p>
       <h2>Playground</h2>
       <p>
@@ -117,34 +114,43 @@ function Page() {
       <NavigationMenuPlayground />
       <h2>Nested submenus</h2>
       <p>
-        A <code>NavigationMenuRoot</code> nested inside a{" "}
-        <code>NavigationMenuContent</code> makes a multi-level menu: its
-        trigger reads as a row, and its content opens in a flyout beside
-        the panel (<code>side="inline-end"</code>).
+        Open Product, then hover Integrations: a row with a chevron opens a
+        second panel beside the first. That's a{" "}
+        <code>NavigationMenuRoot</code> nested inside a{" "}
+        <code>NavigationMenuContent</code>; its trigger reads as a row, and
+        its content opens in a flyout with <code>side="inline-end"</code>.
       </p>
       <Showcase
         code={`<NavigationMenuContent>
-  <NavigationMenuLink href="/quick-start">Quick start</NavigationMenuLink>
-  <NavigationMenuLink href="/accessibility">Accessibility</NavigationMenuLink>
+  <NavigationMenuLink href="/analytics">Analytics</NavigationMenuLink>
+  <NavigationMenuLink href="/automations">Automations</NavigationMenuLink>
   {/* a nested menu, opening beside the panel */}
   <NavigationMenuRoot side="inline-end" align="start">
     <NavigationMenuList style={{ display: "block" }}>
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Integrations</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <NavigationMenuLink href="/motion">Motion</NavigationMenuLink>
-          <NavigationMenuLink href="/sizes">Sizes</NavigationMenuLink>
-          <NavigationMenuLink href="/skills">Skills</NavigationMenuLink>
+          <NavigationMenuLink href="/integrations/slack">Slack</NavigationMenuLink>
+          <NavigationMenuLink href="/integrations/github">GitHub</NavigationMenuLink>
+          <NavigationMenuLink href="/integrations/webhooks">Webhooks</NavigationMenuLink>
         </NavigationMenuContent>
       </NavigationMenuItem>
     </NavigationMenuList>
   </NavigationMenuRoot>
 </NavigationMenuContent>`}
+        note={
+          <>
+            The nested list needs <code>display: block</code> so the row
+            fills the panel column, and the flyout gets its own{" "}
+            <code>side</code> and <code>align</code>: without them it would
+            open below the row like a top-level item.
+          </>
+        }
       >
         <NavigationMenuRoot>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div
                   style={{
@@ -155,25 +161,25 @@ function Page() {
                   }}
                 >
                   <PanelLink
-                    title="Quick start"
-                    description="Install and assemble your first component."
+                    title="Analytics"
+                    description="Dashboards, funnels, and retention."
                   />
                   <PanelLink
-                    title="Accessibility"
-                    description="How every part stays keyboard operable."
+                    title="Automations"
+                    description="Trigger actions from any event."
                   />
                   <PanelLink
-                    title="Changelog"
-                    description="See what's new in the latest releases."
+                    title="Security"
+                    description="SSO, audit logs, and data residency."
                   />
                   <NavigationMenuRoot side="inline-end" align="start">
                     <NavigationMenuList style={{ display: "block" }}>
                       <NavigationMenuItem>
                         <NavigationMenuTrigger>
                           <span>
-                            Handbook
+                            Integrations
                             <span style={exampleDescription}>
-                              How to use Bones effectively.
+                              Connect the tools you already use.
                             </span>
                           </span>
                         </NavigationMenuTrigger>
@@ -186,16 +192,16 @@ function Page() {
                             }}
                           >
                             <PanelLink
-                              title="Styling"
-                              description="Plain CSS and semantic tokens; restyle anything without forking."
+                              title="Slack"
+                              description="Alerts and daily digests in any channel."
                             />
                             <PanelLink
-                              title="Motion"
-                              description="Duration and easing tokens; reduced motion comes free."
+                              title="GitHub"
+                              description="Link every deploy to what changed."
                             />
                             <PanelLink
-                              title="Composition"
-                              description="Swap any part for your own component with render."
+                              title="Webhooks"
+                              description="Push events to your own systems."
                             />
                           </div>
                         </NavigationMenuContent>
@@ -210,43 +216,52 @@ function Page() {
       </Showcase>
       <h2>Nested inline submenus</h2>
       <p>
-        For second-level navigation that should stay in the same panel,
-        give the nested root <code>inline</code> and render a{" "}
-        <code>NavigationMenuViewport</code> beside its list with a{" "}
-        <code>defaultValue</code>: the selected item's content shows there
-        instead of a flyout.
+        Open Solutions: a list of audiences sits on the left and the chosen
+        one's details on the right, swapping in place as you move down the
+        list, with no second popup. That's a nested root with{" "}
+        <code>inline</code> plus a <code>NavigationMenuViewport</code>{" "}
+        beside its list and a <code>defaultValue</code>, so the selected
+        item's content renders there instead of a flyout.
       </p>
       <Showcase
         code={`<NavigationMenuContent>
   <NavigationMenuRoot
     inline
     orientation="vertical"
-    defaultValue="theming"
+    defaultValue="startups"
     style={{ display: "flex", gap: "0.75rem" }}
   >
     <NavigationMenuList style={{ flexDirection: "column", alignItems: "stretch" }}>
-      <NavigationMenuItem value="primitives">
-        <NavigationMenuTrigger>Primitives</NavigationMenuTrigger>
-        <NavigationMenuContent>{/* panel content */}</NavigationMenuContent>
+      <NavigationMenuItem value="startups">
+        <NavigationMenuTrigger>Startups</NavigationMenuTrigger>
+        <NavigationMenuContent>{/* heading, blurb, links */}</NavigationMenuContent>
       </NavigationMenuItem>
-      <NavigationMenuItem value="theming">
-        <NavigationMenuTrigger>Theming</NavigationMenuTrigger>
-        <NavigationMenuContent>{/* panel content */}</NavigationMenuContent>
+      <NavigationMenuItem value="agencies">
+        <NavigationMenuTrigger>Agencies</NavigationMenuTrigger>
+        <NavigationMenuContent>{/* heading, blurb, links */}</NavigationMenuContent>
       </NavigationMenuItem>
     </NavigationMenuList>
     <NavigationMenuViewport style={{ width: "17rem" }} />
   </NavigationMenuRoot>
 </NavigationMenuContent>`}
+        note={
+          <>
+            <code>orientation="vertical"</code> makes the up and down arrows
+            walk the list, and <code>defaultValue</code> keeps the viewport
+            from opening empty. Without a default, the right column is
+            blank until the first hover.
+          </>
+        }
       >
         <NavigationMenuRoot>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <NavigationMenuRoot
                   inline
                   orientation="vertical"
-                  defaultValue="developers"
+                  defaultValue="startups"
                   style={{ display: "flex", gap: "0.75rem" }}
                 >
                   <NavigationMenuList
@@ -303,6 +318,60 @@ function Page() {
                   <NavigationMenuViewport style={{ width: "19.5rem" }} />
                 </NavigationMenuRoot>
               </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenuRoot>
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        Closed and open are live, so hover or click a trigger. While open,
+        the trigger carries <code>data-popup-open</code> (the chevron flips
+        on it) and the incoming content carries{" "}
+        <code>data-activation-direction</code>, left or right depending on
+        which neighbor was open before; an item that is only a link has no
+        open state at all.
+      </p>
+      <Showcase
+        code={`<NavigationMenuList>
+  {/* a trigger item: opens content, carries data-popup-open while open */}
+  <NavigationMenuItem>
+    <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
+    <NavigationMenuContent>
+      <NavigationMenuLink href="/docs/quick-start">Quick start</NavigationMenuLink>
+      <NavigationMenuLink href="/docs/api">API reference</NavigationMenuLink>
+    </NavigationMenuContent>
+  </NavigationMenuItem>
+  {/* a link item: no popup, no open state */}
+  <NavigationMenuItem>
+    <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+  </NavigationMenuItem>
+</NavigationMenuList>`}
+      >
+        <NavigationMenuRoot>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "13rem",
+                  }}
+                >
+                  <PanelLink
+                    title="Quick start"
+                    description="Install and send your first event."
+                  />
+                  <PanelLink
+                    title="API reference"
+                    description="Every endpoint, with examples."
+                  />
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink>Pricing</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenuRoot>

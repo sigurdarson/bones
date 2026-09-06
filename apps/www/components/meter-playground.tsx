@@ -25,8 +25,10 @@ export function MeterPlayground() {
         code={buildCode({ value, showValue })}
         note={
           <>
-            A meter is a current level within a known range, not a task
-            underway; reach for Progress when something is loading.
+            The value reads as a percentage of min and max by default; pass{" "}
+            <code>format</code> (Intl.NumberFormatOptions) for units like
+            gigabytes. Always pass <code>label</code> or{" "}
+            <code>aria-label</code>: a dev warning fires without one.
           </>
         }
       >

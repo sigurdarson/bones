@@ -31,9 +31,10 @@ export function AvatarPlayground() {
         code={buildCode({ image, compact })}
         note={
           <>
-            The fallback renders until the image has actually loaded and
-            stays if it fails. alt is the person's name; empty only when
-            the name is already visible beside it, like here.
+            Initials render at about 39% of the circle (14px default, 11px
+            compact), so two letters fit and a third crowds it. Images are
+            cropped to cover, so send a square. <code>alt</code> is empty
+            here only because the name sits beside it.
           </>
         }
       >

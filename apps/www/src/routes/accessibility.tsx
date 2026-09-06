@@ -3,7 +3,12 @@ import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/accessibility")({
-  head: () => ({ meta: [{ title: "Accessibility · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Accessibility · Bones" },
+      { name: "description", content: "How Bones treats accessibility as part of correctness: keyboard, focus, ARIA, defaults." },
+    ],
+  }),
   component: Page,
 });
 

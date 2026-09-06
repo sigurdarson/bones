@@ -1,10 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CodeBlock } from "@/components/code-block";
 import { InstallTabs } from "@/components/install-tabs";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/quick-start")({
-  head: () => ({ meta: [{ title: "Quick start · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Quick start · Bones" },
+      { name: "description", content: "Install the Bones packages, import the styles once, and use your first components." },
+    ],
+  }),
   component: Page,
 });
 
@@ -39,12 +44,20 @@ import "@usebones/react/styles.css";`}
 export function Example() {
   return (
     <>
-      <Button variant="secondary">Hello</Button>
+      <Button variant="secondary">Save draft</Button>
       <Switch defaultChecked />
     </>
   );
 }`}
       />
+      <h2>Server components</h2>
+      <p>
+        Interactive components are client components (they carry the
+        directive themselves), so they drop straight into server-rendered
+        apps: import the styles in the server root layout, and keep{" "}
+        <code>ToastProvider</code> and other providers inside a client
+        boundary.
+      </p>
       <h2>Dark mode and radius</h2>
       <p>
         Both are attributes on <code>&lt;html&gt;</code> (or any subtree), no
@@ -59,6 +72,12 @@ export function Example() {
         <code>@theme inline</code>, so it needs v4; on v3, import{" "}
         <code>index.css</code> and reference the tokens directly. Tailwind is
         supported, never required.
+      </p>
+      <h2>Next</h2>
+      <p>
+        Make it yours in <Link to="/theming">Theming</Link>, read how the two
+        sizes work in <Link to="/sizes">Sizes</Link>, or start with the{" "}
+        <Link to="/components/button">Button</Link>.
       </p>
     </>
   );

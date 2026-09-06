@@ -1,4 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ComboboxContent,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxRoot,
+  ComboboxTrigger,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import {
@@ -12,11 +19,33 @@ import {
 import { ComboboxPlayground } from "@/components/combobox-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/combobox")({
   head: () => ({ meta: [{ title: "Combobox · Bones" }] }),
   component: Page,
 });
+
+/* The roster is Icelanders of saga fame, same as the playground. */
+const members = [
+  "Gunnar á Hlíðarenda",
+  "Eiríkur rauði",
+  "Leifur heppni",
+  "Snorri Sturluson",
+  "Auður djúpúðga",
+];
+
+function MemberItems() {
+  return (
+    <ComboboxContent empty="No one matches.">
+      {(member: string) => (
+        <ComboboxItem key={member} value={member}>
+          {member}
+        </ComboboxItem>
+      )}
+    </ComboboxContent>
+  );
+}
 
 function Page() {
   return (
@@ -36,46 +65,152 @@ function Page() {
         you've configured.
       </p>
       <ComboboxPlayground />
-      <h2>Multiple select</h2>
+      <h2>Variants</h2>
       <p>
-        <code>multiple</code> turns the value into an array, and{" "}
-        <code>ComboboxChips</code> shows it as removable chips with the
-        input riding inline after them.
+        Two inputs and a button: bordered is the default, borderless trades
+        the border for a muted fill, and <code>ComboboxTrigger</code> reads
+        like a Select and moves the typing into the popup.
+      </p>
+      <Showcase
+        code={`<ComboboxRoot items={members}>
+  <ComboboxInput placeholder="Assign to..." />
+  <ComboboxContent empty="No one matches.">
+    {(member) => (
+      <ComboboxItem key={member} value={member}>
+        {member}
+      </ComboboxItem>
+    )}
+  </ComboboxContent>
+</ComboboxRoot>
+
+<ComboboxRoot items={members}>
+  <ComboboxInput variant="borderless" placeholder="Assign to..." />
+  <ComboboxContent empty="No one matches.">{/* same items */}</ComboboxContent>
+</ComboboxRoot>
+
+<ComboboxRoot items={members}>
+  <ComboboxTrigger placeholder="Assign to..." aria-label="Assignee" />
+  <ComboboxContent searchInput="Search people..." empty="No one matches.">
+    {/* same items */}
+  </ComboboxContent>
+</ComboboxRoot>`}
+        note={
+          <>
+            The trigger's placeholder is visual only: name it with{" "}
+            <code>aria-label</code> or a Field label. Both inputs keep the
+            chevron; the trigger reuses the Select trigger's classes, so
+            the two restyle together.
+          </>
+        }
+      >
+        <div className="showcase-stack" style={{ width: "22rem" }}>
+          <ComboboxRoot items={members}>
+            <ComboboxInput placeholder="Assign to..." aria-label="Bordered" />
+            <MemberItems />
+          </ComboboxRoot>
+          <ComboboxRoot items={members}>
+            <ComboboxInput
+              variant="borderless"
+              placeholder="Assign to..."
+              aria-label="Borderless"
+            />
+            <MemberItems />
+          </ComboboxRoot>
+          <ComboboxRoot items={members}>
+            <ComboboxTrigger placeholder="Assign to..." aria-label="Assignee" />
+            <ComboboxContent searchInput="Search people..." empty="No one matches.">
+              {(member: string) => (
+                <ComboboxItem key={member} value={member}>
+                  {member}
+                </ComboboxItem>
+              )}
+            </ComboboxContent>
+          </ComboboxRoot>
+        </div>
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        Open, highlighted, and selected are live; try the examples. A
+        selection swaps the chevron for a clear button, disabled dims the
+        whole group, invalid turns the border to the danger color, and focus
+        rings the group on every focus, not just keyboard.
+      </p>
+      <Showcase
+        code={`<ComboboxRoot items={members}>
+  <ComboboxInput placeholder="Assign to..." />
+</ComboboxRoot>
+
+<ComboboxRoot items={members} defaultValue="Snorri Sturluson">
+  <ComboboxInput placeholder="Assign to..." />
+</ComboboxRoot>
+
+<ComboboxRoot items={members}>
+  <ComboboxInput placeholder="Assign to..." disabled />
+</ComboboxRoot>
+
+<ComboboxRoot items={members}>
+  <ComboboxInput placeholder="Assign to..." invalid />
+</ComboboxRoot>`}
+      >
+        <div className="showcase-stack" style={{ width: "22rem" }}>
+          <ComboboxRoot items={members}>
+            <ComboboxInput placeholder="Assign to..." aria-label="Empty" />
+            <MemberItems />
+          </ComboboxRoot>
+          <ComboboxRoot items={members} defaultValue="Snorri Sturluson">
+            <ComboboxInput placeholder="Assign to..." aria-label="Selected" />
+            <MemberItems />
+          </ComboboxRoot>
+          <ComboboxRoot items={members}>
+            <ComboboxInput placeholder="Assign to..." aria-label="Disabled" disabled />
+            <MemberItems />
+          </ComboboxRoot>
+          <ComboboxRoot items={members}>
+            <ComboboxInput placeholder="Assign to..." aria-label="Invalid" invalid />
+            <MemberItems />
+          </ComboboxRoot>
+        </div>
+      </Showcase>
+      <h2>Recipes</h2>
+      <p>
+        The parts compose into the usual bigger patterns without extra
+        props; each recipe below is a complete, paste-ready arrangement.
+      </p>
+      <p>
+        <strong>Multiple select.</strong> <code>multiple</code> turns the
+        value into an array, and <code>ComboboxChips</code> shows it as
+        removable chips with the input riding inline after them.
       </p>
       <ComboboxMultiple />
-      <h2>Input inside popup</h2>
       <p>
-        For a select-like control, swap the input for a{" "}
-        <code>ComboboxTrigger</code> and put the search field inside the
-        popup with <code>searchInput</code> on the content.
+        <strong>Input inside popup.</strong> For a select-like control,
+        swap the input for a <code>ComboboxTrigger</code> and put the search
+        field inside the popup with <code>searchInput</code> on the
+        content.
       </p>
       <ComboboxPopupInput />
-      <h2>Grouped</h2>
       <p>
-        Pass groups as the root's items and render each group's own items
-        through <code>ComboboxCollection</code>; filtering reaches into
-        every group.
+        <strong>Grouped.</strong> Pass groups as the root's items and render
+        each group's own items through <code>ComboboxCollection</code>;
+        filtering reaches into every group.
       </p>
       <ComboboxGrouped />
+      <p>
+        <strong>Creatable.</strong> Manage the items yourself and append a
+        create row when the query matches nothing; selecting it adds the
+        value and keeps it chosen.
+      </p>
+      <ComboboxCreatable />
       <h2>Async search</h2>
       <p>
         Fetch on <code>onInputValueChange</code>, hand the results to{" "}
         <code>items</code>, and keep a status line up while the request
-        runs; the demo fakes the network with a delay.
+        runs; with <code>multiple</code>, picked people stay as chips while
+        new searches stream fresh results into the list. Both demos fake the
+        network with a delay.
       </p>
       <ComboboxAsyncSingle />
-      <h2>Async search, multiple</h2>
-      <p>
-        The same pattern with chips: picked people stay selected while
-        new searches stream fresh results into the list.
-      </p>
       <ComboboxAsyncMultiple />
-      <h2>Creatable</h2>
-      <p>
-        Manage the items yourself and append a create row when the query
-        matches nothing; selecting it adds the value and keeps it chosen.
-      </p>
-      <ComboboxCreatable />
       <h2>Styling states</h2>
       <p>
         Items carry <code>data-highlighted</code> and{" "}
@@ -113,13 +248,13 @@ function Page() {
             name: "ComboboxRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Sizes the input and the list together.",
+            description: "Sizes the input and the list together: 36px tall with 16px text by default, 28px with 14px text compact.",
           },
           {
             name: "ComboboxInput.variant",
             type: '"default" | "borderless"',
             defaultValue: '"default"',
-            description: "Borderless swaps the border for a muted fill, like the Select trigger.",
+            description: "Bordered, or a muted fill with no border.",
           },
           {
             name: "ComboboxInput.clearable",
@@ -131,7 +266,7 @@ function Page() {
             name: "ComboboxInput.invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border and aria-invalid, like the Input; a surrounding Field sets it automatically. Also on ComboboxTrigger.",
+            description: "Danger border and ring, plus aria-invalid; a surrounding Field sets it automatically. Also on ComboboxTrigger.",
           },
           {
             name: "ComboboxContent.empty",
@@ -173,7 +308,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`ComboboxRoot, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, ComboboxChips, ComboboxChip, ComboboxValue, ComboboxCollection, ComboboxStatus, from @usebones/react.
-- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true; chevron built in, swapped for a clear button while something is selected) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
+- Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true, invalid, disabled; chevron built in, swapped for a clear button while something is selected) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
 - value/defaultValue/onValueChange like every control; multiple turns the value into an array. Object items need itemToStringLabel.
 - Multiple with chips: ComboboxChips wrapping ComboboxValue's function children (map values to ComboboxChip; put ComboboxInput clearable={false} after them). Chip remove buttons are automatic.
 - Select-like: ComboboxTrigger (placeholder is visual only; name it via aria-label or a Field label) with searchInput="..." on ComboboxContent putting the input inside the popup.
@@ -181,7 +316,8 @@ function Page() {
 - Async: fetch in onInputValueChange, pass results as items, status="Searching..." on the content while loading (announced politely), empty={null} while loading.
 - Creatable: manage items in state, render static children, and append a ComboboxItem whose value is the query when nothing matches.
 - Prefer Select for short fixed lists; the combobox earns its input when the list is long enough to search.
-- Restyle in CSS via .ub-combobox-input, .ub-combobox-chips, .ub-combobox-chip, .ub-combobox-popup, .ub-combobox-item, [data-highlighted], [data-selected], [data-popup-open] on the trigger. Tokens only.`}
+- Inside FieldRoot, drop invalid and use FieldLabel and FieldError instead; the Field wires the name and validation.
+- Restyle in CSS via .ub-combobox-input-group ([data-variant], [data-size]), .ub-combobox-input ([data-invalid], [data-disabled]), .ub-combobox-chips, .ub-combobox-chip, .ub-combobox-popup, .ub-combobox-item ([data-highlighted], [data-selected]), [data-popup-open] on the chevron. Tokens only.`}
       />
     </>
   );

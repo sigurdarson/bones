@@ -5,7 +5,12 @@ import { Switch } from "@usebones/react";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/motion")({
-  head: () => ({ meta: [{ title: "Motion · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Motion · Bones" },
+      { name: "description", content: "Token-driven motion that stays fluid, never showy, and respects reduced motion." },
+    ],
+  }),
   component: Page,
 });
 

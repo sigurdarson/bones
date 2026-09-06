@@ -26,19 +26,42 @@ function Page() {
         for exactly what you've configured.
       </p>
       <SliderPlayground />
-      <h2>States</h2>
+      <h2>Variants</h2>
       <p>
-        Dragging tracks the pointer with zero lag on purpose; position is
-        never animated. Disabled dims the whole control.
+        One thumb or two: a number is a single value, an array is a range
+        with a thumb per entry. Same track, same keys, no separate range
+        component.
       </p>
       <Showcase
         code={`<Slider defaultValue={40} aria-label="Volume" />
-<Slider defaultValue={[20, 60]} aria-label="Price" />
+<Slider defaultValue={[20, 60]} aria-label="Price" />`}
+        note={
+          <>
+            Each thumb is its own tab stop, and in a range the{" "}
+            <code>aria-label</code> gets the thumb's index appended (Price
+            1, Price 2) so screen readers can tell them apart.
+          </>
+        }
+      >
+        <div style={{ width: "12rem" }}>
+          <Slider defaultValue={40} aria-label="Volume" />
+        </div>
+        <div style={{ width: "12rem" }}>
+          <Slider defaultValue={[20, 60]} aria-label="Price" />
+        </div>
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        Dragging tracks the pointer with zero lag on purpose; position is
+        never animated. Disabled dims the whole control and keeps the
+        pointer out.
+      </p>
+      <Showcase
+        code={`<Slider defaultValue={40} aria-label="Volume" />
 <Slider defaultValue={40} disabled aria-label="Volume" />`}
       >
         <div className="showcase-stack" style={{ width: "16rem" }}>
           <Slider defaultValue={40} aria-label="Volume" />
-          <Slider defaultValue={[20, 60]} aria-label="Price" />
           <Slider defaultValue={40} disabled aria-label="Volume" />
         </div>
       </Showcase>
@@ -75,6 +98,29 @@ function Page() {
             name: "onValueChange",
             type: "(value) => void",
             description: "Called continuously while sliding; onValueCommitted fires on release.",
+          },
+          {
+            name: "min / max / step",
+            type: "number",
+            defaultValue: "0 / 100 / 1",
+            description: "The range and the arrow-key increment.",
+          },
+          {
+            name: "largeStep",
+            type: "number",
+            defaultValue: "10",
+            description: "The Page Up and Page Down increment.",
+          },
+          {
+            name: "orientation",
+            type: "\"horizontal\" | \"vertical\"",
+            defaultValue: "\"horizontal\"",
+            description: "Track direction; keyboard mapping follows.",
+          },
+          {
+            name: "onValueCommitted",
+            type: "(value) => void",
+            description: "Fires once when the drag or key press ends, for saving without spamming updates.",
           },
           {
             name: "aria-label",

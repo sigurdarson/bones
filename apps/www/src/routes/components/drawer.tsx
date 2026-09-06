@@ -1,9 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Button,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerRoot,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { DrawerPlayground } from "@/components/drawer-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/drawer")({
   head: () => ({ meta: [{ title: "Drawer · Bones" }] }),
@@ -28,24 +38,112 @@ function Page() {
         what you've configured.
       </p>
       <DrawerPlayground />
+      <h2>Variants</h2>
+      <p>
+        One prop, three shapes: right and left are full-height panels capped
+        at 24rem wide, bottom is a full-width sheet capped at 85dvh, and the
+        grab handle and dismiss swipe follow the edge.
+      </p>
+      <Showcase
+        code={`<DrawerRoot side="left">
+  <DrawerTrigger render={<Button variant="secondary" />}>Left</DrawerTrigger>
+  <DrawerContent>
+    <DrawerTitle>Workspaces</DrawerTitle>
+    <DrawerDescription>Switch between the teams you belong to.</DrawerDescription>
+    <DrawerClose render={<Button />}>Done</DrawerClose>
+  </DrawerContent>
+</DrawerRoot>
+<DrawerRoot>
+  <DrawerTrigger render={<Button variant="secondary" />}>Right</DrawerTrigger>
+  <DrawerContent>
+    <DrawerTitle>Filters</DrawerTitle>
+    <DrawerDescription>Narrow the list by status, owner, or date.</DrawerDescription>
+    <DrawerClose render={<Button />}>Done</DrawerClose>
+  </DrawerContent>
+</DrawerRoot>
+<DrawerRoot side="bottom">
+  <DrawerTrigger render={<Button variant="secondary" />}>Down</DrawerTrigger>
+  <DrawerContent>
+    <DrawerTitle>Share this report</DrawerTitle>
+    <DrawerDescription>Anyone with the link can view it.</DrawerDescription>
+    <DrawerClose render={<Button />}>Copy link</DrawerClose>
+  </DrawerContent>
+</DrawerRoot>`}
+        note={
+          <>
+            Side panels shrink on narrow screens (<code>100vw</code> minus
+            3rem) rather than covering the page; the bottom sheet scrolls
+            its content past 85dvh instead of growing taller.
+          </>
+        }
+      >
+        <DrawerRoot side="left">
+          <DrawerTrigger render={<Button variant="secondary" />}>Left</DrawerTrigger>
+          <DrawerContent>
+            <DrawerTitle>Workspaces</DrawerTitle>
+            <DrawerDescription>
+              Switch between the teams you belong to.
+            </DrawerDescription>
+            <p>
+              <DrawerClose render={<Button />}>Done</DrawerClose>
+            </p>
+          </DrawerContent>
+        </DrawerRoot>
+        <DrawerRoot>
+          <DrawerTrigger render={<Button variant="secondary" />}>Right</DrawerTrigger>
+          <DrawerContent>
+            <DrawerTitle>Filters</DrawerTitle>
+            <DrawerDescription>
+              Narrow the list by status, owner, or date.
+            </DrawerDescription>
+            <p>
+              <DrawerClose render={<Button />}>Done</DrawerClose>
+            </p>
+          </DrawerContent>
+        </DrawerRoot>
+        <DrawerRoot side="bottom">
+          <DrawerTrigger render={<Button variant="secondary" />}>Down</DrawerTrigger>
+          <DrawerContent>
+            <DrawerTitle>Share this report</DrawerTitle>
+            <DrawerDescription>Anyone with the link can view it.</DrawerDescription>
+            <p>
+              <DrawerClose render={<Button />}>Copy link</DrawerClose>
+            </p>
+          </DrawerContent>
+        </DrawerRoot>
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        Closed, opening, open, swiping, and closing: the trigger carries{" "}
+        <code>data-popup-open</code> while the sheet is up, a finger on the
+        handle puts the popup into <code>data-swiping</code> and pauses its
+        transition so it tracks the drag, and letting go past the threshold
+        plays the exit; hover and focus are the trigger button's own.
+      </p>
       <h2>Styling states</h2>
       <p>
-        The popup carries <code>data-side</code> and{" "}
-        <code>data-swiping</code> while a finger drags it (the swipe
-        offset comes through <code>--drawer-swipe-movement-y</code>, or
-        -x for side panels), plus the usual{" "}
+        The popup carries <code>data-side</code> always and{" "}
+        <code>data-swiping</code> while a finger drags it, plus the usual{" "}
         <code>data-starting-style</code>/<code>data-ending-style</code>{" "}
-        transitions:
+        transitions. The swipe offset arrives through{" "}
+        <code>--drawer-swipe-movement-y</code> (or <code>-x</code> for side
+        panels), which the shipped transform already reads, so restyling a
+        side keeps the swipe intact:
       </p>
       <CodeBlock
         lang="css"
         code={`.ub-drawer-popup[data-side="right"] {
   width: min(28rem, calc(100vw - 3rem));
+}
+
+.ub-drawer-popup[data-swiping]::before {
+  background: var(--ub-accent);
 }`}
       />
       <h2>Props</h2>
       <p>
-        The same shape as the Dialog. The essentials:
+        The Dialog's parts and props, plus <code>side</code> and the swipe
+        settings on the root. The essentials:
       </p>
       <PropsTable
         rows={[
@@ -92,8 +190,8 @@ function Page() {
         instructions={`DrawerRoot, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, from @usebones/react.
 - Structure: DrawerRoot wraps DrawerTrigger + DrawerContent; put DrawerTitle (names the sheet), DrawerDescription, and the body inside. DrawerClose closes it.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
-- side on the root: "right" (default) | "left" (full-height panels up to 24rem wide, shrinking on narrow screens) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
-- Restyle in CSS via .ub-drawer-popup, [data-side], .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style]. Tokens only.`}
+- side on the root: "right" (default) | "left" (full-height panels up to 24rem wide, shrinking on narrow screens) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side (swipeDirection overrides); modal with focus trap and Escape everywhere.
+- Restyle in CSS via .ub-drawer-popup, [data-side], .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style], [data-popup-open] on the trigger. Tokens only.`}
       />
     </>
   );

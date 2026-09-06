@@ -46,9 +46,10 @@ export function ToggleGroupPlayground() {
         code={buildCode({ multiple, compact, disabled })}
         note={
           <>
-            Groups single-select by default, like text alignment;{" "}
-            <code>multiple</code> makes each toggle independent, like text
-            formatting.
+            Arrow keys move between the toggles. Single-select still lets
+            you unpress the active one, so <code>onValueChange</code> can
+            receive an empty array; control <code>value</code> if one must
+            always stay pressed.
           </>
         }
       >

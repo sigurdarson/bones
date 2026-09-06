@@ -49,10 +49,12 @@ export const llmsTxt = `# Bones
 ## Components
 
 - Accordion: AccordionRoot (value/defaultValue as string arrays, multiple,
-  disabled) + AccordionItem (value) + AccordionTrigger (label as children,
-  heading and chevron automatic) + AccordionPanel. One open at a time by
-  default. States via [data-panel-open] on triggers, [data-open] on items;
-  height animates via --accordion-panel-height.
+  disabled) + AccordionItem (value, disabled) + AccordionTrigger (label as
+  children, heading and chevron automatic) + AccordionPanel
+  (hiddenUntilFound keeps closed content findable by in-page search,
+  keepMounted keeps a closed panel in the DOM; both default false). One
+  open at a time by default. States via [data-panel-open] on triggers,
+  [data-open] on items; height animates via --accordion-panel-height.
 - AlertDialog: a confirmation that interrupts on purpose. Same six-part
   shape as Dialog (Root/Trigger/Content/Title/Description/Close) but
   always modal and outside clicks never dismiss; Escape cancels. One
@@ -61,25 +63,31 @@ export const llmsTxt = `# Bones
 - Autocomplete: free text with suggestions; the value is the input
   string itself (value/defaultValue/onValueChange fire per keystroke).
   AutocompleteRoot (items, mode "list" default | "both" | "inline" |
-  "none", size) + AutocompleteInput (clearable, variant; no chevron) +
-  AutocompleteContent (empty, status; function children render an
-  AutocompleteItem per suggestion). invalid on the input matches Input.
-  Shares the Combobox classes. Use Combobox when the value must come
-  from the list.
+  "none", size default | compact (36px/28px control height, 16px/14px
+  text)) + AutocompleteInput (placeholder, variant default | borderless
+  (a muted fill with no border), clearable default true, invalid: danger
+  border, ring, and hint, plus aria-invalid; a surrounding Field sets it
+  automatically; no chevron) + AutocompleteContent (empty, status for
+  async searches, side/align/sideOffset 4; function children render an
+  AutocompleteItem per suggestion). Shares the Combobox classes. Use
+  Combobox when the value must come from the list.
 - Avatar: one component; src + alt (the person's name; required with src,
   "" only when the name is visible beside it) + fallback (initials or
-  icon, shows until the image loads and on error); size default (36px) |
-  compact (28px); always round.
+  icon, shows until the image loads and on error); size default | compact
+  (36px/28px); always round.
 - AvatarGroup: overlapping Avatars (a Bones composition, no Base UI
   part); children are regular Avatars ordered most-important first;
-  max={n} collapses the rest into a +N chip; size sizes the chip (match
-  the Avatars). Ring color via --ub-avatar-group-ring on surfaces.
-- Button: variants primary | secondary | ghost | danger, sizes default |
-  compact, iconOnly. Icons are children. Native button props pass through;
-  type defaults to "button". Anchors can reuse the styling:
+  max={n} collapses the rest into a +N chip; size default | compact
+  sizes the chip (match the Avatars). Ring color via
+  --ub-avatar-group-ring on surfaces.
+- Button: variant primary (default) | secondary | ghost | danger; size
+  default | compact (36px/28px control height, 16px/14px text); iconOnly
+  (requires aria-label). Icons are children. Native button props pass
+  through; type defaults to "button". Anchors can reuse the styling:
   class="ub-button" data-variant="...".
-- Checkbox: checked/defaultChecked/onCheckedChange/indeterminate/disabled.
-  Style states via [data-checked], [data-indeterminate], [data-disabled].
+- Checkbox: checked/defaultChecked/onCheckedChange/indeterminate/disabled/
+  required; value joins a CheckboxGroup. Style states via
+  [data-checked], [data-indeterminate], [data-disabled].
 - CheckboxGroup: wraps Checkboxes (each joins via value); defaultValue or
   value + onValueChange (string arrays); allValues + <Checkbox parent />
   for select-all with indeterminate; disabled disables members.
@@ -87,109 +95,146 @@ export const llmsTxt = `# Bones
   disabled) + CollapsibleTrigger (label as children, chevron automatic) +
   CollapsiblePanel (hiddenUntilFound, keepMounted). Height animates via
   --collapsible-panel-height; state via [data-panel-open] on the trigger.
-- Combobox: ComboboxRoot (items required for filtering/empty; value or
-  defaultValue + onValueChange; multiple for arrays; size) +
-  ComboboxInput (placeholder, variant default | borderless, clearable
-  default true, the clear button replacing the chevron while something
-  is selected; invalid matches Input) + ComboboxContent
-  (empty="..."; searchInput puts the input in the popup; status for
-  async; function children render a ComboboxItem per filtered item) +
-  ComboboxGroup/GroupLabel/Collection. Chips for multiple:
-  ComboboxChips > ComboboxValue fn children mapping to ComboboxChip +
-  inline ComboboxInput. ComboboxTrigger is the select-like button
-  (aria-label required). Prefer Select for short fixed lists.
-- ContextMenu: ContextMenuRoot (size) + ContextMenuTrigger (a div around
-  the right-clickable surface) + ContextMenuContent; opens at the pointer,
-  long press on touch. Fill the content with the regular Menu parts
-  (MenuItem, MenuCheckboxItem, ...); the popup shares Menu's classes.
-- Dialog: DialogRoot (modal default true, disablePointerDismissal) +
-  DialogTrigger (attach via render={<Button/>}) + DialogContent (bundles
-  backdrop and centered scrollable viewport) + DialogTitle /
-  DialogDescription (wire the accessible name/description) + DialogClose
-  (render several for Cancel/Save). Escape closes; focus is trapped and
-  returned.
+- Combobox: ComboboxRoot (items required for filtering/empty;
+  itemToStringLabel for object items; value or defaultValue +
+  onValueChange; multiple for arrays; size default | compact (36px/28px
+  control height, 16px/14px text)) + ComboboxInput (placeholder, variant
+  default | borderless (a muted fill with no border), clearable default
+  true: the clear button takes the chevron's place while something is
+  selected; invalid: danger border, ring, and hint, plus aria-invalid; a
+  surrounding Field sets it automatically; disabled) + ComboboxContent
+  (empty="..."; searchInput puts the text input inside the popup, a
+  string sets its placeholder; status is a politely announced line for
+  async searches; side/align/sideOffset 4; function children render a
+  ComboboxItem per filtered item) + ComboboxGroup/GroupLabel/Collection.
+  Chips for multiple: ComboboxChips > ComboboxValue fn children mapping
+  to ComboboxChip + inline ComboboxInput. ComboboxTrigger is the
+  select-like button (placeholder is visual only, so aria-label is
+  required; invalid works there too). Prefer Select for short fixed
+  lists.
+- ContextMenu: ContextMenuRoot (size default | compact (36px/28px control
+  height, 16px/14px text); open/defaultOpen + onOpenChange) +
+  ContextMenuTrigger (a div around the right-clickable surface) +
+  ContextMenuContent; opens at the pointer, long press on touch. Fill the
+  content with the regular Menu parts (MenuItem, MenuCheckboxItem, ...);
+  the popup shares Menu's classes.
+- Dialog: DialogRoot (open/defaultOpen + onOpenChange; modal default true,
+  false keeps the page interactive, "trap-focus" traps without dimming;
+  disablePointerDismissal default false) + DialogTrigger (attach via
+  render={<Button/>}) + DialogContent (bundles backdrop and centered
+  scrollable viewport; initialFocus defaults to the first focusable
+  part, finalFocus to the trigger) + DialogTitle / DialogDescription
+  (wire the accessible name/description) + DialogClose (render several
+  for Cancel/Save). Escape closes; focus is trapped and returned.
 - Drawer: the Dialog's shape and behavior
-  (DrawerRoot/Trigger/Content/Title/Description/Close; modal, Escape,
-  focus trap) plus swipe dismissal and a grab handle. side on the root:
-  "right" (default) | "left" (full-height 24rem panels) | "bottom"
-  (full-width mobile sheet, scrolls past 85dvh).
-- Field: FieldRoot (disabled, invalid, name, validate) + FieldLabel +
-  FieldDescription + FieldError (match). Wrap any Bones form control;
-  validation state flows to it automatically.
+  (DrawerRoot/Trigger/Content/Title/Description/Close; modal default
+  true, Escape, focus trap) plus swipe dismissal and a grab handle. On
+  the root: side "right" (default) | "left" (full-height 24rem panels) |
+  "bottom" (full-width mobile sheet, scrolls past 85dvh); the dismiss
+  swipe follows side (swipeDirection overrides);
+  disablePointerDismissal default false ignores outside clicks.
+- Field: FieldRoot (name, disabled, invalid, validate, validationMode
+  onSubmit default | onBlur | onChange, validationDebounceTime) +
+  FieldLabel + FieldDescription + FieldError (match). Wrap any Bones form
+  control; validation state flows to it automatically.
 - Fieldset: FieldsetRoot (disabled) + FieldsetLegend; groups Fields under
   one legend; disabled switches off every control inside, natively.
 - Form: wraps Fields; onFormSubmit(values) fires once all fields are
   valid, values keyed by Field name; validationMode onSubmit (default) |
   onBlur | onChange; errors maps server errors onto fields by name
-  (render a bare FieldError in that field).
-- Input: two sizes; variants default | borderless; leadingIcon and
-  trailingIcon (ReactNode), hint (linked via aria-describedby), invalid.
-  Native input props pass through (Bones size prop replaces the native
-  size attribute). States via [data-focused], [data-filled],
-  [data-invalid].
-- Menu: MenuRoot (size) + MenuTrigger (attach via render={<Button/>}) +
-  MenuContent + MenuItem (closeOnClick default true) + MenuCheckboxItem /
-  MenuRadioGroup + MenuRadioItem (stay open, auto indicators) +
-  MenuGroup/MenuGroupLabel + MenuSeparator + MenuSubmenuRoot +
-  MenuSubmenuTrigger (auto chevron). States via [data-highlighted],
-  [data-checked], [data-popup-open].
-- Menubar: one container (disabled, orientation, loopFocus); put regular
-  Bones Menus inside (MenuRoot + MenuTrigger render={<Button
-  variant="ghost"/>} + MenuContent). One menu open at a time; hover
-  switches, arrows move along the bar.
+  (render a bare FieldError in that field); actionsRef exposes
+  validate().
+- Input: size default | compact (36px/28px control height, 16px/14px
+  text); variant default | borderless (a muted fill with no border);
+  leadingIcon and trailingIcon (ReactNode, decorative), hint (linked via
+  aria-describedby), invalid: danger border, ring, and hint, plus
+  aria-invalid; a surrounding Field sets it automatically. Native input
+  props pass through (Bones size prop replaces the native size
+  attribute). States via [data-focused], [data-filled], [data-invalid].
+- Menu: MenuRoot (size default | compact (36px/28px control height,
+  16px/14px text), flows to submenus) + MenuTrigger (attach via
+  render={<Button/>}) + MenuContent (side below by default, align start
+  by default, sideOffset 4) + MenuItem (closeOnClick default true,
+  disabled) + MenuCheckboxItem / MenuRadioGroup + MenuRadioItem (stay
+  open, auto indicators) + MenuGroup/MenuGroupLabel + MenuSeparator +
+  MenuSubmenuRoot + MenuSubmenuTrigger (auto chevron). States via
+  [data-highlighted], [data-checked], [data-popup-open].
+- Menubar: one container (disabled, orientation, loopFocus default
+  true); put regular Bones Menus inside (MenuRoot + MenuTrigger
+  render={<Button variant="ghost"/>} + MenuContent). One menu open at a
+  time; hover switches, arrows move along the bar.
 - Meter: one component; value + min/max, label (names it; required, or
   aria-label), showValue, format (Intl.NumberFormatOptions). A current
   level (storage, seats), never a loading state.
-- NavigationMenu: NavigationMenuRoot (delay 50ms, orientation; popup
-  machinery bundled) + NavigationMenuList + NavigationMenuItem holding a
-  NavigationMenuTrigger (chevron automatic) + NavigationMenuContent, or
-  just a NavigationMenuLink (real anchor; render={<Link/>} for routers).
-  One shared popup morphs between items. Nest a Root inside Content for
-  flyout submenus (side="inline-end"), or a Root with inline plus a
-  NavigationMenuViewport + defaultValue for same-panel submenus. For
-  links; app actions use Menu.
-- NumberField: one component with steppers; min/max/step/largeStep/value/
-  onValueChange/disabled pass through; variant default | borderless, size,
-  invalid, hint, placeholder.
+- NavigationMenu: NavigationMenuRoot (delay 50ms, orientation, side/align,
+  sideOffset 8, inline; popup machinery bundled) + NavigationMenuList +
+  NavigationMenuItem holding a NavigationMenuTrigger (chevron automatic)
+  + NavigationMenuContent, or just a NavigationMenuLink (real anchor;
+  render={<Link/>} for routers). One shared popup morphs between items.
+  Nest a Root inside Content for flyout submenus (side="inline-end"), or
+  a Root with inline plus a NavigationMenuViewport + defaultValue for
+  same-panel submenus. For links; app actions use Menu.
+- NumberField: one component with steppers; min/max/step/largeStep/
+  defaultValue/value + onValueChange/disabled pass through to the root;
+  variant default | borderless (a muted fill with no border); size
+  default | compact (36px/28px control height, 16px/14px text); invalid:
+  danger border, ring, and hint, plus aria-invalid; a surrounding Field
+  sets it automatically; hint (aria-describedby); placeholder.
 - OTPField: one component; length renders the slots, value is one string
   (value/defaultValue/onValueChange), typing and pasting distribute.
-  autoSubmit, mask, size default | compact; autoComplete defaults to
-  one-time-code. Wrap in Field for label/validation or pass aria-label.
-  States: [data-complete] on root, [data-filled]/[data-invalid] on slots.
-- Popover: PopoverRoot + PopoverTrigger (attach a real control via
-  render={<Button/>}) + PopoverContent (side "bottom" default, align,
-  sideOffset 8) + PopoverTitle/PopoverDescription (wire the accessible
-  name/description) + PopoverClose. Non-modal by default; Escape and
-  outside clicks dismiss.
-- PreviewCard: PreviewCardRoot + PreviewCardTrigger (a real anchor with
-  href; delay 600ms) + PreviewCardContent (side "bottom" default, align,
-  sideOffset 8; stays open while hovered). An enhancement: touch users
-  never see it, so the link itself must suffice.
+  autoSubmit, mask, size default | compact (36px/28px slots);
+  autoComplete defaults to one-time-code. No invalid prop: wrap in Field
+  for label/validation or pass aria-label. States: [data-complete] on
+  root, [data-filled]/[data-invalid] on slots.
+- Popover: PopoverRoot (open/defaultOpen + onOpenChange; modal default
+  false, true traps focus, prefer a dialog then) + PopoverTrigger (attach
+  a real control via render={<Button/>}) + PopoverContent (side "bottom"
+  default, align "center" default, sideOffset 8; initialFocus defaults to
+  the first focusable part) + PopoverTitle/PopoverDescription (wire the
+  accessible name/description) + PopoverClose. Non-modal by default;
+  Escape and outside clicks dismiss.
+- PreviewCard: PreviewCardRoot (open/defaultOpen + onOpenChange) +
+  PreviewCardTrigger (a real anchor with href; delay 600ms, closeDelay
+  300ms) + PreviewCardContent (side "bottom" default, align, sideOffset
+  8; stays open while hovered). An enhancement: touch users never see
+  it, so the link itself must suffice.
 - Progress: one component; value (null = indeterminate) + min/max, label
   (names it; required, or aria-label), showValue, format. States via
   [data-indeterminate], [data-complete]. For tasks underway; levels use
   Meter.
 - Radio + RadioGroup: group holds defaultValue or value + onValueChange,
-  disabled; <Radio value="..." /> inside; dot indicator automatic. States
-  via [data-checked], [data-disabled].
+  disabled; <Radio value="..." disabled /> inside; dot indicator
+  automatic. States via [data-checked], [data-disabled].
 - ScrollArea: one component; wrap content, size like a box (height /
   max-height / width); both bars wired automatically, shown only when
   the axis overflows, revealed on hover/scroll. aria-label names the
   region. For panes, not the page.
-- Select: SelectRoot (size, sizes trigger and items together) +
-  SelectTrigger (placeholder, variant default | borderless, invalid,
-  leadingIcon, hint, disabled) + SelectContent + SelectItem. States via [data-highlighted], [data-selected],
-  [data-popup-open].
+- Select: SelectRoot (defaultValue or value + onValueChange, the callback
+  value can be null; items, a value to label record, required for the
+  trigger to show the selected label; size default | compact (36px/28px
+  control height, 16px/14px text), sizes trigger and items together) +
+  SelectTrigger (placeholder, variant default | borderless (a muted fill
+  with no border), invalid: danger border, ring, and hint, plus
+  aria-invalid; a surrounding Field sets it automatically; leadingIcon,
+  hint, disabled; chevron automatic) + SelectContent (side below by
+  default, align, sideOffset 4) + SelectItem (value, disabled; children
+  are the label, check automatic). States via [data-highlighted],
+  [data-selected], [data-popup-open].
 - Separator: a 1px line with separator semantics; orientation
   "horizontal" (default) | "vertical" (stretches inside flex rows).
   Menus use MenuSeparator instead.
 - Slider: one component; track/indicator/thumbs automatic; array value =
-  range with a thumb per entry; min/max/step/orientation pass through.
-  Always pass aria-label. Never animate thumb position.
-- Switch: wraps the Base UI Switch; checked/defaultChecked/onCheckedChange/
-  disabled. Style states via [data-checked] and [data-disabled].
-- Tabs: TabsRoot (size) + TabsList + TabsTab (iconOnly, disabled) +
-  TabsPanel. Icons are children. Active state via [data-active].
+  range with a thumb per entry; min/max/step/largeStep/orientation/
+  defaultValue/value + onValueChange (continuous)/onValueCommitted (on
+  release)/disabled pass through. Always pass aria-label (ranges suffix
+  it per thumb) or wrap in a Field. Never animate thumb position.
+- Switch: checked/defaultChecked/onCheckedChange/disabled. Style states
+  via [data-checked] and [data-disabled].
+- Tabs: TabsRoot (defaultValue or value + onValueChange; size default |
+  compact (36px/28px control height, 16px/14px text)) + TabsList
+  (sliding indicator automatic) + TabsTab (value, iconOnly (requires
+  aria-label), disabled) + TabsPanel (value). Icons are children. Active
+  state via [data-active].
 - Toast: mount ToastProvider + one <Toaster /> once; fire with
   useToast(): toast.add({ title, description, type, actionProps }),
   toast.promise(p, { loading, success, error }), toast.update/close.
@@ -200,20 +245,23 @@ export const llmsTxt = `# Bones
   come tinted with icons, and promise sets loading/success/error types
   automatically.
 - Toggle: pressed state via data-pressed; defaultPressed or pressed +
-  onPressedChange; size, iconOnly (needs aria-label); value joins a
-  ToggleGroup.
+  onPressedChange; size default | compact (36px/28px control height,
+  16px/14px text); iconOnly (requires aria-label); disabled; value joins
+  a ToggleGroup.
 - ToggleGroup: wraps Toggles (each joins via value); string arrays via
   defaultValue or value + onValueChange; single-select by default,
-  multiple for independent toggles; disabled disables members.
+  multiple for independent toggles; disabled disables members. Size goes
+  on each Toggle; the group has no size prop.
 - Toolbar: ToolbarRoot (aria-label required, orientation, disabled) +
   ToolbarButton/ToolbarLink/ToolbarInput (attach real controls via
-  render={<Toggle/>} / <Button/> / <Input/>) + ToolbarGroup +
-  ToolbarSeparator (auto perpendicular). One tab stop; arrows move.
-- Tooltip: TooltipRoot + TooltipTrigger (attach via render={<Button/>};
-  delay 600ms lives here) + TooltipContent (side "top" default,
-  sideOffset 8). Shows on hover and focus. A description, never a name:
-  icon-only triggers keep their aria-label. TooltipProvider shares one
-  delay across a toolbar.
+  render={<Toggle/>} / <Button/> / <Input/>; disabled per button) +
+  ToolbarGroup + ToolbarSeparator (auto perpendicular). One tab stop;
+  arrows move.
+- Tooltip: TooltipRoot (open + onOpenChange, disabled) + TooltipTrigger
+  (attach via render={<Button/>}; delay 600ms and closeDelay live here)
+  + TooltipContent (side "top" default, align, sideOffset 8). Shows on
+  hover and focus. A description, never a name: icon-only triggers keep
+  their aria-label. TooltipProvider shares one delay across a toolbar.
 
 ## Docs
 
@@ -221,6 +269,7 @@ export const llmsTxt = `# Bones
 - https://usebones.com/quick-start
 - https://usebones.com/theming
 - https://usebones.com/sizes
+- https://usebones.com/icons
 - https://usebones.com/motion
 - https://usebones.com/scrollbars
 - https://usebones.com/accessibility

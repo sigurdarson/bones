@@ -1,9 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  AccordionItem,
+  AccordionPanel,
+  AccordionRoot,
+  AccordionTrigger,
+} from "@usebones/react";
 import { AccordionPlayground } from "@/components/accordion-playground";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/accordion")({
   head: () => ({ meta: [{ title: "Accordion · Bones" }] }),
@@ -23,10 +30,56 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Open one question, then another: with Multiple off the first one
+        closes on its own, with it on they stack. The Code tab shows the
+        markup for exactly what you've configured.
       </p>
       <AccordionPlayground />
+      <h2>States</h2>
+      <p>
+        A section is open or closed, and any item can be disabled on its
+        own. Hover and keyboard focus (a ring around the trigger) sit on
+        top of whichever state the section is in.
+      </p>
+      <Showcase
+        code={`<AccordionRoot defaultValue={["notifications"]}>
+  <AccordionItem value="notifications">
+    <AccordionTrigger>Notifications</AccordionTrigger>
+    <AccordionPanel>Email for mentions, push for direct messages.</AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="security">
+    <AccordionTrigger>Security</AccordionTrigger>
+    <AccordionPanel>Two-factor auth is on for every member.</AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="legacy" disabled>
+    <AccordionTrigger>Legacy API keys</AccordionTrigger>
+    <AccordionPanel>Retired in March; nothing to manage here.</AccordionPanel>
+  </AccordionItem>
+</AccordionRoot>`}
+      >
+        <div style={{ width: "22rem" }}>
+          <AccordionRoot defaultValue={["notifications"]}>
+            <AccordionItem value="notifications">
+              <AccordionTrigger>Notifications</AccordionTrigger>
+              <AccordionPanel>
+                Email for mentions, push for direct messages.
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem value="security">
+              <AccordionTrigger>Security</AccordionTrigger>
+              <AccordionPanel>
+                Two-factor auth is on for every member.
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem value="legacy" disabled>
+              <AccordionTrigger>Legacy API keys</AccordionTrigger>
+              <AccordionPanel>
+                Retired in March; nothing to manage here.
+              </AccordionPanel>
+            </AccordionItem>
+          </AccordionRoot>
+        </div>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         Triggers carry <code>data-panel-open</code> while their section is
@@ -72,7 +125,7 @@ function Page() {
             name: "disabled",
             type: "boolean",
             defaultValue: "false",
-            description: "Blocks toggling on every section.",
+            description: "Blocks toggling on every section; also available per AccordionItem.",
           },
           {
             name: "AccordionItem.value",

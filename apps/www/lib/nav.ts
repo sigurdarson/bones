@@ -10,14 +10,20 @@ export interface NavSection {
   items: NavItem[];
 }
 
-/* Single source of truth for the sidebar. New pages register here. */
+/* Single source of truth for the sidebar, and the prev/next reading order
+   (see page-nav.tsx). New pages register here. Components stay one
+   alphabetical list on purpose: the sidebar mirrors the product's tiers,
+   and the commercial Interface components land as their own section
+   beside this one. */
 export const siteNav: NavSection[] = [
   {
     title: "Overview",
     items: [
       { title: "Introduction", href: "/" },
       { title: "Quick start", href: "/quick-start" },
-      { title: "Accessibility", href: "/accessibility" },
+      { title: "Theming", href: "/theming" },
+      { title: "Sizes", href: "/sizes" },
+      { title: "Icons", href: "/icons" },
       { title: "Changelog", href: "/changelog" },
       { title: "llms.txt", href: "/llms.txt", plain: true },
     ],
@@ -27,8 +33,7 @@ export const siteNav: NavSection[] = [
     items: [
       { title: "Motion", href: "/motion" },
       { title: "Scrollbars", href: "/scrollbars" },
-      { title: "Sizes", href: "/sizes" },
-      { title: "Theming", href: "/theming" },
+      { title: "Accessibility", href: "/accessibility" },
       { title: "Skills", href: "/skills" },
     ],
   },
