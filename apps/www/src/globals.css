@@ -192,11 +192,17 @@ html,
   color: var(--ub-text-secondary);
 }
 
-/* Inside the drawer the nav is a plain block, not the sticky rail. */
+/* Inside the drawer the nav is a plain stretched block, not the sticky
+   rail: no own scroll region (a flex item with overflow set would be
+   squeezed to the panel height and scroll in the middle), so the drawer
+   content scrolls as one and the nav fills the panel. */
 .sidebar-in-drawer {
   position: static;
   max-height: none;
-  padding: 0;
+  overflow: visible;
+  align-self: stretch;
+  flex: none;
+  padding: 0 0 1rem;
   border: none;
 }
 
