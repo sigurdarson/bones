@@ -30,3 +30,27 @@ import { Search01Icon } from "@hugeicons/react";
 ```
 
 Anything not overridden falls back to the Lucide default.
+
+## Adding your own names
+
+Names are a typed vocabulary, so a misspelled or invented name fails to
+compile. Grow it on purpose: augment the registry, then supply the glyph.
+
+```ts
+// icons.d.ts (anywhere your tsconfig includes)
+declare module "@usebones/icons" {
+  interface IconRegistry {
+    rocket: true;
+  }
+}
+```
+
+```tsx
+<IconProvider icons={{ rocket: RocketGlyph }}>
+  <App />
+</IconProvider>;
+
+<Icon name="rocket" />;
+```
+
+A name with no glyph renders nothing and warns once in development.

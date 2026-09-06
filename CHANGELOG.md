@@ -5,6 +5,12 @@ All @usebones packages release together with a single version (see
 
 ## Unreleased
 
+- icons: icon names come from an augmentable IconRegistry interface, so
+  apps add their own names with full typing (declare module
+  "@usebones/icons" { interface IconRegistry { rocket: true } }) and
+  supply the glyphs through IconProvider; a name with no glyph warns in
+  development instead of crashing. Existing exports keep their shapes.
+
 ## 0.2.1 (2026-08-26)
 
 - tokens, react, icons: the library name is capitalized (Bones) across
