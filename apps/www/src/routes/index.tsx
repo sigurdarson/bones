@@ -19,7 +19,7 @@ function Page() {
         <Link to="/quick-start" className="ub-button" data-variant="primary">
           Quick start
         </Link>
-        <Link to="/components/button" className="ub-button" data-variant="secondary">
+        <Link to="/components/accordion" className="ub-button" data-variant="secondary">
           Browse components
         </Link>
       </div>
