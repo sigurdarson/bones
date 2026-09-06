@@ -5,8 +5,10 @@ import {
   AlignCenter,
   AlignLeft,
   AlignRight,
+  ArrowDown,
   ArrowLeft,
   ArrowRight,
+  ArrowUp,
   Bell,
   Bold,
   Check,
@@ -34,8 +36,10 @@ export type IconName =
   | "align-center"
   | "align-left"
   | "align-right"
+  | "arrow-down"
   | "arrow-left"
   | "arrow-right"
+  | "arrow-up"
   | "bell"
   | "bold"
   | "check"
@@ -61,8 +65,10 @@ export const defaultIcons: IconSet = {
   "align-center": AlignCenter,
   "align-left": AlignLeft,
   "align-right": AlignRight,
+  "arrow-down": ArrowDown,
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  "arrow-up": ArrowUp,
   bell: Bell,
   bold: Bold,
   check: Check,

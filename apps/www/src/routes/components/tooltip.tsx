@@ -41,41 +41,41 @@ function Page() {
         One look, four sides. <code>side</code> on the content picks where
         the label prefers to sit (top by default), <code>align</code>{" "}
         nudges it along that edge, and when the viewport runs out of room
-        it flips to the opposite side by itself; hover along this row to
-        see left, top, bottom, and right.
+        it flips to the opposite side by itself. Each arrow points where
+        its tooltip opens.
       </p>
       <Showcase
         code={`<TooltipProvider>
   <TooltipRoot>
-    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Search" />}>
-      <Icon name="search" />
+    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Left" />}>
+      <Icon name="arrow-left" />
     </TooltipTrigger>
-    <TooltipContent side="left">Search</TooltipContent>
+    <TooltipContent side="left">Left</TooltipContent>
   </TooltipRoot>
   <TooltipRoot>
-    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Notifications" />}>
-      <Icon name="bell" />
+    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Above" />}>
+      <Icon name="arrow-up" />
     </TooltipTrigger>
-    <TooltipContent>Notifications</TooltipContent>
+    <TooltipContent>Above</TooltipContent>
   </TooltipRoot>
   <TooltipRoot>
-    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Account" />}>
-      <Icon name="user" />
+    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Below" />}>
+      <Icon name="arrow-down" />
     </TooltipTrigger>
-    <TooltipContent side="bottom">Account</TooltipContent>
+    <TooltipContent side="bottom">Below</TooltipContent>
   </TooltipRoot>
   <TooltipRoot>
-    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Copy link" />}>
-      <Icon name="copy" />
+    <TooltipTrigger render={<Button variant="ghost" iconOnly aria-label="Right" />}>
+      <Icon name="arrow-right" />
     </TooltipTrigger>
-    <TooltipContent side="right">Copy link</TooltipContent>
+    <TooltipContent side="right">Right</TooltipContent>
   </TooltipRoot>
 </TooltipProvider>`}
         note={
           <>
             The provider shares one delay across the row: the first
             tooltip waits 600ms, the rest open instantly while you move
-            between triggers. The label repeats each button's{" "}
+            between triggers. Each label repeats its button's{" "}
             <code>aria-label</code> rather than adding a second name.
           </>
         }
@@ -83,71 +83,39 @@ function Page() {
         <TooltipProvider>
           <TooltipRoot>
             <TooltipTrigger
-              render={<Button variant="ghost" iconOnly aria-label="Search" />}
+              render={<Button variant="ghost" iconOnly aria-label="Left" />}
             >
-              <Icon name="search" />
+              <Icon name="arrow-left" />
             </TooltipTrigger>
-            <TooltipContent side="left">Search</TooltipContent>
+            <TooltipContent side="left">Left</TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
             <TooltipTrigger
               render={
-                <Button variant="ghost" iconOnly aria-label="Notifications" />
+                <Button variant="ghost" iconOnly aria-label="Above" />
               }
             >
-              <Icon name="bell" />
+              <Icon name="arrow-up" />
             </TooltipTrigger>
-            <TooltipContent>Notifications</TooltipContent>
+            <TooltipContent>Above</TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
             <TooltipTrigger
-              render={<Button variant="ghost" iconOnly aria-label="Account" />}
+              render={<Button variant="ghost" iconOnly aria-label="Below" />}
             >
-              <Icon name="user" />
+              <Icon name="arrow-down" />
             </TooltipTrigger>
-            <TooltipContent side="bottom">Account</TooltipContent>
+            <TooltipContent side="bottom">Below</TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
             <TooltipTrigger
-              render={<Button variant="ghost" iconOnly aria-label="Copy link" />}
+              render={<Button variant="ghost" iconOnly aria-label="Right" />}
             >
-              <Icon name="copy" />
+              <Icon name="arrow-right" />
             </TooltipTrigger>
-            <TooltipContent side="right">Copy link</TooltipContent>
+            <TooltipContent side="right">Right</TooltipContent>
           </TooltipRoot>
         </TooltipProvider>
-      </Showcase>
-      <h2>States</h2>
-      <p>
-        Closed or open, with a short fade between. While open, the trigger
-        carries <code>data-popup-open</code> and the popup carries{" "}
-        <code>data-side</code>; <code>disabled</code> on the root keeps it
-        closed for good. This one is pinned open with the{" "}
-        <code>open</code> prop so you can see it without hovering.
-      </p>
-      <Showcase
-        code={`<TooltipRoot open>
-  <TooltipTrigger render={<Button variant="secondary" iconOnly aria-label="Copy link" />}>
-    <Icon name="copy" />
-  </TooltipTrigger>
-  <TooltipContent>Copy link</TooltipContent>
-</TooltipRoot>`}
-        note={
-          <>
-            Escape closes an open tooltip, and so does pressing the
-            trigger; a controlled <code>open</code> like this one ignores
-            both, so reserve it for demos and onboarding hints.
-          </>
-        }
-      >
-        <TooltipRoot open>
-          <TooltipTrigger
-            render={<Button variant="secondary" iconOnly aria-label="Copy link" />}
-          >
-            <Icon name="copy" />
-          </TooltipTrigger>
-          <TooltipContent>Copy link</TooltipContent>
-        </TooltipRoot>
       </Showcase>
       <h2>Styling states</h2>
       <p>
