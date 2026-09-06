@@ -16,7 +16,7 @@ export type BadgeColor =
 export interface BadgeProps extends React.ComponentProps<"span"> {
   /** The tint: neutral by default, or one of the eight palette hues for categories. Feedback goes through status instead. @default "neutral" */
   color?: BadgeColor;
-  /** Two sizes: default is 24px tall, compact is 16px. @default "default" */
+  /** Two sizes: default is 24px tall, compact is 20px. @default "default" */
   size?: "default" | "compact";
   /** A status dot before the label, in one of the five feedback colors. */
   status?: StatusColor;

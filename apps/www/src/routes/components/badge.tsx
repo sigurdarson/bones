@@ -30,7 +30,7 @@ function Page() {
       <h2>Playground</h2>
       <p>
         Pick a tint and a status dot, add the icon, and switch to compact to
-        see the 16px form; the Code tab shows the exact markup.
+        see the 20px form; the Code tab shows the exact markup.
       </p>
       <BadgePlayground />
       <h2>Variants</h2>
@@ -65,8 +65,8 @@ function Page() {
       </Showcase>
       <h2>Sizes, status, and icons</h2>
       <p>
-        Default is 24px tall with the compact text size; compact is 16px
-        with text one step smaller, for table cells and dense lists. The
+        Default is 24px tall with the compact text size; compact is 20px
+        with text one step smaller and the small radius, for table cells and dense lists. The
         status dot goes first, then any icon, then the text; the dot and
         the icon are hidden from screen readers, so the text carries the
         meaning.
@@ -141,7 +141,7 @@ function Page() {
             name: "size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Default is 24px tall with the compact text size; compact is 16px with text one step smaller.",
+            description: "Default is 24px tall with the compact text size; compact is 20px with text one step smaller and the small radius.",
           },
           {
             name: "status",
@@ -157,7 +157,7 @@ function Page() {
       </p>
       <AgentInstructions
         instructions={`Badge, from @usebones/react.
-- One part, a plain span: <Badge color="teal" size="compact" status="success">Label</Badge>. color "neutral" (default) | "red" | "orange" | "green" | "teal" | "blue" | "violet" | "fuchsia" | "rose"; size "default" (24px) | "compact" (16px).
+- One part, a plain span: <Badge color="teal" size="compact" status="success">Label</Badge>. color "neutral" (default) | "red" | "orange" | "green" | "teal" | "blue" | "violet" | "fuchsia" | "rose"; size "default" (24px) | "compact" (20px).
 - Icons are children before the text: <Badge><Icon name="check" />Verified</Badge>. status adds a decorative dot first; both are aria-hidden, so the text must carry the meaning.
 - Hues are for categories; put feedback in status (success, warning, danger) rather than in the tint. Not interactive: wrap in a Button or link if it should do something.
 - Restyle in CSS via .ub-badge, [data-color], [data-size], .ub-badge-status; fills come from the --ub-tint-<hue>-bg and -text tokens. Tokens only.`}

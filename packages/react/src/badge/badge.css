@@ -22,9 +22,12 @@
   vertical-align: middle;
 }
 
+/* Compact is a 20px tag with the small radius: at this height the
+   control radius reads as a pill, and a tag should not. */
 .ub-badge[data-size="compact"] {
-  --_ub-badge-height: 1rem;
-  /* 12px: the compact text token less an eighth, to fit a 1rem pill. */
+  --_ub-badge-height: 1.25rem;
+  border-radius: var(--ub-radius-sm);
+  /* 12px: the compact text token less an eighth, to fit the tag. */
   --_ub-badge-font: calc(var(--ub-font-size-compact) - 0.125rem);
   --_ub-badge-pad: 0.375rem;
   --ub-icon-size: calc(var(--ub-icon-size-compact) - 0.125rem);

@@ -85,7 +85,7 @@ export const llmsTxt = `# Bones
 - Badge: a small label (a Bones component, no Base UI part); a plain
   span, never focusable. color "neutral" (default) | red | orange | green
   | teal | blue | violet | fuchsia | rose (categories, not feedback);
-  size default (24px) | compact (16px); status adds a decorative dot in a
+  size default (24px) | compact (20px, small radius); status adds a decorative dot in a
   feedback color before the label; icons are children before the text.
   Fills come from the --ub-tint-<hue>-bg/-text tokens.
 - Button: variant primary (default) | secondary | ghost | danger; size
