@@ -38,9 +38,10 @@ export function CollapsiblePlayground() {
         code={buildCode({ disabled })}
         note={
           <>
-            The chevron renders automatically and rotates while open; the
-            height animates from a measured variable, no JavaScript
-            needed.
+            Put padding on a wrapper inside the panel (the{" "}
+            <code>p</code> here), not on <code>CollapsiblePanel</code>{" "}
+            itself: the height is measured, and padding on the animated
+            element makes the measurement jump mid-transition.
           </>
         }
       >

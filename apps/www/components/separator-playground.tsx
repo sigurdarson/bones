@@ -26,13 +26,13 @@ function buildCode({ orientation }: PlaygroundState): string {
     return `import { Separator } from "@usebones/react";
 
 <nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-  <a href="/home">Home</a>
-  <a href="/pricing">Pricing</a>
-  <a href="/blog">Blog</a>
-  <a href="/support">Support</a>
+  <a href="#">Home</a>
+  <a href="#">Pricing</a>
+  <a href="#">Blog</a>
+  <a href="#">Support</a>
   <Separator orientation="vertical" />
-  <a href="/log-in">Log in</a>
-  <a href="/sign-up">Sign up</a>
+  <a href="#">Log in</a>
+  <a href="#">Sign up</a>
 </nav>`;
   }
   return `import { Separator } from "@usebones/react";
@@ -46,7 +46,6 @@ const navLink: React.CSSProperties = {
   fontSize: "0.875rem",
   color: "var(--ub-text-primary)",
   textDecoration: "none",
-  cursor: "pointer",
 };
 
 export function SeparatorPlayground() {
@@ -58,20 +57,33 @@ export function SeparatorPlayground() {
         code={buildCode({ orientation })}
         note={
           <>
-            A real separator element, so screen readers know the two sides
-            are distinct; purely visual dividers can stay as borders.
+            Vertical stretches to the row through <code>align-self</code>,
+            which only works inside a flex parent; horizontal spans the
+            full width of whatever contains it.
           </>
         }
       >
         {orientation === "vertical" ? (
           <nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <a style={navLink}>Home</a>
-            <a style={navLink}>Pricing</a>
-            <a style={navLink}>Blog</a>
-            <a style={navLink}>Support</a>
+            <a href="#" style={navLink}>
+              Home
+            </a>
+            <a href="#" style={navLink}>
+              Pricing
+            </a>
+            <a href="#" style={navLink}>
+              Blog
+            </a>
+            <a href="#" style={navLink}>
+              Support
+            </a>
             <Separator orientation="vertical" />
-            <a style={navLink}>Log in</a>
-            <a style={navLink}>Sign up</a>
+            <a href="#" style={navLink}>
+              Log in
+            </a>
+            <a href="#" style={navLink}>
+              Sign up
+            </a>
           </nav>
         ) : (
           <div

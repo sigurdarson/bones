@@ -1,8 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  FieldRoot,
+  Input,
+} from "@usebones/react";
 import { CodeBlock } from "@/components/code-block";
 import { FieldPlayground } from "@/components/field-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 import { AgentInstructions } from "@/components/agent-instructions";
 
 export const Route = createFileRoute("/components/field")({
@@ -21,15 +29,67 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Flip Invalid to watch the error replace the description and the
+        input turn red at the same time; click the label to prove it
+        focuses the input.
       </p>
       <FieldPlayground />
-      <h2>Validation</h2>
+      <h2>States</h2>
+      <p>
+        Invalid and disabled are the ones you set; touched, dirty, and
+        filled arrive on their own as the user works, and focus rings the
+        control inside on every focus.
+      </p>
+      <Showcase
+        code={`<FieldRoot name="email">
+  <FieldLabel>Email</FieldLabel>
+  <Input type="email" placeholder="you@example.com" />
+  <FieldDescription>We only use this for receipts.</FieldDescription>
+</FieldRoot>
+
+<FieldRoot name="email" invalid>
+  <FieldLabel>Email</FieldLabel>
+  <Input type="email" defaultValue="ada@usebones" />
+  <FieldError match>That doesn't look like an email address.</FieldError>
+</FieldRoot>
+
+<FieldRoot name="email" disabled>
+  <FieldLabel>Email</FieldLabel>
+  <Input type="email" defaultValue="ada@usebones.com" />
+  <FieldDescription>Managed by your workspace admin.</FieldDescription>
+</FieldRoot>`}
+        note={
+          <>
+            A forced <code>invalid</code> marks the field but runs no
+            validation, so a <code>FieldError</code> needs{" "}
+            <code>match</code> to show; errors that come from validation
+            render on their own.
+          </>
+        }
+      >
+        <div className="showcase-stack" style={{ width: "18rem" }}>
+          <FieldRoot name="email">
+            <FieldLabel>Email</FieldLabel>
+            <Input type="email" placeholder="you@example.com" />
+            <FieldDescription>We only use this for receipts.</FieldDescription>
+          </FieldRoot>
+          <FieldRoot name="email" invalid>
+            <FieldLabel>Email</FieldLabel>
+            <Input type="email" defaultValue="ada@usebones" />
+            <FieldError match>That doesn't look like an email address.</FieldError>
+          </FieldRoot>
+          <FieldRoot name="email" disabled>
+            <FieldLabel>Email</FieldLabel>
+            <Input type="email" defaultValue="ada@usebones.com" />
+            <FieldDescription>Managed by your workspace admin.</FieldDescription>
+          </FieldRoot>
+        </div>
+      </Showcase>
       <p>
         Beyond the manual invalid prop, fields validate from native
         constraints (required, type, pattern) or a custom validate function
-        on the root; the error can target a specific condition with match:
+        on the root. Each error can target one condition with{" "}
+        <code>match</code>, so the message fits the mistake:
       </p>
       <CodeBlock
         code={`<FieldRoot name="email">
@@ -94,7 +154,7 @@ function Page() {
           {
             name: "FieldError.match",
             type: "boolean | keyof ValidityState",
-            description: "Show this error only for one validity condition.",
+            description: "Show this error only for one validity condition; true forces it on.",
           },
         ]}
       />
@@ -102,8 +162,9 @@ function Page() {
         instructions={`FieldRoot, FieldLabel, FieldDescription, FieldError, from @usebones/react.
 - Put one Bones control inside FieldRoot (Input, Checkbox, Select, Switch); label wiring, aria-describedby, and validation state are automatic.
 - FieldRoot: name, disabled, invalid (for server errors), validate(value).
-- FieldError renders only while invalid; match="valueMissing" (or any ValidityState key) binds it to one condition.
-- Inside a Field, prefer FieldDescription and FieldError over the control's own hint and invalid props.`}
+- FieldError renders only while invalid; match="valueMissing" (or any ValidityState key) binds it to one condition. A forced invalid on the root needs match (true) on the error for it to show.
+- Inside a Field, prefer FieldDescription and FieldError over the control's own hint and invalid props.
+- Restyle in CSS via .ub-field, .ub-field-label, .ub-field-description, .ub-field-error, and [data-invalid], [data-touched], [data-dirty], [data-filled], [data-disabled] on the root and the control. Tokens only.`}
       />
     </>
   );

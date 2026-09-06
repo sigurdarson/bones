@@ -1,17 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  AutocompleteContent,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteRoot,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import {
-  AutocompleteInlineCompletion,
   AutocompletePlayground,
+  AutocompleteVariants,
 } from "@/components/autocomplete-playground";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/autocomplete")({
   head: () => ({ meta: [{ title: "Autocomplete · Bones" }] }),
   component: Page,
 });
+
+const labels = ["bug", "docs", "enhancement", "refactor"];
+
+function LabelList() {
+  return (
+    <AutocompleteContent empty="No labels found.">
+      {(label: string) => (
+        <AutocompleteItem key={label} value={label}>
+          {label}
+        </AutocompleteItem>
+      )}
+    </AutocompleteContent>
+  );
+}
 
 function Page() {
   return (
@@ -26,21 +47,54 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. Try arrowing through suggestions in
-        each mode; the Code tab always shows the markup for exactly what
-        you've configured.
+        Type a letter or two and arrow through what's left; Borderless and
+        Compact restyle the input and the list together, and the Code tab
+        shows the markup for exactly what you've configured.
       </p>
       <AutocompletePlayground />
-      <h2>Inline completion</h2>
+      <h2>Variants</h2>
       <p>
-        <code>mode</code> autofills the input with the highlighted item
-        while arrowing through the list. It accepts the aria-autocomplete
-        values: <code>list</code> (the default) filters without
-        autofilling, <code>both</code> filters and autofills,{" "}
-        <code>inline</code> autofills over a static list, and{" "}
-        <code>none</code> does neither.
+        <code>mode</code> decides what arrowing through the list does to
+        the input. The default, <code>list</code>, only filters as you
+        type; <code>both</code> also writes the highlighted suggestion
+        into the input; <code>inline</code> writes but never filters, for
+        short lists you want to keep whole; <code>none</code> does neither,
+        for lists you filter yourself.
       </p>
-      <AutocompleteInlineCompletion />
+      <AutocompleteVariants />
+      <h2>States</h2>
+      <p>
+        Open and highlighted are live (type to see them); disabled and
+        invalid are yours to set, and invalid turns the border to the
+        danger color, which a surrounding Field does for you on failed
+        validation.
+      </p>
+      <Showcase
+        code={`<AutocompleteInput placeholder="Add a label" />
+<AutocompleteRoot items={labels} defaultValue="docs">
+<AutocompleteInput placeholder="Add a label" disabled />
+<AutocompleteRoot items={labels} defaultValue="needs review">
+  <AutocompleteInput invalid />`}
+      >
+        <div className="showcase-stack" style={{ width: "18rem" }}>
+          <AutocompleteRoot items={labels}>
+            <AutocompleteInput placeholder="Add a label" aria-label="Empty" />
+            <LabelList />
+          </AutocompleteRoot>
+          <AutocompleteRoot items={labels} defaultValue="docs">
+            <AutocompleteInput placeholder="Add a label" aria-label="Filled" />
+            <LabelList />
+          </AutocompleteRoot>
+          <AutocompleteRoot items={labels}>
+            <AutocompleteInput placeholder="Add a label" aria-label="Disabled" disabled />
+            <LabelList />
+          </AutocompleteRoot>
+          <AutocompleteRoot items={labels} defaultValue="needs review">
+            <AutocompleteInput placeholder="Add a label" aria-label="Invalid" invalid />
+            <LabelList />
+          </AutocompleteRoot>
+        </div>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         The autocomplete shares the Combobox's classes, so the two restyle
@@ -77,7 +131,7 @@ function Page() {
             name: "AutocompleteRoot.mode",
             type: '"list" | "both" | "inline" | "none"',
             defaultValue: '"list"',
-            description: "Two behaviors combined: list filters only, both also completes inline, inline completes without filtering, none does neither.",
+            description: "Whether arrowing writes into the input and whether typing filters; see Variants above.",
           },
           {
             name: "AutocompleteRoot.size",
@@ -123,9 +177,9 @@ function Page() {
       />
       <AgentInstructions
         instructions={`AutocompleteRoot, AutocompleteInput, AutocompleteContent, AutocompleteItem, from @usebones/react.
-- Structure: AutocompleteRoot (pass items; size "default" | "compact"; mode "list" default) wraps AutocompleteInput (placeholder, variant "default" | "borderless", clearable default true; no chevron, typing-first) + AutocompleteContent (empty="...", status for async, function children rendering an AutocompleteItem per suggestion).
+- Structure: AutocompleteRoot (pass items; size "default" | "compact"; mode "list" default) wraps AutocompleteInput (placeholder, variant "default" | "borderless", clearable default true, invalid; no chevron, typing-first) + AutocompleteContent (empty="...", status for async, function children rendering an AutocompleteItem per suggestion).
 - The value is the input string (value/defaultValue/onValueChange); selecting a suggestion fills it and free text stays valid. Use Combobox when the value must come from the list.
-- mode is a 2x2 of filtering and inline completion: "list" filters only (default), "both" filters and completes inline, "inline" completes without filtering (static list), "none" does neither.
+- mode: "list" (default) filters as you type; "both" also writes the highlighted suggestion into the input while arrowing; "inline" writes without filtering; "none" does neither.
 - Async: fetch in onValueChange (it fires per keystroke, since the value is the text), pass results as items, and put status="Searching..." on the content.
 - Shares the Combobox classes (.ub-combobox-input, .ub-combobox-popup, .ub-combobox-item) plus .ub-autocomplete-* hooks; restyling one restyles both. Tokens only.`}
       />

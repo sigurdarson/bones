@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Avatar, AvatarGroup } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
-import { AvatarGroupPlayground } from "@/components/avatar-group-playground";
+import {
+  AvatarGroupPlayground,
+  AvatarGroupVariants,
+} from "@/components/avatar-group-playground";
+import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
-import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/avatar-group")({
   head: () => ({ meta: [{ title: "Avatar group · Bones" }] }),
@@ -23,54 +25,37 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Pick a Max to watch the tail of the team fold into a +N chip, and
+        flip Compact to shrink the chip and every avatar together. The
+        Code tab shows the markup for exactly what you've configured.
       </p>
       <AvatarGroupPlayground />
       <h2>Variants</h2>
       <p>
-        With and without overflow, in both sizes. Order children
-        most-important first; the chip always sits last.
+        Everyone fits, or the tail collapses, in both sizes. Order
+        children most-important first; the chip always sits last, and
+        the pictured member gets a real <code>alt</code> because no name
+        is visible beside the stack.
       </p>
-      <Showcase
-        code={`<AvatarGroup>
-  <Avatar fallback="AL" />
-  <Avatar fallback="GH" />
-  <Avatar fallback="KJ" />
-</AvatarGroup>
+      <AvatarGroupVariants />
+      <h2>Styling states</h2>
+      <p>
+        No interactive states; the hooks are the group, the +N chip (which
+        also carries <code>.ub-avatar</code> and <code>data-size</code>),
+        and the ring variable for groups that sit on a surface instead of
+        the page background:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-avatar-group-overflow {
+  background: var(--ub-accent);
+  color: var(--ub-accent-contrast);
+}
 
-<AvatarGroup max={2}>
-  <Avatar fallback="AL" />
-  <Avatar fallback="GH" />
-  <Avatar fallback="KJ" />
-  <Avatar fallback="MB" />
-</AvatarGroup>
-
-<AvatarGroup max={2} size="compact">
-  <Avatar fallback="AL" size="compact" />
-  <Avatar fallback="GH" size="compact" />
-  <Avatar fallback="KJ" size="compact" />
-</AvatarGroup>`}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-          <AvatarGroup>
-            <Avatar fallback="AL" />
-            <Avatar fallback="GH" />
-            <Avatar fallback="KJ" />
-          </AvatarGroup>
-          <AvatarGroup max={2}>
-            <Avatar fallback="AL" />
-            <Avatar fallback="GH" />
-            <Avatar fallback="KJ" />
-            <Avatar fallback="MB" />
-          </AvatarGroup>
-          <AvatarGroup max={2} size="compact">
-            <Avatar fallback="AL" size="compact" />
-            <Avatar fallback="GH" size="compact" />
-            <Avatar fallback="KJ" size="compact" />
-          </AvatarGroup>
-        </div>
-      </Showcase>
+.card .ub-avatar-group {
+  --ub-avatar-group-ring: var(--ub-surface);
+}`}
+      />
       <h2>Props</h2>
       <p>
         Everything a div accepts passes through. The avatars inside are
@@ -94,7 +79,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`AvatarGroup, from @usebones/react.
-- Put Bones Avatars inside; order most-important first. max={n} collapses the rest into a +N chip; size sizes the chip (match the Avatars' size).
+- Put Bones Avatars inside, one per person with alt set to their name; order most-important first. max={n} collapses the rest into a +N chip; size sizes the chip (match the Avatars' size).
 - A composition, not a Base UI wrapper: it is a div, so every div prop passes through.
 - Each avatar gets a ring in the page background so the stack reads cleanly; override --ub-avatar-group-ring when the group sits on a card or other surface.
 - Restyle in CSS via .ub-avatar-group and .ub-avatar-group-overflow. Tokens only.`}

@@ -1,9 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  CollapsiblePanel,
+  CollapsibleRoot,
+  CollapsibleTrigger,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { CollapsiblePlayground } from "@/components/collapsible-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/collapsible")({
   head: () => ({ meta: [{ title: "Collapsible · Bones" }] }),
@@ -22,10 +28,60 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Click the trigger to watch the panel's height animate open and
+        closed; Disabled greys the trigger and blocks toggling. The Code
+        tab shows the markup for exactly what you've configured.
       </p>
       <CollapsiblePlayground />
+      <h2>States</h2>
+      <p>
+        Closed, open, and disabled. Hover changes nothing on purpose and
+        keyboard focus adds a ring around the trigger; Space and Enter
+        toggle it.
+      </p>
+      <Showcase
+        code={`<CollapsibleRoot>
+  <CollapsibleTrigger>Advanced settings</CollapsibleTrigger>
+  <CollapsiblePanel>Custom domains, API access, and webhooks.</CollapsiblePanel>
+</CollapsibleRoot>
+
+<CollapsibleRoot defaultOpen>
+  <CollapsibleTrigger>Webhooks</CollapsibleTrigger>
+  <CollapsiblePanel>Two endpoints listening; last delivery 4 minutes ago.</CollapsiblePanel>
+</CollapsibleRoot>
+
+<CollapsibleRoot disabled>
+  <CollapsibleTrigger>Legacy API</CollapsibleTrigger>
+  <CollapsiblePanel>Retired in March; nothing to configure.</CollapsiblePanel>
+</CollapsibleRoot>`}
+      >
+        <div className="showcase-stack">
+          <div style={{ width: "18rem" }}>
+            <CollapsibleRoot>
+              <CollapsibleTrigger>Advanced settings</CollapsibleTrigger>
+              <CollapsiblePanel>
+                Custom domains, API access, and webhooks.
+              </CollapsiblePanel>
+            </CollapsibleRoot>
+          </div>
+          <div style={{ width: "18rem" }}>
+            <CollapsibleRoot defaultOpen>
+              <CollapsibleTrigger>Webhooks</CollapsibleTrigger>
+              <CollapsiblePanel>
+                Two endpoints listening; last delivery 4 minutes ago.
+              </CollapsiblePanel>
+            </CollapsibleRoot>
+          </div>
+          <div style={{ width: "18rem" }}>
+            <CollapsibleRoot disabled>
+              <CollapsibleTrigger>Legacy API</CollapsibleTrigger>
+              <CollapsiblePanel>
+                Retired in March; nothing to configure.
+              </CollapsiblePanel>
+            </CollapsibleRoot>
+          </div>
+        </div>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         The trigger carries <code>data-panel-open</code> while expanded
@@ -82,6 +138,7 @@ function Page() {
 - Structure: CollapsibleRoot wraps CollapsibleTrigger (children become the label; chevron renders automatically) + CollapsiblePanel (the content).
 - defaultOpen or open + onOpenChange on the root; disabled blocks toggling.
 - hiddenUntilFound on the panel keeps closed content findable via in-page search; keepMounted keeps it in the DOM.
+- Put padding on a wrapper inside CollapsiblePanel, never on the panel itself: its height is measured, and padding on the animated element makes the measurement jump.
 - Restyle in CSS via .ub-collapsible-trigger, .ub-collapsible-panel, [data-panel-open] on the trigger, [data-starting-style]/[data-ending-style] on the panel. Height animates via --collapsible-panel-height; keep the transition on height. Tokens only.`}
       />
     </>

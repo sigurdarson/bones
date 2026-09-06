@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  FieldLabel,
+  FieldRoot,
+  FieldsetLegend,
+  FieldsetRoot,
+  Input,
+} from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { FieldsetPlayground } from "@/components/fieldset-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
+import { Showcase } from "@/components/showcase";
 
 export const Route = createFileRoute("/components/fieldset")({
   head: () => ({ meta: [{ title: "Fieldset · Bones" }] }),
@@ -22,10 +30,51 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Flip Disabled and tab through the preview: both inputs drop out of
+        the tab order and the legend dims, with nothing set on the fields
+        themselves.
       </p>
       <FieldsetPlayground />
+      <h2>States</h2>
+      <p>
+        Enabled or disabled is the whole story; hover and focus belong to
+        the controls inside, and a disabled group takes them out of the tab
+        order entirely.
+      </p>
+      <Showcase
+        code={`<FieldsetRoot>
+  <FieldsetLegend>Billing address</FieldsetLegend>
+  <FieldRoot name="street">
+    <FieldLabel>Street</FieldLabel>
+    <Input placeholder="12 North Road" />
+  </FieldRoot>
+</FieldsetRoot>
+
+<FieldsetRoot disabled>
+  <FieldsetLegend>Billing address</FieldsetLegend>
+  <FieldRoot name="street">
+    <FieldLabel>Street</FieldLabel>
+    <Input defaultValue="12 North Road" />
+  </FieldRoot>
+</FieldsetRoot>`}
+      >
+        <div className="showcase-stack" style={{ width: "18rem" }}>
+          <FieldsetRoot>
+            <FieldsetLegend>Billing address</FieldsetLegend>
+            <FieldRoot name="street">
+              <FieldLabel>Street</FieldLabel>
+              <Input placeholder="12 North Road" />
+            </FieldRoot>
+          </FieldsetRoot>
+          <FieldsetRoot disabled>
+            <FieldsetLegend>Billing address</FieldsetLegend>
+            <FieldRoot name="street">
+              <FieldLabel>Street</FieldLabel>
+              <Input defaultValue="12 North Road" />
+            </FieldRoot>
+          </FieldsetRoot>
+        </div>
+      </Showcase>
       <h2>Styling states</h2>
       <p>
         The root and legend both carry <code>data-disabled</code> while the
@@ -57,10 +106,16 @@ function Page() {
           },
         ]}
       />
+      <p>
+        One quirk: a native fieldset refuses to shrink below its content
+        (browsers default it to <code>min-width: min-content</code>), which
+        breaks inside flex and grid layouts; Bones resets that to 0, so the
+        group behaves like any other block.
+      </p>
       <AgentInstructions
         instructions={`FieldsetRoot and FieldsetLegend, from @usebones/react.
 - Put Field components (FieldRoot + FieldLabel + a control) inside FieldsetRoot; FieldsetLegend names the group.
-- disabled on the root disables every control inside (native fieldset behavior).
+- disabled on the root disables every control inside (native fieldset behavior); nothing to set on the fields.
 - For a whole form, wrap fieldsets in the Bones Form component.
 - Restyle in CSS via .ub-fieldset, .ub-fieldset-legend, [data-disabled]. Tokens only.`}
       />

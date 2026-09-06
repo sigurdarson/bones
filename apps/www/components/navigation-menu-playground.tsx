@@ -38,29 +38,30 @@ function buildCode({ delay }: PlaygroundState): string {
 <NavigationMenuRoot${delay !== 50 ? ` delay={${delay}}` : ""}>
   <NavigationMenuList>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+      <NavigationMenuTrigger>Product</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <div className="two-column-grid">
-          <NavigationMenuLink href="/quick-start">
-            Quick start
-            <span>Install and import the tokens.</span>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.25rem", width: "26rem" }}>
+          <NavigationMenuLink href="/analytics">
+            Analytics
+            <span>Dashboards, funnels, and retention.</span>
           </NavigationMenuLink>
-          {/* Accessibility, Changelog, Theming */}
+          {/* Automations, Integrations, Security */}
         </div>
       </NavigationMenuContent>
     </NavigationMenuItem>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+      <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <NavigationMenuLink href="/motion">Motion</NavigationMenuLink>
-        <NavigationMenuLink href="/sizes">Sizes</NavigationMenuLink>
-        <NavigationMenuLink href="/skills">Skills</NavigationMenuLink>
+        <NavigationMenuLink href="/solutions/startups">For startups</NavigationMenuLink>
+        <NavigationMenuLink href="/solutions/agencies">For agencies</NavigationMenuLink>
+        <NavigationMenuLink href="/solutions/enterprise">For enterprise</NavigationMenuLink>
       </NavigationMenuContent>
     </NavigationMenuItem>
     <NavigationMenuItem>
-      <NavigationMenuLink href="https://github.com/sigurdarson/bones">
-        GitHub
-      </NavigationMenuLink>
+      <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/docs">Docs</NavigationMenuLink>
     </NavigationMenuItem>
   </NavigationMenuList>
 </NavigationMenuRoot>`;
@@ -81,17 +82,17 @@ export function NavigationMenuPlayground() {
         code={buildCode({ delay })}
         note={
           <>
-            One shared popup morphs between the open item's content
-            (hover between Product and Resources to see it). Links are
-            real anchors; plug a router in via{" "}
-            <code>render={"{<Link />}"}</code>.
+            One shared popup morphs between the open item's content (hover
+            between Product and Solutions to see it). Arrow keys move along
+            the list and Escape closes. Links are real anchors; plug a
+            router in via <code>render={"{<Link />}"}</code>.
           </>
         }
       >
         <NavigationMenuRoot delay={delay}>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div
                   style={{
@@ -102,34 +103,34 @@ export function NavigationMenuPlayground() {
                   }}
                 >
                   <NavigationMenuLink>
-                    Quick start
+                    Analytics
                     <span style={description}>
-                      Install and import the tokens.
+                      Dashboards, funnels, and retention.
                     </span>
                   </NavigationMenuLink>
                   <NavigationMenuLink>
-                    Accessibility
+                    Automations
                     <span style={description}>
-                      How every part stays operable.
+                      Trigger actions from any event.
                     </span>
                   </NavigationMenuLink>
                   <NavigationMenuLink>
-                    Changelog
+                    Integrations
                     <span style={description}>
-                      What's new in each release.
+                      Connect the tools you already use.
                     </span>
                   </NavigationMenuLink>
                   <NavigationMenuLink>
-                    Theming
+                    Security
                     <span style={description}>
-                      Tokens, attributes, accents.
+                      SSO, audit logs, data residency.
                     </span>
                   </NavigationMenuLink>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Handbook</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div
                   style={{
@@ -138,14 +139,17 @@ export function NavigationMenuPlayground() {
                     width: "11rem",
                   }}
                 >
-                  <NavigationMenuLink>Motion</NavigationMenuLink>
-                  <NavigationMenuLink>Sizes</NavigationMenuLink>
-                  <NavigationMenuLink>Skills</NavigationMenuLink>
+                  <NavigationMenuLink>For startups</NavigationMenuLink>
+                  <NavigationMenuLink>For agencies</NavigationMenuLink>
+                  <NavigationMenuLink>For enterprise</NavigationMenuLink>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink>GitHub</NavigationMenuLink>
+              <NavigationMenuLink>Pricing</NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink>Docs</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenuRoot>

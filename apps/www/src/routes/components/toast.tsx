@@ -24,20 +24,14 @@ function Page() {
       <p className="lead">
         Brief notifications stacked bottom right, wrapping the Base UI
         Toast. Announced politely to screen readers, expandable on hover,
-        dismissable by swipe, timer paused while you're reading. Fire them
+        dismissible by swipe, timer paused while you're reading. Fire them
         from anywhere with one hook.
       </p>
-      <h2>Playground</h2>
-      <p>
-        Every control maps to an option of <code>toast.add</code>. The demo
-        mounts its own provider, so the position control moves only these
-        toasts.
-      </p>
-      <ToastPlayground />
       <h2>Setup</h2>
       <p>
-        Two pieces, mounted once: the provider holds the queue, the
-        Toaster renders the stack. This site does it in the root layout:
+        Two pieces, mounted once and before anything fires: the provider
+        holds the queue, the Toaster renders the stack. This site does it
+        in the root layout:
       </p>
       <CodeBlock
         code={`import { ToastProvider, Toaster } from "@usebones/react";
@@ -47,6 +41,13 @@ function Page() {
   <Toaster />
 </ToastProvider>`}
       />
+      <h2>Playground</h2>
+      <p>
+        Every control maps to an option of <code>toast.add</code>. The demo
+        mounts its own provider, so the position control moves only these
+        toasts.
+      </p>
+      <ToastPlayground />
       <h2>Variants</h2>
       <p>
         Default plus the four conventional types, each tinted with an
@@ -54,29 +55,34 @@ function Page() {
         loading, success, or failure with the types set automatically.
       </p>
       <ToastVariants />
-      <h2>Position</h2>
+      <h2>Recipes</h2>
       <p>
-        The Toaster takes a <code>position</code>: any corner or edge
-        center, bottom right by default. Top positions peek downward and
-        swipe upward.
+        The queue is plain data, so the common patterns are each a few
+        lines: pick a corner, mix short and tall toasts, collapse repeats,
+        and offer an undo.
+      </p>
+      <p>
+        <strong>Position.</strong> The Toaster takes a{" "}
+        <code>position</code>: any corner or edge center, bottom right by
+        default. Top positions peek downward and swipe upward.
       </p>
       <ToastPosition />
-      <h2>Varying heights</h2>
       <p>
-        Each toast's height is measured, so the stack and the expanded fan
-        stay correct with mixed content lengths.
+        <strong>Varying heights.</strong> Each toast's height is measured,
+        so the stack and the expanded fan stay correct with mixed content
+        lengths.
       </p>
       <ToastHeights />
-      <h2>Deduplication</h2>
       <p>
-        Pass a fixed <code>id</code> and repeat events collapse into one
-        toast instead of stacking; each add refreshes the timer.
+        <strong>Deduplication.</strong> Pass a fixed <code>id</code> and
+        repeat events collapse into one toast instead of stacking; each add
+        refreshes the timer.
       </p>
       <ToastDedupe />
-      <h2>Undo action</h2>
       <p>
-        The classic use of <code>actionProps</code>: the action closes the
-        toast and a follow-up confirms.
+        <strong>Undo action.</strong> The classic use of{" "}
+        <code>actionProps</code>: the action closes the toast and a
+        follow-up confirms.
       </p>
       <ToastUndo />
       <h2>Styling states</h2>
@@ -153,7 +159,8 @@ function Page() {
 - Fire from any client component: const toast = useToast(); toast.add({ title, description, type, actionProps: { children, onClick } }). Returns an id for toast.update/toast.close.
 - toast.promise(promise, { loading: {...}, success: {...}, error: {...} }) follows a promise through its outcomes.
 - Provider settings: timeout (5000ms, paused on hover/focus), limit (3).
-- Restyle in CSS via .ub-toast, .ub-toast-title, .ub-toast-description, .ub-toast-action, [data-type="..."], [data-expanded], [data-starting-style]/[data-ending-style]. Tokens only; never mount a second Toaster.`}
+- Never mount a second Toaster; one provider and one stack per app.
+- Restyle in CSS via .ub-toast, .ub-toast-title, .ub-toast-description, .ub-toast-action, [data-type="..."], [data-expanded], [data-starting-style]/[data-ending-style]. Tokens only.`}
       />
     </>
   );

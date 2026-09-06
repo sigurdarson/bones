@@ -55,37 +55,60 @@ const pages = ["Accessibility", "Button", /* ... */];
 </AutocompleteRoot>`;
 }
 
-const tags = ["feature", "fix", "docs", "refactor", "release", "tests"];
+const labels = ["bug", "docs", "enhancement", "refactor", "release", "tests"];
 
-const inlineCompletionCode = `<AutocompleteRoot items={tags} mode="both">
-  <AutocompleteInput placeholder="e.g. feature" />
-  <AutocompleteContent empty="No tags found.">
-    {(tag) => (
-      <AutocompleteItem key={tag} value={tag}>
-        {tag}
+const variantsCode = `<AutocompleteRoot items={labels}>
+  <AutocompleteInput placeholder="Add a label" />
+  <AutocompleteContent empty="No labels found.">
+    {(label) => (
+      <AutocompleteItem key={label} value={label}>
+        {label}
+      </AutocompleteItem>
+    )}
+  </AutocompleteContent>
+</AutocompleteRoot>
+
+<AutocompleteRoot items={labels} mode="both">
+  <AutocompleteInput placeholder="Add a label" />
+  <AutocompleteContent empty="No labels found.">
+    {(label) => (
+      <AutocompleteItem key={label} value={label}>
+        {label}
       </AutocompleteItem>
     )}
   </AutocompleteContent>
 </AutocompleteRoot>`;
 
-export function AutocompleteInlineCompletion() {
+export function AutocompleteVariants() {
   return (
     <Showcase
-      code={inlineCompletionCode}
+      code={variantsCode}
       note={
         <>
-          Arrow through the list and the input autofills with the
-          highlighted tag; keep typing and the filter takes over again.
+          Type a letter in each, then press the down arrow: the first only
+          highlights, the second also writes the highlighted label into
+          the input. Either way Enter commits and Escape keeps what you
+          typed.
         </>
       }
     >
-      <div style={{ width: "18rem" }}>
-        <AutocompleteRoot items={tags} mode="both">
-          <AutocompleteInput placeholder="e.g. feature" aria-label="Search tags" />
-          <AutocompleteContent empty="No tags found.">
-            {(tag: string) => (
-              <AutocompleteItem key={tag} value={tag}>
-                {tag}
+      <div className="showcase-stack" style={{ width: "18rem" }}>
+        <AutocompleteRoot items={labels}>
+          <AutocompleteInput placeholder="Add a label" aria-label="Filter only" />
+          <AutocompleteContent empty="No labels found.">
+            {(label: string) => (
+              <AutocompleteItem key={label} value={label}>
+                {label}
+              </AutocompleteItem>
+            )}
+          </AutocompleteContent>
+        </AutocompleteRoot>
+        <AutocompleteRoot items={labels} mode="both">
+          <AutocompleteInput placeholder="Add a label" aria-label="Filter and complete inline" />
+          <AutocompleteContent empty="No labels found.">
+            {(label: string) => (
+              <AutocompleteItem key={label} value={label}>
+                {label}
               </AutocompleteItem>
             )}
           </AutocompleteContent>
@@ -106,9 +129,10 @@ export function AutocompletePlayground() {
         code={buildCode({ compact, borderless, disabled })}
         note={
           <>
-            The value is the text itself: suggestions fill it in, and
-            anything typed stays valid. Typing filters the list; the
-            clear button appears once there is something to clear.
+            Enter fills the input with the highlighted suggestion and
+            closes the list; Escape closes it and keeps what you typed.
+            The clear button only appears once there is text, in the slot
+            a Combobox uses for its chevron.
           </>
         }
       >
