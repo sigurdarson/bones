@@ -36,6 +36,13 @@ function Page() {
 <Switch defaultChecked />
 <Switch disabled />
 <Switch defaultChecked disabled />`}
+        note={
+          <>
+            The switch alone is a 36 by 22 pixel target. Wrap it in a{" "}
+            <code>label</code> with its text so the whole row toggles it,
+            or these bare examples are as small as the hit area gets.
+          </>
+        }
       >
         <Switch aria-label="Off" />
         <Switch defaultChecked aria-label="On" />

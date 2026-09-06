@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Radio, RadioGroup } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
@@ -28,20 +28,40 @@ function Page() {
       <RadioPlayground />
       <h2>States</h2>
       <p>
-        Checked, unchecked, and disabled. Radios stay round even in pill
-        mode, because they were round already.
+        Checked, unchecked, and disabled, with the disabled option keeping
+        its label so the reason can sit right beside it. Radios stay round
+        in pill mode (<code>data-radius="pill"</code>, see{" "}
+        <Link to="/theming">Theming</Link>) because they were round already.
       </p>
       <Showcase
-        code={`<RadioGroup defaultValue="checked">
-  <Radio value="checked" />
-  <Radio value="unchecked" />
-  <Radio value="disabled" disabled />
+        code={`<RadioGroup defaultValue="pro">
+  <label>
+    <Radio value="hobby" /> Hobby
+  </label>
+  <label>
+    <Radio value="pro" /> Pro
+  </label>
+  <label>
+    <Radio value="team" /> Team
+  </label>
+  <label>
+    <Radio value="enterprise" disabled /> Enterprise (contact sales)
+  </label>
 </RadioGroup>`}
       >
-        <RadioGroup defaultValue="checked" style={{ flexDirection: "row", gap: "0.625rem" }}>
-          <Radio value="checked" aria-label="Checked" />
-          <Radio value="unchecked" aria-label="Unchecked" />
-          <Radio value="disabled" disabled aria-label="Disabled" />
+        <RadioGroup defaultValue="pro">
+          <label className="preview-field">
+            <Radio value="hobby" /> Hobby
+          </label>
+          <label className="preview-field">
+            <Radio value="pro" /> Pro
+          </label>
+          <label className="preview-field">
+            <Radio value="team" /> Team
+          </label>
+          <label className="preview-field">
+            <Radio value="enterprise" disabled /> Enterprise (contact sales)
+          </label>
         </RadioGroup>
       </Showcase>
       <h2>Styling states</h2>
@@ -100,7 +120,7 @@ function Page() {
         instructions={`Radio and RadioGroup, from @usebones/react.
 - RadioGroup: defaultValue or value + onValueChange; disabled disables every radio inside. Radios go inside as <Radio value="..." />.
 - Wrap each radio in a <label> with its text so the text is clickable.
-- The dot indicator renders automatically; arrow keys move the selection.
+- The dot indicator renders automatically; arrow keys move the selection. Radios stay round under data-radius="pill".
 - Restyle in CSS via [data-checked], [data-disabled]; the dot is .ub-radio-indicator. Tokens only.`}
       />
     </>

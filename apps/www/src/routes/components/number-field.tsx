@@ -27,29 +27,54 @@ function Page() {
         for exactly what you've configured.
       </p>
       <NumberFieldPlayground />
-      <h2>States</h2>
+      <h2>Variants</h2>
       <p>
-        The steppers disable themselves at min and max. Disabled and invalid
-        are the ones you set; invalid turns the border and hint to the
-        danger color.
+        Bordered is the default; borderless trades the border for a muted
+        fill, the same surface as a secondary button.
       </p>
       <Showcase
-        code={`<NumberField defaultValue={1} min={1} max={12} />
-<NumberField defaultValue={4} disabled />
+        code={`<NumberField defaultValue={2} min={1} max={12} aria-label="Seats" />
+<NumberField
+  variant="borderless"
+  defaultValue={2}
+  min={1}
+  max={12}
+  aria-label="Seats"
+/>`}
+      >
+        <NumberField defaultValue={2} min={1} max={12} aria-label="Seats" />
+        <NumberField
+          variant="borderless"
+          defaultValue={2}
+          min={1}
+          max={12}
+          aria-label="Seats"
+        />
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        The steppers disable themselves at min and max (the first one sits
+        at its minimum). Disabled and invalid are the ones you set; invalid
+        turns the border, ring, and hint to the danger color.
+      </p>
+      <Showcase
+        code={`<NumberField defaultValue={1} min={1} max={12} aria-label="Seats" />
+<NumberField defaultValue={4} disabled aria-label="Seats" />
 <NumberField
   defaultValue={0}
   invalid
   hint="Pick at least one seat."
+  aria-label="Seats"
 />`}
       >
         <div className="showcase-stack">
-          <NumberField defaultValue={1} min={1} max={12} aria-label="At minimum" />
-          <NumberField defaultValue={4} disabled aria-label="Disabled" />
+          <NumberField defaultValue={1} min={1} max={12} aria-label="Seats" />
+          <NumberField defaultValue={4} disabled aria-label="Seats" />
           <NumberField
             defaultValue={0}
             invalid
             hint="Pick at least one seat."
-            aria-label="Invalid"
+            aria-label="Seats"
           />
         </div>
       </Showcase>

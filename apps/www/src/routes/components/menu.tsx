@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Button,
+  MenuCheckboxItem,
   MenuContent,
   MenuItem,
   MenuRoot,
+  MenuSeparator,
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
   MenuTrigger,
@@ -31,10 +33,86 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Open the menu and toggle the checkbox and radio items to see them
+        stay open, then pick Reset to see a plain item close it; Compact
+        shrinks every row at once.
       </p>
       <MenuPlayground />
+      <h2>Variants</h2>
+      <p>
+        Two sizes, set once on the root: default rows are 36px tall with
+        16px text, compact rows 28px with 14px text, and the trigger button
+        takes its own matching <code>size</code>.
+      </p>
+      <Showcase
+        code={`<MenuRoot>
+  <MenuTrigger render={<Button variant="secondary" />}>Options</MenuTrigger>
+  <MenuContent>
+    <MenuItem>Rename</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem>Archive</MenuItem>
+  </MenuContent>
+</MenuRoot>
+
+<MenuRoot size="compact">
+  <MenuTrigger render={<Button variant="secondary" size="compact" />}>
+    Options
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem>Rename</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem>Archive</MenuItem>
+  </MenuContent>
+</MenuRoot>`}
+      >
+        <MenuRoot>
+          <MenuTrigger render={<Button variant="secondary" />}>Options</MenuTrigger>
+          <MenuContent>
+            <MenuItem>Rename</MenuItem>
+            <MenuItem>Duplicate</MenuItem>
+            <MenuItem>Archive</MenuItem>
+          </MenuContent>
+        </MenuRoot>
+        <MenuRoot size="compact">
+          <MenuTrigger render={<Button variant="secondary" size="compact" />}>
+            Options
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem>Rename</MenuItem>
+            <MenuItem>Duplicate</MenuItem>
+            <MenuItem>Archive</MenuItem>
+          </MenuContent>
+        </MenuRoot>
+      </Showcase>
+      <h2>States</h2>
+      <p>
+        Open and highlighted are live (hover or arrow keys); checked and
+        disabled are the ones you set, and keyboard focus stays on the popup
+        while the highlight moves, so there is no per-item focus ring.
+      </p>
+      <Showcase
+        code={`<MenuRoot>
+  <MenuTrigger render={<Button variant="secondary" />}>Document</MenuTrigger>
+  <MenuContent>
+    <MenuItem>Rename</MenuItem>
+    <MenuItem disabled>Move to trash</MenuItem>
+    <MenuSeparator />
+    <MenuCheckboxItem defaultChecked>Pinned</MenuCheckboxItem>
+    <MenuCheckboxItem>Watch changes</MenuCheckboxItem>
+  </MenuContent>
+</MenuRoot>`}
+      >
+        <MenuRoot>
+          <MenuTrigger render={<Button variant="secondary" />}>Document</MenuTrigger>
+          <MenuContent>
+            <MenuItem>Rename</MenuItem>
+            <MenuItem disabled>Move to trash</MenuItem>
+            <MenuSeparator />
+            <MenuCheckboxItem defaultChecked>Pinned</MenuCheckboxItem>
+            <MenuCheckboxItem>Watch changes</MenuCheckboxItem>
+          </MenuContent>
+        </MenuRoot>
+      </Showcase>
       <h2>Submenus</h2>
       <p>
         Wrap a <code>MenuSubmenuRoot</code> around a{" "}
@@ -89,9 +167,8 @@ function Page() {
       />
       <h2>Props</h2>
       <p>
-        Everything Base UI's Menu parts accept passes through. Items close
-        the menu on click unless told otherwise; checkbox and radio items
-        stay open by default. The essentials:
+        Everything Base UI's Menu parts accept passes through. The
+        essentials:
       </p>
       <PropsTable
         rows={[
@@ -140,13 +217,19 @@ function Page() {
           },
         ]}
       />
+      <p>
+        One quirk: plain items close the menu on click unless told
+        otherwise, while checkbox and radio items stay open by default so
+        the change is visible; pass <code>closeOnClick</code> on either to
+        flip it.
+      </p>
       <AgentInstructions
         instructions={`MenuRoot, MenuTrigger, MenuContent, MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuRadioItem, MenuGroup, MenuGroupLabel, MenuSeparator, MenuSubmenuRoot, MenuSubmenuTrigger, from @usebones/react.
 - Structure: MenuRoot wraps MenuTrigger + MenuContent; items go inside the content. Attach the trigger to a real control via render={<Button ... />}.
-- MenuItem runs onClick and closes (closeOnClick={false} keeps it open). MenuCheckboxItem (defaultChecked/checked + onCheckedChange) and MenuRadioItem inside MenuRadioGroup (value + onValueChange) stay open; indicators render automatically.
+- MenuItem runs onClick and closes (closeOnClick={false} keeps it open); disabled dims it and skips it. MenuCheckboxItem (defaultChecked/checked + onCheckedChange) and MenuRadioItem inside MenuRadioGroup (value + onValueChange) stay open; indicators render automatically.
 - Group related items with MenuGroup + MenuGroupLabel; divide with MenuSeparator.
 - Submenus: MenuSubmenuRoot wrapping MenuSubmenuTrigger + another MenuContent; the chevron is automatic.
-- size on MenuRoot: "default" | "compact", flows to submenus.
+- size on MenuRoot: "default" | "compact", flows to submenus; give the trigger Button the same size.
 - Restyle in CSS via .ub-menu-popup, .ub-menu-item, [data-highlighted], [data-checked], [data-disabled], [data-popup-open] on the trigger, [data-starting-style]/[data-ending-style] for enter/exit. Tokens only.`}
       />
     </>

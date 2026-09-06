@@ -53,9 +53,10 @@ export function DialogPlayground() {
         code={buildCode({ outsideClick })}
         note={
           <>
-            Modal by default: the page behind is dimmed and inert, focus is
-            trapped inside, and Escape closes. Turn off outside click for
-            forms that shouldn't be lost to a stray click.
+            Tab cycles inside the window and never leaves it; Escape closes
+            even with Outside click off. The window is 26rem wide at most
+            and, when taller than the screen, the viewport scrolls rather
+            than the window, so tall forms need no height handling.
           </>
         }
       >

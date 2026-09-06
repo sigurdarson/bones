@@ -69,9 +69,10 @@ export function MenubarPlayground() {
         code={buildCode({ compact, disabled })}
         note={
           <>
-            A strip of regular Bones Menus: once one is open, hovering
-            another trigger switches to it, and everything inside is the
-            usual Menu vocabulary, submenus and checkbox items included.
+            Once a menu is open, Left and Right move along the bar (wrapping
+            at the ends) and Escape closes it. Size lives on each{" "}
+            <code>MenuRoot</code> and its ghost Button, not on the bar, so
+            set both or the rows and triggers end up mismatched.
           </>
         }
       >

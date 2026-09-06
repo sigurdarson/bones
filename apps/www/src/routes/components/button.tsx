@@ -22,8 +22,9 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to a prop. The Code tab always shows the markup
-        for exactly what you've configured.
+        Switch the variant and size, add a leading or trailing icon, then
+        turn Icon only on to get the square form and watch the Code tab
+        add the <code>aria-label</code> it needs.
       </p>
       <ButtonPlayground />
       <h2>Variants</h2>
@@ -33,15 +34,15 @@ function Page() {
         destructive actions only.
       </p>
       <Showcase
-        code={`<Button>Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="danger">Danger</Button>`}
+        code={`<Button>Publish</Button>
+<Button variant="secondary">Save draft</Button>
+<Button variant="ghost">Cancel</Button>
+<Button variant="danger">Delete project</Button>`}
       >
-        <Button>Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="danger">Danger</Button>
+        <Button>Publish</Button>
+        <Button variant="secondary">Save draft</Button>
+        <Button variant="ghost">Cancel</Button>
+        <Button variant="danger">Delete project</Button>
       </Showcase>
       <h2>States</h2>
       <p>
@@ -49,14 +50,34 @@ function Page() {
         the one you set. Disabled buttons keep their variant, dimmed.
       </p>
       <Showcase
-        code={`<Button disabled>Saving</Button>
-<Button variant="secondary" disabled>Saving</Button>`}
+        code={`<Button disabled>Publishing</Button>
+<Button variant="secondary" disabled>Save draft</Button>
+<Button variant="danger" disabled>Delete project</Button>`}
       >
-        <Button disabled>Saving</Button>
+        <Button disabled>Publishing</Button>
         <Button variant="secondary" disabled>
-          Saving
+          Save draft
+        </Button>
+        <Button variant="danger" disabled>
+          Delete project
         </Button>
       </Showcase>
+      <h2>Styling states</h2>
+      <p>
+        Variant, size, and icon-only are data attributes; hover, focus,
+        press, and disabled are the native pseudo-classes, since this is
+        a real <code>button</code>:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-button[data-variant="secondary"]:hover:not(:disabled) {
+  background: var(--ub-bg-muted-hover);
+}
+
+.ub-button[data-icon-only] {
+  border-radius: var(--ub-radius-full);
+}`}
+      />
       <h2>As a link</h2>
       <p>
         Styling is class and data-attribute based, so anchors can look like
@@ -105,7 +126,7 @@ function Page() {
 - Icons are children via @usebones/icons: <Icon name="..." /> before the label for leading, after for trailing, alone with iconOnly.
 - type defaults to "button"; every native button prop passes through.
 - Links styled as buttons: <a className="ub-button" data-variant="primary">.
-- Restyle in CSS via [data-variant], [data-size], :hover, :disabled, using --ub-* tokens only.`}
+- Restyle in CSS via [data-variant], [data-size], [data-icon-only], :hover, :focus-visible, :active, :disabled, using --ub-* tokens only.`}
       />
     </>
   );

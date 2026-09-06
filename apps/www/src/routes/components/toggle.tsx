@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Toggle } from "@usebones/react";
+import { Icon } from "@usebones/icons";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
@@ -28,6 +29,41 @@ function Page() {
         for exactly what you've configured.
       </p>
       <TogglePlayground />
+      <h2>Variants</h2>
+      <p>
+        Three flavors, one component: text, text with an icon, and icon
+        only. Icons are just children; <code>iconOnly</code> squares the
+        toggle off and expects an <code>aria-label</code>.
+      </p>
+      <Showcase
+        code={`<Toggle>Mute</Toggle>
+
+<Toggle>
+  <Icon name="bell" />
+  Notifications
+</Toggle>
+
+<Toggle iconOnly aria-label="Notifications">
+  <Icon name="bell" />
+</Toggle>`}
+        note={
+          <>
+            Icon-only toggles are exactly one control height square (36px,
+            28px compact), which is also the minimum comfortable touch
+            target; in development a missing <code>aria-label</code> logs a
+            warning.
+          </>
+        }
+      >
+        <Toggle>Mute</Toggle>
+        <Toggle>
+          <Icon name="bell" />
+          Notifications
+        </Toggle>
+        <Toggle iconOnly aria-label="Notifications">
+          <Icon name="bell" />
+        </Toggle>
+      </Showcase>
       <h2>States</h2>
       <p>
         Pressed, unpressed, and disabled. Pressed uses the same muted
@@ -101,8 +137,9 @@ function Page() {
       <AgentInstructions
         instructions={`Toggle, from @usebones/react.
 - defaultPressed or pressed + onPressedChange; size "default" | "compact"; iconOnly requires aria-label; icons are children via @usebones/icons.
+- Keep the label constant across states (Mute, not Mute/Unmute); aria-pressed already announces the change.
 - Inside a ToggleGroup, identify each toggle with value="..." (see the Toggle group page).
-- Restyle in CSS via [data-pressed], [data-disabled], [data-size]. Tokens only.`}
+- Restyle in CSS via [data-pressed], [data-disabled], [data-size], [data-icon-only]. Tokens only.`}
       />
     </>
   );

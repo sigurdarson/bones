@@ -35,9 +35,11 @@ export function CheckboxPlayground() {
         code={buildCode({ checked, indeterminate, disabled })}
         note={
           <>
-            Toggling the checkbox in the preview updates the Checked control
-            too; it's one piece of state. Wrap it in a <code>label</code> so
-            the text is clickable and read by screen readers.
+            <code>indeterminate</code> is display only: it swaps the check
+            for a dash without touching <code>checked</code>, so a click
+            still flips whatever checked was. Wrap it in a{" "}
+            <code>label</code> so the text is clickable and read by screen
+            readers.
           </>
         }
       >

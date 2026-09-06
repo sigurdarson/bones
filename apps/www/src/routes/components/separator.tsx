@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Separator } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
+import { CodeBlock } from "@/components/code-block";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { SeparatorPlayground } from "@/components/separator-playground";
@@ -33,14 +34,21 @@ function Page() {
         layouts; horizontal spans its container's width.
       </p>
       <Showcase
-        code={`<a href="/blog">Blog</a>
-<a href="/support">Support</a>
+        code={`<a href="#">Blog</a>
+<a href="#">Support</a>
 <Separator orientation="vertical" />
-<a href="/log-in">Log in</a>
+<a href="#">Log in</a>
 
 <p>Everyone with the link can view.</p>
 <Separator />
 <p>Invited people can edit.</p>`}
+        note={
+          <>
+            Vertical only works inside a flex row: it stretches via{" "}
+            <code>align-self</code>, so in a block layout it has no height
+            and disappears. Give it a flex parent or set a height yourself.
+          </>
+        }
       >
         <div
           style={{
@@ -52,10 +60,10 @@ function Page() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <span>Blog</span>
-            <span>Support</span>
+            <a href="#">Blog</a>
+            <a href="#">Support</a>
             <Separator orientation="vertical" />
-            <span>Log in</span>
+            <a href="#">Log in</a>
           </div>
           <div
             style={{
@@ -71,6 +79,18 @@ function Page() {
           </div>
         </div>
       </Showcase>
+      <h2>Styling states</h2>
+      <p>
+        The only state is direction, exposed as{" "}
+        <code>data-orientation</code> on the element, so a thicker or
+        tinted vertical rule is one selector away:
+      </p>
+      <CodeBlock
+        lang="css"
+        code={`.ub-separator[data-orientation="vertical"] {
+  background: var(--ub-border-strong);
+}`}
+      />
       <h2>Props</h2>
       <p>
         Everything a div accepts passes through, plus:

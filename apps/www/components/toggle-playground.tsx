@@ -39,9 +39,10 @@ export function TogglePlayground() {
         code={buildCode({ iconOnly, compact, disabled })}
         note={
           <>
-            Ghost at rest, muted when pressed. A lone toggle fits on/off
-            actions like mute; for toolbars, reach for{" "}
-            <code>ToggleGroup</code>.
+            Space and Enter both flip it, and <code>aria-pressed</code>{" "}
+            announces the state. Keep the label constant (Notifications,
+            not Notifications on/off), or screen readers report the change
+            twice.
           </>
         }
       >
