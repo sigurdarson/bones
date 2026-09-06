@@ -45,7 +45,12 @@ function parseChangelog(raw: string): { intro: string; sections: Section[] } {
 }
 
 export const Route = createFileRoute("/changelog")({
-  head: () => ({ meta: [{ title: "Changelog · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Changelog · Bones" },
+      { name: "description", content: "Every change to the Bones packages, release by release." },
+    ],
+  }),
   component: Page,
 });
 

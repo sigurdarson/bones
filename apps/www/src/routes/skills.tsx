@@ -4,7 +4,12 @@ import { PageHeader } from "@/components/page-header";
 import { bonesSkill } from "@/lib/bones-skill";
 
 export const Route = createFileRoute("/skills")({
-  head: () => ({ meta: [{ title: "Skills · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Skills · Bones" },
+      { name: "description", content: "An installable skill that teaches coding agents to build with Bones." },
+    ],
+  }),
   component: Page,
 });
 

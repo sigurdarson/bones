@@ -1,11 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button, Switch, TabsList, TabsRoot, TabsTab } from "@usebones/react";
 import { CodeBlock } from "@/components/code-block";
 import { Preview } from "@/components/preview";
 import { PageHeader } from "@/components/page-header";
 
 export const Route = createFileRoute("/sizes")({
-  head: () => ({ meta: [{ title: "Sizes · Bones" }] }),
+  head: () => ({
+    meta: [
+      { title: "Sizes · Bones" },
+      { name: "description", content: "The two-size system: default and compact, driven by three tokens." },
+    ],
+  }),
   component: Page,
 });
 
@@ -71,7 +76,9 @@ function Page() {
       <p>
         Size is resolved per component, not inherited from the page. A
         default-size component inside a compact one (or the reverse) keeps
-        its own size, so dense toolbars and roomy forms can mix freely.
+        its own size, so dense toolbars and roomy forms can mix freely. The <code>size</code> prop never cascades; to change the default for a
+        whole region, remap the tokens instead (see{" "}
+        <Link to="/theming">Theming</Link>).
       </p>
       <Preview>
         <TabsRoot defaultValue="one" size="compact">

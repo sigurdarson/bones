@@ -266,6 +266,7 @@ export const llmsTxt = `# Bones
 - https://usebones.com/quick-start
 - https://usebones.com/theming
 - https://usebones.com/sizes
+- https://usebones.com/icons
 - https://usebones.com/motion
 - https://usebones.com/scrollbars
 - https://usebones.com/accessibility
