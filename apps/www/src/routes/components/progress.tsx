@@ -110,7 +110,8 @@ function Page() {
 - One component; track, indicator, and the optional label row render automatically. value + min/max pass through; value={null} is indeterminate.
 - Always pass label (or aria-label); a dev warning fires without one. showValue adds the formatted value, format takes Intl.NumberFormatOptions.
 - For current levels (storage, quota) use Meter instead; Progress is for tasks underway.
-- Restyle in CSS via .ub-progress-track, .ub-progress-indicator, [data-progressing], [data-indeterminate], [data-complete]. Tokens only; the sweep animation derives from motion tokens so reduced motion stills it.`}
+- The indeterminate sweep runs on motion tokens, so reduced motion stills it.
+- Restyle in CSS via .ub-progress-track, .ub-progress-indicator, [data-progressing], [data-indeterminate], [data-complete]. Tokens only.`}
       />
     </>
   );

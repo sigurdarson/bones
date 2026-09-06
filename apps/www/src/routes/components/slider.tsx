@@ -100,6 +100,29 @@ function Page() {
             description: "Called continuously while sliding; onValueCommitted fires on release.",
           },
           {
+            name: "min / max / step",
+            type: "number",
+            defaultValue: "0 / 100 / 1",
+            description: "The range and the arrow-key increment.",
+          },
+          {
+            name: "largeStep",
+            type: "number",
+            defaultValue: "10",
+            description: "The Page Up and Page Down increment.",
+          },
+          {
+            name: "orientation",
+            type: "\"horizontal\" | \"vertical\"",
+            defaultValue: "\"horizontal\"",
+            description: "Track direction; keyboard mapping follows.",
+          },
+          {
+            name: "onValueCommitted",
+            type: "(value) => void",
+            description: "Fires once when the drag or key press ends, for saving without spamming updates.",
+          },
+          {
             name: "aria-label",
             type: "string",
             description: "Accessible name for the thumb; ranges suffix it with the index.",

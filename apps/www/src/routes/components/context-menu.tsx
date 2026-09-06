@@ -133,7 +133,7 @@ function Page() {
 - Fill the content with the regular Menu parts: MenuItem (disabled skips it), MenuCheckboxItem, MenuRadioGroup + MenuRadioItem, MenuGroup + MenuGroupLabel, MenuSeparator, MenuSubmenuRoot + MenuSubmenuTrigger. Same props, same behavior as in Menu.
 - size on ContextMenuRoot: "default" | "compact".
 - Right click has no keyboard equivalent unless the surface is focusable; keep a visible route to the same actions.
-- The popup renders the same classes as Menu (.ub-menu-popup, .ub-menu-item, [data-highlighted], [data-checked], [data-disabled]), so restyling one restyles both; the trigger is .ub-context-menu-trigger with [data-popup-open]. Tokens only.`}
+- Restyle in CSS via the Menu classes the popup shares (.ub-menu-popup, .ub-menu-item, [data-highlighted], [data-checked], [data-disabled]), so restyling one restyles both; the trigger is .ub-context-menu-trigger with [data-popup-open]. Tokens only.`}
       />
     </>
   );

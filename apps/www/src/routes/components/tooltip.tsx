@@ -193,7 +193,8 @@ function Page() {
 - A tooltip is a description, never a name: icon-only triggers still need their own aria-label.
 - TooltipContent: side "top" (default) | "right" | "bottom" | "left", align, sideOffset (8). Timing on the trigger: delay (600ms), closeDelay. TooltipRoot: open + onOpenChange, disabled.
 - Wrap toolbars in TooltipProvider so tooltips share one delay.
-- Restyle in CSS via .ub-tooltip-popup, [data-side], [data-starting-style]/[data-ending-style] for enter/exit, and [data-popup-open] on the trigger. Tokens only; durations via --ub-duration-* so reduced motion works.`}
+- Enter and exit run on --ub-duration-* tokens, so reduced motion is respected with no extra code.
+- Restyle in CSS via .ub-tooltip-popup, [data-side], [data-starting-style]/[data-ending-style] for enter/exit, and [data-popup-open] on the trigger. Tokens only.`}
       />
     </>
   );

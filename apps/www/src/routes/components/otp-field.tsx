@@ -131,7 +131,7 @@ function Page() {
             name: "size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Default slots are 36px; compact are 28px.",
+            description: "Default slots are 36px tall with 16px text; compact are 28px with 14px text.",
           },
         ]}
       />

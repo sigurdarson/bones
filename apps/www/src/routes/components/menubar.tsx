@@ -167,7 +167,7 @@ function Page() {
 - One container: put regular Bones Menus inside (MenuRoot + MenuTrigger render={<Button variant="ghost" />} + MenuContent with MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuSeparator, submenus).
 - One menu open at a time; hovering another trigger switches to it, arrow keys move along the bar (swapped by orientation "vertical"; give each MenuContent side="right" there).
 - disabled on the bar switches off every menu. Size lives on each MenuRoot and its trigger Button, not on the bar.
-- The bar is layout only (no border/background/padding); add chrome via .ub-menubar in the app when it stands alone. [data-orientation="vertical"] for the column form; the menus use Menu's classes and [data-popup-open] on the open trigger. Tokens only.`}
+- Restyle in CSS via .ub-menubar: the bar is layout only (no border, background, or padding), so add chrome there in the app when it stands alone. [data-orientation="vertical"] for the column form; the menus use Menu's classes and [data-popup-open] on the open trigger. Tokens only.`}
       />
     </>
   );

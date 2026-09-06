@@ -97,6 +97,17 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "min / max / step",
+            type: "number",
+            description: "The bounds and the stepper increment; arrow keys use the same step.",
+          },
+          {
+            name: "largeStep",
+            type: "number",
+            defaultValue: "10",
+            description: "The Shift plus arrow and Page Up and Page Down increment.",
+          },
+          {
             name: "variant",
             type: '"default" | "borderless"',
             defaultValue: '"default"',
@@ -112,7 +123,7 @@ function Page() {
             name: "invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border, ring, and hint, plus aria-invalid.",
+            description: "Danger border, ring, and hint, plus aria-invalid; a surrounding Field sets it automatically.",
           },
           {
             name: "hint",

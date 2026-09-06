@@ -248,13 +248,13 @@ function Page() {
             name: "ComboboxRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Sizes the input and the list together.",
+            description: "Sizes the input and the list together: 36px tall with 16px text by default, 28px with 14px text compact.",
           },
           {
             name: "ComboboxInput.variant",
             type: '"default" | "borderless"',
             defaultValue: '"default"',
-            description: "Borderless swaps the border for a muted fill, like the Select trigger.",
+            description: "Bordered, or a muted fill with no border.",
           },
           {
             name: "ComboboxInput.clearable",
@@ -266,7 +266,7 @@ function Page() {
             name: "ComboboxInput.invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border and aria-invalid, like the Input; a surrounding Field sets it automatically. Also on ComboboxTrigger.",
+            description: "Danger border and ring, plus aria-invalid; a surrounding Field sets it automatically. Also on ComboboxTrigger.",
           },
           {
             name: "ComboboxContent.empty",
@@ -316,6 +316,7 @@ function Page() {
 - Async: fetch in onInputValueChange, pass results as items, status="Searching..." on the content while loading (announced politely), empty={null} while loading.
 - Creatable: manage items in state, render static children, and append a ComboboxItem whose value is the query when nothing matches.
 - Prefer Select for short fixed lists; the combobox earns its input when the list is long enough to search.
+- Inside FieldRoot, drop invalid and use FieldLabel and FieldError instead; the Field wires the name and validation.
 - Restyle in CSS via .ub-combobox-input-group ([data-variant], [data-size]), .ub-combobox-input ([data-invalid], [data-disabled]), .ub-combobox-chips, .ub-combobox-chip, .ub-combobox-popup, .ub-combobox-item ([data-highlighted], [data-selected]), [data-popup-open] on the chevron. Tokens only.`}
       />
     </>
