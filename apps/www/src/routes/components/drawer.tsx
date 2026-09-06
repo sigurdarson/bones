@@ -45,26 +45,24 @@ function Page() {
         grab handle and dismiss swipe follow the edge.
       </p>
       <Showcase
-        code={`<DrawerRoot>
-  <DrawerTrigger render={<Button variant="secondary" />}>Filters</DrawerTrigger>
-  <DrawerContent>
-    <DrawerTitle>Filters</DrawerTitle>
-    <DrawerDescription>Narrow the list by status, owner, or date.</DrawerDescription>
-    <DrawerClose render={<Button />}>Done</DrawerClose>
-  </DrawerContent>
-</DrawerRoot>
-
-<DrawerRoot side="left">
-  <DrawerTrigger render={<Button variant="secondary" />}>Workspaces</DrawerTrigger>
+        code={`<DrawerRoot side="left">
+  <DrawerTrigger render={<Button variant="secondary" />}>Left</DrawerTrigger>
   <DrawerContent>
     <DrawerTitle>Workspaces</DrawerTitle>
     <DrawerDescription>Switch between the teams you belong to.</DrawerDescription>
     <DrawerClose render={<Button />}>Done</DrawerClose>
   </DrawerContent>
 </DrawerRoot>
-
+<DrawerRoot>
+  <DrawerTrigger render={<Button variant="secondary" />}>Right</DrawerTrigger>
+  <DrawerContent>
+    <DrawerTitle>Filters</DrawerTitle>
+    <DrawerDescription>Narrow the list by status, owner, or date.</DrawerDescription>
+    <DrawerClose render={<Button />}>Done</DrawerClose>
+  </DrawerContent>
+</DrawerRoot>
 <DrawerRoot side="bottom">
-  <DrawerTrigger render={<Button variant="secondary" />}>Share</DrawerTrigger>
+  <DrawerTrigger render={<Button variant="secondary" />}>Down</DrawerTrigger>
   <DrawerContent>
     <DrawerTitle>Share this report</DrawerTitle>
     <DrawerDescription>Anyone with the link can view it.</DrawerDescription>
@@ -79,20 +77,8 @@ function Page() {
           </>
         }
       >
-        <DrawerRoot>
-          <DrawerTrigger render={<Button variant="secondary" />}>Filters</DrawerTrigger>
-          <DrawerContent>
-            <DrawerTitle>Filters</DrawerTitle>
-            <DrawerDescription>
-              Narrow the list by status, owner, or date.
-            </DrawerDescription>
-            <p>
-              <DrawerClose render={<Button />}>Done</DrawerClose>
-            </p>
-          </DrawerContent>
-        </DrawerRoot>
         <DrawerRoot side="left">
-          <DrawerTrigger render={<Button variant="secondary" />}>Workspaces</DrawerTrigger>
+          <DrawerTrigger render={<Button variant="secondary" />}>Left</DrawerTrigger>
           <DrawerContent>
             <DrawerTitle>Workspaces</DrawerTitle>
             <DrawerDescription>
@@ -103,8 +89,20 @@ function Page() {
             </p>
           </DrawerContent>
         </DrawerRoot>
+        <DrawerRoot>
+          <DrawerTrigger render={<Button variant="secondary" />}>Right</DrawerTrigger>
+          <DrawerContent>
+            <DrawerTitle>Filters</DrawerTitle>
+            <DrawerDescription>
+              Narrow the list by status, owner, or date.
+            </DrawerDescription>
+            <p>
+              <DrawerClose render={<Button />}>Done</DrawerClose>
+            </p>
+          </DrawerContent>
+        </DrawerRoot>
         <DrawerRoot side="bottom">
-          <DrawerTrigger render={<Button variant="secondary" />}>Share</DrawerTrigger>
+          <DrawerTrigger render={<Button variant="secondary" />}>Down</DrawerTrigger>
           <DrawerContent>
             <DrawerTitle>Share this report</DrawerTitle>
             <DrawerDescription>Anyone with the link can view it.</DrawerDescription>
