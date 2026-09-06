@@ -57,11 +57,6 @@ function Page() {
             type: "ReactElement",
             description: "The real control: a Bones Button, Toggle, or anything focusable.",
           },
-          {
-            name: "ToolbarSeparator",
-            type: "component",
-            description: "A hairline, perpendicular to the toolbar automatically.",
-          },
         ]}
       />
       <AgentInstructions

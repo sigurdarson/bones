@@ -340,6 +340,23 @@ function Page() {
             description: "Vertical stacks the list and swaps the arrow keys.",
           },
           {
+            name: "NavigationMenuRoot.side",
+            type: "PositionerSide",
+            description: "Which side of the trigger the popup opens on; nested menus usually want inline-end. Also align.",
+          },
+          {
+            name: "NavigationMenuRoot.sideOffset",
+            type: "number",
+            defaultValue: "8",
+            description: "Gap between the trigger and the popup, in pixels.",
+          },
+          {
+            name: "NavigationMenuRoot.inline",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Renders children without the bundled popup; pair with a NavigationMenuViewport for same-panel submenus.",
+          },
+          {
             name: "NavigationMenuTrigger.children",
             type: "ReactNode",
             description: "The item's label; the chevron renders automatically.",

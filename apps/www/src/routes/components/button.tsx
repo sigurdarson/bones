@@ -90,7 +90,7 @@ function Page() {
             name: "iconOnly",
             type: "boolean",
             defaultValue: "false",
-            description: "Square button holding only an icon; pair with aria-label.",
+            description: "Square button holding only an icon; pair with aria-label. A dev warning fires without one.",
           },
         ]}
       />

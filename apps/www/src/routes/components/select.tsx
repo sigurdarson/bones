@@ -182,6 +182,17 @@ function Page() {
             defaultValue: "false",
             description: "Blocks choosing this option.",
           },
+          {
+            name: "SelectContent.side",
+            type: "PositionerSide",
+            description: "Which side of the trigger the popup opens on; below by default. Also align.",
+          },
+          {
+            name: "SelectContent.sideOffset",
+            type: "number",
+            defaultValue: "4",
+            description: "Gap between the trigger and the popup, in pixels.",
+          },
         ]}
       />
       <AgentInstructions

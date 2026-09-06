@@ -9,7 +9,8 @@ export const llmsTxt = `# Bones
 
 ## Install
 
-- pnpm add @usebones/react @usebones/tokens (components + tokens)
+- pnpm add @usebones/react @usebones/tokens (components + tokens); React 19
+  or newer is a peer dependency
 - pnpm add @usebones/icons (optional icon adapter, Lucide default)
 - Import once: "@usebones/tokens/index.css" then "@usebones/react/styles.css"
 - Use explicit .css paths in imports; TypeScript 7 rejects extensionless
@@ -24,8 +25,9 @@ export const llmsTxt = `# Bones
   --ub-text-primary, --ub-text-secondary, --ub-border, --ub-accent,
   --ub-ring, --ub-danger, --ub-success, --ub-warning, --ub-info. Override
   these to retheme; never fork CSS.
-- Raw scales (50 to 950, shared lightness ladder): gray, red, orange,
-  green, teal, blue, violet, fuchsia, rose. Themes reference these;
+- Raw scales (50 to 950): gray, red, orange, green, teal, blue, violet,
+  fuchsia, rose. The eight colors share one lightness ladder; gray runs a
+  slightly darker one for backgrounds. Themes reference these;
   components never do.
 - Motion: --ub-duration-fast/base/slow and --ub-ease-out/in-out/spring.
   Durations collapse to zero under prefers-reduced-motion.
@@ -53,8 +55,8 @@ export const llmsTxt = `# Bones
   always modal and outside clicks never dismiss; Escape cancels. One
   AlertDialogClose per choice (Cancel ghost, action primary or danger
   with onClick). Use only for hard-to-undo actions.
-- Autocomplete: free text with suggestions; the value IS the input
-  string (value/defaultValue/onValueChange fire per keystroke).
+- Autocomplete: free text with suggestions; the value is the input
+  string itself (value/defaultValue/onValueChange fire per keystroke).
   AutocompleteRoot (items, mode "list" default | "both" | "inline" |
   "none", size) + AutocompleteInput (clearable, variant; no chevron) +
   AutocompleteContent (empty, status; function children render an

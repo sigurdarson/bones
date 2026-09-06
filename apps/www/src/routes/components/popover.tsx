@@ -65,8 +65,14 @@ function Page() {
             description: "Alignment along the chosen side.",
           },
           {
+            name: "PopoverContent.sideOffset",
+            type: "number",
+            defaultValue: "8",
+            description: "Gap between the trigger and the panel, in pixels.",
+          },
+          {
             name: "PopoverContent.initialFocus",
-            type: "RefObject<HTMLElement>",
+            type: "boolean | RefObject<HTMLElement | null> | (openType) => ...",
             description: "Where focus lands on open; defaults to the first focusable part.",
           },
           {

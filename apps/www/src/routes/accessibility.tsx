@@ -25,13 +25,15 @@ function Page() {
       </p>
       <h2>Focus is always visible</h2>
       <p>
-        Every focusable element shows a ring on keyboard focus, driven by the{" "}
+        Every focusable part shows a ring on keyboard focus, driven by the{" "}
         <code>--ub-ring</code> token so it stays visible in both themes and
-        any custom theme:
+        any custom theme. Rings are scoped per component, never a global
+        rule; text fields ring on every focus so the caret's destination is
+        never in doubt:
       </p>
       <CodeBlock
         lang="css"
-        code={`:focus-visible {
+        code={`.ub-button:focus-visible {
   outline: 2px solid var(--ub-ring);
   outline-offset: 2px;
 }`}
@@ -42,7 +44,7 @@ function Page() {
         when someone prefers reduced motion. There is no per-component opt-in
         to forget.
       </p>
-      <h2>Aria attributes always pass through</h2>
+      <h2>ARIA attributes always pass through</h2>
       <p>
         Every component spreads your props onto the underlying element last,
         so <code>aria-label</code>, <code>aria-describedby</code>, and
@@ -61,8 +63,9 @@ function Page() {
           unless you say otherwise.
         </li>
         <li>
-          The neutral palette keeps text at or above WCAG AA contrast against
-          its backgrounds in both themes.
+          Body and secondary text meet WCAG AA contrast in both themes;
+          tertiary and disabled text sit deliberately below it and never
+          carry meaning alone.
         </li>
       </ul>
       <h2>Found a gap?</h2>

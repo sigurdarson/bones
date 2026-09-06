@@ -29,8 +29,9 @@ function Page() {
       </p>
       <h2>Playground</h2>
       <p>
-        Every control maps to an option of <code>toast.add</code>. The
-        toasts land in this site's own Toaster, bottom right.
+        Every control maps to an option of <code>toast.add</code>. The demo
+        mounts its own provider, so the position control moves only these
+        toasts.
       </p>
       <ToastPlayground />
       <h2>Setup</h2>
@@ -120,9 +121,14 @@ function Page() {
             description: "Any corner or edge center; swipe direction follows.",
           },
           {
-            name: "toast.add({ title, description })",
+            name: "toast.add({ title })",
             type: "ReactNode",
-            description: "What the toast says; title names it for screen readers.",
+            description: "What the toast says; names it for screen readers.",
+          },
+          {
+            name: "toast.add({ description })",
+            type: "ReactNode",
+            description: "Supporting text under the title.",
           },
           {
             name: "toast.add({ type })",
