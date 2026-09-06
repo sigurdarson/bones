@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The docs site, deployed as static assets: every route is prerendered
+  // at build time, so there is no Worker runtime. The config lives at the
+  // repo root so Cloudflare's default commands (pnpm run build, then
+  // npx wrangler deploy, from the root) work without flags; the build is
+  // turbo, which builds the packages the site imports before the site.
+  "name": "usebones-www",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./apps/www/dist/client",
+    // Pages prerender as <path>/index.html; serve them at slash-free URLs
+    // so the served path matches the router's hrefs (sidebar active state,
+    // prev/next) instead of redirecting to /path/.
+    "html_handling": "drop-trailing-slash",
+    // Unknown paths fall back to the app shell, where the router renders
+    // the root notFoundComponent.
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    { "pattern": "usebones.com", "custom_domain": true },
+    { "pattern": "www.usebones.com", "custom_domain": true }
+  ]
+}
