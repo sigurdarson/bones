@@ -435,6 +435,16 @@ html,
   color: var(--ub-text-secondary);
 }
 
+/* Previews render components, not prose: paragraphs and lists inside
+   them keep the component's own spacing and color (a Field description
+   is a <p>, for one). */
+.prose .showcase-preview p,
+.prose .showcase-preview ul,
+.prose .showcase-preview li {
+  margin: 0;
+  color: inherit;
+}
+
 .prose .lead {
   margin-bottom: 1.5rem;
 }
