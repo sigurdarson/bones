@@ -21,10 +21,16 @@ const names: Record<StatusColor, string> = {
   danger: "Failed",
 };
 
+/* Label on: visible text beside a decorative dot. Label off: the dot
+   alone, named through the label prop. */
 function buildCode(color: StatusColor, labeled: boolean): string {
+  const colorAttr = color === "neutral" ? "" : ` color="${color}"`;
+  const markup = labeled
+    ? `<Status${colorAttr} /> ${names[color]}`
+    : `<Status${colorAttr} label="${names[color]}" />`;
   return `import { Status } from "@usebones/react";
 
-<Status${color === "neutral" ? "" : ` color="${color}"`}${labeled ? ` label="${names[color]}"` : ""} />`;
+${markup}`;
 }
 
 export function StatusPlayground() {
@@ -37,15 +43,15 @@ export function StatusPlayground() {
         code={buildCode(color, labeled)}
         note={
           <>
-            Label on: the dot stands alone and screen readers hear its
-            name. Label off: it sits beside text that already says the
-            state and is hidden from them, which is the Badge's case.
+            Label on: the word sits beside the dot, so the dot is hidden
+            from screen readers (the Badge's case). Label off: the dot
+            stands alone and carries the name through its label prop.
           </>
         }
       >
         <div className="showcase-row">
-          <Status color={color} label={labeled ? names[color] : undefined} />
-          {labeled ? null : <span>{names[color]}</span>}
+          <Status color={color} label={labeled ? undefined : names[color]} />
+          {labeled ? <span>{names[color]}</span> : null}
         </div>
       </Showcase>
       <Controls>
