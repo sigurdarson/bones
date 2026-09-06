@@ -16,28 +16,46 @@ function inline(text: string): React.ReactNode[] {
 
 interface Section {
   heading: string;
-  entries: string[];
+  /* Runs of list items; a blank line between items starts a new run. */
+  groups: string[][];
+  /* Plain paragraphs under the heading, kept in order before the lists. */
+  notes: string[];
 }
 
-/* CHANGELOG.md has a fixed shape (see the release skill), so a tiny parser
-   beats a markdown dependency: h2 sections with wrapped list items. */
+/* CHANGELOG.md has a fixed shape (h2 sections with wrapped list items), so
+   a tiny parser beats a markdown dependency. Blank lines between items
+   split a release into runs, indented sub-bullets fold into their parent,
+   and stray prose lines under a heading render as paragraphs. */
 function parseChangelog(raw: string): { intro: string; sections: Section[] } {
   const lines = raw.split("\n");
   const sections: Section[] = [];
   const introParts: string[] = [];
   let current: Section | null = null;
+  let group: string[] | null = null;
 
   for (const line of lines) {
     if (line.startsWith("# ")) continue;
     if (line.startsWith("## ")) {
-      current = { heading: line.slice(3).trim(), entries: [] };
+      current = { heading: line.slice(3).trim(), groups: [], notes: [] };
       sections.push(current);
+      group = null;
     } else if (line.startsWith("- ")) {
-      current?.entries.push(line.slice(2).trim());
-    } else if (line.startsWith("  ") && current && current.entries.length > 0) {
-      current.entries[current.entries.length - 1] += " " + line.trim();
-    } else if (!current && line.trim() !== "") {
+      if (!current) continue;
+      if (!group) {
+        group = [];
+        current.groups.push(group);
+      }
+      group.push(line.slice(2).trim());
+    } else if (/^\s+- /.test(line) && group && group.length > 0) {
+      group[group.length - 1] += "; " + line.replace(/^\s+- /, "").trim();
+    } else if (line.startsWith("  ") && group && group.length > 0) {
+      group[group.length - 1] += " " + line.trim();
+    } else if (line.trim() === "") {
+      group = null;
+    } else if (!current) {
       introParts.push(line.trim());
+    } else {
+      current.notes.push(line.trim());
     }
   }
 
@@ -61,18 +79,24 @@ function Page() {
     <>
       <PageHeader title="Changelog" />
       <p className="lead">{inline(intro)}</p>
-      {sections.map((section) =>
-        section.entries.length === 0 ? null : (
-          <React.Fragment key={section.heading}>
-            <h2>{section.heading}</h2>
-            <ul>
-              {section.entries.map((entry, i) => (
+      {sections.map((section) => (
+        <React.Fragment key={section.heading}>
+          <h2>{section.heading}</h2>
+          {section.notes.map((note, i) => (
+            <p key={i}>{inline(note)}</p>
+          ))}
+          {section.groups.length === 0 && section.notes.length === 0 ? (
+            <p>Nothing yet.</p>
+          ) : null}
+          {section.groups.map((group, g) => (
+            <ul key={g}>
+              {group.map((entry, i) => (
                 <li key={i}>{inline(entry)}</li>
               ))}
             </ul>
-          </React.Fragment>
-        ),
-      )}
+          ))}
+        </React.Fragment>
+      ))}
     </>
   );
 }
