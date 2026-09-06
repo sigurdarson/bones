@@ -5,3 +5,6 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
+  # wrangler's local dev runtime; deploying static assets never runs it,
+  # so its binary download stays off.
+  workerd: false
