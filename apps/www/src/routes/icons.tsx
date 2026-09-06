@@ -49,10 +49,12 @@ function Page() {
     <>
       <PageHeader title="Icons" />
       <p className="lead">
-        Icons are semantic names, not a vendor. <code>@usebones/icons</code>{" "}
-        maps each name to a glyph (Lucide by default) and sizes it from the
-        same tokens as every control, so a whole app can swap icon sets in
-        one place.
+        Icons are a typed vocabulary of semantic names, not a vendor.{" "}
+        <code>@usebones/icons</code> maps each name to a glyph (Lucide by
+        default), sizes it from the same tokens as every control, and lets
+        an app grow the vocabulary and swap sets in one place. Bones
+        components also take any icon component as children, so nothing
+        forces the adapter on you.
       </p>
       <InstallTabs pkg="@usebones/icons" />
       <h2>Use an icon</h2>
@@ -71,8 +73,9 @@ import { Button } from "@usebones/react";
       />
       <h2>The set</h2>
       <p>
-        Every name that ships today. Components hand-roll their own tiny
-        structural glyphs (chevrons, checks), so these are for your UI.
+        The built-in names. Components hand-roll their own tiny structural
+        glyphs (chevrons, checks); this vocabulary is for your UI and for
+        Bones-built UI that should follow your set.
       </p>
       <ul className="icon-grid" aria-label="Available icons">
         {names.map((name) => (
@@ -82,6 +85,31 @@ import { Button } from "@usebones/react";
           </li>
         ))}
       </ul>
+      <h2>Add your own names</h2>
+      <p>
+        A misspelled or invented name fails to compile, for people and
+        coding agents alike, so grow the vocabulary on purpose: augment the
+        registry in a declaration file your tsconfig includes, then supply
+        the glyph. A registered name with no glyph renders nothing and
+        warns once in development.
+      </p>
+      <CodeBlock
+        lang="ts"
+        code={`// icons.d.ts
+declare module "@usebones/icons" {
+  interface IconRegistry {
+    rocket: true;
+    "thumbs-up": true;
+  }
+}`}
+      />
+      <CodeBlock
+        code={`<IconProvider icons={{ rocket: RocketGlyph, "thumbs-up": ThumbsUpGlyph }}>
+  <App />
+</IconProvider>
+
+<Icon name="rocket" />`}
+      />
       <h2>Swap the set</h2>
       <p>
         Wrap the app in <code>IconProvider</code> with a partial map from
@@ -112,7 +140,12 @@ import { Button } from "@usebones/react";
           {
             name: "IconProvider.icons",
             type: "Partial<IconSet>",
-            description: "Overrides by name; omitted names fall back to the default set.",
+            description: "Glyphs by name: overrides for built-in names and the glyphs for names you added; omitted names fall back to the default set.",
+          },
+          {
+            name: "IconRegistry",
+            type: "interface",
+            description: "The vocabulary; augment it to add names.",
           },
         ]}
       />
