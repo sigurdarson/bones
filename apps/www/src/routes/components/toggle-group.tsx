@@ -237,7 +237,7 @@ function Page() {
 - Wraps Bones Toggles; each joins via value="...". Group state is a string array: defaultValue or value + onValueChange.
 - Single-select by default (alignment); multiple for independent toggles (formatting marks). Single-select can still unpress to []; control value if one must stay pressed.
 - Size goes on each Toggle (size="compact"); the group has no size prop. disabled on the group disables every member.
-- Restyle the container in CSS via .ub-toggle-group, [data-multiple], [data-disabled]; the toggles style themselves via [data-pressed]. Tokens only.`}
+- Restyle in CSS via .ub-toggle-group, [data-multiple], [data-disabled]; the toggles style themselves via [data-pressed]. Tokens only.`}
       />
     </>
   );

@@ -104,7 +104,7 @@ function Page() {
             name: "invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border, ring, and hint, plus aria-invalid.",
+            description: "Danger border, ring, and hint, plus aria-invalid; a surrounding Field sets it automatically.",
           },
           {
             name: "leadingIcon",

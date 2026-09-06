@@ -126,7 +126,7 @@ function Page() {
 - Icons are children via @usebones/icons: <Icon name="..." /> before the label for leading, after for trailing, alone with iconOnly.
 - type defaults to "button"; every native button prop passes through.
 - Links styled as buttons: <a className="ub-button" data-variant="primary">.
-- Restyle in CSS via [data-variant], [data-size], [data-icon-only], :hover, :focus-visible, :active, :disabled, using --ub-* tokens only.`}
+- Restyle in CSS via .ub-button, [data-variant], [data-size], [data-icon-only], :hover, :focus-visible, :active, :disabled. Tokens only.`}
       />
     </>
   );

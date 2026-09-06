@@ -137,7 +137,7 @@ function Page() {
             name: "AutocompleteRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Sizes the input and the list together.",
+            description: "Sizes the input and the list together: 36px tall with 16px text by default, 28px with 14px text compact.",
           },
           {
             name: "AutocompleteInput.clearable",
@@ -160,7 +160,7 @@ function Page() {
             name: "AutocompleteInput.invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border and aria-invalid, like the Input; a surrounding Field sets it automatically.",
+            description: "Danger border and ring, plus aria-invalid; a surrounding Field sets it automatically.",
           },
           {
             name: "AutocompleteContent.empty / status",
@@ -181,7 +181,8 @@ function Page() {
 - The value is the input string (value/defaultValue/onValueChange); selecting a suggestion fills it and free text stays valid. Use Combobox when the value must come from the list.
 - mode: "list" (default) filters as you type; "both" also writes the highlighted suggestion into the input while arrowing; "inline" writes without filtering; "none" does neither.
 - Async: fetch in onValueChange (it fires per keystroke, since the value is the text), pass results as items, and put status="Searching..." on the content.
-- Shares the Combobox classes (.ub-combobox-input, .ub-combobox-popup, .ub-combobox-item) plus .ub-autocomplete-* hooks; restyling one restyles both. Tokens only.`}
+- Inside FieldRoot, drop invalid and use FieldLabel and FieldError instead; the Field wires the name and validation.
+- Restyle in CSS via the shared Combobox classes (.ub-combobox-input, .ub-combobox-popup, .ub-combobox-item) plus .ub-autocomplete-* hooks; restyling one restyles both. Tokens only.`}
       />
     </>
   );

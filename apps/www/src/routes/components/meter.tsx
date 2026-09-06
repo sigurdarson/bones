@@ -111,7 +111,7 @@ function Page() {
 - One component; track, indicator, and the optional label row render automatically. value + min/max pass through.
 - Always pass label (or aria-label); a dev warning fires without one. showValue adds the formatted value, format takes Intl.NumberFormatOptions.
 - A meter is a current level, never a loading state; use Progress for tasks underway.
-- No state attributes; restyle in CSS via .ub-meter-track, .ub-meter-indicator, and add your own class for thresholds. Tokens only.`}
+- Restyle in CSS via .ub-meter-track and .ub-meter-indicator (no state attributes); and add your own class for thresholds. Tokens only.`}
       />
     </>
   );

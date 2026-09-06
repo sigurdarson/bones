@@ -121,7 +121,7 @@ function Page() {
         instructions={`Checkbox, from @usebones/react.
 - Uncontrolled: defaultChecked. Controlled: checked + onCheckedChange. indeterminate is display only (it shows the dash without changing checked); use it for a parent of a partly checked group. disabled.
 - Wrap in a <label> with its text so the text is clickable, or put it inside FieldRoot with a FieldLabel.
-- Restyle in CSS via [data-checked], [data-indeterminate], [data-disabled], using --ub-* tokens only.`}
+- Restyle in CSS via .ub-checkbox, .ub-checkbox-indicator, [data-checked], [data-indeterminate], [data-disabled]. Tokens only.`}
       />
     </>
   );

@@ -147,7 +147,7 @@ function Page() {
             name: "SelectRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
-            description: "Sizes the trigger and dropdown items together: 36px tall by default, 28px compact.",
+            description: "Sizes the trigger and dropdown items together: 36px tall with 16px text by default, 28px with 14px text compact.",
           },
           {
             name: "SelectTrigger.disabled",
@@ -159,7 +159,7 @@ function Page() {
             name: "SelectTrigger.invalid",
             type: "boolean",
             defaultValue: "false",
-            description: "Danger border, ring, and hint, plus aria-invalid.",
+            description: "Danger border, ring, and hint, plus aria-invalid; a surrounding Field sets it automatically.",
           },
           {
             name: "SelectTrigger.leadingIcon",
@@ -200,7 +200,8 @@ function Page() {
 - SelectRoot: defaultValue or value + onValueChange (the callback value can be null); size sizes the trigger and dropdown items together. Always pass items (a value to label record) so the trigger shows the selected label instead of the raw value.
 - SelectTrigger: placeholder, variant "default" | "borderless", invalid, leadingIcon, hint. The chevron renders automatically; there is no trailing icon slot.
 - SelectContent handles the portal and positioning. SelectItem children are the label; the selected check renders automatically.
-- Restyle in CSS via [data-highlighted], [data-selected], [data-popup-open], using --ub-* tokens only.`}
+- Inside FieldRoot, drop invalid and hint and use FieldLabel, FieldDescription, and FieldError instead.
+- Restyle in CSS via .ub-select-trigger, .ub-select-popup, .ub-select-item, [data-highlighted], [data-selected], [data-popup-open]. Tokens only.`}
       />
     </>
   );
