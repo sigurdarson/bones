@@ -528,10 +528,6 @@ html,
 
 /* ---------- introduction ---------- */
 
-.intro-title {
-  padding-top: 1.5rem;
-}
-
 .intro-actions {
   display: flex;
   gap: 0.625rem;
