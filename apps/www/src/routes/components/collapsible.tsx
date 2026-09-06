@@ -6,7 +6,10 @@ import {
 } from "@usebones/react";
 import { AgentInstructions } from "@/components/agent-instructions";
 import { CodeBlock } from "@/components/code-block";
-import { CollapsiblePlayground } from "@/components/collapsible-playground";
+import {
+  CollapsibleBody,
+  CollapsiblePlayground,
+} from "@/components/collapsible-playground";
 import { PageHeader } from "@/components/page-header";
 import { PropsTable } from "@/components/props-table";
 import { Showcase } from "@/components/showcase";
@@ -42,17 +45,23 @@ function Page() {
       <Showcase
         code={`<CollapsibleRoot>
   <CollapsibleTrigger>Advanced settings</CollapsibleTrigger>
-  <CollapsiblePanel>Custom domains, API access, and webhooks.</CollapsiblePanel>
+  <CollapsiblePanel>
+    <p>Custom domains, API access, and webhooks.</p>
+  </CollapsiblePanel>
 </CollapsibleRoot>
 
 <CollapsibleRoot defaultOpen>
   <CollapsibleTrigger>Webhooks</CollapsibleTrigger>
-  <CollapsiblePanel>Two endpoints listening; last delivery 4 minutes ago.</CollapsiblePanel>
+  <CollapsiblePanel>
+    <p>Two endpoints listening; last delivery 4 minutes ago.</p>
+  </CollapsiblePanel>
 </CollapsibleRoot>
 
 <CollapsibleRoot disabled>
   <CollapsibleTrigger>Legacy API</CollapsibleTrigger>
-  <CollapsiblePanel>Retired in March; nothing to configure.</CollapsiblePanel>
+  <CollapsiblePanel>
+    <p>Retired in March; nothing to configure.</p>
+  </CollapsiblePanel>
 </CollapsibleRoot>`}
       >
         <div className="showcase-stack">
@@ -60,7 +69,7 @@ function Page() {
             <CollapsibleRoot>
               <CollapsibleTrigger>Advanced settings</CollapsibleTrigger>
               <CollapsiblePanel>
-                Custom domains, API access, and webhooks.
+                <CollapsibleBody>Custom domains, API access, and webhooks.</CollapsibleBody>
               </CollapsiblePanel>
             </CollapsibleRoot>
           </div>
@@ -68,7 +77,7 @@ function Page() {
             <CollapsibleRoot defaultOpen>
               <CollapsibleTrigger>Webhooks</CollapsibleTrigger>
               <CollapsiblePanel>
-                Two endpoints listening; last delivery 4 minutes ago.
+                <CollapsibleBody>Two endpoints listening; last delivery 4 minutes ago.</CollapsibleBody>
               </CollapsiblePanel>
             </CollapsibleRoot>
           </div>
@@ -76,7 +85,7 @@ function Page() {
             <CollapsibleRoot disabled>
               <CollapsibleTrigger>Legacy API</CollapsibleTrigger>
               <CollapsiblePanel>
-                Retired in March; nothing to configure.
+                <CollapsibleBody>Retired in March; nothing to configure.</CollapsibleBody>
               </CollapsiblePanel>
             </CollapsibleRoot>
           </div>
