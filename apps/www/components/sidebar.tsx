@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useLocation } from "@tanstack/react-router";
+import { Badge, Status } from "@usebones/react";
 import { siteNav } from "@/lib/nav";
 
 export function Sidebar({ className }: { className?: string } = {}) {
@@ -25,7 +26,16 @@ export function Sidebar({ className }: { className?: string } = {}) {
                   >
                     {item.title}
                     {item.badge ? (
-                      <span className="sidebar-badge">{item.badge}</span>
+                      <Badge size="compact" className="sidebar-badge">
+                        {item.badge}
+                      </Badge>
+                    ) : null}
+                    {item.status ? (
+                      <Status
+                        color={item.status}
+                        label={item.status === "info" ? "New" : item.status}
+                        className="sidebar-status"
+                      />
                     ) : null}
                   </Link>
                 )}

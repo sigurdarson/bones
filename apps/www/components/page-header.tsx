@@ -1,3 +1,4 @@
+import { Badge } from "@usebones/react";
 import { PageNav } from "./page-nav";
 
 /* Page title row: H1 left (with an optional status badge), previous/next
@@ -16,7 +17,11 @@ export function PageHeader({
     <div className="page-header">
       <h1 className={className}>
         {title}
-        {badge ? <span className="page-badge">{badge}</span> : null}
+        {badge ? (
+          <Badge size="compact" className="page-badge">
+            {badge}
+          </Badge>
+        ) : null}
       </h1>
       <PageNav />
     </div>

@@ -4,6 +4,7 @@
 @import "./autocomplete/autocomplete.css";
 @import "./avatar/avatar.css";
 @import "./avatar-group/avatar-group.css";
+@import "./badge/badge.css";
 @import "./button/button.css";
 @import "./checkbox/checkbox.css";
 @import "./checkbox-group/checkbox-group.css";
@@ -30,6 +31,7 @@
 @import "./select/select.css";
 @import "./separator/separator.css";
 @import "./slider/slider.css";
+@import "./status/status.css";
 @import "./switch/switch.css";
 @import "./tabs/tabs.css";
 @import "./toast/toast.css";

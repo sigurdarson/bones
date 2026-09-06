@@ -208,7 +208,7 @@ html,
   border: none;
 }
 
-@media (min-width: 761px) {
+@media (min-width: 64.0625rem) {
   /* Lines the logo up with the nav text below it, which sits behind the
      sidebar items' 0.75rem inline padding. */
   .site-logo {
@@ -262,23 +262,15 @@ html,
   padding-inline: 0.75rem;
 }
 
-/* Status badges: a quiet compact pill beside a title. */
+/* Status marks beside a title: a compact Badge, or a Status dot. */
 .sidebar-badge,
-.page-badge {
-  display: inline-block;
+.page-badge,
+.sidebar-status {
   margin-inline-start: 0.5rem;
-  padding: 0.0625rem 0.375rem;
-  border: 1px solid var(--ub-border);
-  border-radius: var(--ub-radius-full);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--ub-text-secondary);
-  vertical-align: middle;
 }
 
 .page-badge {
-  font-size: 0.75rem;
+  vertical-align: 0.35em;
 }
 
 .sidebar ul {
@@ -319,13 +311,25 @@ html,
   min-width: 0;
 }
 
-@media (max-width: 760px) {
+/* Desktop below the width the three columns need: the rail would float
+   over the prose, so pages with a rail reserve its width (14rem plus the
+   3rem gap) and the content narrows instead. */
+@media (min-width: 64.0625rem) and (max-width: 80rem) {
+  .site-content:has(.controls-rail) {
+    padding-inline-end: 17rem;
+  }
+}
+
+/* Tablets and phones (64rem and under): the sidebar gives way to the
+   drawer opened from the header, and the content column centers. Tablets
+   keep the controls rail beside the content. */
+@media (max-width: 64rem) {
   .site-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 57rem);
+    justify-content: center;
     gap: 0;
   }
 
-  /* The layout's sidebar gives way to the drawer opened from the header. */
   .site-layout > .sidebar {
     display: none;
   }
@@ -338,14 +342,30 @@ html,
     grid-column: auto;
   }
 
-  .controls-rail {
-    position: static;
-    width: auto;
-    margin-top: 2rem;
+  /* The prose caps at 40rem; centered, the leftover width splits evenly
+     instead of all landing on the right. */
+  .prose {
+    margin-inline: auto;
   }
 
-  .controls-stack {
-    position: static;
+  .site-content:has(.controls-rail) {
+    padding-inline-end: 17rem;
+  }
+}
+
+/* Phones: one column, and the configurator rail is a wider-screen
+   affordance, so playgrounds keep their defaults. */
+@media (max-width: 47.5rem) {
+  .site-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .site-content:has(.controls-rail) {
+    padding-inline-end: 0;
+  }
+
+  .controls-rail {
+    display: none;
   }
 }
 
@@ -728,6 +748,33 @@ html,
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--ub-border);
   border-radius: var(--ub-radius-md);
+}
+
+/* Two side-by-side stacks in a static showcase, e.g. default beside
+   compact. */
+.showcase-columns {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.showcase-columns .showcase-stack {
+  align-items: flex-start;
+}
+
+/* A wrapping row of small items in a static showcase. */
+.showcase-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Wider spacing when each item is itself a small pair, like a dot and
+   its word. */
+.showcase-row-loose {
+  gap: 0.75rem 1.5rem;
 }
 
 .props-table-wrap {

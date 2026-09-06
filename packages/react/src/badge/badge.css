@@ -1,0 +1,80 @@
+/* Size resolves through vars on the badge; compact remaps them. Text is
+   the compact token in the default badge and one step smaller in the
+   compact badge, and icons follow through --ub-icon-size. */
+.ub-badge {
+  --_ub-badge-height: 1.5rem;
+  --_ub-badge-font: var(--ub-font-size-compact);
+  --_ub-badge-pad: 0.5rem;
+  --ub-icon-size: var(--ub-icon-size-compact);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  box-sizing: border-box;
+  height: var(--_ub-badge-height);
+  padding-inline: var(--_ub-badge-pad);
+  border-radius: var(--ub-radius-control);
+  background: var(--ub-tint-gray-bg);
+  color: var(--ub-tint-gray-text);
+  font-size: var(--_ub-badge-font);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* Compact is a 20px tag with the small radius: at this height the
+   control radius reads as a pill, and a tag should not. */
+.ub-badge[data-size="compact"] {
+  --_ub-badge-height: 1.25rem;
+  border-radius: var(--ub-radius-sm);
+  /* 12px: the compact text token less an eighth, to fit the tag. */
+  --_ub-badge-font: calc(var(--ub-font-size-compact) - 0.125rem);
+  --_ub-badge-pad: 0.375rem;
+  --ub-icon-size: calc(var(--ub-icon-size-compact) - 0.125rem);
+  gap: 0.25rem;
+}
+
+/* tints: neutral is the base; the eight hues override the pair */
+.ub-badge[data-color="red"] {
+  background: var(--ub-tint-red-bg);
+  color: var(--ub-tint-red-text);
+}
+
+.ub-badge[data-color="orange"] {
+  background: var(--ub-tint-orange-bg);
+  color: var(--ub-tint-orange-text);
+}
+
+.ub-badge[data-color="green"] {
+  background: var(--ub-tint-green-bg);
+  color: var(--ub-tint-green-text);
+}
+
+.ub-badge[data-color="teal"] {
+  background: var(--ub-tint-teal-bg);
+  color: var(--ub-tint-teal-text);
+}
+
+.ub-badge[data-color="blue"] {
+  background: var(--ub-tint-blue-bg);
+  color: var(--ub-tint-blue-text);
+}
+
+.ub-badge[data-color="violet"] {
+  background: var(--ub-tint-violet-bg);
+  color: var(--ub-tint-violet-text);
+}
+
+.ub-badge[data-color="fuchsia"] {
+  background: var(--ub-tint-fuchsia-bg);
+  color: var(--ub-tint-fuchsia-text);
+}
+
+.ub-badge[data-color="rose"] {
+  background: var(--ub-tint-rose-bg);
+  color: var(--ub-tint-rose-text);
+}
+
+.ub-badge-status {
+  flex-shrink: 0;
+}

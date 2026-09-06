@@ -28,6 +28,7 @@ const overrideReference = [
   { token: "--ub-success", light: "green-600", dark: "green-500", controls: "Positive feedback" },
   { token: "--ub-warning", light: "orange-500", dark: "orange-400", controls: "Caution" },
   { token: "--ub-info", light: "blue-600", dark: "blue-400", controls: "Informational" },
+  { token: "--ub-tint-<hue>-bg / -text", light: "hue-100 / hue-700 (gray 200 / 700)", dark: "hue-900 / hue-300 (gray 800 / 300)", controls: "Soft fill and text per palette hue; badges" },
   { token: "--ub-shadow-sm / md / lg", light: "soft", dark: "stronger", controls: "Elevation scale for overlays" },
   { token: "--ub-z-overlay", light: "1000", dark: "same", controls: "One layer for every floating part; raise above taller app chrome" },
   { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps (radii, not sizes); pill mode also rounds the sm, md, and lg steps further" },
