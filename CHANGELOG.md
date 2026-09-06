@@ -5,6 +5,8 @@ entry notes the package it affects.
 
 ## Unreleased
 
+## 0.2.2 (2026-08-27)
+
 - icons: icon names come from an augmentable IconRegistry interface, so
   apps add their own names with full typing (declare module
   "@usebones/icons" { interface IconRegistry { rocket: true } }) and
