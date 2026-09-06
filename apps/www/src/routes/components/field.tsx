@@ -75,9 +75,21 @@ function Page() {
             description: "Disables the control and dims the label.",
           },
           {
+            name: "FieldRoot.validationMode",
+            type: '"onBlur" | "onChange" | "onSubmit"',
+            defaultValue: '"onSubmit"',
+            description: "When validation runs; overrides the Form-level setting for this field.",
+          },
+          {
+            name: "FieldRoot.validationDebounceTime",
+            type: "number",
+            defaultValue: "0",
+            description: "Milliseconds to wait before validating on change.",
+          },
+          {
             name: "FieldRoot.validate",
-            type: "(value) => string | string[] | null",
-            description: "Custom validation; return the error message(s) or null.",
+            type: "(value, formValues) => string | string[] | null | Promise<...>",
+            description: "Custom validation, sync or async; return the error message(s) or null. Receives the other fields' values too.",
           },
           {
             name: "FieldError.match",

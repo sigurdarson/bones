@@ -55,6 +55,12 @@ function Page() {
             description: "Controlled state. Pair with onOpenChange (also defaultOpen).",
           },
           {
+            name: "DrawerRoot.modal",
+            type: 'boolean | "trap-focus"',
+            defaultValue: "true",
+            description: "Dims and inerts the page behind, like the Dialog.",
+          },
+          {
             name: "DrawerRoot.side",
             type: '"right" | "left" | "bottom"',
             defaultValue: '"right"',
@@ -78,11 +84,15 @@ function Page() {
           },
         ]}
       />
+      <p>
+        One quirk: the dismiss swipe follows <code>side</code> (a right panel
+        swipes right). Pass <code>swipeDirection</code> to override it.
+      </p>
       <AgentInstructions
         instructions={`DrawerRoot, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, from @usebones/react.
 - Structure: DrawerRoot wraps DrawerTrigger + DrawerContent; put DrawerTitle (names the sheet), DrawerDescription, and the body inside. DrawerClose closes it.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
-- side on the root: "right" (default) | "left" (full-height panels, 24rem wide) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
+- side on the root: "right" (default) | "left" (full-height panels up to 24rem wide, shrinking on narrow screens) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side; modal with focus trap and Escape everywhere.
 - Restyle in CSS via .ub-drawer-popup, [data-side], .ub-drawer-backdrop, [data-swiping], [data-starting-style]/[data-ending-style]. Tokens only.`}
       />
     </>

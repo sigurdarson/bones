@@ -30,7 +30,7 @@ const overrideReference = [
   { token: "--ub-info", light: "blue-600", dark: "blue-400", controls: "Informational" },
   { token: "--ub-shadow-sm / md / lg", light: "soft", dark: "stronger", controls: "Elevation scale for overlays" },
   { token: "--ub-z-overlay", light: "1000", dark: "same", controls: "One layer for every floating part; raise above taller app chrome" },
-  { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps" },
+  { token: "--ub-radius-xs to xl, full", light: "4 to 16px, 9999px", dark: "same", controls: "Container rounding steps; pill also enlarges sm, md, and lg" },
   { token: "--ub-radius-control", light: "8px (pill: full)", dark: "same", controls: "Every interactive element" },
   { token: "--ub-font-size / -compact", light: "16px / 14px", dark: "same", controls: "The two text sizes" },
   { token: "--ub-control-height / -compact", light: "36px / 28px", dark: "same", controls: "The two control heights" },
@@ -57,8 +57,9 @@ function Page() {
       </p>
       <h2>Color steps</h2>
       <p>
-        Every scale runs 50 through 950 on a shared lightness ladder, so any
-        step swaps cleanly across hues. Gray is the neutral default. Red,
+        The eight color scales run 50 through 950 on one shared lightness
+        ladder, so any step swaps cleanly across hues; gray runs a slightly
+        darker ladder tuned for backgrounds. Gray is the neutral default. Red,
         orange, green, and blue back the feedback roles (danger, warning,
         success, info); violet, teal, fuchsia, and rose are secondary colors
         for badges and accents. Raw steps are for themes to reference;
@@ -73,13 +74,14 @@ function Page() {
         preference without a flash, run this before paint:
       </p>
       <CodeBlock
-        code={`<script>{\`
+        lang="html"
+        code={`<script>
   try {
-    var t = localStorage.getItem("theme");
+    var t = localStorage.getItem("ub-theme");
     if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
       document.documentElement.setAttribute("data-theme", "dark");
   } catch (e) {}
-\`}</script>`}
+</script>`}
       />
       <h2>Radius: rounded or pill</h2>
       <p>
@@ -91,7 +93,7 @@ function Page() {
       <h2>Your own accent</h2>
       <p>
         The neutral default uses near-black as the accent. Give it a color by
-        overriding two tokens:
+        overriding four tokens:
       </p>
       <CodeBlock
         lang="css"
@@ -99,11 +101,12 @@ function Page() {
   --ub-accent: oklch(0.55 0.2 260);
   --ub-accent-hover: oklch(0.5 0.2 260);
   --ub-accent-contrast: white;
+  --ub-ring: oklch(0.7 0.15 260);
 }`}
       />
       <h2>Prebuilt accent themes</h2>
       <p>
-        Every color scale ships as a ready accent theme. One import recolors
+        Each of the eight color scales ships as a ready accent theme. One import recolors
         everything that means "primary action" in both modes:
       </p>
       <CodeBlock code={`import "@usebones/tokens/themes/blue.css";`} />

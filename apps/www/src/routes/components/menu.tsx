@@ -112,6 +112,17 @@ function Page() {
             description: "Alignment along the trigger; menus align start by default.",
           },
           {
+            name: "MenuContent.side",
+            type: "PositionerSide",
+            description: "Which side of the trigger to open on; below by default, beside for submenus.",
+          },
+          {
+            name: "MenuContent.sideOffset",
+            type: "number",
+            defaultValue: "4",
+            description: "Gap between the trigger and the menu, in pixels.",
+          },
+          {
             name: "MenuItem.closeOnClick",
             type: "boolean",
             defaultValue: "true",

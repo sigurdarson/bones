@@ -92,6 +92,17 @@ function Page() {
             description: "Shows the clear button while something is typed.",
           },
           {
+            name: "AutocompleteInput.variant",
+            type: '"default" | "borderless"',
+            defaultValue: '"default"',
+            description: "Bordered, or a muted fill with no border.",
+          },
+          {
+            name: "AutocompleteInput.placeholder",
+            type: "string",
+            description: "Hint text while the input is empty.",
+          },
+          {
             name: "AutocompleteInput.invalid",
             type: "boolean",
             defaultValue: "false",
@@ -101,6 +112,12 @@ function Page() {
             name: "AutocompleteContent.empty / status",
             type: "ReactNode",
             description: "Empty state, and a politely announced status line for async searches.",
+          },
+          {
+            name: "AutocompleteContent.sideOffset",
+            type: "number",
+            defaultValue: "4",
+            description: "Gap between the input and the popup, in pixels. Also side and align.",
           },
         ]}
       />

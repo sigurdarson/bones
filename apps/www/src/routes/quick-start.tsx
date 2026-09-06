@@ -13,8 +13,8 @@ function Page() {
     <>
       <PageHeader title="Quick start" />
       <p className="lead">
-        Two packages: tokens (plain CSS) and components (React). Add the icon
-        adapter if you need icons.
+        Two packages: tokens (plain CSS) and components (React 19 or newer).
+        Add the icon adapter, <code>@usebones/icons</code>, if you need icons.
       </p>
       <InstallTabs pkg="@usebones/react @usebones/tokens" />
       <h2>Import styles once</h2>
@@ -28,8 +28,9 @@ import "@usebones/react/styles.css";`}
 
       />
       <p>
-        Use the explicit <code>.css</code> paths. TypeScript 7 rejects
-        extensionless side-effect imports of CSS.
+        Keep the <code>.css</code> on the end. TypeScript 7 rejects imports
+        that exist only for their side effects unless the extension is
+        spelled out.
       </p>
       <h2>Use components</h2>
       <CodeBlock
@@ -50,11 +51,13 @@ export function Example() {
         JavaScript required:
       </p>
       <CodeBlock lang="html" code={`<html data-theme="dark" data-radius="pill">`} />
-      <h2>Using Tailwind?</h2>
+      <h2>Using Tailwind v4?</h2>
       <p>
         Import <code>@usebones/tokens/tailwind.css</code> instead of{" "}
         <code>index.css</code>. Same tokens, plus utilities like{" "}
-        <code>bg-ub-accent</code> and <code>ease-ub-spring</code>. Tailwind is
+        <code>bg-ub-accent</code> and <code>ease-ub-spring</code>. The file uses{" "}
+        <code>@theme inline</code>, so it needs v4; on v3, import{" "}
+        <code>index.css</code> and reference the tokens directly. Tailwind is
         supported, never required.
       </p>
     </>

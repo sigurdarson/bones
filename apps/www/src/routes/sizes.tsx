@@ -31,21 +31,21 @@ function Page() {
           <tbody>
             <tr>
               <td>
-                <code>--ub-font-size</code>
+                <code>--ub-font-size / -compact</code>
               </td>
               <td>16px</td>
               <td>14px</td>
             </tr>
             <tr>
               <td>
-                <code>--ub-control-height</code>
+                <code>--ub-control-height / -compact</code>
               </td>
               <td>36px</td>
               <td>28px</td>
             </tr>
             <tr>
               <td>
-                <code>--ub-icon-size</code>
+                <code>--ub-icon-size-default / -compact</code>
               </td>
               <td>16px</td>
               <td>14px</td>

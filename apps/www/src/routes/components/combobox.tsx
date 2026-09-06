@@ -125,7 +125,7 @@ function Page() {
             name: "ComboboxInput.clearable",
             type: "boolean",
             defaultValue: "true",
-            description: "Swaps the chevron for a clear button while something is selected.",
+            description: "While something is selected, the clear button takes the chevron's place.",
           },
           {
             name: "ComboboxInput.invalid",
@@ -142,6 +142,32 @@ function Page() {
             name: "ComboboxContent.children",
             type: "(item) => ReactNode",
             description: "Called with each filtered item; render a ComboboxItem.",
+          },
+          {
+            name: "ComboboxContent.searchInput",
+            type: "boolean | string",
+            description: "Puts the text input inside the popup, for ComboboxTrigger; a string sets its placeholder.",
+          },
+          {
+            name: "ComboboxContent.status",
+            type: "ReactNode",
+            description: "A politely announced status line above the list, for async searches.",
+          },
+          {
+            name: "ComboboxContent.sideOffset",
+            type: "number",
+            defaultValue: "4",
+            description: "Gap between the input and the popup, in pixels. Also side and align.",
+          },
+          {
+            name: "ComboboxTrigger.placeholder",
+            type: "ReactNode",
+            description: "Shown while nothing is selected; visual only, so name the trigger with aria-label.",
+          },
+          {
+            name: "ComboboxRoot.itemToStringLabel",
+            type: "(item) => string",
+            description: "The label to show and filter on when items are objects.",
           },
         ]}
       />

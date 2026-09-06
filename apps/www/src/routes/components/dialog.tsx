@@ -55,9 +55,9 @@ function Page() {
           },
           {
             name: "DialogRoot.modal",
-            type: "boolean",
+            type: "boolean | \"trap-focus\"",
             defaultValue: "true",
-            description: "Dims and inerts the page behind; false keeps it interactive.",
+            description: "Dims and inerts the page behind; false keeps it interactive, trap-focus traps focus without dimming.",
           },
           {
             name: "DialogRoot.disablePointerDismissal",
@@ -72,8 +72,13 @@ function Page() {
           },
           {
             name: "DialogContent.initialFocus",
-            type: "RefObject<HTMLElement>",
+            type: "boolean | RefObject<HTMLElement | null> | (openType) => ...",
             description: "Where focus lands on open; defaults to the first focusable part.",
+          },
+          {
+            name: "DialogContent.finalFocus",
+            type: "RefObject<HTMLElement | null>",
+            description: "Where focus returns on close; defaults to the trigger.",
           },
         ]}
       />

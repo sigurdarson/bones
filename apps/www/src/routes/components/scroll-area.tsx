@@ -94,11 +94,8 @@ function Page() {
       />
       <h2>Props</h2>
       <p>
-        Everything a div accepts passes through; size it like any box
-        (height, max-height, width). Give a named region an{" "}
-        <code>aria-label</code> so screen readers know what's scrolling.
-        There are no Bones-specific props; both bars are always wired and
-        each appears only when its axis actually overflows.
+        Everything a div accepts passes through; size it like any box with
+        height, max-height, or width. The one prop worth naming:
       </p>
       <PropsTable
         rows={[
@@ -106,11 +103,6 @@ function Page() {
             name: "aria-label",
             type: "string",
             description: "Names the scrollable region for screen readers.",
-          },
-          {
-            name: "style / className",
-            type: "CSSProperties / string",
-            description: "Sizing lives here: height or max-height for vertical, width for horizontal.",
           },
         ]}
       />

@@ -65,6 +65,12 @@ function Page() {
             description: "Preferred side; flips to the opposite when out of room.",
           },
           {
+            name: "PreviewCardContent.align",
+            type: '"start" | "center" | "end"',
+            defaultValue: '"center"',
+            description: "Alignment along that side.",
+          },
+          {
             name: "PreviewCardContent.sideOffset",
             type: "number",
             defaultValue: "8",

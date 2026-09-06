@@ -70,9 +70,10 @@ function Page() {
       </Showcase>
       <h2>Styling states</h2>
       <p>
-        Field state comes through data attributes
+        Inside a Field, state comes through data attributes
         (<code>data-focused</code>, <code>data-filled</code>,{" "}
-        <code>data-invalid</code>), so custom styling never needs JavaScript:
+        <code>data-invalid</code>); a standalone input styles focus with{" "}
+        <code>:focus</code>. Custom styling never needs JavaScript:
       </p>
       <CodeBlock
         lang="css"
@@ -128,7 +129,7 @@ function Page() {
 - leadingIcon/trailingIcon take a ReactNode (use <Icon /> from @usebones/icons); they are decorative. hint renders below, linked via aria-describedby.
 - The Bones size prop replaces the native size attribute; control width with CSS. All other native input props pass through.
 - Inside FieldRoot, drop invalid and hint and use FieldLabel, FieldDescription, and FieldError instead.
-- Restyle in CSS via [data-focused], [data-filled], [data-invalid], [data-disabled], using --ub-* tokens only.`}
+- Restyle in CSS via .ub-input, [data-invalid], [data-disabled], and inside a Field also [data-focused] and [data-filled]; standalone focus is :focus. Tokens only.`}
       />
     </>
   );

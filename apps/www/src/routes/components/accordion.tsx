@@ -58,6 +58,11 @@ function Page() {
             description: "Controlled open sections. Pair with onValueChange.",
           },
           {
+            name: "onValueChange",
+            type: "(value) => void",
+            description: "Fires with the new set of open values.",
+          },
+          {
             name: "multiple",
             type: "boolean",
             defaultValue: "false",
@@ -79,6 +84,12 @@ function Page() {
             type: "boolean",
             defaultValue: "false",
             description: "Keeps closed content findable with the browser's in-page search.",
+          },
+          {
+            name: "keepMounted",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Keeps a closed panel in the DOM, for content that must stay mounted.",
           },
         ]}
       />

@@ -46,9 +46,10 @@ function Page() {
             description: "Controlled state. Pair with onOpenChange.",
           },
           {
-            name: "ContextMenuTrigger.children",
-            type: "ReactNode",
-            description: "The right-clickable surface: a card, a row, a canvas.",
+            name: "ContextMenuRoot.defaultOpen",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Starts open, for uncontrolled usage.",
           },
         ]}
       />

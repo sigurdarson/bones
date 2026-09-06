@@ -90,6 +90,17 @@ function Page() {
             defaultValue: "false",
             description: "Blocks interaction and dims the control.",
           },
+          {
+            name: "value",
+            type: "string",
+            description: "Identifies the box inside a CheckboxGroup; see that page for parent and select-all.",
+          },
+          {
+            name: "required",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Native required validation, surfaced by a wrapping Field.",
+          },
         ]}
       />
       <AgentInstructions
