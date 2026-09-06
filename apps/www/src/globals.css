@@ -342,6 +342,12 @@ html,
     grid-column: auto;
   }
 
+  /* The prose caps at 40rem; centered, the leftover width splits evenly
+     instead of all landing on the right. */
+  .prose {
+    margin-inline: auto;
+  }
+
   .site-content:has(.controls-rail) {
     padding-inline-end: 17rem;
   }
