@@ -5,16 +5,16 @@ description: Create or update a component docs page on usebones.com following th
 
 # Component docs page
 
-Reference implementation: `apps/www/app/components/tabs/page.tsx` plus
+Reference implementation: `apps/www/src/routes/components/tabs.tsx` plus
 `apps/www/components/tabs-playground.tsx`. Copy its shape, not its content.
 
 ## Files
 
 ```
-apps/www/app/components/<name>/page.tsx     # the page (server component)
-apps/www/components/<name>-playground.tsx   # playground (client component)
+apps/www/src/routes/components/<name>.tsx   # the page (createFileRoute + head title)
+apps/www/components/<name>-playground.tsx   # playground
 apps/www/lib/nav.ts                         # register under Components
-apps/www/app/llms.txt/route.ts              # component entry + slug list
+apps/www/lib/llms.ts                        # component entry + slug list
 ```
 
 ## Page structure, in order
@@ -56,7 +56,7 @@ show). No filler like "here are the variants".
 
 ## Playground rules
 
-- Client component using `Showcase` (preview + live Code tab) and
+- A regular component using `Showcase` (preview + live Code tab) and
   `Controls` (right rail; the Library panel is appended automatically).
 - Controls map one-to-one to props: `ControlRow` + `Switch` for booleans,
   a borderless compact Bones Select for enums, `ControlField` for wide

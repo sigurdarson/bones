@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { NumberField, Switch } from "@usebones/react";
 import { Showcase } from "./showcase";

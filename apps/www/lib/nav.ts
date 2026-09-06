@@ -1,7 +1,7 @@
 export interface NavItem {
   title: string;
   href: string;
-  /* Plain files (like llms.txt) use a regular anchor, not a Next Link. */
+  /* Plain files (like llms.txt) use a regular anchor, not a router Link. */
   plain?: boolean;
 }
 

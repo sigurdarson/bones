@@ -14,12 +14,28 @@ a decision lands; keep open questions at the top.
    gated by license key, or one-time-purchase download. Registry fits the
    "own your code / agents can read it" story best and is what the docs-site
    configurator model expects.
-3. **Docs engine.** Plain MDX in Next.js vs a docs framework with built-in
-   search + llms.txt generation. Decide when docs content starts for real.
-4. **Per-component packages?** `@usebones/button`-style installs are possible
+3. **Per-component packages?** `@usebones/button`-style installs are possible
    later via a registry; per-component *npm packages* multiply maintenance
    (versioning, changelogs, peer ranges) for little gain. Current call: one
    `@usebones/react` package, tree-shakeable via ESM.
+
+## 2026-08-27: Docs site on TanStack Start, static on Cloudflare
+
+Closes the docs-engine open question. The site moved off its previous
+framework to TanStack Start with every route prerendered at build time
+(the site has zero dynamic server behavior), deployed as static assets
+on Cloudflare via wrangler. Notes that shaped it:
+
+- Pages are `createFileRoute` files under `apps/www/src/routes`; titles
+  come from each route's `head()`. The document shell (styles in token
+  order, the pre-paint theme script) lives in `__root.tsx`.
+- llms.txt and skills/bones.md are server routes prerendered into real
+  static files; their content stays in `lib/`.
+- Code highlighting is client-side everywhere through one shared lazy
+  shiki hook (`lib/use-highlighted.ts`); prose blocks and playground
+  Code tabs behave identically, and shiki stays out of the main bundle.
+- There is no server/client component boundary anymore: no "use client"
+  directives, and demos may pass render functions freely.
 
 ## 2026-08-25: Consistency audit rules
 

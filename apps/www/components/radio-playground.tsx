@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Radio, RadioGroup, Switch } from "@usebones/react";
 import { Showcase } from "./showcase";

@@ -1,11 +1,9 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { siteNav } from "@/lib/nav";
 
 export function Sidebar() {
-  const pathname = usePathname();
+  const pathname = useLocation({ select: (location) => location.pathname });
 
   return (
     <nav className="sidebar" aria-label="Documentation">
@@ -19,7 +17,7 @@ export function Sidebar() {
                   <a href={item.href}>{item.title}</a>
                 ) : (
                   <Link
-                    href={item.href}
+                    to={item.href}
                     aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.title}

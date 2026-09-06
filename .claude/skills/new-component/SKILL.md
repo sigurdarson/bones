@@ -31,11 +31,11 @@ Docs surfaces, in the same PR (a component missing from any of these is
 incomplete):
 
 ```
-apps/www/app/components/<name>/page.tsx   # docs page (component-page skill)
-apps/www/lib/nav.ts                       # sidebar entry
-apps/www/app/llms.txt/route.ts            # component entry + the slug list
-docs/COMPONENTS.md                        # roadmap status to done
-CHANGELOG.md                              # react: add <name>, under Unreleased
+apps/www/src/routes/components/<name>.tsx   # docs page (component-page skill)
+apps/www/lib/nav.ts                         # sidebar entry
+apps/www/lib/llms.ts                        # component entry + the slug list
+docs/COMPONENTS.md                          # roadmap status to done
+CHANGELOG.md                                # react: add <name>, under Unreleased
 ```
 
 Also check `apps/www/lib/bones-skill.ts` (the installable skill served at

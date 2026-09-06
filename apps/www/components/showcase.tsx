@@ -1,35 +1,6 @@
-"use client";
-
 import * as React from "react";
 import { TabsList, TabsPanel, TabsRoot, TabsTab } from "@usebones/react";
-
-/* Playground code changes with the controls, so highlighting happens in the
-   browser. Shiki loads lazily in a separate chunk; until it resolves (or if
-   it fails), the plain string renders in the same chrome. */
-function useHighlighted(code: string): string | null {
-  const [html, setHtml] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    let cancelled = false;
-    import("shiki")
-      .then(({ codeToHtml }) =>
-        codeToHtml(code, {
-          lang: "tsx",
-          themes: { light: "github-light", dark: "min-dark" },
-          defaultColor: false,
-        }),
-      )
-      .then((result) => {
-        if (!cancelled) setHtml(result);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, [code]);
-
-  return html;
-}
+import { useHighlighted } from "@/lib/use-highlighted";
 
 /**
  * Component showcase with a Preview/Code header. The body animates its

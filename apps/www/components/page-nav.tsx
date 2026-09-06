@@ -1,7 +1,5 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { Button } from "@usebones/react";
 import { Icon } from "@usebones/icons";
 import { siteNav } from "@/lib/nav";
@@ -11,7 +9,7 @@ import { siteNav } from "@/lib/nav";
 const pages = siteNav.flatMap((section) => section.items).filter((item) => !item.plain);
 
 export function PageNav() {
-  const pathname = usePathname();
+  const pathname = useLocation({ select: (location) => location.pathname });
   const index = pages.findIndex((page) => page.href === pathname);
   const prev = index > 0 ? pages[index - 1] : undefined;
   const next = index >= 0 && index < pages.length - 1 ? pages[index + 1] : undefined;
@@ -20,7 +18,7 @@ export function PageNav() {
     <nav className="page-nav" aria-label="Previous and next page">
       {prev ? (
         <Link
-          href={prev.href}
+          to={prev.href}
           className="ub-button"
           data-variant="secondary"
           data-size="compact"
@@ -36,7 +34,7 @@ export function PageNav() {
       )}
       {next ? (
         <Link
-          href={next.href}
+          to={next.href}
           className="ub-button"
           data-variant="secondary"
           data-size="compact"

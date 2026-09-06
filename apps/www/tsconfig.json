@@ -1,16 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "preserve",
-    "module": "ESNext",
     "noEmit": true,
-    "allowJs": true,
-    "incremental": true,
-    "plugins": [{ "name": "next" }],
+    "types": ["vite/client"],
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["src/**/*", "components/**/*", "lib/**/*", "vite.config.ts"],
   "exclude": ["node_modules"]
 }

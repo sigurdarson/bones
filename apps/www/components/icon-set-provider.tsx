@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { IconProvider } from "@usebones/icons";
 import { hugeicons } from "@/lib/hugeicons";
