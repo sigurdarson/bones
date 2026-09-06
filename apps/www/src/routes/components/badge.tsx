@@ -77,12 +77,12 @@ function Page() {
 </Badge>
 <Badge status="success">Deployed</Badge>
 
-<Badge color="blue" size="compact">Design</Badge>
-<Badge color="green" size="compact">
-  <Icon name="check" />
-  Verified
+<Badge color="violet" size="compact">Beta</Badge>
+<Badge color="teal" size="compact">
+  <Icon name="user" />
+  Owner
 </Badge>
-<Badge status="success" size="compact">Deployed</Badge>`}
+<Badge status="warning" color="orange" size="compact">Degraded</Badge>`}
       >
         <div className="showcase-columns">
           <div className="showcase-stack">
@@ -94,15 +94,15 @@ function Page() {
             <Badge status="success">Deployed</Badge>
           </div>
           <div className="showcase-stack">
-            <Badge color="blue" size="compact">
-              Design
+            <Badge color="violet" size="compact">
+              Beta
             </Badge>
-            <Badge color="green" size="compact">
-              <Icon name="check" />
-              Verified
+            <Badge color="teal" size="compact">
+              <Icon name="user" />
+              Owner
             </Badge>
-            <Badge status="success" size="compact">
-              Deployed
+            <Badge status="warning" color="orange" size="compact">
+              Degraded
             </Badge>
           </div>
         </div>
