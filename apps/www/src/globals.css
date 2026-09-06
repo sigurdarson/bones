@@ -208,7 +208,7 @@ html,
   border: none;
 }
 
-@media (min-width: 761px) {
+@media (min-width: 64.0625rem) {
   /* Lines the logo up with the nav text below it, which sits behind the
      sidebar items' 0.75rem inline padding. */
   .site-logo {
@@ -311,16 +311,17 @@ html,
   min-width: 0;
 }
 
-/* Below the width the three columns need, the rail would float over the
-   prose: reserve its width (14rem plus the 3rem gap) on pages that have
+/* Tablets and phones (64rem and under) get the drawer navigation. Above
+   that, below the width the three columns need, the rail would float over
+   the prose: reserve its width (14rem plus the 3rem gap) on pages that have
    one, so the content narrows instead. */
-@media (min-width: 761px) and (max-width: 80rem) {
+@media (min-width: 64.0625rem) and (max-width: 80rem) {
   .site-content:has(.controls-rail) {
     padding-inline-end: 17rem;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 64rem) {
   .site-layout {
     grid-template-columns: 1fr;
     gap: 0;
@@ -339,14 +340,10 @@ html,
     grid-column: auto;
   }
 
+  /* The configurator rail is a desktop affordance; playgrounds keep their
+     defaults here. */
   .controls-rail {
-    position: static;
-    width: auto;
-    margin-top: 2rem;
-  }
-
-  .controls-stack {
-    position: static;
+    display: none;
   }
 }
 
