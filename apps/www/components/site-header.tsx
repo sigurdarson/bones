@@ -29,7 +29,7 @@ function MobileNav() {
       <DrawerTrigger
         render={
           <Button
-            variant="ghost"
+            variant="secondary"
             iconOnly
             className="site-nav-toggle"
             aria-label="Open navigation"
