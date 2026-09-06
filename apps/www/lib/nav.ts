@@ -5,6 +5,8 @@ export interface NavItem {
   plain?: boolean;
   /* A short status shown beside the title, e.g. "Experimental". */
   badge?: string;
+  /* A status dot after the title; "info" marks a component new this round. */
+  status?: "info" | "success" | "warning" | "danger";
 }
 
 export interface NavSection {
@@ -47,7 +49,7 @@ export const siteNav: NavSection[] = [
       { title: "Autocomplete", href: "/components/autocomplete" },
       { title: "Avatar", href: "/components/avatar" },
       { title: "Avatar group", href: "/components/avatar-group" },
-      { title: "Badge", href: "/components/badge" },
+      { title: "Badge", href: "/components/badge", status: "info" },
       { title: "Button", href: "/components/button" },
       { title: "Checkbox", href: "/components/checkbox" },
       { title: "Checkbox group", href: "/components/checkbox-group" },
@@ -74,7 +76,7 @@ export const siteNav: NavSection[] = [
       { title: "Select", href: "/components/select" },
       { title: "Separator", href: "/components/separator" },
       { title: "Slider", href: "/components/slider" },
-      { title: "Status", href: "/components/status" },
+      { title: "Status", href: "/components/status", status: "info" },
       { title: "Switch", href: "/components/switch" },
       { title: "Tabs", href: "/components/tabs" },
       { title: "Toast", href: "/components/toast" },
