@@ -1,5 +1,7 @@
 # @usebones/icons
 
+**Experimental**: the vocabulary API may change between releases.
+
 Icon adapter for [Bones](https://usebones.com). Components ask for semantic
 names; the app decides which icon set renders them. Lucide by default.
 

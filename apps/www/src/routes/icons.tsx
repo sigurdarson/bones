@@ -47,13 +47,15 @@ const names: IconName[] = [
 function Page() {
   return (
     <>
-      <PageHeader title="Icons" />
+      <PageHeader title="Icons" badge="Experimental" />
       <p className="lead">
         Any icon works in Bones: every component takes icons as children, so
         your existing set drops straight in. <code>@usebones/icons</code>{" "}
         adds a typed vocabulary on top: semantic names that fail to compile
         when misspelled, size from the same tokens as every control, and
-        swap sets in one place.
+        swap sets in one place. The package is experimental: the vocabulary
+        API may still change between releases while the interface tier
+        settles what it needs from it.
       </p>
       <InstallTabs pkg="@usebones/icons" />
       <h2>Use an icon</h2>

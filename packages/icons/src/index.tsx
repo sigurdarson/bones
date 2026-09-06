@@ -71,6 +71,8 @@ export type BuiltInIconName = keyof typeof builtInIcons;
  *
  * A typed vocabulary means a misspelled or invented name fails to
  * compile, for people and coding agents alike; add names on purpose.
+ *
+ * @experimental The registry API may change between releases.
  */
 export interface IconRegistry extends Record<BuiltInIconName, true> {}
 
@@ -92,12 +94,14 @@ export const defaultIcons: Record<BuiltInIconName, IconComponent> = builtInIcons
  *   declare module "@usebones/icons" {
  *     interface IconRegistry extends IconNamesOf<typeof icons> {}
  *   }
+ *
+ * @experimental
  */
 export function defineIcons<const T extends Record<string, IconComponent>>(icons: T): T {
   return icons;
 }
 
-/** The names of a defineIcons object as registry entries. */
+/** The names of a defineIcons object as registry entries. @experimental */
 export type IconNamesOf<T> = { [K in keyof T & string]: true };
 
 const IconContext = React.createContext<Partial<IconSet>>(defaultIcons);

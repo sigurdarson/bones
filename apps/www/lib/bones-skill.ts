@@ -57,7 +57,7 @@ classes (ub-<component>) and data attributes, never inline styles.
   fixed lists, Combobox to search long ones, Autocomplete for free
   text, Menu for app actions, NavigationMenu for links.
 - Never import an icon library into shared UI. Use the semantic adapter
-  instead: import { Icon } from "@usebones/icons" and render
+  (experimental; its vocabulary API may change) instead: import { Icon } from "@usebones/icons" and render
   <Icon name="search" />. Names are typed as IconName ("search",
   "close", "chevron-down", ...), the icon sizes from --ub-icon-size, and
   a whole set swaps by mounting one <IconProvider icons={...}> at the

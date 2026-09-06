@@ -21,6 +21,9 @@ export function Sidebar() {
                     aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.title}
+                    {item.badge ? (
+                      <span className="sidebar-badge">{item.badge}</span>
+                    ) : null}
                   </Link>
                 )}
               </li>

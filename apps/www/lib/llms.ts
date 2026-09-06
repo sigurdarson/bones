@@ -11,7 +11,8 @@ export const llmsTxt = `# Bones
 
 - pnpm add @usebones/react @usebones/tokens (components + tokens); React 19
   or newer is a peer dependency
-- pnpm add @usebones/icons (optional icon adapter, Lucide default). Icon
+- pnpm add @usebones/icons (optional icon adapter, Lucide default;
+  experimental, the vocabulary API may change). Icon
   names are a typed vocabulary: the built-in set plus whatever the app
   declares with defineIcons (keys become names via IconNamesOf, glyphs
   go to IconProvider). Never guess a name; add it. Any icon component
