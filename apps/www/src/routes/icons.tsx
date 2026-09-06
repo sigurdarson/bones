@@ -34,6 +34,7 @@ const names: IconName[] = [
   "close",
   "copy",
   "credit-card",
+  "github",
   "info",
   "italic",
   "loader",

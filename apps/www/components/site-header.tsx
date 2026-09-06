@@ -11,6 +11,7 @@ import { Icon } from "@usebones/icons";
 import { Logo } from "./logo";
 import { Sidebar } from "./sidebar";
 import { ThemeToggle } from "./theme-toggle";
+import reactPackage from "../../../packages/react/package.json";
 
 /* On narrow screens the sidebar becomes a left drawer opened from the
    header; it closes itself when the route changes. */
@@ -52,16 +53,17 @@ export function SiteHeader() {
           <Logo />
         </Link>
         <div className="site-header-actions">
+          <ThemeToggle />
           <a
             className="ub-button"
-            data-variant="ghost"
+            data-variant="secondary"
             href="https://github.com/sigurdarson/bones"
             target="_blank"
             rel="noreferrer"
+            aria-label={`Bones v${reactPackage.version} on GitHub`}
           >
-            GitHub
+            <Icon name="github" />v{reactPackage.version}
           </a>
-          <ThemeToggle />
           {/* Configurator ships later: component browser plus styling options. */}
           <Button className="site-configurator" disabled title="Coming soon">
             Configurator

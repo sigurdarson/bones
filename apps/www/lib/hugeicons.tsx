@@ -25,6 +25,7 @@ import {
   Tick02Icon,
   UserIcon,
   Menu01Icon,
+  GithubIcon,
 } from "@hugeicons/core-free-icons";
 import type { IconComponent, IconSet } from "@usebones/icons";
 
@@ -52,6 +53,7 @@ export const hugeicons: IconSet = {
   close: wrap(Cancel01Icon),
   copy: wrap(Copy01Icon),
   "credit-card": wrap(CreditCardIcon),
+  github: wrap(GithubIcon),
   info: wrap(InformationCircleIcon),
   italic: wrap(TextItalicIcon),
   loader: wrap(Loading03Icon),

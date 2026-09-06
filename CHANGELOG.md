@@ -5,7 +5,7 @@ entry notes the package it affects.
 
 ## Unreleased
 
-- icons: add a menu icon.
+- icons: add menu and github icons.
 
 ## 0.2.2 (2026-08-27)
 
