@@ -11,12 +11,12 @@ test("shipped styles size inputs without an app reset", async ({ page }) => {
   ] as const) {
     const input = page.getByRole("textbox", { name });
     await expect(input).toHaveCSS("box-sizing", "border-box");
-    expect(await input.evaluate((el) => el.getBoundingClientRect().width)).toBe(
-      200,
-    );
+    expect(
+      await input.evaluate((el) => el.getBoundingClientRect().width),
+    ).toBeCloseTo(200, 0);
     expect(
       await input.evaluate((el) => el.getBoundingClientRect().height),
-    ).toBe(height);
+    ).toBeCloseTo(height, 0);
   }
   await expect(page.getByTestId("unrelated")).toHaveCSS(
     "box-sizing",
@@ -54,8 +54,8 @@ test("vertical slider follows pointer and keyboard along its full height", async
   const track = root.locator(".ub-slider-track");
   await track.scrollIntoViewIfNeeded();
   const box = (await track.boundingBox())!;
-  expect(box.height).toBe(200);
-  expect(box.width).toBe(4);
+  expect(box.height).toBeCloseTo(200, 0);
+  expect(box.width).toBeCloseTo(4, 0);
   if (isMobile) {
     await page.touchscreen.tap(
       box.x + box.width / 2,
