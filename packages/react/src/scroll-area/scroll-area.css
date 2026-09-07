@@ -6,6 +6,8 @@
 .ub-scroll-area-viewport {
   width: 100%;
   height: 100%;
+  max-height: inherit;
+  max-width: inherit;
   overscroll-behavior: contain;
 }
 

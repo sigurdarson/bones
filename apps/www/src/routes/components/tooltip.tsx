@@ -145,6 +145,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "TooltipContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "TooltipTrigger.render",
             type: "ReactElement",
             description: "The real control the tooltip attaches to, usually a Bones Button.",
@@ -189,6 +194,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`TooltipRoot, TooltipTrigger, TooltipContent, TooltipProvider, from @usebones/react.
+- TooltipContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: TooltipRoot wraps TooltipTrigger + TooltipContent. Attach to a real control via TooltipTrigger render={<Button ... />}; trigger children render inside that control.
 - A tooltip is a description, never a name: icon-only triggers still need their own aria-label.
 - TooltipContent: side "top" (default) | "right" | "bottom" | "left", align, sideOffset (8). Timing on the trigger: delay (600ms), closeDelay. TooltipRoot: open + onOpenChange, disabled.

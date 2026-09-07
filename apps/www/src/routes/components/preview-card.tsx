@@ -146,6 +146,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "PreviewCardContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "PreviewCardRoot.open",
             type: "boolean",
             description: "Controlled state. Pair with onOpenChange; defaultOpen for uncontrolled.",
@@ -194,6 +199,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`PreviewCardRoot, PreviewCardTrigger, PreviewCardContent, from @usebones/react.
+- PreviewCardContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: PreviewCardRoot wraps PreviewCardTrigger (a real anchor; pass href) + PreviewCardContent (the floating preview; put an Avatar, headings, text inside).
 - The preview is an enhancement: everything essential must be reachable through the link itself, since touch users never see the card.
 - PreviewCardContent: side "bottom" (default) | "top" | "right" | "left", align, sideOffset (8). The card stays open while hovered, so links inside are clickable. Timing on the trigger: delay (600ms), closeDelay (300ms).

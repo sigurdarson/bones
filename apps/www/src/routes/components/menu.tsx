@@ -173,6 +173,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "MenuContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "MenuRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
@@ -225,6 +230,7 @@ function Page() {
       </p>
       <AgentInstructions
         instructions={`MenuRoot, MenuTrigger, MenuContent, MenuItem, MenuCheckboxItem, MenuRadioGroup, MenuRadioItem, MenuGroup, MenuGroupLabel, MenuSeparator, MenuSubmenuRoot, MenuSubmenuTrigger, from @usebones/react.
+- MenuContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: MenuRoot wraps MenuTrigger + MenuContent; items go inside the content. Attach the trigger to a real control via render={<Button ... />}.
 - MenuItem runs onClick and closes (closeOnClick={false} keeps it open); disabled dims it and skips it. MenuCheckboxItem (defaultChecked/checked + onCheckedChange) and MenuRadioItem inside MenuRadioGroup (value + onValueChange) stay open; indicators render automatically.
 - Group related items with MenuGroup + MenuGroupLabel; divide with MenuSeparator.

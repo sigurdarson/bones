@@ -1,0 +1,7 @@
+/* Bones owns the ub- class namespace. Keep part dimensions independent
+   of an app's reset without changing unrelated elements. */
+:where([class^="ub-"], [class*=" ub-"]),
+:where([class^="ub-"], [class*=" ub-"])::before,
+:where([class^="ub-"], [class*=" ub-"])::after {
+  box-sizing: border-box;
+}

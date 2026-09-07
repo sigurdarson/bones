@@ -118,6 +118,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "AutocompleteContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "AutocompleteRoot.items",
             type: "Value[]",
             description: "The suggestions; typing filters them and powers the empty state.",
@@ -177,6 +182,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`AutocompleteRoot, AutocompleteInput, AutocompleteContent, AutocompleteItem, from @usebones/react.
+- AutocompleteContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: AutocompleteRoot (pass items; size "default" | "compact"; mode "list" default) wraps AutocompleteInput (placeholder, variant "default" | "borderless", clearable default true, invalid; no chevron, typing-first) + AutocompleteContent (empty="...", status for async, function children rendering an AutocompleteItem per suggestion).
 - The value is the input string (value/defaultValue/onValueChange); selecting a suggestion fills it and free text stays valid. Use Combobox when the value must come from the list.
 - mode: "list" (default) filters as you type; "both" also writes the highlighted suggestion into the input while arrowing; "inline" writes without filtering; "none" does neither.

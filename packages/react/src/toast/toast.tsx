@@ -22,7 +22,9 @@ export function ToastProvider(props: ToastProviderProps) {
  * Adding with an existing id updates that toast in place and refreshes
  * its timer, so repeat events collapse into one toast.
  */
-export const useToast = BaseToast.useToastManager;
+export function useToast<Data extends object = any>() {
+  return BaseToast.useToastManager<Data>();
+}
 
 export type ToasterPosition =
   | "top-left"
@@ -33,6 +35,9 @@ export type ToasterPosition =
   | "bottom-right";
 
 export interface ToasterProps extends BaseToast.Viewport.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseToast.Portal.Props["container"];
+
   /** Which corner (or edge center) the stack lives in. @default "bottom-right" */
   position?: ToasterPosition;
 }
@@ -92,6 +97,7 @@ const typeIcons: Record<string, React.ReactNode> = {
  * dismiss, in the direction matching the corner.
  */
 export function Toaster({
+  portalContainer,
   className,
   position = "bottom-right",
   ...props
@@ -106,7 +112,7 @@ export function Toaster({
       : ([vertical] as const);
 
   return (
-    <BaseToast.Portal>
+    <BaseToast.Portal container={portalContainer}>
       <BaseToast.Viewport
         aria-label="Notifications"
         data-position={position}

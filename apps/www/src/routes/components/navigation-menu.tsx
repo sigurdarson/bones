@@ -397,6 +397,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "NavigationMenuRoot.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "NavigationMenuRoot.delay",
             type: "number",
             defaultValue: "50",
@@ -439,6 +444,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`NavigationMenuRoot, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuViewport, from @usebones/react.
+- NavigationMenuRoot accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: NavigationMenuRoot wraps NavigationMenuList of NavigationMenuItems. An item holds a NavigationMenuTrigger (label as children; chevron automatic) + NavigationMenuContent, or just a NavigationMenuLink for a plain link.
 - The popup machinery is bundled in the root; one shared popup morphs between the open item's content.
 - Nested submenus: put another NavigationMenuRoot inside a NavigationMenuContent (side="inline-end" opens the flyout beside the panel). Same-panel submenus: nested root with inline plus a NavigationMenuViewport next to its list and a defaultValue.

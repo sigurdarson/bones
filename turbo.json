@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["playwright.config.ts", "tests/browser/**"],
   "tasks": {
     "build": {
       "dependsOn": [

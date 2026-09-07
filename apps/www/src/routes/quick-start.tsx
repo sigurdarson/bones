@@ -33,6 +33,10 @@ import "@usebones/react/styles.css";`}
 
       />
       <p>
+        The component stylesheet includes box sizing for Bones parts, so
+        an app-wide CSS reset is optional.
+      </p>
+      <p>
         Keep the <code>.css</code> on the end. TypeScript 7 rejects imports
         that exist only for their side effects unless the extension is
         spelled out.
@@ -45,7 +49,7 @@ export function Example() {
   return (
     <>
       <Button variant="secondary">Save draft</Button>
-      <Switch defaultChecked />
+      <Switch defaultChecked aria-label="Enable notifications" />
     </>
   );
 }`}

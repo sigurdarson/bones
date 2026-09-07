@@ -34,7 +34,7 @@ export function Example() {
   return (
     <>
       <Button variant="secondary">Hello</Button>
-      <Switch defaultChecked />
+      <Switch defaultChecked aria-label="Enable notifications" />
     </>
   );
 }

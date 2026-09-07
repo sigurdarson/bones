@@ -74,6 +74,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "AlertDialogContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "AlertDialogRoot.open",
             type: "boolean",
             description: "Controlled state. Pair with onOpenChange (also defaultOpen).",
@@ -97,6 +102,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`AlertDialogRoot, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogClose, from @usebones/react.
+- AlertDialogContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: AlertDialogRoot wraps AlertDialogTrigger + AlertDialogContent; put AlertDialogTitle + AlertDialogDescription and one AlertDialogClose per choice inside (Cancel ghost and first in the DOM, the action primary or danger with onClick).
 - Attach trigger and close buttons to real controls via render={<Button ... />}; disable the trigger by disabling that Button.
 - Use it only when the action is hard to undo; it is always modal and outside clicks never dismiss (Escape cancels). Otherwise use Dialog.

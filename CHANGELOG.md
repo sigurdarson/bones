@@ -5,6 +5,14 @@ entry notes the package it affects.
 
 ## Unreleased
 
+- react: forward NumberField labeling and validation ARIA to the editable input and preserve Field labels and descriptions.
+- react: scope border-box sizing to Bones parts so controls work without an app reset.
+- tokens: recompute glass surfaces at theme boundaries for dark and custom subtrees.
+- react: expose portalContainer on bundled overlays for local themes, including NavigationMenuRoot and Toaster.
+- react: keep unused toast code out of consumer bundles that only import other components.
+- react: support ScrollArea max-height constraints and vertical Slider layout.
+- react, icons: typecheck the actual tsdown configs and replace the deprecated external build option.
+
 ## 0.2.3 (2026-09-06)
 
 - tokens: add tint tokens, a soft fill and readable text per palette hue

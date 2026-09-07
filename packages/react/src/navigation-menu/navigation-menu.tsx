@@ -4,6 +4,9 @@ import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-
 import { withBase } from "../lib/with-base";
 
 export interface NavigationMenuRootProps extends BaseNavigationMenu.Root.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseNavigationMenu.Portal.Props["container"];
+
   /** Which side of the trigger the popup opens on; nested menus usually want "inline-end". Base UI's default otherwise. */
   side?: BaseNavigationMenu.Positioner.Props["side"];
   /** Alignment along that side. */
@@ -27,6 +30,7 @@ export interface NavigationMenuRootProps extends BaseNavigationMenu.Root.Props {
  * that stay in the panel.
  */
 export function NavigationMenuRoot({
+  portalContainer,
   className,
   children,
   side,
@@ -43,7 +47,7 @@ export function NavigationMenuRoot({
     >
       {children}
       {inline ? null : (
-        <BaseNavigationMenu.Portal>
+        <BaseNavigationMenu.Portal container={portalContainer}>
           <BaseNavigationMenu.Positioner
             className="ub-navigation-menu-positioner"
             side={side}

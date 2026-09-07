@@ -40,3 +40,8 @@ path; TypeScript 7 rejects extensionless side-effect imports of CSS.)
   --ub-accent-contrast: white;
 }
 ```
+
+Glass surfaces derive from `--ub-surface` at `:root`, `[data-theme]`, and
+`.dark` boundaries. When overriding `--ub-surface` in a different scope,
+redeclare `--ub-surface-glass` there too. In Bones React, pass
+`portalContainer` to bundled overlays to keep them in a locally themed subtree.

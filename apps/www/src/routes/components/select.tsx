@@ -112,6 +112,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "SelectContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "SelectRoot.defaultValue",
             type: "string",
             description: "The option selected on first render, when uncontrolled.",
@@ -197,6 +202,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`SelectRoot, SelectTrigger, SelectContent, SelectItem, from @usebones/react.
+- SelectContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - SelectRoot: defaultValue or value + onValueChange (the callback value can be null); size sizes the trigger and dropdown items together. Always pass items (a value to label record) so the trigger shows the selected label instead of the raw value.
 - SelectTrigger: placeholder, variant "default" | "borderless", invalid, leadingIcon, hint. The chevron renders automatically; there is no trailing icon slot.
 - SelectContent handles the portal and positioning. SelectItem children are the label; the selected check renders automatically.

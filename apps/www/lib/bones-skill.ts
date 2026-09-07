@@ -38,6 +38,11 @@ classes (ub-<component>) and data attributes, never inline styles.
 
 - Dark mode: data-theme="dark" on <html> or any subtree. Pill controls:
   data-radius="pill". No JavaScript, no provider.
+- Overlays portal outside local CSS scopes by default. Pass
+  portalContainer (element or ref) to Content, NavigationMenuRoot, or
+  Toaster to keep them themed; nested overlays inherit the parent portal.
+  Glass surfaces recompute at data-theme and .dark boundaries; redeclare
+  --ub-surface-glass if overriding --ub-surface in another scope.
 - Restyle by overriding semantic tokens (--ub-accent, --ub-bg,
   --ub-radius-control, ...), never by forking component CSS and never
   with hardcoded colors. Scope overrides to a subtree for local themes.

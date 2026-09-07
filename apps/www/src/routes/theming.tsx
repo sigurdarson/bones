@@ -158,12 +158,50 @@ function Page() {
       <p>
         The override reference below is the checklist. Keep primary text at
         4.5:1 contrast, leave danger red so destructive reads as
-        destructive, and skip <code>--ub-surface-glass</code>; it derives
-        from your surface automatically. A theme file works from anywhere;
+        destructive. <code>--ub-surface-glass</code> derives from your
+        surface at each <code>data-theme</code> or <code>.dark</code>
+        boundary. If you override <code>--ub-surface</code> in another
+        scope, redeclare the glass token there too: CSS resolves derived
+        custom properties before inheriting them. A theme file works from anywhere;
         to ship one in <code>@usebones/tokens</code>, open a PR adding a
         file under <code>css/themes/</code>.
       </p>
       <MatrixSwitch />
+      <h2>Overlays in a local theme</h2>
+      <p>
+        Popups normally portal to the document body, outside a local CSS
+        scope. Pass <code>portalContainer</code> to the Content part to
+        keep its popup and backdrop inside the themed element. The same
+        prop lives on <code>NavigationMenuRoot</code> and <code>Toaster</code>.
+        Nested overlays inherit their parent portal target when you omit it.
+      </p>
+      <CodeBlock code={`import { useRef } from "react";
+import {
+  Button, DialogRoot, DialogTrigger, DialogContent, DialogTitle,
+} from "@usebones/react";
+
+export function LocalTheme() {
+  const scope = useRef<HTMLDivElement>(null);
+  return (
+    <div ref={scope} data-theme="dark" data-radius="pill">
+      <DialogRoot>
+        <DialogTrigger render={<Button />}>Open</DialogTrigger>
+        <DialogContent portalContainer={scope}>
+          <DialogTitle>Local theme</DialogTitle>
+        </DialogContent>
+      </DialogRoot>
+    </div>
+  );
+}`} />
+      <p>
+        Choose a container without clipping or transformed ancestors so
+        the overlay can cover the intended area. For a whole-app theme,
+        set attributes on <code>&lt;html&gt;</code> and keep the default target.
+      </p>
+      <CodeBlock lang="css" code={`.custom-surface {
+  --ub-surface: var(--ub-bg-muted);
+  --ub-surface-glass: color-mix(in oklab, var(--ub-surface) 90%, transparent);
+}`} />
       <h2>Styling component states</h2>
       <p>
         Below the token layer, every part has a stable class

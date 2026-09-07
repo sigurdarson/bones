@@ -148,6 +148,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "DrawerContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "DrawerRoot.open",
             type: "boolean",
             description: "Controlled state. Pair with onOpenChange (also defaultOpen).",
@@ -188,6 +193,7 @@ function Page() {
       </p>
       <AgentInstructions
         instructions={`DrawerRoot, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, from @usebones/react.
+- DrawerContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: DrawerRoot wraps DrawerTrigger + DrawerContent; put DrawerTitle (names the sheet), DrawerDescription, and the body inside. DrawerClose closes it.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
 - side on the root: "right" (default) | "left" (full-height panels up to 24rem wide, shrinking on narrow screens) | "bottom" (full-width mobile sheet, scrolls past 85dvh). The dismiss swipe matches the side (swipeDirection overrides); modal with focus trap and Escape everywhere.

@@ -28,16 +28,24 @@ export function DialogTrigger({ className, ...props }: DialogTriggerProps) {
   );
 }
 
-export interface DialogContentProps extends BaseDialog.Popup.Props {}
+export interface DialogContentProps extends BaseDialog.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseDialog.Portal.Props["container"];
+}
 
 /**
  * The dialog window. Bundles the Base UI Portal, Backdrop, Viewport, and
  * Popup so usage stays small: centered over a scrim, scrollable when
  * taller than the screen. Escape closes it; focus returns to the trigger.
  */
-export function DialogContent({ className, children, ...props }: DialogContentProps) {
+export function DialogContent({
+  portalContainer,
+  className,
+  children,
+  ...props
+}: DialogContentProps) {
   return (
-    <BaseDialog.Portal>
+    <BaseDialog.Portal container={portalContainer}>
       <BaseDialog.Backdrop className="ub-dialog-backdrop" />
       <BaseDialog.Viewport className="ub-dialog-viewport">
         <BaseDialog.Popup
