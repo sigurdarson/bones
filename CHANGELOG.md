@@ -5,6 +5,8 @@ entry notes the package it affects.
 
 ## Unreleased
 
+## 0.2.4 (2026-09-08)
+
 - react: forward NumberField labeling and validation ARIA to the editable input and preserve Field labels and descriptions.
 - react: scope border-box sizing to Bones parts so controls work without an app reset.
 - tokens: recompute glass surfaces at theme boundaries for dark and custom subtrees.
