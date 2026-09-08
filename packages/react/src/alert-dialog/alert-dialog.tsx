@@ -29,7 +29,10 @@ export function AlertDialogTrigger({ className, ...props }: AlertDialogTriggerPr
   );
 }
 
-export interface AlertDialogContentProps extends BaseAlertDialog.Popup.Props {}
+export interface AlertDialogContentProps extends BaseAlertDialog.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseAlertDialog.Portal.Props["container"];
+}
 
 /**
  * The alert window. Bundles the Base UI Portal, Backdrop, Viewport, and
@@ -37,12 +40,13 @@ export interface AlertDialogContentProps extends BaseAlertDialog.Popup.Props {}
  * taller than the screen.
  */
 export function AlertDialogContent({
+  portalContainer,
   className,
   children,
   ...props
 }: AlertDialogContentProps) {
   return (
-    <BaseAlertDialog.Portal>
+    <BaseAlertDialog.Portal container={portalContainer}>
       <BaseAlertDialog.Backdrop className="ub-alert-dialog-backdrop" />
       <BaseAlertDialog.Viewport className="ub-alert-dialog-viewport">
         <BaseAlertDialog.Popup

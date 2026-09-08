@@ -115,7 +115,7 @@ function Page() {
             name: "orientation",
             type: "\"horizontal\" | \"vertical\"",
             defaultValue: "\"horizontal\"",
-            description: "Track direction; keyboard mapping follows.",
+            description: "Track direction; keyboard mapping follows. For vertical sliders, set a height on the Slider root.",
           },
           {
             name: "onValueCommitted",

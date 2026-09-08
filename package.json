@@ -10,9 +10,13 @@
     "dev": "turbo run dev",
     "typecheck": "turbo run typecheck",
     "format": "prettier --write .",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "test:browser": "playwright test",
+    "test:bundle": "node scripts/check-bundle.mjs"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "esbuild": "^0.28.2",
     "prettier": "^3.9.6",
     "turbo": "^2.10.10",
     "typescript": "^7.0.2",

@@ -66,15 +66,20 @@
   --ub-shadow-md: 0 8px 24px oklch(0 0 0 / 0.12);
   --ub-shadow-lg: 0 16px 48px oklch(0 0 0 / 0.16);
 
-  /* translucent surface for overlays; pair with a backdrop blur.
-     Resolves per theme because --ub-surface substitutes at use time. */
-  --ub-surface-glass: color-mix(in oklab, var(--ub-surface) 90%, transparent);
-
   /* One layer for every floating part (dropdowns, tooltips, dialogs), set
      high so overlays clear app chrome like sticky headers. They stack
      against each other in DOM order, which portals already get right;
      raise this if your app uses something even higher. */
   --ub-z-overlay: 1000;
+}
+
+/* Derived values resolve where they are declared, before inheritance.
+   Recompute glass at each theme boundary, including custom full themes.
+   If overriding --ub-surface in another scope, redeclare glass there too. */
+:root,
+[data-theme],
+.dark {
+  --ub-surface-glass: color-mix(in oklab, var(--ub-surface) 90%, transparent);
 }
 
 /* data-theme="dark" is the canonical dark switch; .dark also works. */

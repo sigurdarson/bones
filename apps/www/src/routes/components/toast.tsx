@@ -109,6 +109,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "Toaster.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "ToastProvider.timeout",
             type: "number",
             defaultValue: "5000",
@@ -155,6 +160,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`ToastProvider, Toaster, useToast, from @usebones/react.
+- Toaster accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Mount once: ToastProvider wrapping the app with one <Toaster /> inside (this renders the bottom-right stack; no toast markup anywhere else).
 - Fire from any client component: const toast = useToast(); toast.add({ title, description, type, actionProps: { children, onClick } }). Returns an id for toast.update/toast.close.
 - toast.promise(promise, { loading: {...}, success: {...}, error: {...} }) follows a promise through its outcomes.

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button } from "@usebones/react";
 import { Icon } from "@usebones/icons";
+import { useTheme } from "../lib/use-theme";
 
 /**
  * Icon-only light/dark toggle with system as the default.
@@ -13,26 +14,22 @@ import { Icon } from "@usebones/icons";
  * resolved theme before paint.
  */
 export function ThemeToggle() {
-  const [mounted, setMounted] = React.useState(false);
-  const [dark, setDark] = React.useState(false);
+  const theme = useTheme();
+  const dark = theme === "dark" || theme === "matrix";
 
   React.useEffect(() => {
-    setMounted(true);
-    setDark(document.documentElement.getAttribute("data-theme") === "dark");
-
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     function onSystemChange(event: MediaQueryListEvent) {
       let stored: string | null = null;
       try {
         stored = localStorage.getItem("ub-theme");
       } catch {}
-      if (stored) return;
+      if (stored || document.documentElement.getAttribute("data-theme") === "matrix") return;
       if (event.matches) {
         document.documentElement.setAttribute("data-theme", "dark");
       } else {
         document.documentElement.removeAttribute("data-theme");
       }
-      setDark(event.matches);
     }
     media.addEventListener("change", onSystemChange);
     return () => media.removeEventListener("change", onSystemChange);
@@ -40,7 +37,6 @@ export function ThemeToggle() {
 
   function toggle() {
     const next = !dark;
-    setDark(next);
     if (next) {
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
@@ -57,7 +53,7 @@ export function ThemeToggle() {
   }
 
   /* Theme state lives on <html> and is unknown during server render. */
-  if (!mounted) {
+  if (!theme) {
     return <Button variant="ghost" iconOnly aria-label="Switch theme" disabled />;
   }
 

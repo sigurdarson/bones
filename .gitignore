@@ -19,3 +19,7 @@ apps/www/src/routeTree.gen.ts
 
 # workspace collaboration (Conductor)
 .context/
+
+# browser test artifacts
+playwright-report/
+test-results/

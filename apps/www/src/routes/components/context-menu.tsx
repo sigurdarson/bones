@@ -103,6 +103,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "ContextMenuContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "ContextMenuRoot.size",
             type: '"default" | "compact"',
             defaultValue: '"default"',
@@ -129,6 +134,7 @@ function Page() {
       </p>
       <AgentInstructions
         instructions={`ContextMenuRoot, ContextMenuTrigger, ContextMenuContent, from @usebones/react.
+- ContextMenuContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: ContextMenuRoot wraps ContextMenuTrigger (a div around the right-clickable surface) + ContextMenuContent. The menu opens at the pointer; long press works on touch.
 - Fill the content with the regular Menu parts: MenuItem (disabled skips it), MenuCheckboxItem, MenuRadioGroup + MenuRadioItem, MenuGroup + MenuGroupLabel, MenuSeparator, MenuSubmenuRoot + MenuSubmenuTrigger. Same props, same behavior as in Menu.
 - size on ContextMenuRoot: "default" | "compact".

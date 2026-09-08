@@ -235,6 +235,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "ComboboxContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "ComboboxRoot.items",
             type: "Value[]",
             description: "The full list; typing filters it and powers the empty state.",
@@ -308,6 +313,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`ComboboxRoot, ComboboxInput, ComboboxTrigger, ComboboxContent, ComboboxItem, ComboboxGroup, ComboboxGroupLabel, ComboboxChips, ComboboxChip, ComboboxValue, ComboboxCollection, ComboboxStatus, from @usebones/react.
+- ComboboxContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: ComboboxRoot (pass items; size "default" | "compact") wraps ComboboxInput (placeholder, variant "default" | "borderless", clearable default true, invalid, disabled; chevron built in, swapped for a clear button while something is selected) + ComboboxContent (empty="..." plus function children rendering a ComboboxItem per filtered item).
 - value/defaultValue/onValueChange like every control; multiple turns the value into an array. Object items need itemToStringLabel.
 - Multiple with chips: ComboboxChips wrapping ComboboxValue's function children (map values to ComboboxChip; put ComboboxInput clearable={false} after them). Chip remove buttons are automatic.

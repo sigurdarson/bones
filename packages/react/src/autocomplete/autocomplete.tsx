@@ -93,6 +93,9 @@ export function AutocompleteInput({
 
 export interface AutocompleteContentProps
   extends Omit<BaseAutocomplete.Popup.Props, "children"> {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseAutocomplete.Portal.Props["container"];
+
   /** The items, or a function called with each filtered item. */
   children?: BaseAutocomplete.List.Props["children"];
   /** Shown while the filter matches nothing; requires items on the root. */
@@ -113,6 +116,7 @@ export interface AutocompleteContentProps
  * Combobox popup's styling.
  */
 export function AutocompleteContent({
+  portalContainer,
   className,
   children,
   empty,
@@ -124,7 +128,7 @@ export function AutocompleteContent({
 }: AutocompleteContentProps) {
   const size = React.useContext(AutocompleteSizeContext);
   return (
-    <BaseAutocomplete.Portal>
+    <BaseAutocomplete.Portal container={portalContainer}>
       <BaseAutocomplete.Positioner
         className="ub-combobox-positioner"
         side={side}

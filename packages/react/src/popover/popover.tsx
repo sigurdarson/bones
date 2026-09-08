@@ -30,6 +30,9 @@ export function PopoverTrigger({ className, ...props }: PopoverTriggerProps) {
 }
 
 export interface PopoverContentProps extends BasePopover.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BasePopover.Portal.Props["container"];
+
   /** Which side of the trigger to open on. @default "bottom" */
   side?: BasePopover.Positioner.Props["side"];
   /** Alignment along that side. @default "center" */
@@ -44,6 +47,7 @@ export interface PopoverContentProps extends BasePopover.Popup.Props {
  * close. Escape and outside clicks dismiss it.
  */
 export function PopoverContent({
+  portalContainer,
   className,
   side = "bottom",
   align = "center",
@@ -52,7 +56,7 @@ export function PopoverContent({
   ...props
 }: PopoverContentProps) {
   return (
-    <BasePopover.Portal>
+    <BasePopover.Portal container={portalContainer}>
       <BasePopover.Positioner
         className="ub-popover-positioner"
         side={side}

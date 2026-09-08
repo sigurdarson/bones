@@ -25,6 +25,11 @@ export const llmsTxt = `# Bones
 
 - Dark mode: data-theme="dark" (canonical; .dark also works) on <html> or
   any subtree.
+- Overlays: Content parts accept portalContainer (element or ref) to stay
+  inside a local theme; NavigationMenuRoot and Toaster accept it too.
+  Omit for the parent portal or document body. Avoid clipping/transformed
+  ancestors. --ub-surface-glass recomputes at data-theme and .dark
+  boundaries; redeclare it when overriding --ub-surface in another scope.
 - Pill radius: data-radius="pill" on <html> or any subtree.
 - Components read semantic tokens only: --ub-bg, --ub-surface,
   --ub-text-primary, --ub-text-secondary, --ub-border, --ub-accent,
@@ -187,7 +192,8 @@ export const llmsTxt = `# Bones
   variant default | borderless (a muted fill with no border); size
   default | compact (36px/28px control height, 16px/14px text); invalid:
   danger border, ring, and hint, plus aria-invalid; a surrounding Field
-  sets it automatically; hint (aria-describedby); placeholder.
+  sets it automatically; hint (merged with aria-describedby); placeholder. Labeling and validation ARIA name
+  and describe the editable input, not its outer layout container.
 - OTPField: one component; length renders the slots, value is one string
   (value/defaultValue/onValueChange), typing and pasting distribute.
   autoSubmit, mask, size default | compact (36px/28px slots);
@@ -234,7 +240,8 @@ export const llmsTxt = `# Bones
 - Slider: one component; track/indicator/thumbs automatic; array value =
   range with a thumb per entry; min/max/step/largeStep/orientation/
   defaultValue/value + onValueChange (continuous)/onValueCommitted (on
-  release)/disabled pass through. Always pass aria-label (ranges suffix
+  release)/disabled pass through. Set a height on the root for vertical
+  orientation. Always pass aria-label (ranges suffix
   it per thumb) or wrap in a Field. Never animate thumb position.
 - Status: an 8px dot (a Bones component, no Base UI part); color
   "neutral" (default) | success | info | warning | danger from the

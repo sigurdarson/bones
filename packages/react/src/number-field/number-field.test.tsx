@@ -2,8 +2,52 @@ import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NumberField } from "./number-field";
+import { FieldRoot, FieldLabel, FieldDescription } from "../field/field";
 
 describe("NumberField", () => {
+  it("keeps container ARIA covering the input and stepper buttons", () => {
+    render(<NumberField aria-hidden aria-label="Quantity" />);
+    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Increase" })).not.toBeInTheDocument();
+  });
+
+  it("names and describes the editable input", () => {
+    render(
+      <>
+        <p id="quantity-help">Seats for your team.</p>
+        <NumberField aria-label="Quantity" aria-describedby="quantity-help" hint="At least one." />
+      </>,
+    );
+    const input = screen.getByRole("textbox", { name: "Quantity" });
+    expect(input).toHaveAccessibleDescription("At least one. Seats for your team.");
+  });
+
+  it("forwards external labels and error attributes to the input", () => {
+    render(
+      <>
+        <span id="seats-label">Seats</span>
+        <p id="seats-error">Choose a quantity.</p>
+        <NumberField aria-labelledby="seats-label" aria-invalid aria-errormessage="seats-error" />
+      </>,
+    );
+    const input = screen.getByRole("textbox", { name: "Seats" });
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAttribute("aria-errormessage", "seats-error");
+  });
+
+  it("preserves a wrapping Field's label and description", () => {
+    render(
+      <FieldRoot invalid>
+        <FieldLabel>Team size</FieldLabel>
+        <FieldDescription>Include yourself.</FieldDescription>
+        <NumberField />
+      </FieldRoot>,
+    );
+    const input = screen.getByRole("textbox", { name: "Team size" });
+    expect(input).toHaveAccessibleDescription("Include yourself.");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+  });
+
   it("renders an input with stepper buttons", () => {
     render(<NumberField defaultValue={2} aria-label="Quantity" />);
     expect(screen.getByRole("textbox")).toHaveValue("2");

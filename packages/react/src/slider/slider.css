@@ -23,6 +23,22 @@
   background: var(--ub-bg-muted);
 }
 
+/* Vertical sliders take their height from the root (set it in app CSS). */
+.ub-slider[data-orientation="vertical"] {
+  width: 1.25rem;
+}
+
+.ub-slider-control[data-orientation="vertical"] {
+  justify-content: center;
+  height: 100%;
+  touch-action: none;
+}
+
+.ub-slider-track[data-orientation="vertical"] {
+  width: 0.25rem;
+  height: 100%;
+}
+
 .ub-slider-indicator {
   border-radius: var(--ub-radius-full);
   background: var(--ub-accent);

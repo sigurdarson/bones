@@ -167,6 +167,9 @@ export function ComboboxTrigger({
 
 export interface ComboboxContentProps
   extends Omit<BaseCombobox.Popup.Props, "children"> {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseCombobox.Portal.Props["container"];
+
   /** The items, or a function called with each filtered item. */
   children?: BaseCombobox.List.Props["children"];
   /** Shown while the filter matches nothing; requires items on the root. */
@@ -192,6 +195,7 @@ export interface ComboboxContentProps
  * width. Function children receive each filtered item.
  */
 export function ComboboxContent({
+  portalContainer,
   className,
   children,
   empty,
@@ -205,7 +209,7 @@ export function ComboboxContent({
   const size = React.useContext(ComboboxSizeContext);
   const { chipsElement } = React.useContext(ComboboxAnchorContext);
   return (
-    <BaseCombobox.Portal>
+    <BaseCombobox.Portal container={portalContainer}>
       <BaseCombobox.Positioner
         className="ub-combobox-positioner"
         side={side}

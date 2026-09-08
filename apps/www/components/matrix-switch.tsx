@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Switch } from "@usebones/react";
+import { useTheme } from "../lib/use-theme";
 
 /**
  * The theming page's demo: flips the whole site into the matrix theme by
@@ -8,16 +8,9 @@ import { Switch } from "@usebones/react";
  * a reload comes back normal.
  */
 export function MatrixSwitch() {
-  const [mounted, setMounted] = React.useState(false);
-  const [on, setOn] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    setOn(document.documentElement.getAttribute("data-theme") === "matrix");
-  }, []);
+  const theme = useTheme();
 
   function toggle(next: boolean) {
-    setOn(next);
     if (next) {
       document.documentElement.setAttribute("data-theme", "matrix");
       return;
@@ -47,9 +40,9 @@ export function MatrixSwitch() {
     >
       <span>Switch to the Matrix</span>
       <Switch
-        checked={mounted ? on : false}
+        checked={theme === "matrix"}
         onCheckedChange={toggle}
-        disabled={!mounted}
+        disabled={!theme}
         aria-label="Turn on the matrix theme"
       />
     </div>

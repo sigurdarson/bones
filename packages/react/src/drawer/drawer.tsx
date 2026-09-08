@@ -47,17 +47,25 @@ export function DrawerTrigger({ className, ...props }: DrawerTriggerProps) {
   );
 }
 
-export interface DrawerContentProps extends BaseDrawer.Popup.Props {}
+export interface DrawerContentProps extends BaseDrawer.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseDrawer.Portal.Props["container"];
+}
 
 /**
  * The sheet itself. Bundles the Base UI Portal, Backdrop, Viewport,
  * Popup, and scrollable Content, with a grab handle on top; children
  * scroll when taller than the sheet.
  */
-export function DrawerContent({ className, children, ...props }: DrawerContentProps) {
+export function DrawerContent({
+  portalContainer,
+  className,
+  children,
+  ...props
+}: DrawerContentProps) {
   const side = React.useContext(DrawerSideContext);
   return (
-    <BaseDrawer.Portal>
+    <BaseDrawer.Portal container={portalContainer}>
       <BaseDrawer.Backdrop className="ub-drawer-backdrop" />
       <BaseDrawer.Viewport className="ub-drawer-viewport">
         <BaseDrawer.Popup

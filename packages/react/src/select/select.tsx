@@ -108,6 +108,9 @@ export function SelectTrigger({
 }
 
 export interface SelectContentProps extends BaseSelect.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseSelect.Portal.Props["container"];
+
   /** Which side of the trigger to open on. Defaults to below the trigger. */
   side?: BaseSelect.Positioner.Props["side"];
   /** Alignment along that side. */
@@ -121,6 +124,7 @@ export interface SelectContentProps extends BaseSelect.Popup.Props {
  * stays small; opens below the trigger and matches its width.
  */
 export function SelectContent({
+  portalContainer,
   className,
   side,
   align,
@@ -130,7 +134,7 @@ export function SelectContent({
 }: SelectContentProps) {
   const size = React.useContext(SelectSizeContext);
   return (
-    <BaseSelect.Portal>
+    <BaseSelect.Portal container={portalContainer}>
       <BaseSelect.Positioner
         className="ub-select-positioner"
         side={side}

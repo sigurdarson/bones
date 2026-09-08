@@ -131,6 +131,11 @@ function Page() {
             description: "Helper text below the field, linked via aria-describedby.",
           },
           {
+            name: "aria-label / aria-labelledby / aria-describedby",
+            type: "string",
+            description: "Names and describes the editable input. hint merges with aria-describedby; Field labels still work when these are omitted.",
+          },
+          {
             name: "placeholder",
             type: "string",
             description: "Placeholder for the inner input.",

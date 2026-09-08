@@ -40,6 +40,9 @@ export function TooltipTrigger({ className, ...props }: TooltipTriggerProps) {
 }
 
 export interface TooltipContentProps extends BaseTooltip.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseTooltip.Portal.Props["container"];
+
   /** Which side of the trigger to open on. @default "top" */
   side?: BaseTooltip.Positioner.Props["side"];
   /** Alignment along that side. @default "center" */
@@ -53,6 +56,7 @@ export interface TooltipContentProps extends BaseTooltip.Popup.Props {
  * usage stays small; flips to the opposite side when out of room.
  */
 export function TooltipContent({
+  portalContainer,
   className,
   side = "top",
   align = "center",
@@ -61,7 +65,7 @@ export function TooltipContent({
   ...props
 }: TooltipContentProps) {
   return (
-    <BaseTooltip.Portal>
+    <BaseTooltip.Portal container={portalContainer}>
       <BaseTooltip.Positioner
         className="ub-tooltip-positioner"
         side={side}

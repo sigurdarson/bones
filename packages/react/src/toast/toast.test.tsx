@@ -33,6 +33,22 @@ function App() {
 }
 
 describe("Toast", () => {
+  it("preserves typed custom data through useToast", async () => {
+    function TypedToast() {
+      const toast = useToast<{ recordId: string }>();
+      return (
+        <>
+          <button onClick={() => toast.add({ title: "Saved", data: { recordId: "record-1" } })}>Save record</button>
+          <output>{toast.toasts[0]?.data?.recordId}</output>
+        </>
+      );
+    }
+    const user = userEvent.setup();
+    render(<ToastProvider><TypedToast /></ToastProvider>);
+    await user.click(screen.getByRole("button", { name: "Save record" }));
+    expect(screen.getByText("record-1")).toBeInTheDocument();
+  });
+
   it("adds a toast with title, description, action, and close", async () => {
     const user = userEvent.setup();
     render(<App />);

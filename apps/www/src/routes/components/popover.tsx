@@ -143,6 +143,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "PopoverContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "PopoverRoot.open",
             type: "boolean",
             description: "Controlled state. Pair with onOpenChange; defaultOpen for uncontrolled.",
@@ -190,6 +195,7 @@ function Page() {
       />
       <AgentInstructions
         instructions={`PopoverRoot, PopoverTrigger, PopoverContent, PopoverTitle, PopoverDescription, PopoverClose, from @usebones/react.
+- PopoverContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: PopoverRoot wraps PopoverTrigger + PopoverContent; put PopoverTitle (names the panel), PopoverDescription, and any controls inside the content. PopoverClose closes it.
 - Attach trigger and close to real controls via render={<Button ... />}; a disabled rendered button never opens.
 - PopoverContent: side "bottom" (default) | "top" | "right" | "left", align "center" | "start" | "end", sideOffset (8). Escape and outside clicks dismiss; focus returns to the trigger.

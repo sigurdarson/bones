@@ -29,6 +29,9 @@ export function PreviewCardTrigger({ className, ...props }: PreviewCardTriggerPr
 }
 
 export interface PreviewCardContentProps extends BasePreviewCard.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BasePreviewCard.Portal.Props["container"];
+
   /** Which side of the link to open on. @default "bottom" */
   side?: BasePreviewCard.Positioner.Props["side"];
   /** Alignment along that side. @default "center" */
@@ -43,6 +46,7 @@ export interface PreviewCardContentProps extends BasePreviewCard.Popup.Props {
  * clickable.
  */
 export function PreviewCardContent({
+  portalContainer,
   className,
   side = "bottom",
   align = "center",
@@ -51,7 +55,7 @@ export function PreviewCardContent({
   ...props
 }: PreviewCardContentProps) {
   return (
-    <BasePreviewCard.Portal>
+    <BasePreviewCard.Portal container={portalContainer}>
       <BasePreviewCard.Positioner
         className="ub-preview-card-positioner"
         side={side}

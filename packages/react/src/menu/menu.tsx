@@ -46,6 +46,9 @@ export function MenuTrigger({ className, ...props }: MenuTriggerProps) {
 }
 
 export interface MenuContentProps extends BaseMenu.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseMenu.Portal.Props["container"];
+
   /** Which side of the trigger to open on. Defaults to below the trigger; submenus open to the side. */
   side?: BaseMenu.Positioner.Props["side"];
   /** Alignment along that side. Menus align to the trigger's start edge by default. */
@@ -59,6 +62,7 @@ export interface MenuContentProps extends BaseMenu.Popup.Props {
  * stays small; also serves as a submenu's popup inside MenuSubmenuRoot.
  */
 export function MenuContent({
+  portalContainer,
   className,
   side,
   align,
@@ -68,7 +72,7 @@ export function MenuContent({
 }: MenuContentProps) {
   const size = React.useContext(MenuSizeContext);
   return (
-    <BaseMenu.Portal>
+    <BaseMenu.Portal container={portalContainer}>
       <BaseMenu.Positioner
         className="ub-menu-positioner"
         side={side}

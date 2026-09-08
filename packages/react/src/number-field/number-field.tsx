@@ -33,6 +33,23 @@ export function NumberField({
   ...props
 }: NumberFieldProps) {
   const hintId = React.useId();
+  // Labels and validation describe the editable control. Container ARIA
+  // (such as aria-hidden) stays on the root so it still covers every part.
+  const inputAria: React.AriaAttributes = {};
+  const rootProps = { ...props };
+  for (const key of [
+    "aria-label", "aria-labelledby", "aria-describedby", "aria-details",
+    "aria-invalid", "aria-errormessage",
+  ] as const) {
+    // Omitted values must not overwrite a wrapping Field's attributes.
+    if (props[key] !== undefined) {
+      Object.assign(inputAria, { [key]: props[key] });
+    }
+    delete rootProps[key];
+  }
+  if (hint) {
+    inputAria["aria-describedby"] = cx(hintId, inputAria["aria-describedby"]);
+  }
 
   /* Only claim the invalid attributes when this prop asserts them; passing
      the keys with undefined would override the state a wrapping Field sets. */
@@ -45,7 +62,7 @@ export function NumberField({
       data-variant={variant}
       {...rootInvalidProps}
       className={withBase("ub-number-field", className)}
-      {...props}
+      {...rootProps}
     >
       <BaseNumberField.Group className="ub-number-field-group">
         <BaseNumberField.Decrement
@@ -59,8 +76,8 @@ export function NumberField({
         <BaseNumberField.Input
           className="ub-number-field-input"
           placeholder={placeholder}
-          aria-describedby={hint ? hintId : undefined}
           {...inputInvalidProps}
+          {...inputAria}
         />
         <BaseNumberField.Increment
           className="ub-number-field-step"

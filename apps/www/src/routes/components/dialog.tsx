@@ -65,6 +65,11 @@ function Page() {
       <PropsTable
         rows={[
           {
+            name: "DialogContent.portalContainer",
+            type: "HTMLElement | ShadowRoot | RefObject | null",
+            description: "Portal parent for a local theme. Omit to use the parent portal or document body; see Theming.",
+          },
+          {
             name: "DialogRoot.open",
             type: "boolean",
             description: "Controlled state. Pair with onOpenChange (also defaultOpen).",
@@ -105,6 +110,7 @@ function Page() {
       </p>
       <AgentInstructions
         instructions={`DialogRoot, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose, from @usebones/react.
+- DialogContent accepts portalContainer (element or ref) to keep overlays inside a local theme; omit for the parent portal or document body.
 - Structure: DialogRoot wraps DialogTrigger + DialogContent; put DialogTitle (names the dialog, always include one), DialogDescription, and the body inside the content. DialogClose closes it; render several for Cancel/Save pairs.
 - Attach trigger and close buttons to real controls via render={<Button ... />}.
 - Modal by default: page dimmed and inert, focus trapped, Escape closes, focus returns to the trigger. modal={false} keeps the page interactive; disablePointerDismissal ignores outside clicks for forms.

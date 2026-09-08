@@ -49,11 +49,13 @@ function Page() {
         when someone prefers reduced motion. There is no per-component opt-in
         to forget.
       </p>
-      <h2>ARIA attributes always pass through</h2>
+      <h2>Name the interactive control</h2>
       <p>
-        Every component spreads your props onto the underlying element last,
-        so <code>aria-label</code>, <code>aria-describedby</code>, and
-        friends always land where they should. Variants that can lack a
+        Use <code>FieldLabel</code> for form controls, or provide an
+        accessible name on the part that receives focus. Composed controls
+        can render several elements: NumberField forwards labeling and
+        validation ARIA to its editable input, while a Dialog is named by its Title.
+        Check each component's props for the element they describe. Variants that can lack a
         visible label (like icon-only tabs) warn in development when no
         accessible name is provided, so the gap is caught before it ships.
       </p>

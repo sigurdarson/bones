@@ -18,6 +18,10 @@ Useful commands:
 ```sh
 pnpm build      # build every package plus the site
 pnpm typecheck  # strict TypeScript across the repo
+pnpm test       # component contracts
+pnpm test:bundle # Button-only consumer bundle budget (build first)
+pnpm exec playwright install chromium
+pnpm test:browser # shipped styles and behavior in Chromium (build first)
 pnpm format     # prettier
 ```
 
@@ -62,8 +66,8 @@ agents but it applies to humans exactly the same, so read it first.
 - Visual changes: include a screenshot or short recording, light and dark.
 - Touching `packages/*`? Add a line to `CHANGELOG.md` under `## Unreleased`
   (prefix `breaking:` if it breaks published API).
-- CI runs install, build, typecheck, and a house style check; green is
-  required.
-- New components should show up in the demo (`apps/www/app/demo.tsx`) and
+- CI runs install, build, typecheck, the contract tests, the bundle
+  budget, the browser suite, and a house style check; green is required.
+- New components should show up in the demo (`apps/www/src/routes/components/`) and
   work in both themes and both radius modes.
 - Your branch is deleted automatically after merge, so don't reuse it.

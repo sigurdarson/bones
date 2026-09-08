@@ -39,7 +39,10 @@ export function ContextMenuTrigger({ className, ...props }: ContextMenuTriggerPr
   );
 }
 
-export interface ContextMenuContentProps extends BaseContextMenu.Popup.Props {}
+export interface ContextMenuContentProps extends BaseContextMenu.Popup.Props {
+  /** Portal parent for a locally themed subtree. Omit for the default portal target. */
+  portalContainer?: BaseContextMenu.Portal.Props["container"];
+}
 
 /**
  * The menu that opens at the pointer. Bundles the Base UI Portal,
@@ -47,13 +50,14 @@ export interface ContextMenuContentProps extends BaseContextMenu.Popup.Props {}
  * so the two restyle together.
  */
 export function ContextMenuContent({
+  portalContainer,
   className,
   children,
   ...props
 }: ContextMenuContentProps) {
   const size = React.useContext(MenuSizeContext);
   return (
-    <BaseContextMenu.Portal>
+    <BaseContextMenu.Portal container={portalContainer}>
       <BaseContextMenu.Positioner className="ub-menu-positioner">
         <BaseContextMenu.Popup
           data-size={size}
